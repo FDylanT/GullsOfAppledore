@@ -7,6 +7,8 @@ editor_options:
   chunk_output_type: console
 ---
 
+setwd("~/Repos/GullsOfAppledore")
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -14,7 +16,7 @@ library(tidyverse)
 
 ## Load data
 ```{r}
-aggData <- read.csv("aggData.csv") %>%
+aggData <- read.csv("./data/aggData.csv") %>%
   mutate(score = replace(score, score == "X", 8)) %>%
   mutate(score = as.numeric(score))
 
