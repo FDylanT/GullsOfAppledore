@@ -18,36 +18,30 @@ library(tidyverse)
 ```{r}
 aggData <- read.csv("./data/aggData.csv") %>%
   mutate(score = replace(score, score == "X", 8)) %>%
-  mutate(score = as.numeric(score))
+  mutate(score = as.numeric(score)) %>%
+  mutate(birdID = factor(birdID, levels = c("0EE", "9Z4", "8EX", "4F7", "2EE", "6V4", "0T4", "6HU", "1K9", "9EF", "2E2", "*UB", "0HZ", "2HZ", "1Z5", "5Y3", "0HX", "7JM", "3AP", "9AC", "1HY", "1C3", "7U9", "0AC", "7E6", "3HE", "2M8", "0FU", "3P2", "FED", "1M7", "9JP", "6R3", "4AC")))
 
-count(aggData, birdID)
+count(aggData, birdID) # only one datapoint for 0EE, 8EX, 2EE, *UB, 1C3 & 3P2
 
-count(aggData, days_pre_hatch)
-
-# Only one datapoint for *UB, 0EE, 1C3, 2EE, 3P2 & 8EX
+# Create filtered dataset excluding individuals with only one obs
+aggData_filt <- aggData %>%
+  filter(birdID != "0EE" & birdID != "8EX" & birdID != "2EE" & birdID != "*UB" & birdID != "1C3" & birdID != "3P2")
 ```
 
 ## Visualize aggression over time
 ```{r}
-# Create dataset excluding individuals with only one obs
-aggData_filt <- aggData %>%
-  mutate(birdID = factor(birdID, levels = c("0EE", "9Z4", "8EX", "4F7", "2EE", "6V4", "0T4", "6HU", "1K9", "9EF", "2E2", "*UB", "0HZ", "2HZ", "1Z5", "5Y3", "0HX", "7JM", "3AP", "9AC", "1HY", "1C3", "7U9", "0AC", "7E6", "3HE", "2M8", "0FU", "3P2", "FED", "1M7", "9JP", "6R3", "4AC"))) %>%
-  filter(birdID != "*UB" & birdID != "0EE" & birdID != "1C3" & birdID != "2EE" & birdID != "3P2" & birdID != "8EX")
-
 ggplot(aggData_filt, aes(x = days_pre_hatch, y = score, color = nestID)) +
   geom_point() +
   geom_line() +
   facet_wrap(~ birdID) +
   scale_x_reverse() +
   ylim(1, 8) +
-  scale_color_manual(values = pal3) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"))
 
 # Average scores per incubation day across all individuals
-
 aggData_grp <- aggData %>%
   group_by(days_pre_hatch) %>%
   summarise(score = mean(score))
@@ -67,20 +61,25 @@ ggplot(aggData_grp, aes(x = days_pre_hatch, y = score)) +
 ```{r}
 # 1: Does aggression throughout the breeding season vary among individuals?
 
-m2 <- lm(score ~ days_pre_hatch + birdID, data = aggData)
-summary(m2) # p-value = 4.138e-12
+m2 <- lm(score ~ days_pre_hatch + birdID, data = aggData_filt)
+summary(m2) # p-value = 3.899e-12
 
 ## Check residuals
 par(mfrow = c(2, 2))
 plot(m2)
+# strong pattern in residuals in plot 1 --> fails to meet assumption of homoscedasticity?
+# QQ plot not bad
+# possible outliers to remove?
+
 par(mfrow = c(1, 1))
 
-# 2: Does an individual's aggression vary over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?) #USE FILT DATA
+# 2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?) #USE FILT DATA
 
+# how to analyze this? same model as above but with interaction (i.e. *)?
+
+```
 
 # Test for linear relationship
 aggData$daysRank <- rank(aggData$days_pre_hatch)
 aggData$scoreRank <- rank(aggData$score)
 plot(aggData$daysRank, aggData$scoreRank)
-
-```
