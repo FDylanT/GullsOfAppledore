@@ -26,14 +26,30 @@ count(aggData, birdID) # only one datapoint for 0EE, 8EX, 2EE, *UB, 1C3 & 3P2
 # Create filtered dataset excluding individuals with only one obs
 aggData_filt <- aggData %>%
   filter(birdID != "0EE" & birdID != "8EX" & birdID != "2EE" & birdID != "*UB" & birdID != "1C3" & birdID != "3P2")
+
+count(aggData, birdID) # 3+ obs for 4F7, 0T4, 9EF, 2E2, 2HZ, 1Z5, 0HX, 7JM, 3AP, 7U9, 7E6, 3HE, 2M8, 9JP, 4AC
+
+# Create filtered dataset including only individuals with 3+ obs
+aggData_3 <- aggData %>%
+  filter(birdID == "4F7" | birdID == "0T4" | birdID == "9EF" | birdID == "2E2" | birdID == "2HZ" | birdID == "1Z5" | birdID == "0HX" | birdID == "7JM" | birdID == "3AP" | birdID == "7U9" | birdID == "7E6" | birdID == "3HE" | birdID == "2M8" | birdID == "9JP" | birdID == "4AC")
 ```
 
 ## Visualize aggression over time
 ```{r}
+ggplot(aggData_filt, aes(x = days_pre_hatch, y = score, color = birdID)) +
+  geom_point() +
+  geom_line() +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
+
 ggplot(aggData_filt, aes(x = days_pre_hatch, y = score, color = nestID)) +
   geom_point() +
   geom_line() +
-  facet_wrap(~ birdID) +
+  facet_wrap(~ birdID, ncol = 7) +
   scale_x_reverse() +
   ylim(1, 8) +
   theme(panel.grid.major = element_blank(),
@@ -51,6 +67,45 @@ ggplot(aggData_grp, aes(x = days_pre_hatch, y = score)) +
   geom_line() +
   scale_x_reverse() +
   ylim(1, 8) +
+  labs(title = "Aggression Over Time, Averaged Across Individuals") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
+
+# Only individuals with 3+ obs
+ggplot(aggData_3, aes(x = days_pre_hatch, y = score, color = birdID)) +
+  geom_point() +
+  geom_line() +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
+
+ggplot(aggData_3, aes(x = days_pre_hatch, y = score, color = nestID)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ birdID, ncol = 5) +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
+
+# Average scores per incubation day across individuals with 3+ obs
+aggData_3_grp <- aggData_3 %>%
+  group_by(days_pre_hatch) %>%
+  summarise(score = mean(score))
+
+ggplot(aggData_3_grp, aes(x = days_pre_hatch, y = score)) +
+  geom_point() +
+  geom_line() +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  labs(title = "Aggression Over Time, Averaged Across Individuals") +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
@@ -61,21 +116,43 @@ ggplot(aggData_grp, aes(x = days_pre_hatch, y = score)) +
 ```{r}
 # 1: Does aggression throughout the breeding season vary among individuals?
 
-m2 <- lm(score ~ days_pre_hatch + birdID, data = aggData_filt)
-summary(m2) # p-value = 3.899e-12
+m1 <- lm(score ~ days_pre_hatch + birdID, data = aggData_filt)
+summary(m1) # p-value = 3.899e-12
 
 ## Check residuals
 par(mfrow = c(2, 2))
-plot(m2)
+plot(m1)
 # strong pattern in residuals in plot 1 --> fails to meet assumption of homoscedasticity?
 # QQ plot not bad
 # possible outliers to remove?
 
 par(mfrow = c(1, 1))
 
-# 2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?) #USE FILT DATA
+## For individuals with 3+ obs
 
-# how to analyze this? same model as above but with interaction (i.e. *)?
+m2 <- lm(score ~ days_pre_hatch, data = aggData_3)
+summary(m2)
+
+## result: no significant effect of date on aggression score (across all gulls) -- p = 0.289
+
+m3 <- lm(score ~ days_pre_hatch + birdID, data = aggData_3)
+summary(m3)
+
+## results:
+### What is the p-value for days_pre_hatch quantifying? (What about this model makes it significant?)
+### significant effect of almost every individual on aggression score
+
+m4 <- lm(score ~ days_pre_hatch * birdID, data = aggData_3)
+summary(m4) # include interactions
+
+## results:
+### no significant effect of date on aggression score (across all gulls) -- p = 0.568
+### significant effect of every(?) individual on aggression score
+### sigificant effect of date on 2M8's aggression; near-significant effects of date on 3AP's and 4AC's aggression
+
+# 2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?)
+
+### how to analyze this? same model as above but with interaction (i.e. *)?
 
 ```
 
