@@ -114,19 +114,11 @@ ggplot(aggData_3_grp, aes(x = days_pre_hatch, y = score)) +
 
 ## Analyze data
 ```{r}
+# Questions
+
 # 1: Does aggression throughout the breeding season vary among individuals?
 
-m1 <- lm(score ~ days_pre_hatch + birdID, data = aggData_filt)
-summary(m1) # p-value = 3.899e-12
-
-## Check residuals
-par(mfrow = c(2, 2))
-plot(m1)
-# strong pattern in residuals in plot 1 --> fails to meet assumption of homoscedasticity?
-# QQ plot not bad
-# possible outliers to remove?
-
-par(mfrow = c(1, 1))
+# 2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?)
 
 ## For individuals with 3+ obs
 
@@ -150,10 +142,22 @@ summary(m4) # include interactions
 ### significant effect of every(?) individual on aggression score
 ### sigificant effect of date on 2M8's aggression; near-significant effects of date on 3AP's and 4AC's aggression
 
-# 2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?)
+par(mfrow = c(2, 2))
+plot(m4)
+par(mfrow = c(1, 1))
 
-### how to analyze this? same model as above but with interaction (i.e. *)?
+#####
+m1 <- lm(score ~ days_pre_hatch + birdID, data = aggData_filt)
+summary(m1) # p-value = 3.899e-12
 
+## Check residuals
+par(mfrow = c(2, 2))
+plot(m1)
+# strong pattern in residuals in plot 1 --> fails to meet assumption of homoscedasticity?
+# QQ plot not bad
+# possible outliers to remove?
+
+par(mfrow = c(1, 1))
 ```
 
 # Test for linear relationship
