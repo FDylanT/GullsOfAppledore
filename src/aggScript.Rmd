@@ -71,8 +71,10 @@ ggplot(aggData_grp, aes(x = days_pre_hatch, y = score)) +
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"))
+```
 
 # Only individuals with 3+ obs
+```{r}
 ggplot(aggData_3, aes(x = days_pre_hatch, y = score, color = birdID)) +
   geom_point() +
   geom_line() +
@@ -111,16 +113,13 @@ ggplot(aggData_3_grp, aes(x = days_pre_hatch, y = score)) +
         axis.line = element_line(colour = "black"))
 ```
 
-## Analyze data
+## Analyze data (individuals with 3+ obs)
+
+1: Does aggression throughout the breeding season vary among individuals?
+
+2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?)
+
 ```{r}
-# Questions
-
-# 1: Does aggression throughout the breeding season vary among individuals?
-
-# 2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?)
-
-## For individuals with 3+ obs
-
 m4 <- lm(score ~ days_pre_hatch * birdID, data = aggData_3)
 summary(m4) # include interactions
 
