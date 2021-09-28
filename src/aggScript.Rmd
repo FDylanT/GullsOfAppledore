@@ -10,6 +10,8 @@ editor_options:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(lme4)
+library(lmerTest)
 ```
 
 ## Load data
@@ -132,39 +134,91 @@ par(mfrow = c(2, 2))
 plot(m4)
 par(mfrow = c(1, 1))
 
+# Individual as random effect
 
-
-
-
-##########
-m1 <- lm(score ~ days_pre_hatch + birdID, data = aggData_filt)
-summary(m1) # p-value = 3.899e-12
-
-## Check residuals
-par(mfrow = c(2, 2))
-plot(m1)
-# strong pattern in residuals in plot 1 --> fails to meet assumption of homoscedasticity?
-# QQ plot not bad
-# possible outliers to remove?
-
-par(mfrow = c(1, 1))
-
-m2 <- lm(score ~ days_pre_hatch, data = aggData_3)
-summary(m2)
-
-## result: no significant effect of date on aggression score (across all gulls) -- p = 0.289
-
-m3 <- lm(score ~ days_pre_hatch + birdID, data = aggData_3)
-summary(m3)
-
-## results:
-### What is the p-value for days_pre_hatch quantifying? (What about this model makes it significant?)
-### significant effect of almost every individual on aggression score
+m5 <- lmer(score ~ days_pre_hatch + (1|birdID), data = aggData_3)
+summary(m5)
+anova(m5)
 ```
 
+# Check for patterns by nest ID
 ```{r}
-# Test for linear relationship
-# aggData$daysRank <- rank(aggData$days_pre_hatch)
-# aggData$scoreRank <- rank(aggData$score)
-# plot(aggData$daysRank, aggData$scoreRank)
+ggplot(aggData, aes(x = nestID, y = score, color = nestID)) +
+  geom_point() +
+  ylim(1, 8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        legend.position = "none")
+
+# Average scores by nest ID
+aggData_nest_grp <- aggData %>%
+  group_by(nestID) %>%
+  summarise(score = mean(score))
+
+ggplot(aggData_nest_grp, aes(x = nestID, y = score)) +
+  geom_point() +
+  ylim(1, 8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+ggplot(aggData, aes(x = days_pre_hatch, y = score, color = nestID)) +
+  geom_point() +
+  geom_line() +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
+
+ggplot(aggData, aes(x = days_pre_hatch, y = score, color = nestID)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ nestID, ncol = 6) +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
+```
+
+# Analysis
+```{r}
+## all individuals
+n1 <- aov(score ~ nestID, data = aggData)
+anova(n1)
+
+n2 <- lm(score ~ nestID, data = aggData)
+summary(n2)
+
+# Check for patterns over time by nest ID
+
+## all individuals
+n4 <- lm(score ~ days_pre_hatch + nestID, data = aggData)
+summary(n4)
+
+n5 <- lm(score ~ days_pre_hatch * nestID, data = aggData)
+summary(n5)
+
+## individuals with 2+ obs
+n6 <- lm(score ~ days_pre_hatch + nestID, data = aggData_filt)
+summary(n6)
+
+n7 <- lm(score ~ days_pre_hatch * nestID, data = aggData_filt)
+summary(n7)
+
+## individuals with 3+ obs
+n8 <- lm(score ~ days_pre_hatch + nestID, data = aggData_3)
+summary(n8)
+
+n9 <- lm(score ~ days_pre_hatch * nestID, data = aggData_3)
+summary(n9)
+
 ```
