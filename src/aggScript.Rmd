@@ -16,7 +16,7 @@ library(lmerTest)
 
 ## Load data
 ```{r}
-setwd("~/Repos/GullsOfAppledore")
+setwd("~/Desktop/Repos/GullsOfAppledore")
 aggData <- read.csv("./data/aggData.csv") %>%
   mutate(score = replace(score, score == "X", 8)) %>%
   mutate(score = as.numeric(score)) %>%
@@ -37,16 +37,6 @@ aggData_3 <- aggData %>%
 
 ## Visualize aggression over time
 ```{r}
-ggplot(aggData_filt, aes(x = days_pre_hatch, y = score, color = birdID)) +
-  geom_point() +
-  geom_line() +
-  scale_x_reverse() +
-  ylim(1, 8) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
-
 ggplot(aggData_filt, aes(x = days_pre_hatch, y = score, color = nestID)) +
   geom_point() +
   geom_line() +
@@ -77,88 +67,69 @@ ggplot(aggData_grp, aes(x = days_pre_hatch, y = score)) +
 
 # Only individuals with 3+ obs
 ```{r}
-ggplot(aggData_3, aes(x = days_pre_hatch, y = score, color = birdID)) +
+### this one ###
+ggplot(aggData_3, aes(x = days_pre_hatch, y = score)) +
   geom_point() +
   geom_line() +
+  facet_wrap(~ birdID, ncol = 3) +
   scale_x_reverse() +
   ylim(1, 8) +
+  labs(x = "Days Before First Hatch", y = "Aggression Score", title = "Individuals' Aggression Over Time", subtitle = "(including gulls with three or more behavioral scores)") +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
-
-ggplot(aggData_3, aes(x = days_pre_hatch, y = score, color = nestID)) +
-  geom_point() +
-  geom_line() +
-  facet_wrap(~ birdID, ncol = 5) +
-  scale_x_reverse() +
-  ylim(1, 8) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 12, face = "italic", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10))
 
 # Average scores per incubation day across individuals with 3+ obs
 aggData_3_grp <- aggData_3 %>%
   group_by(days_pre_hatch) %>%
   summarise(score = mean(score))
 
+### this one ###
 ggplot(aggData_3_grp, aes(x = days_pre_hatch, y = score)) +
   geom_point() +
   geom_line() +
   scale_x_reverse() +
   ylim(1, 8) +
-  labs(title = "Aggression Over Time, Averaged Across Individuals") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
-```
-
-## Analyze data (individuals with 3+ obs)
-
-1: Does aggression throughout the breeding season vary among individuals?
-
-2: Does aggression vary within an individual over the course of the breeding season? (i.e. Is each individual gull's aggression affected by incubation timepoint?)
-
-```{r}
-m4 <- lm(score ~ days_pre_hatch * birdID, data = aggData_3)
-summary(m4) # include interactions
-
-## results:
-### no significant effect of date on aggression score (across all gulls) -- p = 0.568
-### significant effect of every(?) individual on aggression score
-### sigificant effect of date on 2M8's aggression; near-significant effects of date on 3AP's and 4AC's aggression
-
-par(mfrow = c(2, 2))
-plot(m4)
-par(mfrow = c(1, 1))
-
-# Individual as random effect
-
-m5 <- lmer(score ~ days_pre_hatch + (1|birdID), data = aggData_3)
-summary(m5)
-anova(m5)
-```
-
-# Check for patterns by nest ID
-```{r}
-ggplot(aggData, aes(x = nestID, y = score, color = nestID)) +
-  geom_point() +
-  ylim(1, 8) +
+  labs(x = "Days Before First Hatch", y = "Aggression Score", title = "Aggression Over Time, Averaged Across Individuals") +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
-        legend.position = "none")
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10))
+```
 
-# Average scores by nest ID
-aggData_nest_grp <- aggData %>%
-  group_by(nestID) %>%
+## Analyze data (individuals with 3+ obs)
+
+1: Does aggression vary over the course of the breeding season? (i.e. Is aggression affected by incubation timepoint?)
+
+```{r}
+m1 <- lmer(score ~ days_pre_hatch + (1|birdID), data = aggData_3)
+summary(m1)
+
+par(mfrow = c(2, 2))
+plot(m1)
+par(mfrow = c(1, 1))
+```
+
+_2: Does aggression throughout the breeding season vary among individuals?_
+
+3: How does aggression vary within mated pairs?
+
+# Check for patterns by nest ID
+```{r}
+# Average scores by individual
+aggData_indiv_grp <- aggData %>%
+  group_by(birdID, nestID) %>%
   summarise(score = mean(score))
 
-ggplot(aggData_nest_grp, aes(x = nestID, y = score)) +
+ggplot(aggData_indiv_grp, aes(x = nestID, y = score)) +
   geom_point() +
   ylim(1, 8) +
   theme(panel.grid.major = element_blank(),
@@ -167,26 +138,23 @@ ggplot(aggData_nest_grp, aes(x = nestID, y = score)) +
         axis.line = element_line(colour = "black"),
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
-ggplot(aggData, aes(x = days_pre_hatch, y = score, color = nestID)) +
+### this one ###
+ggplot(aggData, aes(x = days_pre_hatch, y = score)) +
   geom_point() +
-  geom_line() +
-  scale_x_reverse() +
-  ylim(1, 8) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
-
-ggplot(aggData, aes(x = days_pre_hatch, y = score, color = nestID)) +
-  geom_point() +
-  geom_line() +
+  geom_line(aes(lty = birdID)) +
   facet_wrap(~ nestID, ncol = 6) +
   scale_x_reverse() +
   ylim(1, 8) +
+  scale_linetype_manual(values = c("solid", "22", "solid", "22", "solid", "22", "22", "solid", "solid", "22", "22", "solid", "solid", "22", "22", "solid", "solid", "22", "solid", "22", "22", "solid", "solid", "22", "solid", "22", "solid", "22", "solid", "22", "solid", "22", "solid", "22")) +
+  labs(x = "Days Before First Hatch", y = "Aggression Score", title = "Aggression Over Time Among Mated Pairs") +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10),
+        legend.position = "none")
 ```
 
 # Analysis
