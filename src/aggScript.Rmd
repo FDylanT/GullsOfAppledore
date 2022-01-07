@@ -109,7 +109,7 @@ ggplot(agg19_21_3, aes(x = days_pre_hatch, y = response)) +
   facet_wrap(~ birdNest, ncol = 9) +
   scale_x_reverse() +
   ylim(1, 8) +
-  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls observed in 2021 with 3+ behavioral scores") +
+  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls with 3+ behavioral scores (2019 & 2021)") +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
@@ -207,4 +207,75 @@ ggplot(mateAgg, aes(x = diff)) +
         plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
         axis.title = element_text(size = 18, face = "bold"),
         axis.text = element_text(size = 12))
+```
+
+# Add in 2018 data
+## Load 2018 data
+```{r}
+aggData18 <- read.csv("./data/2018aggData.csv") %>%
+  select(-latency) %>%
+  na.omit()
+
+count(aggData18, birdID)
+
+agg18_21_3 <- aggData18 %>%
+  mutate(nestID = as.factor(nestID)) %>%
+  mutate(days_pre_hatch = as.numeric(days_pre_hatch)) %>%
+  mutate(year = as.factor(paste("20", str_extract(obs_date, "[0-9]{2}$"), sep = ""))) %>%
+  mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
+  rbind(agg19_21) %>%
+  group_by(birdNest) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+```
+
+### 2018-2021 data
+```{r}
+# Faceted by individual
+ggplot(agg18_21_3, aes(x = days_pre_hatch, y = response)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ birdNest, ncol = 10) +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls with 3+ behavioral scores") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 12, face = "italic", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10))
+
+# Average response by incubation day among individuals with 3+ obs
+print(count(agg18_21_3, days_pre_hatch), n = 32)
+
+agg18_21_3 %>%
+  filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
+  group_by(days_pre_hatch) %>%
+  summarise(response = mean(response)) %>%
+  ggplot(aes(x = days_pre_hatch, y = response)) +
+    geom_point() +
+    geom_line() +
+    scale_x_reverse() +
+    ylim(1, 8) +
+    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time, Averaged Across Individuals") +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank(),
+          axis.line = element_line(colour = "black"),
+          plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+          axis.title = element_text(size = 18, face = "bold"),
+          axis.text = element_text(size = 12))
+```
+
+## Analyze 2018-2021 data
+```{r}
+agg18_21_3_filt <- agg18_21_3 %>%
+  filter(days_pre_hatch >= 0) # filter out post-hatching observations
+
+m5 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg18_21_3_filt)
+summary(m5)
+anova(m5)
 ```
