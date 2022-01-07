@@ -52,8 +52,6 @@ aggM <- agg19_21 %>%
 #mean(count(aggM, birdID, nestID)$n) #2.83 obs
 #min(count(aggM, birdID, nestID)$n) #1 obs
 #max(count(aggM, birdNest)$n) #7 obs
-
-#count(agg19_21, birdNest)
 ```
 
 ### Visualize aggression over time (individuals with 3+ obs)
