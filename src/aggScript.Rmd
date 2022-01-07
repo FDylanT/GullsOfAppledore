@@ -30,7 +30,6 @@ count(aggData21, birdID)
 ```{r}
 setwd("~/Desktop/Repos/GullsOfAppledore")
 aggData19 <- read.csv("./data/2019aggData.csv") %>%
-  select(-latency) %>%
   na.omit()
 
 # combine 2019 & 2020 data
@@ -211,7 +210,7 @@ mateAgg <- read.csv("./data/mateAgg.csv") %>%
   mutate(diff = abs(M1 - M2))
 ```
 
-### Visualize
+### Visualize mate data
 ```{r}
 ggplot(mateAgg, aes(x = diff)) +
   geom_histogram(position = "identity", binwidth = 0.5) +
@@ -234,7 +233,6 @@ ggplot(mateAgg, aes(x = diff)) +
 
 setwd("~/Desktop/Repos/GullsOfAppledore")
 aggData18 <- read.csv("./data/2018aggData.csv") %>%
-  select(-latency) %>%
   na.omit()
 
 count(aggData18, birdID)
