@@ -7,6 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
+---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -23,11 +24,6 @@ aggData21 <- read.csv("./data/2021aggData.csv") %>%
   mutate(birdID = factor(birdID, levels = c("0EE", "9Z4", "8EX", "4F7", "2EE", "6V4", "0T4", "6HU", "1K9", "9EF", "2E2", "U21G07", "0HZ", "2HZ", "1Z5", "5Y3", "0HX", "7JM", "3AP", "9AC", "1HY", "1C3", "7U9", "0AC", "7E6", "3HE", "2M8", "0FU", "3P2", "FED", "1M7", "9JP", "6R3", "4AC")))
 
 count(aggData21, birdID)
-
-aggData21_3 <- aggData21 %>%
-  group_by(birdID) %>% 
-  filter(n() >= 3) %>% # filter out individuals with <3 obs
-  ungroup()
 ```
 
 ### Load 2019 data
@@ -47,23 +43,28 @@ agg19_21 <- aggData21 %>%
   mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
   mutate(birdYear = as.factor(paste(birdID, year, sep = "_")))
 
-count(agg19_21, birdID, nestID) #74 birds
-count(agg19_21, nestID) #37 nests
-sum(count(agg19_21, birdID, nestID)$n) #251 obs
+aggM <- agg19_21 %>%
+  filter(days_pre_hatch >= 0) # filter out post-hatching observations
 
-mean(count(agg19_21, birdID, nestID)$n) #3.39 obs
-min(count(agg19_21, birdID, nestID)$n) #1 obs
-max(count(agg19_21, birdID, nestID)$n) #5 obs
+#count(aggM, birdID, nestID) #71 birds
+#count(aggM, nestID) #37 nests
+#sum(count(aggM, birdID, nestID)$n) #201 obs
 
-agg19_21_3 <- agg19_21 %>%
-  group_by(birdNest) %>% 
-  filter(n() >= 3) %>% # filter out individuals with <3 obs
-  ungroup()
+#mean(count(aggM, birdID, nestID)$n) #2.83 obs
+#min(count(aggM, birdID, nestID)$n) #1 obs
+#max(count(aggM, birdNest)$n) #7 obs
+
+#count(agg19_21, birdNest)
 ```
 
-### Visualize aggression over time; individuals with 3+ obs
+### Visualize aggression over time (individuals with 3+ obs)
 #### 2021 data
 ```{r}
+aggData21_3 <- aggData21 %>%
+  group_by(birdID) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+
 # Faceted by individual
 ggplot(aggData21_3, aes(x = days_pre_hatch, y = response)) +
   geom_point() +
@@ -82,7 +83,7 @@ ggplot(aggData21_3, aes(x = days_pre_hatch, y = response)) +
         axis.text = element_text(size = 10))
 
 # Average response by incubation day among individuals with 3+ obs
-print(count(aggData21_3, days_pre_hatch), n = 22)
+#print(count(aggData21_3, days_pre_hatch), n = 22)
 
 aggData21_3 %>%
   group_by(days_pre_hatch) %>%
@@ -97,13 +98,18 @@ aggData21_3 %>%
           panel.grid.minor = element_blank(),
           panel.background = element_blank(),
           axis.line = element_line(colour = "black"),
-          plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+          plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
           axis.title = element_text(size = 18, face = "bold"),
           axis.text = element_text(size = 12))
 ```
 
-### 2019 & 2021 data
+#### 2019 & 2021 data
 ```{r}
+agg19_21_3 <- agg19_21 %>%
+  group_by(birdNest) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+
 # Faceted by individual
 ggplot(agg19_21_3, aes(x = days_pre_hatch, y = response)) +
   geom_point() +
@@ -122,7 +128,7 @@ ggplot(agg19_21_3, aes(x = days_pre_hatch, y = response)) +
         axis.text = element_text(size = 10))
 
 # Average response by incubation day among individuals with 3+ obs
-print(count(agg19_21_3, days_pre_hatch), n = 32)
+#print(count(agg19_21_3, days_pre_hatch), n = 32)
 
 agg19_21_3 %>%
   filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
@@ -138,22 +144,24 @@ agg19_21_3 %>%
           panel.grid.minor = element_blank(),
           panel.background = element_blank(),
           axis.line = element_line(colour = "black"),
-          plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+          plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
           axis.title = element_text(size = 18, face = "bold"),
           axis.text = element_text(size = 12))
 ```
 
-## Analyze data (individuals with 3+ obs)
+### Analyze data (individuals with 3+ obs)
 
-1: Does aggression vary over the course of the breeding season? (i.e. Is aggression affected by incubation timepoint?)
+**1: Does aggression vary over the course of the breeding season? (i.e. Is aggression affected by incubation timepoint?)**
 
+#### 2021 data
 ```{r}
-# 2021 data
 m1 <- lmer(response ~ days_pre_hatch + (1|birdID), data = aggData21_3)
 summary(m1)
 anova(m1) # df = 1,43.527   # F = 14.195   # p = 0.0004912 (4.912e-4)
+```
 
-# 2019 & 2021 data
+#### 2019 & 2021 data
+```{r}
 agg19_21_3_filt <- agg19_21_3 %>%
   filter(days_pre_hatch >= 0) # filter out post-hatching observations
 
@@ -163,19 +171,21 @@ anova(m2)  # df = 1,131.94   # F = 19.642   # p = 0.00001945 (1.945e-5)
 
 m3 <- lmer(response ~ days_pre_hatch + (1|birdNest), data = agg19_21_3_filt)
 anova(m2, m3) # AIC of 541.28 (m2) vs 545.77 (m3) --> m2 is the better fit
+```
 
-# out of curiosity -- run model including post-hatch obs
+#### Out of curiosity -- run model including post-hatch obs
+```{r}
 m4 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg19_21_3)
 summary(m4)
 anova(m4)  # df = 1,181.68   # F = 3.9832   # p = 0.04745
 # still technically significant, but barely -- seems that aggression increases again once chicks have hatched
 ```
 
-2: How does aggression vary within mated pairs?
+**2: How does aggression vary within mated pairs?**
 
-## Check for patterns by nest ID
+### Check for patterns by nest ID
+#### 2021 data
 ```{r}
-# 2021 data
 ggplot(aggData21, aes(x = days_pre_hatch, y = response)) +
   geom_point() +
   geom_line(aes(lty = birdID)) +
@@ -194,12 +204,15 @@ ggplot(aggData21, aes(x = days_pre_hatch, y = response)) +
         legend.position = "none")
 ```
 
-## Load pair data
+### Load 2019 mate data
 ```{r}
 setwd("~/Desktop/Repos/GullsOfAppledore")
 mateAgg <- read.csv("./data/mateAgg.csv") %>%
   mutate(diff = abs(M1 - M2))
+```
 
+### Visualize mate data
+```{r}
 ggplot(mateAgg, aes(x = diff)) +
   geom_histogram(position = "identity", binwidth = 0.5) +
   labs(x = "Difference between Aggression Score of Mate 1 and Mate 2", y = "Number of Instances", title = "Distribution of Differences between\nMated Gulls' Aggression Responses") +
@@ -207,80 +220,7 @@ ggplot(mateAgg, aes(x = diff)) +
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
-        plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+        plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
         axis.title = element_text(size = 18, face = "bold"),
         axis.text = element_text(size = 12))
-```
-
-# Add in 2018 data
-## Load 2018 data
-```{r}
-setwd("~/Desktop/Repos/GullsOfAppledore")
-aggData18 <- read.csv("./data/2018aggData.csv") %>%
-  select(-latency) %>%
-  na.omit()
-
-count(aggData18, birdID)
-
-agg18_21_3 <- aggData18 %>%
-  mutate(nestID = as.factor(nestID)) %>%
-  mutate(days_pre_hatch = as.numeric(days_pre_hatch)) %>%
-  mutate(year = as.factor(paste("20", str_extract(obs_date, "[0-9]{2}$"), sep = ""))) %>%
-  mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
-  mutate(birdYear = as.factor(paste(birdID, year, sep = "_"))) %>%
-  rbind(agg19_21) %>%
-  group_by(birdNest) %>% 
-  filter(n() >= 3) %>% # filter out individuals with <3 obs
-  ungroup()
-```
-
-### 2018-2021 data
-```{r}
-# Faceted by individual
-ggplot(agg18_21_3, aes(x = days_pre_hatch, y = response)) +
-  geom_point() +
-  geom_line() +
-  facet_wrap(~ birdNest, ncol = 10) +
-  scale_x_reverse() +
-  ylim(1, 8) +
-  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls with 3+ behavioral scores") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black"),
-        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-        plot.subtitle = element_text(size = 12, face = "italic", hjust = 0.5),
-        axis.title = element_text(size = 14, face = "bold"),
-        axis.text = element_text(size = 10))
-
-# Average response by incubation day among individuals with 3+ obs
-print(count(agg18_21_3, days_pre_hatch), n = 32)
-
-agg18_21_3 %>%
-  filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
-  group_by(days_pre_hatch) %>%
-  summarise(response = mean(response)) %>%
-  ggplot(aes(x = days_pre_hatch, y = response)) +
-    geom_point() +
-    geom_line() +
-    scale_x_reverse() +
-    ylim(1, 8) +
-    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time, Averaged Across Individuals") +
-    theme(panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          panel.background = element_blank(),
-          axis.line = element_line(colour = "black"),
-          plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
-          axis.title = element_text(size = 18, face = "bold"),
-          axis.text = element_text(size = 12))
-```
-
-## Analyze 2018-2021 data
-```{r}
-agg18_21_3_filt <- agg18_21_3 %>%
-  filter(days_pre_hatch >= 0) # filter out post-hatching observations
-
-m5 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg18_21_3_filt)
-summary(m5)
-anova(m5)
 ```
