@@ -1,5 +1,5 @@
 ---
-title: "GoA_Agg"
+title: "GoA Aggression Visualization & Analysis"
 author: "Dylan Titmuss"
 date: "9/17/2021"
 output: html_document
@@ -14,7 +14,7 @@ library(lme4)
 library(lmerTest)
 ```
 
-## Load 2021 data
+### Load 2021 data
 ```{r}
 setwd("~/Desktop/Repos/GullsOfAppledore")
 aggData21 <- read.csv("./data/2021aggData.csv") %>%
@@ -30,8 +30,9 @@ aggData21_3 <- aggData21 %>%
   ungroup()
 ```
 
-## Load 2019 data
+### Load 2019 data
 ```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
 aggData19 <- read.csv("./data/2019aggData.csv") %>%
   select(-latency) %>%
   na.omit()
@@ -60,8 +61,8 @@ agg19_21_3 <- agg19_21 %>%
   ungroup()
 ```
 
-## Visualize aggression over time; individuals with 3+ obs
-### 2021 data
+### Visualize aggression over time; individuals with 3+ obs
+#### 2021 data
 ```{r}
 # Faceted by individual
 ggplot(aggData21_3, aes(x = days_pre_hatch, y = response)) +
@@ -195,6 +196,7 @@ ggplot(aggData21, aes(x = days_pre_hatch, y = response)) +
 
 ## Load pair data
 ```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
 mateAgg <- read.csv("./data/mateAgg.csv") %>%
   mutate(diff = abs(M1 - M2))
 
@@ -213,6 +215,7 @@ ggplot(mateAgg, aes(x = diff)) +
 # Add in 2018 data
 ## Load 2018 data
 ```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
 aggData18 <- read.csv("./data/2018aggData.csv") %>%
   select(-latency) %>%
   na.omit()
@@ -224,6 +227,7 @@ agg18_21_3 <- aggData18 %>%
   mutate(days_pre_hatch = as.numeric(days_pre_hatch)) %>%
   mutate(year = as.factor(paste("20", str_extract(obs_date, "[0-9]{2}$"), sep = ""))) %>%
   mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
+  mutate(birdYear = as.factor(paste(birdID, year, sep = "_"))) %>%
   rbind(agg19_21) %>%
   group_by(birdNest) %>% 
   filter(n() >= 3) %>% # filter out individuals with <3 obs
