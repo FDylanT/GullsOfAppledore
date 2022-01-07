@@ -96,13 +96,14 @@ aggData21_3 %>%
           panel.background = element_blank(),
           axis.line = element_line(colour = "black"),
           plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
-          axis.title = element_text(size = 18, face = "bold"),
+          axis.title = element_text(size = 16, face = "bold"),
           axis.text = element_text(size = 12))
 ```
 
 #### 2019 & 2021 data
 ```{r}
 agg19_21_3 <- agg19_21 %>%
+  filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
   group_by(birdNest) %>% 
   filter(n() >= 3) %>% # filter out individuals with <3 obs
   ungroup()
@@ -111,7 +112,7 @@ agg19_21_3 <- agg19_21 %>%
 ggplot(agg19_21_3, aes(x = days_pre_hatch, y = response)) +
   geom_point() +
   geom_line() +
-  facet_wrap(~ birdYear, ncol = 9) +
+  facet_wrap(~ birdYear, ncol = 8) +
   scale_x_reverse() +
   ylim(1, 8) +
   labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls with 3+ behavioral scores (2019 & 2021)") +
@@ -128,7 +129,6 @@ ggplot(agg19_21_3, aes(x = days_pre_hatch, y = response)) +
 #print(count(agg19_21_3, days_pre_hatch), n = 32)
 
 agg19_21_3 %>%
-  filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
   group_by(days_pre_hatch) %>%
   summarise(response = mean(response)) %>%
   ggplot(aes(x = days_pre_hatch, y = response)) +
@@ -142,7 +142,7 @@ agg19_21_3 %>%
           panel.background = element_blank(),
           axis.line = element_line(colour = "black"),
           plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
-          axis.title = element_text(size = 18, face = "bold"),
+          axis.title = element_text(size = 16, face = "bold"),
           axis.text = element_text(size = 12))
 ```
 
@@ -154,28 +154,30 @@ agg19_21_3 %>%
 ```{r}
 m1 <- lmer(response ~ days_pre_hatch + (1|birdID), data = aggData21_3)
 summary(m1)
-anova(m1) # df = 1,43.527   # F = 14.195   # p = 0.0004912 (4.912e-4)
+anova(m1) # df = 1,44.019   # F = 14.194   # p = 0.0004864 (4.864e-4)
 ```
 
 #### 2019 & 2021 data
 ```{r}
-agg19_21_3_filt <- agg19_21_3 %>%
-  filter(days_pre_hatch >= 0) # filter out post-hatching observations
-
-m2 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg19_21_3_filt)
+m2 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg19_21_3)
 summary(m2)
-anova(m2)  # df = 1,131.94   # F = 19.642   # p = 0.00001945 (1.945e-5)
+anova(m2)  # df = 1,121.38   # F = 21.55   # p = 0.000008796 (8.796e-6)
 
-m3 <- lmer(response ~ days_pre_hatch + (1|birdNest), data = agg19_21_3_filt)
-anova(m2, m3) # AIC of 541.28 (m2) vs 545.77 (m3) --> m2 is the better fit
+m3 <- lmer(response ~ days_pre_hatch + (1|birdNest), data = agg19_21_3)
+anova(m2, m3) # AIC of 476.49 (m2) vs 476.97 (m3); p = 0.12 --> random effect of year makes no difference
 ```
 
 #### Out of curiosity -- run model including post-hatch obs
 ```{r}
-m4 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg19_21_3)
+agg19_21_3_unfilt <- agg19_21 %>%
+  group_by(birdNest) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+
+m4 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg19_21_3_unfilt)
 summary(m4)
-anova(m4)  # df = 1,181.68   # F = 3.9832   # p = 0.04745
-# still technically significant, but barely -- seems that aggression increases again once chicks have hatched
+anova(m4)  # df = 1,182.72   # F = 4.022   # p = 0.04639
+# still technically significant, but barely -- seems that aggression increases again after chicks have hatched
 ```
 
 **2: How does aggression vary within mated pairs?**
