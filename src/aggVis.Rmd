@@ -1,0 +1,218 @@
+---
+title: "GoA Aggression Visualization"
+author: "Dylan Titmuss"
+date: "9/17/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+### Load 2021 data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+aggData21 <- read.csv("./data/2021aggData.csv") %>%
+  mutate(response = replace(response, response == "X", 8)) %>%
+  mutate(response = as.numeric(response)) %>%
+  mutate(birdID = factor(birdID, levels = c("0EE", "9Z4", "8EX", "4F7", "2EE", "6V4", "0T4", "6HU", "1K9", "9EF", "2E2", "U21G07", "0HZ", "2HZ", "1Z5", "5Y3", "0HX", "7JM", "3AP", "9AC", "1HY", "1C3", "7U9", "0AC", "7E6", "3HE", "2M8", "0FU", "3P2", "FED", "1M7", "9JP", "6R3", "4AC")))
+
+count(aggData21, birdID)
+```
+
+### Load 2019 data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+aggData19 <- read.csv("./data/2019aggData.csv") %>%
+  na.omit()
+
+# combine 2019 & 2020 data
+agg19_21 <- aggData21 %>%
+  select(-mate_present) %>%
+  rbind(aggData19) %>%
+  mutate(nestID = as.factor(nestID)) %>%
+  mutate(days_pre_hatch = as.numeric(days_pre_hatch)) %>%
+  mutate(year = as.factor(paste("20", str_extract(obs_date, "[0-9]{2}$"), sep = ""))) %>%
+  mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
+  mutate(birdYear = as.factor(paste(birdID, year, sep = "_")))
+
+aggM <- agg19_21 %>%
+  filter(days_pre_hatch >= 0) # filter out post-hatching observations
+
+#count(aggM, birdID, nestID) #71 birds
+#count(aggM, nestID) #37 nests
+#sum(count(aggM, birdID, nestID)$n) #201 obs
+
+#mean(count(aggM, birdID, nestID)$n) #2.83 obs
+#min(count(aggM, birdID, nestID)$n) #1 obs
+#max(count(aggM, birdNest)$n) #7 obs
+```
+
+### Load 2018 data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+aggData18 <- read.csv("./data/2018aggData.csv") %>%
+  na.omit()
+
+agg18_21 <- aggData18 %>%
+  mutate(birdID = as.factor(birdID), nestID = as.factor(nestID)) %>%
+  mutate(days_pre_hatch = as.numeric(days_pre_hatch)) %>%
+  mutate(year = as.factor(paste("20", str_extract(obs_date, "[0-9]{2}$"), sep = ""))) %>%
+  mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
+  mutate(birdYear = as.factor(paste(birdID, year, sep = "_"))) %>%
+  rbind(agg19_21)
+
+aggM <- agg18_21 %>%
+  filter(days_pre_hatch >= 0) # filter out post-hatching observations
+
+count(aggM, birdID, nestID) #97 birds
+count(aggM, nestID) #62 nests
+sum(count(aggM, birdID, nestID)$n) #277 obs
+
+mean(count(aggM, birdID, nestID)$n) #2.86 obs
+min(count(aggM, birdID, nestID)$n) #1 obs
+max(count(aggM, birdNest)$n) #7 obs
+```
+
+### Visualize aggression over time (individuals with 3+ obs)
+#### 2021 data
+```{r}
+aggData21_3 <- aggData21 %>%
+  group_by(birdID) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+
+# Faceted by individual
+ggplot(aggData21_3, aes(x = days_pre_hatch, y = response)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ birdID, ncol = 3) +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls observed in 2021 with 3+ behavioral scores") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 12, face = "italic", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10))
+
+# Average response by incubation day among individuals with 3+ obs
+#print(count(aggData21_3, days_pre_hatch), n = 22)
+
+aggData21_3 %>%
+  group_by(days_pre_hatch) %>%
+  summarise(response = mean(response)) %>%
+  ggplot(aes(x = days_pre_hatch, y = response)) +
+    geom_point() +
+    geom_line() +
+    scale_x_reverse() +
+    ylim(1, 8) +
+    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time, Averaged Across Individuals") +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank(),
+          axis.line = element_line(colour = "black"),
+          plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+          axis.title = element_text(size = 16, face = "bold"),
+          axis.text = element_text(size = 12))
+```
+
+#### 2019 & 2021 data
+```{r}
+agg19_21_3 <- agg19_21 %>%
+  filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
+  group_by(birdNest) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+
+# Faceted by individual
+ggplot(agg19_21_3, aes(x = days_pre_hatch, y = response)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ birdYear, ncol = 8) +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls with 3+ behavioral scores (2019 & 2021)") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 12, face = "italic", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10))
+
+# Average response by incubation day among individuals with 3+ obs
+#print(count(agg19_21_3, days_pre_hatch), n = 32)
+
+agg19_21_3 %>%
+  group_by(days_pre_hatch) %>%
+  summarise(response = mean(response)) %>%
+  ggplot(aes(x = days_pre_hatch, y = response)) +
+    geom_point() +
+    geom_line() +
+    scale_x_reverse() +
+    ylim(1, 8) +
+    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time, Averaged Across Individuals") +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank(),
+          axis.line = element_line(colour = "black"),
+          plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+          axis.title = element_text(size = 16, face = "bold"),
+          axis.text = element_text(size = 12))
+```
+
+#### 2018-2021 data
+```{r}
+agg18_21_3 <- agg18_21 %>%
+  filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
+  group_by(birdNest) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+
+**Faceted by individual**
+ggplot(agg18_21_3, aes(x = days_pre_hatch, y = response)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ birdNest, ncol = 10) +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Individuals' Aggression Over Time", subtitle = "Gulls with 3+ behavioral scores") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 12, face = "italic", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10))
+
+**Average response by incubation day among individuals with 3+ obs**
+print(count(agg18_21_3, days_pre_hatch), n = 32)
+
+agg18_21_3 %>%
+  filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
+  group_by(days_pre_hatch) %>%
+  summarise(response = mean(response)) %>%
+  ggplot(aes(x = days_pre_hatch, y = response)) +
+    geom_point() +
+    geom_line() +
+    scale_x_reverse() +
+    ylim(1, 8) +
+    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time, Averaged Across Individuals") +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank(),
+          axis.line = element_line(colour = "black"),
+          plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+          axis.title = element_text(size = 18, face = "bold"),
+          axis.text = element_text(size = 12))
+```
