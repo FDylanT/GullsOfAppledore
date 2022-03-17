@@ -1,0 +1,126 @@
+---
+title: "GoA Aggression Visualization & Analysis"
+author: "Dylan Titmuss"
+date: "9/17/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+```
+
+### Load 2021 data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+aggData21 <- read.csv("./data/2021aggData.csv") %>%
+  mutate(response = replace(response, response == "X", 8)) %>%
+  mutate(response = as.numeric(response)) %>%
+  mutate(birdID = factor(birdID, levels = c("0EE", "9Z4", "8EX", "4F7", "2EE", "6V4", "0T4", "6HU", "1K9", "9EF", "2E2", "U21G07", "0HZ", "2HZ", "1Z5", "5Y3", "0HX", "7JM", "3AP", "9AC", "1HY", "1C3", "7U9", "0AC", "7E6", "3HE", "2M8", "0FU", "3P2", "FED", "1M7", "9JP", "6R3", "4AC")))
+
+count(aggData21, birdID)
+```
+
+### Load 2019 data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+aggData19 <- read.csv("./data/2019aggData.csv") %>%
+  na.omit()
+
+# combine 2019 & 2020 data
+agg19_21 <- aggData21 %>%
+  select(-mate_present) %>%
+  rbind(aggData19) %>%
+  mutate(nestID = as.factor(nestID)) %>%
+  mutate(days_pre_hatch = as.numeric(days_pre_hatch)) %>%
+  mutate(year = as.factor(paste("20", str_extract(obs_date, "[0-9]{2}$"), sep = ""))) %>%
+  mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
+  mutate(birdYear = as.factor(paste(birdID, year, sep = "_")))
+```
+
+### Load 2018 data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+aggData18 <- read.csv("./data/2018aggData.csv") %>%
+  na.omit()
+
+agg18_21 <- aggData18 %>%
+  mutate(birdID = as.factor(birdID), nestID = as.factor(nestID)) %>%
+  mutate(days_pre_hatch = as.numeric(days_pre_hatch)) %>%
+  mutate(year = as.factor(paste("20", str_extract(obs_date, "[0-9]{2}$"), sep = ""))) %>%
+  mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
+  mutate(birdYear = as.factor(paste(birdID, year, sep = "_"))) %>%
+  rbind(agg19_21)
+```
+
+### Analyze data (individuals with 3+ obs)
+
+**1: Does aggression vary over the course of the breeding season? (i.e. Is aggression affected by incubation timepoint?)**
+
+#### 2021 data
+```{r}
+m1 <- lmer(response ~ days_pre_hatch + (1|birdID), data = aggData21_3)
+summary(m1)
+anova(m1) # df = 1,44.019   # F = 14.194   # p = 0.0004864 (4.864e-4)
+```
+
+#### 2019 & 2021 data
+```{r}
+m2 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg19_21_3)
+summary(m2)
+anova(m2)  # df = 1,121.38   # F = 21.55   # p = 0.000008796 (8.796e-6)
+
+m3 <- lmer(response ~ days_pre_hatch + (1|birdNest), data = agg19_21_3)
+anova(m2, m3) # AIC of 476.49 (m2) vs 476.97 (m3); p = 0.12 --> random effect of year makes no difference
+```
+
+#### 2018-2021 data
+```{r}
+agg18_21_3_filt <- agg18_21_3 %>%
+  filter(days_pre_hatch >= 0) # filter out post-hatching observations
+
+m5 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg18_21_3_filt)
+summary(m5)
+anova(m5)
+```
+
+#### Out of curiosity -- run model including post-hatch obs
+```{r}
+agg19_21_3_unfilt <- agg19_21 %>%
+  group_by(birdNest) %>% 
+  filter(n() >= 3) %>% # filter out individuals with <3 obs
+  ungroup()
+
+m4 <- lmer(response ~ days_pre_hatch + (1|birdNest) + (1|year), data = agg19_21_3_unfilt)
+summary(m4)
+anova(m4)  # df = 1,182.72   # F = 4.022   # p = 0.04639
+# still technically significant, but barely -- seems that aggression increases again after chicks have hatched
+```
+
+**2: How does aggression vary within mated pairs?**
+
+### Check for patterns by nest ID
+#### 2021 data
+```{r}
+ggplot(aggData21, aes(x = days_pre_hatch, y = response)) +
+  geom_point() +
+  geom_line(aes(lty = birdID)) +
+  facet_wrap(~ nestID, ncol = 6) +
+  scale_x_reverse() +
+  ylim(1, 8) +
+  scale_linetype_manual(values = c("solid", "22", "solid", "22", "solid", "22", "22", "solid", "solid", "22", "22", "solid", "solid", "22", "22", "solid", "solid", "22", "solid", "22", "22", "solid", "solid", "22", "solid", "22", "solid", "22", "solid", "22", "solid", "22", "solid", "22")) +
+  labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time Among Mated Pairs") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.text = element_text(size = 10),
+        legend.position = "none")
+```
