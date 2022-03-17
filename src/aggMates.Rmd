@@ -1,0 +1,35 @@
+---
+title: "GoA Mated Pair Aggression Visualization"
+author: "Dylan Titmuss"
+date: "9/17/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+### Load 2019 mate data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+mateAgg <- read.csv("./data/mateAgg.csv") %>%
+  mutate(diff = abs(M1 - M2))
+```
+
+### Visualize mate data
+```{r}
+ggplot(mateAgg, aes(x = diff)) +
+  geom_histogram(position = "identity", binwidth = 0.5) +
+  labs(x = "Difference between Aggression Score of Mate 1 and Mate 2", y = "Number of Instances", title = "Distribution of Differences between\nMated Gulls' Aggression Responses") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.title = element_text(size = 18, face = "bold"),
+        axis.text = element_text(size = 12))
+```
