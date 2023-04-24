@@ -9,7 +9,6 @@ editor_options:
 
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
@@ -21,7 +20,7 @@ aggData21 <- read.csv("./data/2021aggData.csv") %>%
   mutate(response = as.numeric(response)) %>%
   mutate(birdID = factor(birdID, levels = c("0EE", "9Z4", "8EX", "4F7", "2EE", "6V4", "0T4", "6HU", "1K9", "9EF", "2E2", "U21G07", "0HZ", "2HZ", "1Z5", "5Y3", "0HX", "7JM", "3AP", "9AC", "1HY", "1C3", "7U9", "0AC", "7E6", "3HE", "2M8", "0FU", "3P2", "FED", "1M7", "9JP", "6R3", "4AC")))
 
-count(aggData21, birdID)
+#count(aggData21, birdID)
 ```
 
 ### Load 2019 data
@@ -40,8 +39,8 @@ agg19_21 <- aggData21 %>%
   mutate(birdNest = as.factor(paste(birdID, nestID, sep = "_"))) %>%
   mutate(birdYear = as.factor(paste(birdID, year, sep = "_")))
 
-aggM <- agg19_21 %>%
-  filter(days_pre_hatch >= 0) # filter out post-hatching observations
+#aggM <- agg19_21 %>%
+#  filter(days_pre_hatch >= 0) # filter out post-hatching observations
 
 #count(aggM, birdID, nestID) #71 birds
 #count(aggM, nestID) #37 nests
@@ -66,16 +65,16 @@ agg18_21 <- aggData18 %>%
   mutate(birdYear = as.factor(paste(birdID, year, sep = "_"))) %>%
   rbind(agg19_21)
 
-aggM <- agg18_21 %>%
-  filter(days_pre_hatch >= 0) # filter out post-hatching observations
+#aggM <- agg18_21 %>%
+#  filter(days_pre_hatch >= 0) # filter out post-hatching observations
 
-count(aggM, birdID, nestID) #97 birds
-count(aggM, nestID) #62 nests
-sum(count(aggM, birdID, nestID)$n) #277 obs
+#count(aggM, birdID, nestID) #97 birds
+#count(aggM, nestID) #62 nests
+#sum(count(aggM, birdID, nestID)$n) #277 obs
 
-mean(count(aggM, birdID, nestID)$n) #2.86 obs
-min(count(aggM, birdID, nestID)$n) #1 obs
-max(count(aggM, birdNest)$n) #7 obs
+#mean(count(aggM, birdID, nestID)$n) #2.86 obs
+#min(count(aggM, birdID, nestID)$n) #1 obs
+#max(count(aggM, birdNest)$n) #7 obs
 ```
 
 ### Visualize aggression over time (individuals with 3+ obs)
@@ -155,12 +154,38 @@ ggplot(agg19_21_3, aes(x = days_pre_hatch, y = response)) +
 agg19_21_3 %>%
   group_by(days_pre_hatch) %>%
   summarise(response = mean(response)) %>%
-  ggplot(aes(x = days_pre_hatch, y = response)) +
-    geom_point() +
-    geom_line() +
+  ggplot(aes(x = days_pre_hatch, y = response, col = response)) +
+    geom_line(size = 1.5) +
+    geom_point(size = 3.5) +
     scale_x_reverse() +
-    ylim(1, 8) +
-    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time, Averaged Across Individuals") +
+    scale_colour_gradientn(colours = c("gold1", "firebrick2")) +
+    guides(colour = "none") +
+    ylim(4, 8) +
+    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time") +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank(),
+          axis.line = element_line(colour = "black"),
+          plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+          plot.subtitle = element_text(size = 14, face = "italic", hjust = 0.5),
+          axis.title = element_text(size = 16, face = "bold"),
+          axis.text = element_text(size = 12))
+```
+
+##### Plots for WSTC animation
+```{r}
+agg19_21_3 %>%
+  group_by(days_pre_hatch) %>%
+  summarise(response = mean(response)) %>%
+  #filter(days_pre_hatch >= 5) %>%
+  ggplot(aes(x = days_pre_hatch, y = response, col = response)) +
+    geom_line(size = 1.5) +
+    geom_point(size = 3.5) +
+    scale_x_reverse(limits = c(23, 0)) +
+    scale_colour_gradientn(colours = c("gold1", "firebrick2"), limits = c(5, 7)) +
+    guides(colour = "none") +
+    ylim(4.5, 7.5) +
+    labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time") +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
           panel.background = element_blank(),
@@ -168,6 +193,13 @@ agg19_21_3 %>%
           plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
           axis.title = element_text(size = 16, face = "bold"),
           axis.text = element_text(size = 12))
+
+lims <- agg19_21_3 %>%
+  group_by(days_pre_hatch) %>%
+  summarise(response = mean(response))
+
+max(lims$response)
+min(lims$response)
 ```
 
 #### 2018-2021 data
@@ -178,7 +210,7 @@ agg18_21_3 <- agg18_21 %>%
   filter(n() >= 3) %>% # filter out individuals with <3 obs
   ungroup()
 
-**Faceted by individual**
+# **Faceted by individual**
 ggplot(agg18_21_3, aes(x = days_pre_hatch, y = response)) +
   geom_point() +
   geom_line() +
@@ -195,17 +227,19 @@ ggplot(agg18_21_3, aes(x = days_pre_hatch, y = response)) +
         axis.title = element_text(size = 14, face = "bold"),
         axis.text = element_text(size = 10))
 
-**Average response by incubation day among individuals with 3+ obs**
+# **Average response by incubation day among individuals with 3+ obs**
 print(count(agg18_21_3, days_pre_hatch), n = 32)
 
 agg18_21_3 %>%
   filter(days_pre_hatch >= 0) %>% # filter out post-hatching observations
   group_by(days_pre_hatch) %>%
   summarise(response = mean(response)) %>%
-  ggplot(aes(x = days_pre_hatch, y = response)) +
+  ggplot(aes(x = days_pre_hatch, y = response, col = response)) +
     geom_point() +
     geom_line() +
     scale_x_reverse() +
+    scale_colour_gradientn(colours = c("gold1", "firebrick2")) +
+    guides(colour = "none") +
     ylim(1, 8) +
     labs(x = "Days Before First Hatch", y = "Aggression Response", title = "Aggression Over Time, Averaged Across Individuals") +
     theme(panel.grid.major = element_blank(),
@@ -213,6 +247,6 @@ agg18_21_3 %>%
           panel.background = element_blank(),
           axis.line = element_line(colour = "black"),
           plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
-          axis.title = element_text(size = 18, face = "bold"),
+          axis.title = element_text(size = 16, face = "bold"),
           axis.text = element_text(size = 12))
 ```

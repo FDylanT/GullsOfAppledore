@@ -1,0 +1,208 @@
+---
+title: "2022GoA_MonitoringMap"
+author: "Dylan Titmuss"
+date: "5/30/2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+This script creates satellite maps of Appledore Island and various subset regions of the island, showing the GBBG nests being monitored in summer 2022 by Ry Andruk.
+
+```{r setup, include=FALSE}
+library(tidyverse)
+# includes a load of other packages, many of which (e.g. dplyr) I use throughout; also ggplot2
+
+library(sp)
+# provides functions for working with spatial data
+
+library(sf)
+# provides functions for using "simple features", which encode spatial vector data
+
+library(ggmap)
+# retrieves maps from online services (Google Maps, Stamen, etc) for use with ggplot2
+```
+
+## Register Google API key
+```{r, include=FALSE}
+register_google(key = "AIzaSyBvvS_nvTml09h56OWd0Oniktayi0L8WDU")
+# this is my personal API key -- in general you're supposed to keep your key private for security reasons, but I don't mind folks using mine for SURG work! I'm also happy to talk anyone through setting up their own for future use and/or send some resources -- it's quite easy :)
+```
+
+## Full Appledore map
+### Load data & create spatial files
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore/2022fieldwork")
+
+# load csv file containing GPS coordinates
+nests <- read.csv("2022_GoA_Nests.csv")
+
+
+# create SPDF object
+nests_SPDF <- SpatialPointsDataFrame(coords = nests[ , c("Long","Lat")],
+                                     data = nests[ ,c("Long", "Lat", "NestID")],
+                                     proj4string = CRS("+init=epsg:4326"))
+# this code specifies:
+# (1) the columns in the original file containing GPS coordinates
+# (2) whichever columns you want to include from the original file (i.e. any data you might need for the map, such as IDs to label your map points, groups to color the points differently, etc)
+# (3) the coordinate reference system for your geographic projection (for a sat map of Appledore, the standard WGS 84 projection is fine, which is EPSG 4326)
+
+
+# create "simple features" spatial object (which can be plotted)
+nests_sf <- st_as_sf(nests_SPDF)
+```
+
+### Create satellite map
+```{r}
+# retrieve Google map
+Appledore <- get_map(c(-70.6142, 42.9886),
+                     source = "google",
+                     maptype = "satellite",
+                     zoom = 16,
+                     color = "bw")
+
+# the arguments here are:
+# (1) the long & lat (in that order) of the map center -- I either pick a point by eyeballing it and then tweak as needed, or calculate it from my data like this (from below):
+# circuit1 %>%
+#  summarise(midLat = (max(Lat) + min(Lat))/2, midLong = (max(Long) + min(Long))/2)
+# (2) the online source -- Google is one of the only ones that works for an area as small as Appledore; Stamen, for ex, doesn't have high-enough resolution. You can also use `get_googlemap` instead of `get_map` and leave this argument out, like I did below
+# (3) the map type -- satellite, terrain, etc; feel free to google your options!
+# (4) the level of zoom -- ranges from 3 to 21. For best resolution, use the *highest* value possible that still includes the whole area you need
+# (5) the color of the map -- either "color" (default) or "bw" for black & white
+
+
+# create map
+ggmap(Appledore) +
+  
+  # use `geom_sf` to create your points
+  geom_sf(data = nests_sf, col = "white", inherit.aes = FALSE) +
+  
+  # use either `geom_sf_text` or `geom_sf_label` to label your points
+  # the `nudge_x` and `nudge_y` arguments (not used here) can shift text up/down/to the side
+  geom_sf_label(data = nests_sf, aes(label = NestID), inherit.aes = FALSE) +
+  
+  # specify the coordinate limits of your map
+  # I created an even buffer around the min & max values; you can also give exact coordinates
+  coord_sf(xlim = c(min(nests$Long) - 0.0005, max(nests$Long) + 0.0005),
+           ylim = c(min(nests$Lat) - 0.0005, max(nests$Lat) + 0.0005)) +
+  
+  # set theme elements as desired (standard ggplot2 arguments)
+  # (I removed the axis titles & labels to make the map itself as large as possible for field use)
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+
+
+# this is quite a simple map with minimal features, as the goal was just that it be readable by Ry in the field! All of the usual ggplot2 customizations are available -- changing the point colors, point shapes, point sizes, axis labels, legend text, and so on :)
+```
+
+From here onward just goes through the same steps again for additional maps! ...in less-commented code ;)
+
+## Circuit 1 & 2 maps
+### Load data & create spatial files
+```{r}
+circuit1 <- read.csv("circuit1.csv")
+circuit2 <- read.csv("circuit2.csv")
+
+circuit1_SPDF <- SpatialPointsDataFrame(coords = circuit1[ , c("Long","Lat")],
+                                        data = circuit1[ ,c("Long", "Lat", "NestID")],
+                                        proj4string = CRS("+init=epsg:4326"))
+circuit2_SPDF <- SpatialPointsDataFrame(coords = circuit2[ , c("Long","Lat")],
+                                        data = circuit2[ ,c("Long", "Lat", "NestID")],
+                                        proj4string = CRS("+init=epsg:4326"))
+
+circuit1_sf <- st_as_sf(circuit1_SPDF)
+circuit2_sf <- st_as_sf(circuit2_SPDF)
+```
+
+### Create satellite maps
+```{r}
+#circuit1
+circuit1 %>%
+  summarise(midLat = (max(Lat) + min(Lat))/2, midLong = (max(Long) + min(Long))/2)
+
+circuit1map <- get_googlemap(c(-70.61424, 42.98973), maptype = "satellite", zoom = 16, color = "bw")
+
+ggmap(circuit1map) +
+  geom_sf(data = circuit1_sf, col = "white", inherit.aes = FALSE) +
+  geom_sf_label(data = circuit1_sf, aes(label = NestID), size = 4.5, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(circuit1$Long)-0.0005, max(circuit1$Long)+0.0005), ylim = c(min(circuit1$Lat)-0.0005, max(circuit1$Lat)+0.0005)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+
+#circuit2
+circuit2 %>%
+  summarise(midLat = (max(Lat) + min(Lat))/2, midLong = (max(Long) + min(Long))/2)
+
+circuit2map <- get_googlemap(c(-70.61612, 42.9877), maptype = "satellite", zoom = 17, color = "bw")
+
+ggmap(circuit2map) +
+  geom_sf(data = circuit2_sf, col = "white", inherit.aes = FALSE) +
+  geom_sf_label(data = circuit2_sf, aes(label = NestID), size = 4.5, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(circuit2$Long)-0.0005, max(circuit2$Long)+0.0005), ylim = c(min(circuit2$Lat)-0.0005, max(circuit2$Lat)+0.0005)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+```
+
+## Dense subcolony maps
+### Load data & create spatial files
+```{r}
+Sunset <- circuit2 %>%
+  filter(Location == "Sunset")
+Sirens <- circuit1 %>%
+  filter(Location == "Siren's")
+HTP <- circuit2 %>%
+  filter(Location == "HTP" | Location == "HTP/Tide Pool" | Location == "Swale")
+
+Sunset_SPDF <- SpatialPointsDataFrame(coords = Sunset[ , c("Long","Lat")],
+                                      data = Sunset[ ,c("Long", "Lat", "NestID")],
+                                      proj4string = CRS("+init=epsg:4326"))
+Sirens_SPDF <- SpatialPointsDataFrame(coords = Sirens[ , c("Long","Lat")],
+                                      data = Sirens[ ,c("Long", "Lat", "NestID")],
+                                      proj4string = CRS("+init=epsg:4326"))
+HTP_SPDF <- SpatialPointsDataFrame(coords = HTP[ , c("Long","Lat")],
+                                   data = HTP[ ,c("Long", "Lat", "NestID")],
+                                   proj4string = CRS("+init=epsg:4326"))
+
+Sunset_sf <- st_as_sf(Sunset_SPDF)
+Sirens_sf <- st_as_sf(Sirens_SPDF)
+HTP_sf <- st_as_sf(HTP_SPDF)
+```
+
+### Create satellite maps
+```{r}
+# Sunset
+SunsetMap <- get_googlemap(c(-70.61591, 42.98691), maptype = "satellite", zoom = 20, color = "bw")
+
+ggmap(SunsetMap) +
+  geom_sf(data = Sunset_sf, col = "white", inherit.aes = FALSE) +
+  geom_sf_label(data = Sunset_sf, aes(label = NestID), size = 4.5, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(Sunset$Long)-0.00005, max(Sunset$Long)+0.00005), ylim = c(min(Sunset$Lat)-0.00005, max(Sunset$Lat)+0.00005)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+
+# Siren's
+SirensMap <- get_googlemap(c(-70.61343, 42.9918), maptype = "satellite", zoom = 20, color = "bw")
+
+ggmap(SirensMap) +
+  geom_sf(data = Sirens_sf, col = "white", inherit.aes = FALSE) +
+  geom_sf_label(data = Sirens_sf, aes(label = NestID), size = 4.5, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(Sirens$Long)-0.00005, max(Sirens$Long)+0.00005), ylim = c(min(Sirens$Lat)-0.00005, max(Sirens$Lat)+0.00005)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+
+# HTP
+HTPMap <- get_googlemap(c(-70.61558, 42.98834), maptype = "satellite", zoom = 20, color = "bw")
+
+ggmap(HTPMap) +
+  geom_sf(data = HTP_sf, col = "white", inherit.aes = FALSE) +
+  geom_sf_label(data = HTP_sf, aes(label = NestID), size = 4.5, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(HTP$Long)-0.00005, max(HTP$Long)+0.00005), ylim = c(min(HTP$Lat)-0.00005, max(HTP$Lat)+0.00005)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+```

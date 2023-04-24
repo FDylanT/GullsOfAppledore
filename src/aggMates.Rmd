@@ -24,12 +24,12 @@ mateAgg <- read.csv("./data/mateAgg.csv") %>%
 ```{r}
 ggplot(mateAgg, aes(x = diff)) +
   geom_histogram(position = "identity", binwidth = 0.5) +
-  labs(x = "Difference between Aggression Score of Mate 1 and Mate 2", y = "Number of Instances", title = "Distribution of Differences between\nMated Gulls' Aggression Responses") +
+  labs(x = "Difference between Aggression Scores of Mate 1 and Mate 2", y = "Number of Instances", title = "Within-Pair Aggression Differences") +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
         plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
-        axis.title = element_text(size = 18, face = "bold"),
+        axis.title = element_text(size = 16, face = "bold"),
         axis.text = element_text(size = 12))
 ```
