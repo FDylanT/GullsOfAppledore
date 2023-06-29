@@ -1,0 +1,270 @@
+Band,NestID21,NestID22,NestID23,YearBanded,BandedAge,Age,BandedLocation,BandLoc_General,BandedLat,BandedLong,Sex,Reason,Head-plus-Bill,Parents / Family
+0U0,,22G78,23G35,2013,chick,10,Kiggins,campus,,,,,130.3,"sib 6U7, 3U8"
+5AT,,22G123,23G85,2016,chick,7,Kiggins,campus,42.98798,-70.6139,,,134.3,8K6 (16G46); sib 9EJ
+5AU,,22G56,,2016,chick,7,Bartels,campus,42.98711,-70.6134,,,133.3,4P9 (16G8); sib 4AU
+5AZ,,LungingG2,,2016,chick,7,Laighton--Kiggins,campus,42.98721,-70.6156,,,,"9EF (16G151); sibs 8EP, 7AZ"
+8EP,,22G58,,2016,chick,7,dock--Laighton,campus,42.98721,-70.6156,,,135.1,"9EF (16G151); sibs 5AZ, 7AZ"
+0T4,21G05,22G55,,2011,chick,12,K House,dock,,,F,database,119,4K3
+2U0,21G89,22G67,23G12,2013,chick,10,dock,dock,,,,,138,sib 4U1
+3Y7,,LungingG3,,2014,chick,9,dock,dock,,,,,,
+4FE,,22G69,,2017,chick,6,dock,dock,42.98733,-70.6168,,,141.8,4M9 (17G13)
+5FE,21G41,22G110,23G03,2017,chick,6,dock,dock,42.98715,-70.6171,F,morphological,115,5EC + 5ET (17G63)
+6FF,,22G132,,2017,chick,6,dock,dock,42.98733,-70.6168,,,127.5,4M9 (17G13)
+9P5,,22G13,,2010,chick,13,FMS 28,FMS 27-28,,,,,,
+1T4,,22G23,23G37,2011,chick,12,FMS 28,FMS 27-28,,,M,database,130.2,
+1T5,,22G158,,2011,chick,12,FMS 27,FMS 27-28,,,,,,
+0Y4,,22G91,23G39,2014,chick,9,FMS 28,FMS 27-28,,,,,122.2,2F1; sib 0Y5
+0AX,,22G68,23G86,2016,chick,7,trail to Smith's,FMS 27-28,,,,,133.9,sib 9AX
+0AZ,,22G89,,2016,chick,7,trail to Smith's,FMS 27-28,,,,,124.5,7Z5
+2AY,,22G132,,2016,chick,7,trail to Smith's,FMS 27-28,,,,,121.9,
+6N2,21G72,22G51,23G33,2007,chick,16,incinerator,Gerry's-incinerator,,,,,NA,
+2P3,21G39,22G102,23G62,2008,chick,15,Gerry's,Gerry's-incinerator,,,,,NA,sib 2P5
+4F4,21G35,22G08,23G99,2009,chick,14,Gerry's,Gerry's-incinerator,,,,,,
+4T4,,22G04,,2011,chick,12,Gerry's,Gerry's-incinerator,,,,,,
+8R0,,22G16,23G129,2011,chick,12,Gerry's,Gerry's-incinerator,,,,,,
+8V2,,22G49,23G121,2012,chick,11,Gerry's,Gerry's-incinerator,,,,,,
+6J3,,22G19,23G103,2013,chick,10,Gerry's,Gerry's-incinerator,,,,,,
+3Y3,,22G125,23G63,2014,chick,9,incinerator,Gerry's-incinerator,,,,,128.8,
+3Y5,,22G16,23G101,2014,chick,9,Gerry's,Gerry's-incinerator,,,,,,
+3Y8,,22G21,,2014,chick,9,Gerry's,Gerry's-incinerator,,,,,,
+0AJ,,22G146,23G130,2015,chick,8,Gerry's,Gerry's-incinerator,,,,,,
+3AN,,22G138,23G81,2015,chick,8,Gerry's,Gerry's-incinerator,,,,,,
+0FZ,,,23G106,2017,chick,6,incinerator,Gerry's-incinerator,42.98885,-70.6123,,,,2P3 (17G101)
+7C5,,22G09,23G38,2005,chick,18,FMS 5,HTP-FMS 5,,,,,NA,
+8C7,21G21,22G72,,2005,chick,18,dock--HTP,HTP-FMS 5,,,,,NA,
+0N7,21G44,22G108,23G46,2007,chick,16,HTP,HTP-FMS 5,,,,,NA,
+1777-28114,,22G152,,2007,chick,16,Dive Locker,HTP-FMS 5,,,,,,
+0P3,21G41,22G110,23G03,2008,chick,15,HTP,HTP-FMS 5,,,,,NA,3E1 + 9C2
+2HZ / 8F7,21G09,22G111,23G22,2009,chick,14,HTP--Paint Shed,HTP-FMS 5,,,M,morph,NA,sib 8F6
+7F9,21G26,22G30,23G09,2009,chick,14,dock--HTP,HTP-FMS 5,,,,,NA,
+7K0,,22G03,,2010,chick,13,Grass Lab,HTP-FMS 5,,,,,,
+6K9,21G60,22G148,23G93,2010,chick,13,HTP--Grass,HTP-FMS 5,,,F,,,
+3T3,21G27,22G32,23G08,2011,chick,12,HTP,HTP-FMS 5,,,,,139.6,"sibs 3T2, 3T9"
+2KH / 0X5,21G20,22G71,23G05,2012,chick,11,HTP,HTP-FMS 5,,,,,136.1,sib 0X7
+0HX / 5J1,21G11,22G114,23G60,2013,chick,10,FMS 4,HTP-FMS 5,42.98913,-70.6162,,,113.9,4K9 (13G42)
+4X5,21G90,22G73,23G26,2013,chick,10,HTP,HTP-FMS 5,42.98848,-70.6156,,,115.2,2R5 (13G30)
+4X6,,22G73,23G26,2013,chick,10,HTP,HTP-FMS 5,42.98815,-70.6158,,,105.9,(13G301)
+5Y3,21G10,22G76,,2014,chick,9,wastewater trt,HTP-FMS 5,,,,,139.5,"sib 5Y4 </3, 5Y5"
+5Y4,21G30,22G86,,2014,chick,9,wastewater trt,HTP-FMS 5,,,,,131.6,"sib 5Y3 </3, 5Y5"
+7U9,21G14,22G35,,2014,chick,9,FMS 5,HTP-FMS 5,,,,,108.3,sib 8U2
+3Z9,,22G135,,2015,chick,8,FMS 5,HTP-FMS 5,,,,,,
+0AU,21G46,22G131,,2016,chick,7,HTP,HTP-FMS 5,42.98848,-70.6157,,,120.5,6AC + 3K6 (16G103); sib 9AU
+0EK,21G91,22G75,23G24,2016,chick,7,HTP,HTP-FMS 5,42.98856,-70.6155,,,124.4,3P3 + 2P2 (16G21)
+3AP,21G12,22G44,,2016,chick,7,FMS 5,HTP-FMS 5,42.98923,-70.616,,,123.2,"0J2 + 6F8 (16G25); sibs 1AP, 2AP"
+5KK / 3EH,21G19,22G127,23G27,2016,chick,7,HTP,HTP-FMS 5,42.98801,-70.6158,,,139,3P2 + 1R0 (16G4)
+2FL,21GYY,22G74,23G25,2017,chick,6,HTP,HTP-FMS 5,,,M,"database, beh",115.7,3M8 (17G09)
+4FN,,,23G28,2017,chick,6,HTP,HTP-FMS 5,42.98823,-70.6158,,,,8C7 + 7U5 (17G10)
+0FX,,,23G45,2018,chick,5,HTP,HTP-FMS 5,42.98835,-70.6159,,,,0X5 + 7FV (18G34)
+0HA,,22G109,23G23,2018,chick,5,HTP,HTP-FMS 5,42.98808,-70.6159,,,122.1,0N7 + UB (18G42)
+3FZ,,22G117,,2018,chick,5,HTP,HTP-FMS 5,42.98819,-70.6158,,,125.6,3M8 + UB (18G28)
+5F6,,22G37,23G52,2009,chick,14,Larus,Larus,,,,,,
+6F3,21G102,22G46,23G117,2009,chick,14,Larus,Larus,,,,,,
+1T9,21G47,22G33,,2011,chick,12,Larus,Larus,,,,,,
+3Z5,,22G05,23G71,2015,chick,8,Larus,Larus,,,,,NA,
+7Z4,,22G140,23G51,2015,chick,8,Larus,Larus,,,,,,
+7AP,,22G142,,2016,chick,7,Larus,Larus,42.99119,-70.6116,,,,3M2 (16G40)
+0FM,,22G154,23G57,2017,chick,6,Larus,Larus,,,,,,
+7FM,,,23G59,2017,chick,6,Larus,Larus,,,,,,
+0KK / 9M4,21G76,22G27,23G56,2011,chick,12,North Head,North Head-DDF,,,,,,
+9T1,,22G48,23G120,2011,chick,12,North Head,North Head-DDF,,,,,,
+9T5,,22G160,23G95,2011,chick,12,North Head,North Head-DDF,,,,,,
+3T1,,22G18,23G42,2011,chick,12,DDF,North Head-DDF,,,M,database,141.3,
+8J9,,22G161,,2013,chick,10,North Head,North Head-DDF,42.99223,-70.6151,,,,(13G417)
+7J6,,22G104,23G90,2013,chick,10,DDF,North Head-DDF,,,,,,
+1Z1,,22G50,23G124,2014,chick,9,North Head,North Head-DDF,,,,,,
+0AA,,22G138,,2015,chick,8,North Head,North Head-DDF,,,,,,
+2FC,,22G157,,2017,chick,6,North Head,North Head-DDF,,,,,,
+4FU,,22G47,23G123,2017,chick,6,North Head,North Head-DDF,,,,,,
+0FJ,,22G119,,2017,chick,6,DDF,North Head-DDF,42.99158,-70.615,,,120.1,3T1 + 4M0 (17G40)
+0J2,21G25,22G120,,2009,chick,14,graveyard,north-center,,,,,NA,
+3T0,21G49,,23G58,2011,chick,12,Grass--DDF,north-center,,,,,,
+5Y9,,22G115,23G07,2014,chick,9,turbine,north-center,,,,,120.4,sib 6Y0
+1FM,21G75,22G31,,2017,chick,6,Grass--DDF,north-center,,,,,130.1,
+9FJ,,22G30,,2017,chick,6,Ross's Pole Barn,north-center,42.98967,-70.6146,,,127,3P8 + 7ET (17G64)
+1777-14164,,,23G132,2006,chick,17,Norwegian,Norwegian-Broad,,,,,,
+9 E 0,21G58,22G100,23G96,2006,chick,17,Norwegian,Norwegian-Broad,,,,,,
+5R6,,22G80,23G31,2011,chick,12,Broad,Norwegian-Broad,42.98909,-70.6133,,,,4A8 + 0E0 (11G41)
+5R7,21G25,22G120,,2011,chick,12,Broad,Norwegian-Broad,,,M,database,125.4,
+5R8,21G70,22G147,,2011,chick,12,Norwegian,Norwegian-Broad,,,,,,
+6R3,21G23,22G79,23G30,2011,chick,12,Norwegian,Norwegian-Broad,,,,,,
+6T6,,22G143,23G128,2011,chick,12,Norwegian,Norwegian-Broad,,,,,,
+7V2,,22G04,23G131,2012,chick,11,Broad,Norwegian-Broad,,,,,,
+5X3,,22G88,23G91,2012,chick,11,Norwegian,Norwegian-Broad,,,,,,
+2U2,21G63,22G83,,2013,chick,10,Norwegian,Norwegian-Broad,,,,,,
+5Z4,,22G42,23G122,2015,chick,8,FMS 14,Siren's,,,,,,
+5EX,,22G105,,2016,chick,7,Norwegian,Norwegian-Broad,,,,,,
+0FA,,,23G94,2017,chick,6,Norwegian,Norwegian-Broad,,,,,,
+1FE,,22G103,,2017,chick,6,Norwegian,Norwegian-Broad,,,,,,
+6FE,,,23G133,2017,chick,6,Norwegian,Norwegian-Broad,,,,,,
+7HF,,,23G97,2018,chick,5,Broad,Norwegian-Broad,,,,,,
+2HF,,22G159,,2018,chick,5,Norwegian,Norwegian-Broad,,,,,,
+2H1,,22G141,,2006,chick,17,road--SP,Sandpiper,,,,,,
+4N2,,LungingG1,,2007,chick,16,road--SP,Sandpiper,,,,,,--
+3V7,,22G39,23G44,2012,chick,11,road--SP,Sandpiper,,,,,131.6,--
+6AY,,22G129,23G50,2016,chick,7,Sandpiper,Sandpiper,,,,,129.7,--
+7EP,,22G153,23G114,2016,chick,7,Sandpiper,Sandpiper,42.99067,-70.6167,,,,4EE (16G135)
+2017-25428,,,23G54,2017,chick,6,Sandpiper,Sandpiper,42.99067,-70.6167,,,,3EE + 4EE (17G106)
+3FM,,22G151,23G89,2017,chick,6,Sandpiper,Sandpiper,,,,,,--
+6FM,,22G145,23G112,2017,chick,6,Sandpiper,Sandpiper,42.99052,-70.6167,,,,(17G104)
+7FL,,22G139,23G127,2017,chick,6,Sandpiper,Sandpiper,42.99073,-70.6168,,,115,7EE + 5F6 (17G107)
+8FF,21G74,22G85,23G48,2017,chick,6,Sandpiper,Sandpiper,42.98979,-70.617,,,133.8,2M8 + 6EL (17G39)
+9AL,21G64,22G134,,2015,chick,8,FMS 13,Siren's,,,,,,--
+6EN,,22G101,,2016,chick,7,Siren's,Siren's,,,,,126.3,--
+7AT,,22G92,,2016,chick,7,Siren's,Siren's,42.99194,-70.6132,,,137.9,(16G30)
+5T9,21G53,22G62,23G20,2011,chick,12,Sunset,Sunset,,,,,122.2,--
+0U4,21G08,22G84,23G14,2013,chick,10,Sunset,Sunset,,,,,131.1,sib 0U5
+5KJ / 2AK,,22G60,23G18,2015,chick,8,Sunset,Sunset,,,,,NA,2E2 (begging off-island)
+7AV,,22G56,23G13,2016,chick,7,Sunset,Sunset,42.98717,-70.6161,,,129.1,4Z9 (16G11); sib 8AV
+2017-25458,,,23G113,2017,chick,6,Sunset,Sunset,42.98692,-70.6159,,,,4ER (17G45)
+9P3,21G01,,,,,,,,,,,,,
+8EX,21G03,,,,,,,,,,,,,
+2EE,21G04,,,,,,,,,,,,,
+1Z5,21G10,,,,,,,,,,,,,
+1M7,21G18,,,,,,,,,,,,,
+7HU,21G22,,,,,,,,,,,,,
+7FE,21G28,,,,,,,,,,,,,
+2V2,21G33,,,,,,,,,,,,,
+2M5,21G36,,,,,,,,,,,,,
+4HE,21G38,,,,,,,,,,,,,
+5HE,21G45,,,,,,,,,,,,,
+1 A M,21G56,,,,,,,,,,,,,
+2Z2,21G93,,,,,,,,,,,,,
+5HU,21G52,,,,,,,,,,,,,
+9HU,21G51,,,,,,,,,,,,,
+3K6,21G43,,,,,,,,,,,,,
+2JN,21G35,,,,,,,,,,,,,
+8HU,21G22,,,,,,,,,,,,,
+2ET,21G19,,,,,,,,,,,,,
+1C3,21G13,,,,,,,,,,,,,
+8K6,21G01,,,,,,,,,,,,,
+9Z4,21G02,,,,,,,,,,,,,
+4F7,21G03,,,,,,,,,,,,,
+6V4,21G04,,,,,,,,,,,,,
+0AC,21G14,22G35,,2016,adult,,Celia's,,,,,,141.5,
+0EE,21G02,22G87,23G34,2016,adult,,Kiggins--Bartels,,,,M,"database, beh",149.1,
+0EU,21G40,22G112,,2006,adult,,Dive Locker,,,,M,genetic,NA,
+0FU,21G16,22G34,23G49,2018,adult,,road--SP,,,,,,128.9,
+0HU,,22G29,23G107,2019,adult,,DDF,,,,F,"database, morph",139.4,
+0HY,21G37,22G14,,2019,adult,,Devil's Glen,,,,,,,
+0HZ,21G09,22G111,23G22,2019,adult,,wastewater trt,,,,F,morph,138.7,
+0JM,21G37,22G14,23G69,2021,adult,,Gerry's,,,,,,,
+0JP,21GZZ,22G02,,2021,adult,,Gerry's,,,,,,,
+0JU,,22G07,,2022,adult,,Gerry's,,,,,,,
+0KE / 7JM,21G11,22G114,,2021,adult,,Dive Locker,,,,,,159.1,
+0KH / 6AC,21G43,22G106,23G04,2016,adult,,HTP,,,,,,156.1,
+0KJ,,,23G44,2023,adult,,Siren's,,,,,,,
+1777-28147,,22G144,,2009,adult,,Gerry's,,,,,,,
+1997-12827,,22G36,23G125,2012,adult,,Larus,,,,,,,
+1EE,,22G60,,2016,adult,,Sunset,,,,,,135,
+1HA,21G57,22G81,23G98,2018,adult,,Broad,,,,,,,
+1HY,21G13,,23G01,2019,adult,,Grass Lab,,,,,,,
+1HZ,21G59,22G99,,2019,adult,,Norwegian,,,,,,,
+1JN,21G39,22G102,23G62,2021,adult,,incinerator,,,,,,139.4,
+1JV,,22G82,23G100,2022,adult,,Gerry's,,,,,,,
+1K9,21G06,22G54,,2010,adult,,K House,,,,F,genetic,142.5,
+1KE,,22G119,,2022,adult,,DDF,,,,,,135.5,
+1KH,,,23G04,2023,adult,,HTP,,,,,,,
+1KJ,,,23G31,2023,adult,,Broad,,,,,,,
+1KK,,,23G72,2023,adult,,old reservoir,,,,,,,
+1R1,,22G10,,2011,adult,,FMS 27,,,,,,,
+1R4,21GXX,22G63,,2011,adult,,Sunset,,,,,,160.6,
+2 E 2,21G07,22G57,23G15,2006,adult,,Sunset,,,,M,genetic,152.1,
+2017-23864,21G17,22G70,,2019,adult,,dock--HTP,,,,,,134.6,
+2AE,21G32,22G53,,2016,adult,,Dorm 2,,,,,,147.8,
+2EA,,22G133,,2016,adult,,Siren's,,,,,,138.5,
+2EF,,22G137,23G68,2016,adult,,incinerator,,,,,,,
+2HY,21G62,22G97,23G92,2019,adult,,Norwegian,,,,,,,
+2JR,21G56,22G52,23G47,2021,adult,,Dorm 2,,,,,,135.1,
+2JV,,22G02,,2022,adult,,incinerator,,,,,,,
+2KE,,22G41,,2022,adult,,Siren's,,,,,,136.1,
+2KJ,,,23G35,2023,adult,,incinerator,,,,,,,
+2KK / 6M4,,22G41,23G73,2012,adult,,Siren's,,,,,,147.7,
+2M8,21G16,22G34,23G49,2012,adult,,road--SP,,,,,,162.8,
+2Z0,21G24,22G113,23G02,2015,adult,,Dive Locker,,,,,,163.8,
+2Z1,,22G90,23G126,2015,adult,,Gerry's,,,,,,158.3,
+3AE,,22G51,,2016,adult,,Kiggins,,,,,,140.4,
+3AV,,22G88,23G91,2016,adult,,Siren's,,,,,,,
+3EC,,,23G110,2016,adult,,Sunset,,,,,,,
+3EE,21G29,22G26,,2016,adult,,Sandpiper,,,,,,,
+3ET,,22G67,23G12,2017,adult,,dock--HTP,,,,,,142,
+3HE,21G15,22G118,,2018,adult,,Grass--DDF,,,,M,morph,159.3,
+3HY,,22G150,23G134,2019,adult,,FMS 14,,,,,,,
+3HZ,21G100,22G29,,2019,adult,,DDF,,,,M,"database, morph",153.3,
+3JN,21G38,22G06,23G102,2021,adult,,incinerator,,,,,,,
+3JV,,22G20,23G66,2022,adult,,Gerry's,,,,,,,
+3KE,,22G38,,2022,adult,,Siren's,,,,,,145.1,
+3KJ,,,23G36,2023,adult,,incinerator,,,,,,,
+3KK,,,23G77,2023,adult,,Siren's,,,,,,,
+3P2,21G17,22G70,23G09,2010,adult,,dock--HTP,,,,M,genetic,153,
+3R2,,22G40,23G116,2011,adult,,Larus,,,,,,,
+3R4,,22G28,23G118,2011,adult,,FMS 8,,,,,,,
+4AC,21G23,22G79,23G30,2016,adult,,Broad,,,,,,,
+4EC,21G54,22G61,23G19,2016,adult,,Sunset,,,,,,145.5,
+4ER,21G51,22G59,23G17,2017,adult,,Sunset,,,,M,"database, morph",149.5,
+4FV,21G92,22G121,23G84,2018,adult,,Bartels--bench,,,,,,138.7,
+4JN,21G50,22G139,,2021,adult,,Sandpiper,,,,,,139.5,
+4JV,,22G25,23G65,2022,adult,,Gerry's,,,,,,,
+4KE,,22G52,,2022,adult,,Dorm 2,,,,,,154.7,
+4KH / 8JN,21G21,22G72,23G06,2021,adult,,HTP,,,,,,139,
+4KJ,,,23G36,2023,adult,,incinerator,,,,,,,
+4KK,,,23G78,2023,adult,,Siren's,,,,,,,
+4M3,21G68,22G95,23G75,2012,adult,,Siren's,,,,,,140.9,
+4Z1,21G20,22G71,23G05,2015,adult,,HTP,,,,,,142.7,
+4Z9,21G52,22G59,23G17,2015,adult,,Sunset,,,,,,142.1,
+5EC,,22G66,23G87,2016,adult,,dock,,,,,,150,
+5EF,21G69,22G38,,2016,adult,,Siren's,,,,,,159,
+5ER,21G27,22G32,23G08,2017,adult,,Grass Lab,,,,,,140.1,
+5FV,,22G05,23G71,2018,adult,,stone bench,,,,,,139.4,
+5HC,21G87,22G65,,2018,adult,,dock,,,,,,143.3,
+5JN,21G44,22G108,23G46,2021,adult,,HTP,,,,,,140.5,
+5JV,,22G18,23G42,2022,adult,,DDF,,,,,,134.6,
+5KE,,22G77,23G55,2022,adult,,Sandpiper,,,,,,151.7,
+5KH,,22G74,23G25,2022,adult,,HTP,,,,,,142.4,
+5M4,,22G17,23G108,2012,adult,,FMS 28,,,,,,,
+6EC,,22G128,23G79,2016,adult,,Siren's,,,,,,150,
+6FU,,22G94,,2018,adult,,FMS 28,,,,,,140,
+6HU,21G05,22G55,,2019,adult,,dock--Laighton,,,,,,150.4,
+6HZ,21G101,22G155,23G119,2019,adult,,North Head,,,,,,,
+6JN,21G45,22G107,23G29,2021,adult,,HTP,,,,,,153.3,
+6KE,,22G33,,2022,adult,,Larus,,,,,,,
+6KH,,,23G10,2023,adult,,dock,,,,,,,
+6KJ,,,23G40,2023,adult,,FMS 28,,,,,,,
+6KK,,,23G80,2023,adult,,Gerry's,,,,,,,
+7 E 6,21G15,22G118,,2007,adult,,reservoir,,,,F,morph,144,
+7EA,21G67,22G98,23G76,2016,adult,,Siren's,,,,,,145.3,
+7EE,,22G37,23G52,2016,adult,,Sandpiper,,,,,,,
+7HA,21G61,22G149,,2018,adult,,Norwegian,,,,,,,
+7HY,21G65,22G93,,2019,adult,,Siren's,,,,,,143.3,
+7HZ,21G66,22G96,23G74,2019,adult,,Siren's,,,,,,170.3,
+7JN,21G71,22G43,23G115,2021,adult,,Grass Lab,,,,M,morph,153.3,
+7JP,21G49,22G45,,2021,adult,,Sandpiper,,,,,,,
+7JU,,22G43,,2022,adult,,Grass Lab,,,,F,morph,143.2,
+7KE,,22G87,23G34,2022,adult,,Dorm 1,,,,,,,
+7KH,,,23G16,2023,adult,,Sunset,,,,,,,
+7KJ,,22G11,23G109,2022,adult,,FMS 27,,,,,,,
+7KK,,,23G66,2023,adult,,Gerry's,,,,,,,
+8EU,,22G136,23G61,2017,adult,,FMS 5,,,,,,,
+8JM,21G31,22G22,,2021,adult,,PK/radar,,,,,,140.1,
+8JP,,22G48,,2021,adult,,Larus,,,,,,,
+8JU,,22G12,23G70,2022,adult,,Gerry's,,,,,,,
+8KE,,22G86,23G29,2022,adult,,HTP,,,,,,,
+8KH,,,23G32,2023,adult,,Broad,,,,,,,
+8KJ,,,23G41,2023,adult,,Grass--DDF,,,,,,,
+8KK,,,23G82,2023,adult,,Gerry's,,,,,,,
+8X2,21G73,22G116,23G21,2013,adult,,Grass Lab,,,,,,137.4,
+9AC,21G12,22G44,,2016,adult,,Grass,,,,,,143,
+9EA,,22G156,23G88,2016,adult,,Siren's,,,,,,,
+9EF,21G06,22G54,,2016,adult,,dock--Laighton,,,,,,150.6,
+9EH,21G87,22G65,23G11,2016,adult,,dock,,,,,,149.4,
+9HY,,22G15,23G104,2019,adult,,Gerry's,,,,,,,
+9JM / 4Z8,21G34,22G126,,2015,adult,,incinerator,,,,,,146.4,
+9JN,,22G127,23G27,2021,adult,,HTP,,,,,,140.7,
+9JP,21G18,22G64,23G10,2021,adult,,dock,,,,,,149.1,
+9JU,,22G01,23G83,2022,adult,,Gerry's,,,,,,,
+9K4,,22G11,,2010,adult,,FMS 28,,,,F,,,
+9KE,,22G112,23G02,2022,adult,,Paint Shed,,,,,,,
+9KH,,,23G23,2023,adult,,HTP/Tidepool,,,,,,,
+9KJ,,,23G43,2023,adult,,DDF,,,,,,,
+9KK,,,23G32,2023,adult,,Broad,,,,,,,
+9Z2,,22G130,23G111,2015,adult,,"""Herring Gull Ghetto""",,,,,,,
+3KH / ?,,,23G06,,,,,,,,,,,
