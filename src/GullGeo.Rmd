@@ -1,0 +1,794 @@
+---
+title: "GullGeo"
+author: "Dylan Titmuss"
+date: "2023-05-20"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r setup, include=FALSE}
+library(tidyverse)
+library(sf)
+library(geosphere)
+#library(ggmap)
+#library(elevatr)
+#library(raster)
+```
+
+## Load data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+gulls <- read.csv("./data/allGBBGs.csv") %>%
+  filter(Band != "5AZ" & Band != "3Y7" & Band != "4N2") # remove gulls on Lunging
+
+nests21 <- read.csv("./data/2021_GBBGnests.csv") %>%
+  filter(!is.na(Lat))
+
+nests22 <- read.csv("./data/2022_GBBGnests.csv") %>%
+  filter(!is.na(NestNum), # remove nests on Lunging
+         !is.na(Lat))
+
+nests23 <- read.csv("./data/2023_GBBGnests.csv") %>%
+  filter(!is.na(Lat))
+```
+
+## Create simple features obj of nest data
+```{r}
+# create geometry column in data frame from lat/long data
+for(i in 1:nrow(nests21)) {
+  nests21$geometry[i] <- st_point(x = c(nests21$Long[i], nests21$Lat[i])) %>%
+    st_sfc(crs = 4326)
+}
+nests21_sf <- st_sf(nests21, crs = 4326)
+
+for(i in 1:nrow(nests22)) {
+  nests22$geometry[i] <- st_point(x = c(nests22$Long[i], nests22$Lat[i])) %>%
+    st_sfc(crs = 4326)
+}
+nests22_sf <- st_sf(nests22, crs = 4326)
+
+for(i in 1:nrow(nests23)) {
+  nests23$geometry[i] <- st_point(x = c(nests23$Long[i], nests23$Lat[i])) %>%
+    st_sfc(crs = 4326)
+}
+nests23_sf <- st_sf(nests23, crs = 4326)
+```
+
+## Create flat-color map
+```{r}
+basemap <- st_read("./shapefiles/Basemap") %>%
+  st_transform(crs = 4326)
+
+#highTide <- st_read("./shapefiles/Appledore_HighTide") %>%
+#  st_transform(crs = 4326)
+
+ggplot() +
+  #geom_sf(data = highTide) +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_sf(data = nests22_sf, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  annotate("label", x = -70.6184, y = 42.9927, label = "2022", fontface = "bold",
+           size = 8) +
+  annotate("label", x = -70.6181, y = 42.99215, label = "n = 157", size = 8) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggplot() +
+  #geom_sf(data = highTide) +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_sf(data = nests23_sf, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  annotate("label", x = -70.6184, y = 42.9927, label = "2023", fontface = "bold",
+           size = 8) +
+  annotate("label", x = -70.6181, y = 42.99215, label = "n = 128", size = 8) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+## Calculate nest relocation distances
+```{r}
+birds21 <- nests21 %>%
+  dplyr::select(NestID, M.1, M.2) %>%
+  pivot_longer(-NestID, values_to = "Band") %>%
+  dplyr::select(-name)
+
+gps21 <- nests21 %>%
+  rename(Lat21 = Lat, Long21 = Long) %>%
+  dplyr::select(Lat21, Long21) %>%
+  slice(rep(1:n(), each = 2))
+
+birds21 <- as.data.frame(cbind(birds21, gps21)) %>%
+  filter(Band != "UB",
+         Band != "")
+
+birds22 <- nests22 %>%
+  dplyr::select(NestID, M.1, M.2) %>%
+  pivot_longer(-NestID, values_to = "Band") %>%
+  dplyr::select(-name)
+
+gps22 <- nests22 %>%
+  rename(Lat22 = Lat, Long22 = Long) %>%
+  dplyr::select(Lat22, Long22) %>%
+  slice(rep(1:n(), each = 2))
+
+birds22 <- as.data.frame(cbind(birds22, gps22)) %>%
+  filter(Band != "UB",
+         Band != "")
+
+birds23 <- nests23 %>%
+  dplyr::select(NestID, M.1, M.2) %>%
+  pivot_longer(-NestID, values_to = "Band") %>%
+  dplyr::select(-name)
+
+gps23 <- nests23 %>%
+  rename(Lat23 = Lat, Long23 = Long) %>%
+  dplyr::select(Lat23, Long23) %>%
+  slice(rep(1:n(), each = 2))
+
+birds23 <- as.data.frame(cbind(birds23, gps23)) %>%
+  filter(Band != "UB",
+         Band != "")
+
+# initialize new columns
+gulls$lat21 <- NA
+gulls$long21 <- NA
+gulls$lat22 <- NA
+gulls$long22 <- NA
+gulls$lat23 <- NA
+gulls$long23 <- NA
+gulls$dist1 <- NA
+gulls$dist2 <- NA
+
+for(i in 1:nrow(gulls)) {
+  if(!identical(birds21$Lat21[birds21$Band == gulls$Band[i]], numeric(0))) {
+    gulls$lat21[i] <- birds21$Lat21[birds21$Band == gulls$Band[i]]
+    gulls$long21[i] <- birds21$Long21[birds21$Band == gulls$Band[i]]
+  }
+  if(!identical(birds22$Lat22[birds22$Band == gulls$Band[i]], numeric(0))) {
+    gulls$lat22[i] <- birds22$Lat22[birds22$Band == gulls$Band[i]]
+    gulls$long22[i] <- birds22$Long22[birds22$Band == gulls$Band[i]]
+  }
+  if(!identical(birds23$Lat23[birds23$Band == gulls$Band[i]], numeric(0))) {
+    gulls$lat23[i] <- birds23$Lat23[birds23$Band == gulls$Band[i]]
+    gulls$long23[i] <- birds23$Long23[birds23$Band == gulls$Band[i]]
+  }
+  gulls$dist1[i] <- distm(c(gulls$lat21[i], gulls$long21[i]), c(gulls$lat22[i], gulls$long22[i]),
+                   fun = distHaversine)
+  gulls$dist2[i] <- distm(c(gulls$lat22[i], gulls$long22[i]), c(gulls$lat23[i], gulls$long23[i]),
+                   fun = distHaversine)
+}
+```
+
+## Plot nest relocation histogram
+```{r}
+gulls$dist1_grp <- NA
+gulls$dist2_grp <- NA
+
+for(i in 1:nrow(gulls)) {
+  if(!is.na(gulls$dist1[i]) & gulls$dist1[i] <= 6) {
+    gulls$dist1_grp[i] <- "0"
+  } else if(!is.na(gulls$dist1[i]) & gulls$dist1[i] > 6 & gulls$dist1[i] <= 10) {
+    gulls$dist1_grp[i] <- "≤ 10"
+  } else if(!is.na(gulls$dist1[i]) & gulls$dist1[i] > 10 & gulls$dist1[i] <= 20) {
+    gulls$dist1_grp[i] <- "10 < x ≤ 20"
+  } else if(!is.na(gulls$dist1[i]) & gulls$dist1[i] > 20 & gulls$dist1[i] <= 40) {
+    gulls$dist1_grp[i] <- "20 < x ≤ 40"
+  } else if(!is.na(gulls$dist1[i]) & gulls$dist1[i] > 40) {
+    gulls$dist1_grp[i] <- "> 40"
+  }
+  if(!is.na(gulls$dist2[i]) & gulls$dist2[i] <= 6) {
+    gulls$dist2_grp[i] <- "0"
+  } else if(!is.na(gulls$dist2[i]) & gulls$dist2[i] > 6 & gulls$dist2[i] <= 10) {
+    gulls$dist2_grp[i] <- "≤ 10"
+  } else if(!is.na(gulls$dist2[i]) & gulls$dist2[i] > 10 & gulls$dist2[i] <= 20) {
+    gulls$dist2_grp[i] <- "10 < x ≤ 20"
+  } else if(!is.na(gulls$dist2[i]) & gulls$dist2[i] > 20 & gulls$dist2[i] <= 40) {
+    gulls$dist2_grp[i] <- "20 < x ≤ 40"
+  } else if(!is.na(gulls$dist2[i]) & gulls$dist2[i] > 40) {
+    gulls$dist2_grp[i] <- "> 40"
+  }
+}
+
+# rearrange data
+gull_dist <- gulls %>%
+  gather(dist_year, dist_grp, dist1_grp:dist2_grp) %>%
+  filter(!is.na(dist_grp)) %>%
+    group_by(dist_year) %>%
+    summarise(grp1 = sum(dist_grp == "0") / n(),
+              grp2 = sum(dist_grp == "≤ 10") / n(),
+              grp3 = sum(dist_grp == "10 < x ≤ 20") / n(),
+              grp4 = sum(dist_grp == "20 < x ≤ 40") / n(),
+              grp5 = sum(dist_grp == "> 40") / n()) %>%
+    gather(key = dist_grp, value = prop, grp1:grp5)
+
+count(gulls[!is.na(gulls$dist1), ]) # n = 89
+count(gulls[!is.na(gulls$dist2), ]) # n = 127
+
+ggplot(gull_dist, aes(x = as.factor(dist_grp), y = prop, fill = dist_year)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  scale_fill_manual(values = c("palegreen3", "mediumpurple1"),
+                    labels = c("2021-2022", "2022-2023"),
+                    name = "Years\ncompared") +
+  scale_x_discrete(labels = c("0", "0 < x ≤ 10", "10 < x ≤ 20", "20 < x ≤ 40", "> 40")) +
+  scale_y_continuous(breaks = c(0, 0.2, 0.4, 0.6, 0.8)) +
+  labs(x = "Distance between nest sites (m)", y = "Proportion of banded adults") +
+  annotate("label", x = 5, y = 0.8, label = "n = 89",
+           fontface = "bold",
+           col = "forestgreen", size = 6) +
+  annotate("label", x = 5, y = 0.72, label = "n = 127",
+           fontface = "bold",
+           col = "purple3", size = 6) +
+  theme_classic() +
+  theme(axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+```
+
+## Create individual gull relocation plots for animation
+```{r}
+# blank
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  annotate("label", x = -70.6186, y = 42.9927, label = "2022", fontface = "bold",
+           col = "forestgreen", size = 6) +
+  annotate("label", x = -70.6186, y = 42.9922, label = "2023", fontface = "bold",
+           col = "purple3", size = 6) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  annotate("segment",
+           x = nests22_sf$Long[nests22_sf$M.1 == "7F9"],
+           xend = nests23_sf$Long[nests23_sf$M.1 == "7F9"],
+           y = nests22_sf$Lat[nests22_sf$M.1 == "7F9"],
+           yend = nests23_sf$Lat[nests23_sf$M.1 == "7F9"],
+           linetype = "dashed", linewidth = 0.75) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "7F9", ], shape = 21, fill = "forestgreen", size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests23_sf[nests23_sf$M.1 == "7F9", ], shape = 21, fill = "purple3", size = 4,
+          inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  annotate("label", x = -70.6186, y = 42.9927, label = "2022", fontface = "bold",
+           col = "forestgreen", size = 6) +
+  annotate("label", x = -70.6186, y = 42.9922, label = "2023", fontface = "bold",
+           col = "purple3", size = 6) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  annotate("segment",
+           x = nests22_sf$Long[nests22_sf$M.1 == "7F9"],
+           xend = nests23_sf$Long[nests23_sf$M.1 == "7F9"],
+           y = nests22_sf$Lat[nests22_sf$M.1 == "7F9"],
+           yend = nests23_sf$Lat[nests23_sf$M.1 == "7F9"],
+           linetype = "dashed", linewidth = 0.75) +
+  annotate("segment",
+           x = nests22_sf$Long[nests22_sf$M.1 == "6FM"],
+           xend = nests23_sf$Long[nests23_sf$M.1 == "6FM"],
+           y = nests22_sf$Lat[nests22_sf$M.1 == "6FM"],
+           yend = nests23_sf$Lat[nests23_sf$M.1 == "6FM"],
+           linetype = "dashed", linewidth = 0.75) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "7F9", ], shape = 21, fill = "forestgreen", size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests23_sf[nests23_sf$M.1 == "7F9", ], shape = 21, fill = "purple3", size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "6FM", ], shape = 22, fill = "forestgreen",
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests23_sf[nests23_sf$M.1 == "6FM", ], shape = 22, fill = "purple3",
+          size = 4,
+          inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  annotate("label", x = -70.6186, y = 42.9927, label = "2022", fontface = "bold",
+           col = "forestgreen", size = 6) +
+  annotate("label", x = -70.6186, y = 42.9922, label = "2023", fontface = "bold",
+           col = "purple3", size = 6) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  annotate("segment",
+           x = nests22_sf$Long[nests22_sf$M.1 == "7F9"],
+           xend = nests23_sf$Long[nests23_sf$M.1 == "7F9"],
+           y = nests22_sf$Lat[nests22_sf$M.1 == "7F9"],
+           yend = nests23_sf$Lat[nests23_sf$M.1 == "7F9"],
+           linetype = "dashed", linewidth = 0.75) +
+  annotate("segment",
+           x = nests22_sf$Long[nests22_sf$M.1 == "6FM"],
+           xend = nests23_sf$Long[nests23_sf$M.1 == "6FM"],
+           y = nests22_sf$Lat[nests22_sf$M.1 == "6FM"],
+           yend = nests23_sf$Lat[nests23_sf$M.1 == "6FM"],
+           linetype = "dashed", linewidth = 0.75) +
+  annotate("segment",
+           x = nests21_sf$Long[nests21_sf$M.1 == "2Z0"],
+           xend = nests22_sf$Long[nests22_sf$M.1 == "2Z0"],
+           y = nests21_sf$Lat[nests21_sf$M.1 == "2Z0"],
+           yend = nests22_sf$Lat[nests22_sf$M.1 == "2Z0"],
+           linetype = "dashed", linewidth = 0.75) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "7F9", ], shape = 21, fill = "forestgreen", 
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests23_sf[nests23_sf$M.1 == "7F9", ], shape = 21, fill = "purple3", 
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "6FM", ], shape = 22, fill = "forestgreen", 
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests23_sf[nests23_sf$M.1 == "6FM", ], shape = 22, fill = "purple3", 
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests21_sf[nests21_sf$M.1 == "2Z0", ], shape = 24, fill = "forestgreen", 
+          size = 3,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "2Z0", ], shape = 24, fill = "purple3", 
+          size = 3,
+          inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  annotate("label", x = -70.6186, y = 42.9927, label = "2022", fontface = "bold",
+           col = "forestgreen", size = 6) +
+  annotate("label", x = -70.6186, y = 42.9922, label = "2023", fontface = "bold",
+           col = "purple3", size = 6) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+## Calculate mate fidelity stats: 2021-2022
+```{r}
+fidelity <- gulls %>%
+  filter(NestID21 != "") %>%
+  filter(Band != "9P3" & Band != "8K6")
+
+count(fidelity[fidelity$NestID21 != "" & fidelity$NestID22 == "", ]) # n=24 not resighted
+
+fidelity <- fidelity %>%
+  filter(NestID22 != "")
+
+for(i in 1:nrow(fidelity)) {
+  band <- fidelity$Band[i]
+  if(identical(character(0), fidelity$Band[fidelity$NestID21 == fidelity$NestID21[i] &
+                                   fidelity$Band != fidelity$Band[i]])) {
+    fidelity$M21[i] <- ""
+  } else {
+    fidelity$M21[i] <- fidelity$Band[fidelity$NestID21 == fidelity$NestID21[i] &
+                                   fidelity$Band != fidelity$Band[i]]
+  }
+  if(identical(character(0), fidelity$Band[fidelity$NestID22 == fidelity$NestID22[i] &
+                                   fidelity$Band != fidelity$Band[i]])) {
+    fidelity$M22[i] <- ""
+  } else {
+    fidelity$M22[i] <- fidelity$Band[fidelity$NestID22 == fidelity$NestID22[i] &
+                                   fidelity$Band != fidelity$Band[i]]
+  }
+}
+
+fidelity$check <- fidelity$M21 == fidelity$M22
+
+count(fidelity[fidelity$check == TRUE & fidelity$M21 == "", ])
+count(fidelity[fidelity$check == TRUE & fidelity$M22 == "", ])
+# n=55 unbanded mate both years
+
+count(fidelity[fidelity$check == FALSE, ])
+# n=2 different mate
+
+count(fidelity[fidelity$check == TRUE & fidelity$M22 != "", ])
+# n=38 same mate
+```
+
+## Calculate mate fidelity stats: 2022-2023
+```{r}
+fidelity <- gulls %>%
+  filter(lat22 != "") %>%
+  filter(NestID22 != "")
+
+count(fidelity[fidelity$NestID23 == "", ]) # n=80 not resighted
+
+fidelity <- fidelity %>%
+  filter(NestID23 != "")
+
+for(i in 1:nrow(fidelity)) {
+  band <- fidelity$Band[i]
+  if(identical(character(0), fidelity$Band[fidelity$NestID22 == fidelity$NestID22[i] &
+                                   fidelity$Band != fidelity$Band[i]])) {
+    fidelity$M22[i] <- ""
+  } else {
+    fidelity$M22[i] <- fidelity$Band[fidelity$NestID22 == fidelity$NestID22[i] &
+                                   fidelity$Band != fidelity$Band[i]]
+  }
+  if(identical(character(0), fidelity$Band[fidelity$NestID23 == fidelity$NestID23[i] &
+                                   fidelity$Band != fidelity$Band[i]])) {
+    fidelity$M23[i] <- ""
+  } else {
+    fidelity$M23[i] <- fidelity$Band[fidelity$NestID23 == fidelity$NestID23[i] &
+                                   fidelity$Band != fidelity$Band[i]]
+  }
+}
+
+fidelity$check <- fidelity$M22 == fidelity$M23
+
+count(fidelity[fidelity$check == TRUE & fidelity$M22 == "", ]) # 82
+count(fidelity[fidelity$check == TRUE & fidelity$M23 == "", ]) # 82
+# n=83 unbanded mate both years
+
+count(fidelity[fidelity$check == FALSE, ]) # subtract 2 for 3Y5 & 8R0
+# n=6 different mate (4 lost mate to HPAI)
+
+count(fidelity[fidelity$check == TRUE & fidelity$M22 != "", ]) # add 2 for 3Y5 & 8R0
+# n=38 same mate
+```
+
+## Plot mate fidelity
+```{r}
+status <- c("Resighted, same mate", "Resighted, different mate", "Both years unbanded mate", "Not resighted")
+year <- c(rep(2022, 4))
+count <- c(38, 2, 55, 24)
+prop <- count / sum(count)
+
+mates <- as.data.frame(cbind(status, year, count, prop))
+
+year <- c(rep(2023, 4))
+count <- c(38, 6, 83, 80)
+prop <- count / sum(count)
+
+mates <- rbind(mates, cbind(status, year, count, prop))
+
+ggplot(mates, aes(x = factor(status, levels = c("Resighted, same mate", "Resighted, different mate", "Both years unbanded mate", "Not resighted")), y = as.numeric(prop), fill = year)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  scale_fill_manual(values = c("palegreen3", "mediumpurple1"),
+                    labels = c("2021-2022", "2022-2023"),
+                    name = "Years\ncompared") +
+  labs(x = "Mating status", y = "Proportion of banded adults") +
+  scale_y_continuous(limits = c(0, 0.48)) +
+  annotate("label", x = 1, y = 0.45, label = "n = 119",
+           fontface = "bold",
+           col = "forestgreen", size = 6) +
+  annotate("label", x = 1, y = 0.40, label = "n = 207",
+           fontface = "bold",
+           col = "purple3", size = 6) +
+  theme_classic() +
+  theme(axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+```
+
+## Load individual data
+```{r}
+allgulls <- read.csv("data/allGBBGs.csv")
+
+for(i in 1:nrow(birds22)) {
+  birds22$HatchArea[i] <- allgulls$BandLoc_General[allgulls$Band == birds22$Band[i]]
+  birds22$HatchLat[i] <- allgulls$BandedLat[allgulls$Band == birds22$Band[i]]
+  birds22$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds22$Band[i]]
+  birds22$dist[i] <- distm(c(birds22$HatchLat[i], birds22$HatchLong[i]),
+                           c(birds22$Lat22[i], birds22$Long22[i]),
+                           fun = distHaversine)
+}
+
+median(birds22$dist, na.rm = TRUE) # 28.86 m
+
+chicks22_sf <- st_as_sf(birds22,
+                        coords = c("Long22", "Lat22"),
+                        crs = 4326) %>%
+               filter(HatchArea != "")
+
+for(i in 1:nrow(birds23)) {
+  birds23$HatchArea[i] <- allgulls$BandLoc_General[allgulls$Band == birds23$Band[i]]
+  birds23$HatchLat[i] <- allgulls$BandedLat[allgulls$Band == birds23$Band[i]]
+  birds23$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds23$Band[i]]
+  birds23$dist[i] <- distm(c(birds23$HatchLat[i], birds23$HatchLong[i]),
+                           c(birds23$Lat23[i], birds23$Long23[i]),
+                           fun = distHaversine)
+}
+
+median(birds23$dist, na.rm = TRUE) # 21.61 m
+
+chicks23_sf <- st_as_sf(birds23,
+                        coords = c("Long23", "Lat23"),
+                        crs = 4326) %>%
+               filter(HatchArea != "")
+```
+
+## Plot philopatry
+```{r}
+palette <- c(kelly(22)[c(3, 5, 12, 4, 7, 9:10, 2)], "#A86E10", "#47C3D4", kelly(22)[c(11, 19)])
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_sf(data = st_jitter(chicks22_sf, factor = 0.005), aes(col = HatchArea), size = 3, inherit.aes = FALSE) +
+  geom_sf(data = chicks22_sf[chicks22_sf$Band == "2U0" | chicks22_sf$Band == "4FE", ], aes(col = HatchArea), size = 3, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  scale_colour_manual(values = palette) +
+  annotate("label", x = -70.6184, y = 42.9927, label = "2022", fontface = "bold",
+           size = 8) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none")
+
+# n = 102
+71/102 # 69.6%
+
+palette2 <- c(kelly(22)[c(3, 5, 12, 4, 7, 9:10, 2)], "#A86E10", "#47C3D4", kelly(22)[c(11, 19)])
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_sf(data = st_jitter(chicks23_sf, factor = 0.005), aes(col = HatchArea), size = 3, inherit.aes = FALSE) +
+  geom_sf(data = chicks22_sf[chicks22_sf$Band == "2U0", ], aes(col = HatchArea), size = 3, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  scale_colour_manual(values = palette2) +
+  annotate("label", x = -70.6184, y = 42.9927, label = "2023", fontface = "bold",
+           size = 8) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none")
+
+# n = 73
+51/73 # 69.8%
+```
+
+## Group NDDs
+```{r}
+birds22$dist_grp <- NA
+
+for(i in 1:nrow(birds22)) {
+  if(!is.na(birds22$dist[i]) & birds22$dist[i] <= 20) {
+    birds22$dist_grp[i] <- "≤ 20"
+  } else if(!is.na(birds22$dist[i]) & birds22$dist[i] > 20 & birds22$dist[i] <= 40) {
+    birds22$dist_grp[i] <- "20 < x ≤ 40"
+  } else if(!is.na(birds22$dist[i]) & birds22$dist[i] > 40 & birds22$dist[i] <= 60) {
+    birds22$dist_grp[i] <- "40 < x ≤ 60"
+  } else if(!is.na(birds22$dist[i]) & birds22$dist[i] > 60 & birds22$dist[i] <= 80) {
+    birds22$dist_grp[i] <- "60 < x ≤ 80"
+  } else if(!is.na(birds22$dist[i]) & birds22$dist[i] > 80 & birds22$dist[i] <= 100) {
+    birds22$dist_grp[i] <- "80 < x ≤ 100"
+  } else if(!is.na(birds22$dist[i]) & birds22$dist[i] > 100 & birds22$dist[i] <= 200) {
+    birds22$dist_grp[i] <- "100 < x ≤ 200"
+  } else if(!is.na(birds22$dist[i]) & birds22$dist[i] > 200 & birds22$dist[i] <= 300) {
+    birds22$dist_grp[i] <- "200 < x ≤ 300"
+  } else if(!is.na(birds22$dist[i]) & birds22$dist[i] > 300) {
+    birds22$dist_grp[i] <- "> 300"
+  }
+}
+
+# rearrange data
+ndd22 <- birds22 %>%
+  filter(!is.na(dist_grp)) %>%
+  summarise(grp1 = sum(dist_grp == "≤ 20") / n(),
+            grp2 = sum(dist_grp == "20 < x ≤ 40") / n(),
+            grp3 = sum(dist_grp == "40 < x ≤ 60") / n(),
+            grp4 = sum(dist_grp == "60 < x ≤ 80") / n(),
+            grp5 = sum(dist_grp == "80 < x ≤ 100") / n(),
+            grp6 = sum(dist_grp == "100 < x ≤ 200") / n(),
+            grp7 = sum(dist_grp == "200 < x ≤ 300") / n(),
+            grp8 = sum(dist_grp == "> 300") / n()) %>%
+  gather(key = dist_grp, value = prop, grp1:grp8)
+
+#sum(ndd$prop)
+
+birds23$dist_grp <- NA
+
+for(i in 1:nrow(birds23)) {
+  if(!is.na(birds23$dist[i]) & birds23$dist[i] <= 20) {
+    birds23$dist_grp[i] <- "≤ 20"
+  } else if(!is.na(birds23$dist[i]) & birds23$dist[i] > 20 & birds23$dist[i] <= 40) {
+    birds23$dist_grp[i] <- "20 < x ≤ 40"
+  } else if(!is.na(birds23$dist[i]) & birds23$dist[i] > 40 & birds23$dist[i] <= 60) {
+    birds23$dist_grp[i] <- "40 < x ≤ 60"
+  } else if(!is.na(birds23$dist[i]) & birds23$dist[i] > 60 & birds23$dist[i] <= 80) {
+    birds23$dist_grp[i] <- "60 < x ≤ 80"
+  } else if(!is.na(birds23$dist[i]) & birds23$dist[i] > 80 & birds23$dist[i] <= 100) {
+    birds23$dist_grp[i] <- "80 < x ≤ 100"
+  } else if(!is.na(birds23$dist[i]) & birds23$dist[i] > 100 & birds23$dist[i] <= 200) {
+    birds23$dist_grp[i] <- "100 < x ≤ 200"
+  } else if(!is.na(birds23$dist[i]) & birds23$dist[i] > 200 & birds23$dist[i] <= 300) {
+    birds23$dist_grp[i] <- "200 < x ≤ 300"
+  } else if(!is.na(birds23$dist[i]) & birds23$dist[i] > 300) {
+    birds23$dist_grp[i] <- "> 300"
+  }
+}
+
+# rearrange data
+ndd23 <- birds23 %>%
+  filter(!is.na(dist_grp)) %>%
+  summarise(grp1 = sum(dist_grp == "≤ 20") / n(),
+            grp2 = sum(dist_grp == "20 < x ≤ 40") / n(),
+            grp3 = sum(dist_grp == "40 < x ≤ 60") / n(),
+            grp4 = sum(dist_grp == "60 < x ≤ 80") / n(),
+            grp5 = sum(dist_grp == "80 < x ≤ 100") / n(),
+            grp6 = sum(dist_grp == "100 < x ≤ 200") / n(),
+            grp7 = sum(dist_grp == "200 < x ≤ 300") / n(),
+            grp8 = sum(dist_grp == "> 300") / n()) %>%
+  gather(key = dist_grp, value = prop, grp1:grp8)
+
+#sum(ndd$prop)
+
+ndd22$year <- 2022
+ndd23$year <- 2023
+
+ndd <- rbind(ndd22, ndd23)
+```
+
+## Plot NDD
+```{r}
+ggplot(ndd, aes(x = as.factor(dist_grp), y = prop, fill = as.factor(year))) +
+  geom_bar(position = "dodge", stat = "identity") +
+  scale_fill_manual(values = c("palegreen3", "mediumpurple1"),
+                    labels = c("2022", "2023"),
+                    name = "Year\nbreeding") +
+  scale_x_discrete(labels = c("0 < x ≤ 20", "20 < x ≤ 40", "40 < x ≤ 60", "60 < x ≤ 80",
+                              "80 < x ≤ 100", "100 < x ≤ 200", "200 < x ≤ 300", "> 300")) +
+  labs(x = "Natal dispersal distance (m)",
+       y = "Proportion of breeding adults banded as chicks") +
+  annotate("label", x = 6.75, y = 0.36, label = "n = 26 | mdn = 28.9m",
+           fontface = "bold",
+           col = "forestgreen", size = 6) +
+  annotate("label", x = 6.75, y = 0.32, label = "n = 18 | mdn = 21.6m",
+           fontface = "bold",
+           col = "purple3", size = 6) +
+  theme_classic() +
+  theme(axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+```
+
+## Plot parent-child pairings
+```{r}
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "2M8", ], shape = 21, fill = "dodgerblue",
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "8FF", ], shape = 21, fill = "coral",
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "8C7", ], shape = 24, fill = "dodgerblue",
+          size = 3,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests23_sf[nests23_sf$M.1 == "4FN", ], shape = 24, fill = "coral",
+          size = 3,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "3T1", ], shape = 22, fill = "dodgerblue",
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "0FJ", ], shape = 22, fill = "coral",
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "2 E 2", ], shape = 23, fill = "dodgerblue",
+          size = 4,
+          inherit.aes = FALSE) +
+  geom_sf(data = nests22_sf[nests22_sf$M.1 == "5KJ / 2AK", ], shape = 23, fill = "coral",
+          size = 4,
+          inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  annotate("label", x = -70.6186, y = 42.9927, label = "Parent", fontface = "bold",
+           col = "dodgerblue", size = 6) +
+  annotate("label", x = -70.6186, y = 42.9923, label = "Child", fontface = "bold",
+           col = "coral", size = 6) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+
+
+
+## Match birds with banding years
+```{r}
+indiv <- read.csv("./data/Deployed_Field_Readable_Marks.csv") %>%
+  rename(Band = bandnumb)
+allGulls <- merge(birds22, indiv[, c("Year", "Band")], by = c("Band")) # this loses some birds
+
+```
+
+
+
+
+
+
+
+## Alternative all-island nest maps
+## Register Google API key
+```{r, include=FALSE}
+register_google(key = "AIzaSyBn1OxFq4DMK79J4qHmQoBvFlbHbeImABw")
+```
+
+## Create satellite map
+```{r}
+# retrieve Google map
+Appledore <- get_map(c(-70.6142, 42.9886),
+                     source = "google",
+                     maptype = "satellite",
+                     zoom = 16)
+
+ggmap(Appledore) +
+  geom_sf(data = nests22_sf, col = "white", inherit.aes = FALSE) +
+  #geom_sf_label(data = nests22_sf, aes(label = NestID), inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0005, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme(axis.title = element_blank())
+```
+
+## Create topographic map
+```{r}
+# define bounding box
+loc <- rbind(
+  c(min(nests22$Long, na.rm = T) - 0.0015, min(nests22$Lat, na.rm = T) - 0.002),
+  c(max(nests22$Long, na.rm = T) + 0.0015, max(nests22$Lat, na.rm = T) + 0.0015)
+) %>%
+  as.data.frame() %>%
+  rename(Long = V1, Lat = V2)
+
+loc_sf <- st_as_sf(loc,
+                    coords = c("Long", "Lat"),
+                    crs = 4326)
+
+# get elevation data
+elevation <- get_elev_raster(locations = loc_sf,
+                             z = 14,
+                             clip = "bbox")
+
+elevation_df <- as.data.frame(rasterToPoints(elevation), xy = T) %>%
+	na.omit()
+colnames(elevation_df)[3] <- "elevation"
+
+for(i in 1:nrow(elevation_df)) {
+  if(elevation_df$elevation[i] <= 0.1) {
+    elevation_df$elevation[i] = 0
+  }
+}
+
+ggplot() +
+  geom_tile(data = elevation_df, 
+  			aes(x = x, y = y, fill = elevation)) +
+  scale_fill_gradientn(colors = rev(etopo.colors(100)[30:89])) +
+  geom_sf(data = nests22_sf, col = "black", size = 2, inherit.aes = FALSE) +
+  coord_sf(expand = FALSE) +
+  theme(axis.title = element_blank(),
+        legend.position = "none")
+```
