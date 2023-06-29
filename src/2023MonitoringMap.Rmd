@@ -1,0 +1,133 @@
+---
+title: "2023GoA_MonitoringMap"
+author: "Dylan Titmuss"
+date: "2023-05-31"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load packages
+```{r}
+library(tidyverse)
+library(sf)
+library(ggmap)
+```
+
+## Register Google API key
+```{r, include=FALSE}
+register_google(key = "AIzaSyBn1OxFq4DMK79J4qHmQoBvFlbHbeImABw")
+```
+
+## Load data & create spatial files
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+# load file containing GPS coordinates
+nests23 <- read.csv("./data/2023_GBBGnests_incomplete.csv")
+
+# move nest 23G05 across the path
+nests23$Long[nests23$NestID == "23G05"] <- nests23$Long[nests23$NestID == "23G05"] + 0.00008
+nests23$Lat[nests23$NestID == "23G05"] <- nests23$Lat[nests23$NestID == "23G05"] - 0.00002
+
+# create geometry column from lat/long data
+for(i in 1:nrow(nests23)) {
+  nests23$geometry[i] <- st_point(x = c(nests23$Long[i], nests23$Lat[i])) %>%
+    st_sfc(crs = 4326)
+}
+
+# create sf object from data frame
+nests23_sf <- st_sf(nests23, crs = 4326)
+```
+
+## Define bounds
+```{r}
+minLat <- min(nests23_sf$Lat[nests23_sf$NestID == "23G04" |
+                             nests23_sf$NestID == "23G05" |
+                             nests23_sf$NestID == "23G06" |
+                             nests23_sf$NestID == "23G09" |
+                             nests23_sf$NestID == "23G10" |
+                             nests23_sf$NestID == "23G22" |
+                             nests23_sf$NestID == "23G27" |
+                             nests23_sf$NestID == "23G29"])
+maxLat <- max(nests23_sf$Lat[nests23_sf$NestID == "23G04" |
+                             nests23_sf$NestID == "23G05" |
+                             nests23_sf$NestID == "23G06" |
+                             nests23_sf$NestID == "23G09" |
+                             nests23_sf$NestID == "23G10" |
+                             nests23_sf$NestID == "23G22" |
+                             nests23_sf$NestID == "23G27" |
+                             nests23_sf$NestID == "23G29"])
+minLon <- min(nests23_sf$Long[nests23_sf$NestID == "23G04" |
+                             nests23_sf$NestID == "23G05" |
+                             nests23_sf$NestID == "23G06" |
+                             nests23_sf$NestID == "23G09" |
+                             nests23_sf$NestID == "23G10" |
+                             nests23_sf$NestID == "23G22" |
+                             nests23_sf$NestID == "23G27" |
+                             nests23_sf$NestID == "23G29"])
+maxLon <- max(nests23_sf$Long[nests23_sf$NestID == "23G04" |
+                             nests23_sf$NestID == "23G05" |
+                             nests23_sf$NestID == "23G06" |
+                             nests23_sf$NestID == "23G09" |
+                             nests23_sf$NestID == "23G10" |
+                             nests23_sf$NestID == "23G22" |
+                             nests23_sf$NestID == "23G27" |
+                             nests23_sf$NestID == "23G29"])
+```
+
+## Create flat-color map
+```{r}
+basemap <- st_read("./shapefiles/Basemap") %>%
+  st_transform(crs = 4326)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_sf_label(data = nests23_sf[nests23_sf$NestID == "23G04" |
+                                  nests23_sf$NestID == "23G05" |
+                                  nests23_sf$NestID == "23G06" |
+                                  nests23_sf$NestID == "23G09" |
+                                  nests23_sf$NestID == "23G10" |
+                                  nests23_sf$NestID == "23G22" |
+                                  nests23_sf$NestID == "23G27" |
+                                  nests23_sf$NestID == "23G29", ],
+                aes(label = NestNum), inherit.aes = FALSE) +
+  coord_sf(xlim = c(minLon - 0.00005, maxLon + 0.00005),
+           ylim = c(minLat - 0.00005, maxLat + 0.00005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+### Create satellite map
+```{r}
+# retrieve Google map
+Appledore <- get_map(c(-70.6142, 42.9886),
+                     source = "google",
+                     maptype = "satellite",
+                     zoom = 16)
+
+# create map
+ggmap(Appledore) +
+  geom_sf_label(data = nests23_sf[nests23_sf$NestID == "23G04" |
+                                  nests23_sf$NestID == "23G05" |
+                                  nests23_sf$NestID == "23G06" |
+                                  nests23_sf$NestID == "23G09" |
+                                  nests23_sf$NestID == "23G10" |
+                                  nests23_sf$NestID == "23G22" |
+                                  nests23_sf$NestID == "23G27" |
+                                  nests23_sf$NestID == "23G29", ],
+                aes(label = NestNum), inherit.aes = FALSE) +
+  coord_sf(xlim = c(minLon - 0.00005, maxLon + 0.00005),
+           ylim = c(minLat - 0.00005, maxLat + 0.00005)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+```
