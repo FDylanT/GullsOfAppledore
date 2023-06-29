@@ -25,17 +25,17 @@ library(ggmap)
 
 ## Register Google API key
 ```{r, include=FALSE}
-register_google(key = "AIzaSyBvvS_nvTml09h56OWd0Oniktayi0L8WDU")
+register_google(key = "AIzaSyBn1OxFq4DMK79J4qHmQoBvFlbHbeImABw")
 # this is my personal API key -- in general you're supposed to keep your key private for security reasons, but I don't mind folks using mine for SURG work! I'm also happy to talk anyone through setting up their own for future use and/or send some resources -- it's quite easy :)
 ```
 
 ## Full Appledore map
 ### Load data & create spatial files
 ```{r}
-setwd("~/Desktop/Repos/GullsOfAppledore/2022fieldwork")
+setwd("~/Desktop/Repos/GullsOfAppledore/data/2022fieldwork")
 
 # load csv file containing GPS coordinates
-nests <- read.csv("2022_GoA_Nests.csv")
+nests <- read.csv("2022_GBBGnests.csv")
 
 
 # create SPDF object
