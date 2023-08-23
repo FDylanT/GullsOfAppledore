@@ -1,0 +1,90 @@
+---
+title: "HERG_helmets"
+author: "Dylan Titmuss"
+date: "2023-08-15"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+library(tidyverse)
+library(ggsignif)
+```
+
+## Load data
+```{r}
+HERGs <- read.csv("data/FO_2022_Data.csv")
+
+HERGs$Gull.ID[HERGs$Gull.ID == "C51 (has fed band only)"] <- "C51"
+HERGs$Trial[HERGs$Trial == "Nothing"] <- "No Headwear"
+HERGs$Trial[HERGs$Trial == "Helmet"] <- "Wearing Helmet"
+HERGs$Trial[HERGs$Trial == "Hat"] <- "Wearing Hat"
+```
+
+## Plot Fig. 3
+```{r}
+HERGsum <- HERGs %>%
+  group_by(Gull.ID) %>%
+  summarise(AvgScore = mean(Score, na.rm = TRUE)) %>%
+  arrange(AvgScore)
+
+HERGs$Gull.ID <- factor(HERGs$Gull.ID, levels = HERGsum$Gull.ID)
+
+ggplot(HERGs, aes(x = Gull.ID, y = Score)) +
+  stat_boxplot(geom = "errorbar", width = 0.25, linewidth = 0.25, coef = 3) +
+  geom_boxplot(fill = "lightgrey", linewidth = 0.25, outlier.shape = NA) +
+  labs(x = "Gull ID", y = "Response Score") +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(size = 10),
+        axis.text = element_text(size = 8))
+
+ggsave("Fig3.2.png", width = 6.5, height = 4, units = "in", dpi = 600)
+
+plot(Score ~ Gull.ID, data = HERGs, xlab = "Gull ID", ylab = "Response Score")
+```
+
+## Plot Fig. 4
+```{r}
+HERGs$Trial <- factor(HERGs$Trial, levels = c("Wearing Helmet", "Holding Helmet", "Wearing Hat", "No Headwear"))
+
+for(i in 1:nrow(HERGs)) {
+  if(HERGs$Trial[i] == "Wearing Helmet") {
+    HERGs$fill[i] <- 1
+  } else {
+    HERGs$fill[i] <- 2
+  }
+}
+
+trial.sum <- HERGs %>%
+  group_by(Trial) %>%
+  summarise(AvgScore = mean(Score, na.rm = TRUE))
+
+ggplot() +
+  stat_boxplot(data = HERGs, aes(x = Trial, y = Score), geom = "errorbar", width = 0.25,
+               linewidth = 0.25) +
+  geom_boxplot(data = HERGs, aes(x = Trial, y = Score, fill = factor(fill)), linewidth = 0.25) +
+  geom_point(data = trial.sum, aes(x = Trial, y = AvgScore), shape = 18, size = 2.5) +
+  geom_signif(data = HERGs, aes(x = Trial, y = Score), annotations = c("**", "***", "***"), y_position = c(8.5, 9, 9.5), xmin = c(1, 1, 1), xmax = c(2, 3, 4)) +
+  scale_fill_manual(values = c("lightgrey", "white")) +
+  scale_y_continuous(breaks = c(0, 2, 4, 6, 8)) +
+  labs(x = "Condition", y = "Response Score") +
+  #annotate("text", label = "a", x = 1, y = 8.5) +
+  #annotate("text", label = "b", x = 2, y = 8.5) +
+  #annotate("text", label = "b", x = 3, y = 8.5) +
+  #annotate("text", label = "b", x = 4, y = 8.5) +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(size = 10),
+        axis.text = element_text(size = 8),
+        legend.position = "none")
+
+ggsave("Fig4.2.png", width = 6.5, height = 4.5, units = "in", dpi = 600)
+```
