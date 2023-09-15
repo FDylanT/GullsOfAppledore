@@ -64,17 +64,26 @@ for(i in 1:nrow(HERGs)) {
 
 trial.sum <- HERGs %>%
   group_by(Trial) %>%
-  summarise(AvgScore = mean(Score, na.rm = TRUE))
+  summarise(AvgScore = mean(Score, na.rm = TRUE),
+            SDScore = sd(Score, na.rm = TRUE),
+            SEScore = sd(Score, na.rm = TRUE)/length(Score),
+            fill = mean(fill))
 
 ggplot() +
   stat_boxplot(data = HERGs, aes(x = Trial, y = Score), geom = "errorbar", width = 0.25,
                linewidth = 0.25) +
   geom_boxplot(data = HERGs, aes(x = Trial, y = Score, fill = factor(fill)), linewidth = 0.25) +
   geom_point(data = trial.sum, aes(x = Trial, y = AvgScore), shape = 18, size = 2.5) +
-  geom_signif(data = HERGs, aes(x = Trial, y = Score), annotations = c("**", "***", "***"), y_position = c(8.5, 9, 9.5), xmin = c(1, 1, 1), xmax = c(2, 3, 4)) +
-  scale_fill_manual(values = c("lightgrey", "white")) +
+  #geom_col(data = trial.sum, aes(x = Trial, y = AvgScore, fill = factor(fill))) +
+  #geom_errorbar(data = trial.sum, aes(x = Trial, ymin = AvgScore - SEScore, ymax = AvgScore + SEScore),
+  #              width = 0.2) +
+  geom_signif(data = HERGs, aes(x = Trial, y = Score), annotations = c("**", "***", "***"),
+              y_position = c(8.5, 9, 9.5), xmin = c(1, 1, 1), xmax = c(2, 3, 4)) +
+  #            y_position = c(5.5, 6, 6.5), xmin = c(1, 1, 1), xmax = c(2, 3, 4)) +
+  scale_fill_manual(values = c("grey", "white")) +
+  #scale_fill_manual(values = c("grey35", "darkgrey")) +
   scale_y_continuous(breaks = c(0, 2, 4, 6, 8)) +
-  labs(x = "Condition", y = "Response Score") +
+  labs(x = "Treatment", y = "Response Score") +
   #annotate("text", label = "a", x = 1, y = 8.5) +
   #annotate("text", label = "b", x = 2, y = 8.5) +
   #annotate("text", label = "b", x = 3, y = 8.5) +
@@ -86,5 +95,62 @@ ggplot() +
         axis.text = element_text(size = 8),
         legend.position = "none")
 
-ggsave("Fig4.2.png", width = 6.5, height = 4.5, units = "in", dpi = 600)
+ggsave("Fig4.2.2.png", width = 6.5, height = 4.5, units = "in", dpi = 600)
+```
+
+## Parametric boxplot
+```{r}
+# Boxplot with parametric data
+# Mark Gardener Sep 2011 rev. Apr 2010
+# http://www.gardenersown.co.uk
+
+box.para <- function(formula, data, ...)
+
+# formula = the formula to use e.g. y ~ x
+# data    = the data where the variables are (at least 2-columns, response, predictor)
+# ...     = additional parameters for bxp()
+
+{ # start function code
+
+## Check inputs
+if(missing(data)) # check to see if data given
+	stop('Please specify data\n\n') # if not then stop
+if(missing(formula)) # check that formula entered
+	stop('Please enter a formula in the form y ~ x\n\n') # if not then stop
+	
+## Make summary stats
+bx.mean <- aggregate(formula, data = data, FUN = mean)[,2]     # the mean
+  bx.sd <- aggregate(formula, data = data, FUN = sd)[,2]       # Std. Dev.
+    bx.n <- aggregate(formula, data = data, FUN = length)[,2]  # no. replicates
+bx.names <- as.character(aggregate(formula, data = data, FUN = mean)[,1]) # make names
+
+bx.se <- bx.sd/sqrt(bx.n) # Std. Err.
+
+## Make result object for screen display
+bx.result <- rbind(bx.mean, bx.sd, bx.se, bx.n)               # a matrix of results
+  colnames(bx.result) = bx.names                              # column names
+rownames(bx.result) = c("Mean", "Std. Dev.", "Std. Err.", "Replicates") # row names
+
+## Make boxplot stats
+bx.sd.up <- bx.mean + bx.sd   # upper whisker
+  bx.sd.dn <- bx.mean - bx.sd # lower whisker
+bx.se.up <- bx.mean + bx.se   # upper box
+  bx.se.dn <- bx.mean - bx.se # lower box
+
+# Make boxplot object
+bx.stats <- rbind(bx.sd.up, bx.se.up, bx.mean, bx.se.dn, bx.sd.dn) # main results for plot
+
+bx.bx <- list(bx.stats, bx.names)   # make bxp list object
+names(bx.bx) <- c("stats", "names") # set the names for the bxp list object
+
+## Display results
+bxp(bx.bx, ...)  # draw boxplot and use additonal parameters if entered
+print(bx.result) # show result summary on screen
+
+	} # end function code
+
+## END
+
+plot <- box.para(Score ~ Trial, data = HERGs, las = 1, boxfill = c("grey35", "darkgrey", "darkgrey", "darkgrey"),
+         xlab = "Treatment", ylab = "Response Score")
 ```
