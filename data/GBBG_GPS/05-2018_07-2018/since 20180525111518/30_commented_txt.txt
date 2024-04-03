@@ -1,0 +1,1 @@
+Device ID: 30	Day: 25	Month: 5	Year: 18	Hour: 20	Minute: 56	Raw Lat: 4259275N	Raw Long: 07036867W	Parameter: 0.1	

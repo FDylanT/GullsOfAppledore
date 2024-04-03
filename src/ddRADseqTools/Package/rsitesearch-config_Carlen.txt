@@ -1,0 +1,21 @@
+genfile=./genomes/GCA_000337935.1_Columba.fna # file of the reference genome in fasta format
+fragsfile=./runs/frags_Columba.fasta        # path of the fragments file
+rsfile=./restrictionsites.txt               # path of the restriction sites file
+enzyme1=SphI                                # id of 1st restriction enzyme used in rsfile or its restriction site sequence
+enzyme2=MluCI                               # id of 2nd restriction enzyme used in rsfile or its restriction site sequence
+minfragsize=376                             # lower boundary of loci fragment's size
+maxfragsize=412                             # upper boundary of loci fragment's size
+fragstfile=./runs/stats_Columba.txt         # path of the output statistics file
+fragstinterval=25                           # interval length of fragment size
+plot=YES                                    # statistical graphs: YES or NO
+verbose=YES                                 # additional job status info during the run: YES or NO
+trace=NO                                    # additional info useful to the developer team: YES or NO
+
+
+
+# 1: EcoRI & MseI
+# 2: EcoRI & MspI
+# 3: SbfI & MspI
+# 4: SbfI & MluCI
+# 5: SphI & MluCI
+# 6: SbfI & EcoRI

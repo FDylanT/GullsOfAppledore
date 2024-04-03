@@ -1,0 +1,10 @@
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 14	Minute: 7	Raw Lat: 4300601N	Raw Long: 07018732W	Parameter: 29.	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 15	Minute: 8	Raw Lat: 4259311N	Raw Long: 07036947W	Parameter: 0.0	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 16	Minute: 8	Raw Lat: 4259310N	Raw Long: 07036952W	Parameter: 0.1	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 17	Minute: 9	Raw Lat: 4259311N	Raw Long: 07036952W	Parameter: 0.1	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 18	Minute: 10	Raw Lat: 4259313N	Raw Long: 07036953W	Parameter: 0.1	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 19	Minute: 11	Raw Lat: 4259311N	Raw Long: 07036941W	Parameter: 0.2	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 20	Minute: 11	Raw Lat: 4259325N	Raw Long: 07036982W	Parameter: 0.5	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 21	Minute: 11	Raw Lat: 4259291N	Raw Long: 07036955W	Parameter: 0.7	
+Device ID: 26	Day: 10	Month: 6	Year: 18	Hour: 22	Minute: 12	Raw Lat: 4259296N	Raw Long: 07036902W	Parameter: 0.5	
+Device ID: 26	Day: 13	Month: 6	Year: 18	Hour: 14	Minute: 8	Raw Lat: 4259311N	Raw Long: 07036941W	Parameter: 0.0	

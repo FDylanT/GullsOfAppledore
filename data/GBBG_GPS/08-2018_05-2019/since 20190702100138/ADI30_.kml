@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>ADI30</name><description>Log converted to kml</description><Folder><name>Placemarks</name>
+<Placemark><name>ADI30(0)</name><description><i>Timestamp: </i><b>06/24/2019 13:40:00</b> <i>Speed: </i><b>27.</b> </description><Point><coordinates>-70.796517,42.780533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI30(1)</name><description><i>Timestamp: </i><b>06/24/2019 13:40:00</b> <i>Speed: </i><b>26.</b> </description><Point><coordinates>-70.796517,42.780150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI30(2)</name><description><i>Timestamp: </i><b>06/24/2019 13:40:00</b> <i>Speed: </i><b>26.</b> </description><Point><coordinates>-70.796300,42.779817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI30(3)</name><description><i>Timestamp: </i><b>06/24/2019 13:40:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.796083,42.779633,0</coordinates></Point></Placemark>
+<Placemark><name>ADI30(4)</name><description><i>Timestamp: </i><b>06/24/2019 13:40:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.795767,42.779367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI30(5)</name><description><i>Timestamp: </i><b>06/24/2019 13:40:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.795467,42.779083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI30(6)</name><description><i>Timestamp: </i><b>06/24/2019 13:40:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.795267,42.778900,0</coordinates></Point></Placemark>
+</Folder><Placemark><name>Path</name><LineString><coordinates>
+-70.796517,42.780533,0
+-70.796517,42.780150,0
+-70.796300,42.779817,0
+-70.796083,42.779633,0
+-70.795767,42.779367,0
+-70.795467,42.779083,0
+-70.795267,42.778900,0
+</coordinates></LineString></Placemark></Document></kml>

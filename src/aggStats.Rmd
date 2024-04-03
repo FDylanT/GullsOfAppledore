@@ -13,7 +13,230 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(lme4)
 library(lmerTest)
+library(multcomp)
+library(trend)
+library(rkt)
 ```
+
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+gbbg_all <- read.csv("data/behaviour_data.csv")
+
+gbbg <- gbbg_all %>%
+  filter(!is.na(hatch1_date)) %>%
+  filter(days_pre_hatch > 0) %>%
+  filter(response >= 0) %>%
+  # group_by(birdID, year) %>%
+  # filter(n() >= 3) %>%
+  mutate(birdID = as.factor(birdID),
+         location_cat = as.factor(location_cat),
+         bird_year = as.factor(paste(birdID, year, sep = "_")))
+
+# convert all numerical cols to numeric
+is_all_numeric <- function(x) {
+  !any(is.na(suppressWarnings(as.numeric(na.omit(x))))) & is.character(x)
+}
+gbbg <- gbbg %>% 
+  mutate_if(is_all_numeric, as.numeric)
+
+str(gbbg)
+
+gbbg$obs_num_cat <- NA
+
+for(i in 1:nrow(gbbg)) {
+  if(gbbg$obs_num[i] < 5) {
+    gbbg$obs_num_cat[i] <- "<5"
+  } else {
+    gbbg$obs_num_cat[i] <- "5+"
+  }
+}
+
+gbbg$obs_num_cat <- as.factor(gbbg$obs_num_cat)
+```
+
+## Run models
+```{r}
+# Response ~ DayBeforeHatch + DateOfHatch + Location + (1|Egg) + (1|ObsNumber) + (1|GullID)
+
+# m0 <- lmer(response ~ days_pre_hatch + hatch1_cal + location_cat + (1|bird_year) + (1|egg_num) + (1|obs_num), data = gbbg)
+# m00 <- lmer(response ~ days_pre_hatch + hatch1_cal + (1|bird_year) + (1|obs_num), data = gbbg)
+
+# this runs
+m1 <- lmer(response ~ days_pre_hatch + hatch1_cal + (1|bird_year), data = gbbg)
+summary(m1)
+anova(m1)
+
+m1.1 <- lmer(latency ~ days_pre_hatch + hatch1_cal + (1|bird_year), data = gbbg)
+summary(m1.1)
+anova(m1.1)
+
+# this does not
+m2 <- lmer(response ~ days_pre_hatch + (1|bird_year) + (1|obs_num), data = gbbg)
+
+m2.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num), data = gbbg)
+
+# this runs
+m3 <- lmer(response ~ days_pre_hatch + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+summary(m3)
+anova(m3)
+summary(m3)$coefficients
+coef(m3)
+
+plot(m3)
+plot(summary(m3)$residuals)
+  # (but this does not)
+m3.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+
+# this does not
+m4 <- lmer(response ~ days_pre_hatch + hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+
+m4.1 <- lmer(latency ~ days_pre_hatch + hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+
+# this runs
+m5 <- lmer(response ~ hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+summary(m5)
+anova(m5)
+
+m5.1 <- lmer(latency ~ hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+summary(m5.1)
+```
+
+## Habituation check
+```{r}
+habit <- gbbg %>%
+  group_by(birdID, year) %>%
+  filter(n() >= 3)
+
+# this indicates that days_pre_hatch is *NOT* significant
+h1 <- lmer(response ~ days_pre_hatch + obs_num + (1|bird_year), data = habit)
+summary(h1)
+anova(h1)
+
+h1.1 <- lmer(latency ~ days_pre_hatch + obs_num + (1|bird_year), data = habit)
+summary(h1.1)
+anova(h1.1)
+
+# this indicates that days_pre_hatch is *NOT* significant
+h2 <- lmer(response ~ days_pre_hatch + hatch1_cal + obs_num + (1|bird_year), data = habit)
+summary(h2)
+anova(h2)
+
+# this indicates that days_pre_hatch *IS* significant
+h3 <- lmer(response ~ days_pre_hatch + obs_num_cat + (1|bird_year), data = habit)
+summary(h3)
+anova(h3)
+```
+
+## Plot
+```{r}
+gbbg_sum <- gbbg %>%
+  group_by(days_pre_hatch) %>%
+  summarize(response = mean(response))
+
+ggplot(gbbg_sum, aes(x = days_pre_hatch, y = response)) +
+  geom_line() +
+  geom_point() +
+  scale_x_reverse() +
+  theme_bw() +
+  geom_abline(slope = -summary(m3)$coefficients[2], intercept = summary(m3)$coefficients[1],
+              col = "mediumpurple",
+              linewidth = 1) +
+  annotate("text",
+           x = 3.5,
+           y = 6.2,
+           label = paste("slope =", round(-summary(m3)$coefficients[2], 3)), col = "mediumpurple") +
+  annotate("text",
+           x = 3.5,
+           y = 6.15,
+           label = paste("p =", round(summary(m3)$coefficients[2, 5], 7)), col = "mediumpurple")
+```
+
+## Geospatial comparison
+```{r}
+g1 <- lmer(response ~ days_pre_hatch + location_cat + (1|bird_year), data = gbbg)
+summary(g1)
+anova(g1)
+
+summary(glht(g1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr"))
+
+g1.1 <- lmer(latency ~ days_pre_hatch + location_cat + (1|bird_year), data = gbbg)
+summary(g1.1)
+anova(g1.1)
+
+summary(glht(g1.1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr"))
+```
+
+## Plot geospatial
+```{r}
+## two-panel (score & latency)
+## categorical boxplots
+```
+
+## Sex comparison
+```{r}
+
+```
+
+
+
+
+
+
+
+## Mann-Kendall fits
+```{r}
+ggplot(gbbg_sum, aes(x = response)) +
+  geom_histogram() +
+  theme_bw()
+
+shapiro.test(gbbg_sum$response) # p-value = 0.5165
+
+mk <- mk.test(gbbg_sum$response)
+slope <- sens.slope(gbbg_sum$response)$estimates
+intercept <- median(gbbg_sum$response) - 
+             median(gbbg_sum$response) * slope
+
+ggplot(gbbg_sum, aes(x = days_pre_hatch, y = response)) +
+  geom_point() +
+  labs(x = "Time to Hatch (days)", y = "Response Score") +
+  scale_x_reverse() +
+  theme_bw() +
+  geom_abline(slope = -slope, intercept = intercept, col = "royalblue", linewidth = 1) +
+  annotate("text",
+           x = 3.5,
+           y = 6.2,
+           label = paste("slope =", -round(slope, 3)), col = "royalblue") +
+  annotate("text",
+           x = 3.5,
+           y = 6.15,
+           label = paste("p =", round(mk$p.value, 3)), col = "royalblue")
+
+gbbg <- gbbg %>%
+  mutate(year_frac = year + obs_date_cal / 365)
+
+rk <- rkt(date = gbbg$year_frac,
+          y = gbbg$response,
+          block = as.numeric(factor(gbbg$bird_year)))
+
+rk2 <- rkt(date = gbbg$year_frac,
+          y = gbbg$response,
+          block = as.numeric(factor(gbbg$obs_num)),
+          rep = "m")
+```
+
+## Side analysis
+```{r}
+# difference between indiv birds across years (e.g. 7U9, etc.)
+```
+
+
+
+
+
+
+
+
 
 ### Load 2021 data
 ```{r}

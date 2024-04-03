@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>26</name><description>Log converted to kml</description><Folder><name>Placemarks</name>
+<Placemark><name>0(26)</name><description><i>Timestamp: </i><b>10.06.18 14:07</b><i>Parameter: </i><b>29.</b></description><Point><coordinates>-70.312200,43.010017,0</coordinates></Point></Placemark>
+<Placemark><name>1(26)</name><description><i>Timestamp: </i><b>10.06.18 15:08</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615783,42.988517,0</coordinates></Point></Placemark>
+<Placemark><name>2(26)</name><description><i>Timestamp: </i><b>10.06.18 16:08</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615867,42.988500,0</coordinates></Point></Placemark>
+<Placemark><name>3(26)</name><description><i>Timestamp: </i><b>10.06.18 17:09</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615867,42.988517,0</coordinates></Point></Placemark>
+<Placemark><name>4(26)</name><description><i>Timestamp: </i><b>10.06.18 18:10</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615883,42.988550,0</coordinates></Point></Placemark>
+<Placemark><name>5(26)</name><description><i>Timestamp: </i><b>10.06.18 19:11</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615683,42.988517,0</coordinates></Point></Placemark>
+<Placemark><name>6(26)</name><description><i>Timestamp: </i><b>10.06.18 20:11</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616367,42.988750,0</coordinates></Point></Placemark>
+<Placemark><name>7(26)</name><description><i>Timestamp: </i><b>10.06.18 21:11</b><i>Parameter: </i><b>0.7</b></description><Point><coordinates>-70.615917,42.988183,0</coordinates></Point></Placemark>
+<Placemark><name>8(26)</name><description><i>Timestamp: </i><b>10.06.18 22:12</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615033,42.988267,0</coordinates></Point></Placemark>
+<Placemark><name>9(26)</name><description><i>Timestamp: </i><b>13.06.18 14:08</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615683,42.988517,0</coordinates></Point></Placemark>
+</Folder><Placemark><name>Path</name><LineString><coordinates>
+-70.312200,43.010017,0
+-70.615783,42.988517,0
+-70.615867,42.988500,0
+-70.615867,42.988517,0
+-70.615883,42.988550,0
+-70.615683,42.988517,0
+-70.616367,42.988750,0
+-70.615917,42.988183,0
+-70.615033,42.988267,0
+-70.615683,42.988517,0
+</coordinates></LineString></Placemark></Document></kml>

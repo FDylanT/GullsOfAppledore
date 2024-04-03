@@ -1,0 +1,21 @@
+genfile=./genomes/GCA_013400295.1_Larus.fna # file of the reference genome in fasta format
+fragsfile=./runs/frags_SbfMbo395.fasta      # path of the fragments file
+rsfile=./restrictionsites.txt               # path of the restriction sites file
+enzyme1=MboI                               # id of 1st restriction enzyme used in rsfile or its restriction site sequence
+enzyme2=SbfI                               # id of 2nd restriction enzyme used in rsfile or its restriction site sequence
+minfragsize=370                             # lower boundary of loci fragment's size
+maxfragsize=420                             # upper boundary of loci fragment's size
+fragstfile=./runs/stats_SbfMbo.txt          # path of the output statistics file
+fragstinterval=25                           # interval length of fragment size
+plot=YES                                    # statistical graphs: YES or NO
+verbose=YES                                 # additional job status info during the run: YES or NO
+trace=NO                                    # additional info useful to the developer team: YES or NO
+
+
+
+# 1: EcoRI & MseI
+# 2: EcoRI & MspI
+# 3: SbfI & MspI
+# 4: SbfI & MluCI
+# 5: SphI & MluCI
+# 6: SbfI & EcoRI

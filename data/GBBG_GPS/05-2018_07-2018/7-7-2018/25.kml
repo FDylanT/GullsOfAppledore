@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>25</name><description>Log converted to kml</description><Folder><name>Placemarks</name>
+<Placemark><name>0(25)</name><description><i>Timestamp: </i><b>29.06.18 23:09</b><i>Parameter: </i><b>0.8</b></description><Point><coordinates>-70.616083,42.989150,0</coordinates></Point></Placemark>
+<Placemark><name>1(25)</name><description><i>Timestamp: </i><b>30.06.18 00:10</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615867,42.989267,0</coordinates></Point></Placemark>
+<Placemark><name>2(25)</name><description><i>Timestamp: </i><b>30.06.18 01:11</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615433,42.988567,0</coordinates></Point></Placemark>
+<Placemark><name>3(25)</name><description><i>Timestamp: </i><b>30.06.18 02:11</b><i>Parameter: </i><b>0.8</b></description><Point><coordinates>-70.615350,42.988433,0</coordinates></Point></Placemark>
+<Placemark><name>4(25)</name><description><i>Timestamp: </i><b>30.06.18 03:11</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.615217,42.989133,0</coordinates></Point></Placemark>
+<Placemark><name>5(25)</name><description><i>Timestamp: </i><b>30.06.18 04:12</b><i>Parameter: </i><b>1.4</b></description><Point><coordinates>-70.615933,42.989367,0</coordinates></Point></Placemark>
+<Placemark><name>6(25)</name><description><i>Timestamp: </i><b>30.06.18 05:13</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615917,42.989150,0</coordinates></Point></Placemark>
+<Placemark><name>7(25)</name><description><i>Timestamp: </i><b>30.06.18 06:13</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615950,42.989317,0</coordinates></Point></Placemark>
+<Placemark><name>8(25)</name><description><i>Timestamp: </i><b>30.06.18 07:13</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615833,42.989250,0</coordinates></Point></Placemark>
+<Placemark><name>9(25)</name><description><i>Timestamp: </i><b>30.06.18 08:13</b><i>Parameter: </i><b>17.</b></description><Point><coordinates>-70.517400,42.969433,0</coordinates></Point></Placemark>
+<Placemark><name>10(25)</name><description><i>Timestamp: </i><b>30.06.18 09:14</b><i>Parameter: </i><b>31.</b></description><Point><coordinates>-69.988300,42.771733,0</coordinates></Point></Placemark>
+<Placemark><name>11(25)</name><description><i>Timestamp: </i><b>30.06.18 10:14</b><i>Parameter: </i><b>26.</b></description><Point><coordinates>-70.252183,42.792850,0</coordinates></Point></Placemark>
+<Placemark><name>12(25)</name><description><i>Timestamp: </i><b>30.06.18 11:15</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615900,42.989283,0</coordinates></Point></Placemark>
+<Placemark><name>13(25)</name><description><i>Timestamp: </i><b>30.06.18 12:15</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616050,42.989283,0</coordinates></Point></Placemark>
+<Placemark><name>14(25)</name><description><i>Timestamp: </i><b>30.06.18 13:16</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.615817,42.989167,0</coordinates></Point></Placemark>
+<Placemark><name>15(25)</name><description><i>Timestamp: </i><b>30.06.18 14:16</b><i>Parameter: </i><b>27.</b></description><Point><coordinates>-70.490617,42.941300,0</coordinates></Point></Placemark>
+<Placemark><name>16(25)</name><description><i>Timestamp: </i><b>30.06.18 14:55</b><i>Parameter: </i><b>24.</b></description><Point><coordinates>-70.170217,42.817200,0</coordinates></Point></Placemark>
+<Placemark><name>17(25)</name><description><i>Timestamp: </i><b>30.06.18 15:10</b><i>Parameter: </i><b>25.</b></description><Point><coordinates>-70.072667,42.746083,0</coordinates></Point></Placemark>
+<Placemark><name>18(25)</name><description><i>Timestamp: </i><b>30.06.18 15:25</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-69.993117,42.684567,0</coordinates></Point></Placemark>
+<Placemark><name>19(25)</name><description><i>Timestamp: </i><b>30.06.18 15:40</b><i>Parameter: </i><b>12.</b></description><Point><coordinates>-69.994800,42.679983,0</coordinates></Point></Placemark>
+<Placemark><name>20(25)</name><description><i>Timestamp: </i><b>30.06.18 15:56</b><i>Parameter: </i><b>15.</b></description><Point><coordinates>-69.989383,42.660050,0</coordinates></Point></Placemark>
+<Placemark><name>21(25)</name><description><i>Timestamp: </i><b>30.06.18 16:11</b><i>Parameter: </i><b>10.</b></description><Point><coordinates>-69.983067,42.647833,0</coordinates></Point></Placemark>
+<Placemark><name>22(25)</name><description><i>Timestamp: </i><b>30.06.18 16:26</b><i>Parameter: </i><b>2.6</b></description><Point><coordinates>-69.977550,42.635567,0</coordinates></Point></Placemark>
+<Placemark><name>23(25)</name><description><i>Timestamp: </i><b>30.06.18 16:41</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-69.987200,42.627000,0</coordinates></Point></Placemark>
+<Placemark><name>24(25)</name><description><i>Timestamp: </i><b>30.06.18 16:56</b><i>Parameter: </i><b>26.</b></description><Point><coordinates>-70.024367,42.638867,0</coordinates></Point></Placemark>
+<Placemark><name>25(25)</name><description><i>Timestamp: </i><b>30.06.18 17:11</b><i>Parameter: </i><b>27.</b></description><Point><coordinates>-70.144983,42.686317,0</coordinates></Point></Placemark>
+<Placemark><name>26(25)</name><description><i>Timestamp: </i><b>30.06.18 17:26</b><i>Parameter: </i><b>28.</b></description><Point><coordinates>-70.243183,42.774000,0</coordinates></Point></Placemark>
+<Placemark><name>27(25)</name><description><i>Timestamp: </i><b>30.06.18 17:41</b><i>Parameter: </i><b>1.3</b></description><Point><coordinates>-70.335933,42.861900,0</coordinates></Point></Placemark>
+<Placemark><name>28(25)</name><description><i>Timestamp: </i><b>30.06.18 17:56</b><i>Parameter: </i><b>29.</b></description><Point><coordinates>-70.451933,42.951900,0</coordinates></Point></Placemark>
+<Placemark><name>29(25)</name><description><i>Timestamp: </i><b>30.06.18 18:11</b><i>Parameter: </i><b>28.</b></description><Point><coordinates>-70.570050,42.975933,0</coordinates></Point></Placemark>
+<Placemark><name>30(25)</name><description><i>Timestamp: </i><b>30.06.18 18:27</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616100,42.989350,0</coordinates></Point></Placemark>
+<Placemark><name>31(25)</name><description><i>Timestamp: </i><b>30.06.18 18:42</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615917,42.989283,0</coordinates></Point></Placemark>
+<Placemark><name>32(25)</name><description><i>Timestamp: </i><b>30.06.18 18:57</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615967,42.989167,0</coordinates></Point></Placemark>
+<Placemark><name>33(25)</name><description><i>Timestamp: </i><b>30.06.18 19:12</b><i>Parameter: </i><b>0.7</b></description><Point><coordinates>-70.616067,42.988950,0</coordinates></Point></Placemark>
+<Placemark><name>34(25)</name><description><i>Timestamp: </i><b>30.06.18 19:27</b><i>Parameter: </i><b>2.5</b></description><Point><coordinates>-70.615950,42.988917,0</coordinates></Point></Placemark>
+<Placemark><name>35(25)</name><description><i>Timestamp: </i><b>30.06.18 19:43</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.617950,42.988133,0</coordinates></Point></Placemark>
+<Placemark><name>36(25)</name><description><i>Timestamp: </i><b>30.06.18 19:58</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616100,42.988733,0</coordinates></Point></Placemark>
+<Placemark><name>37(25)</name><description><i>Timestamp: </i><b>30.06.18 20:13</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.616017,42.988900,0</coordinates></Point></Placemark>
+<Placemark><name>38(25)</name><description><i>Timestamp: </i><b>30.06.18 20:28</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615933,42.989417,0</coordinates></Point></Placemark>
+<Placemark><name>39(25)</name><description><i>Timestamp: </i><b>30.06.18 20:43</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615383,42.989050,0</coordinates></Point></Placemark>
+<Placemark><name>40(25)</name><description><i>Timestamp: </i><b>30.06.18 20:59</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615933,42.989267,0</coordinates></Point></Placemark>
+<Placemark><name>41(25)</name><description><i>Timestamp: </i><b>30.06.18 21:14</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615550,42.989600,0</coordinates></Point></Placemark>
+<Placemark><name>42(25)</name><description><i>Timestamp: </i><b>30.06.18 21:29</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615833,42.989450,0</coordinates></Point></Placemark>
+<Placemark><name>43(25)</name><description><i>Timestamp: </i><b>30.06.18 21:44</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616017,42.989433,0</coordinates></Point></Placemark>
+<Placemark><name>44(25)</name><description><i>Timestamp: </i><b>30.06.18 21:59</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.616050,42.989633,0</coordinates></Point></Placemark>
+<Placemark><name>45(25)</name><description><i>Timestamp: </i><b>30.06.18 22:14</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.616267,42.989333,0</coordinates></Point></Placemark>
+<Placemark><name>46(25)</name><description><i>Timestamp: </i><b>30.06.18 22:30</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.616783,42.989583,0</coordinates></Point></Placemark>
+<Placemark><name>47(25)</name><description><i>Timestamp: </i><b>30.06.18 22:45</b><i>Parameter: </i><b>1.4</b></description><Point><coordinates>-70.616450,42.989650,0</coordinates></Point></Placemark>
+<Placemark><name>48(25)</name><description><i>Timestamp: </i><b>30.06.18 23:00</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.616367,42.989667,0</coordinates></Point></Placemark>
+<Placemark><name>49(25)</name><description><i>Timestamp: </i><b>30.06.18 23:15</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616300,42.989700,0</coordinates></Point></Placemark>
+<Placemark><name>50(25)</name><description><i>Timestamp: </i><b>30.06.18 23:31</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.616883,42.989417,0</coordinates></Point></Placemark>
+<Placemark><name>51(25)</name><description><i>Timestamp: </i><b>30.06.18 23:46</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.617317,42.989433,0</coordinates></Point></Placemark>
+<Placemark><name>52(25)</name><description><i>Timestamp: </i><b>01.07.18 00:01</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615250,42.988867,0</coordinates></Point></Placemark>
+<Placemark><name>53(25)</name><description><i>Timestamp: </i><b>01.07.18 00:16</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615967,42.989100,0</coordinates></Point></Placemark>
+<Placemark><name>54(25)</name><description><i>Timestamp: </i><b>01.07.18 00:32</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615550,42.988417,0</coordinates></Point></Placemark>
+<Placemark><name>55(25)</name><description><i>Timestamp: </i><b>01.07.18 00:47</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615933,42.988533,0</coordinates></Point></Placemark>
+<Placemark><name>56(25)</name><description><i>Timestamp: </i><b>01.07.18 01:02</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615717,42.988433,0</coordinates></Point></Placemark>
+<Placemark><name>57(25)</name><description><i>Timestamp: </i><b>01.07.18 01:18</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616017,42.988633,0</coordinates></Point></Placemark>
+<Placemark><name>58(25)</name><description><i>Timestamp: </i><b>01.07.18 01:33</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615800,42.988417,0</coordinates></Point></Placemark>
+<Placemark><name>59(25)</name><description><i>Timestamp: </i><b>01.07.18 02:33</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616017,42.988500,0</coordinates></Point></Placemark>
+<Placemark><name>60(25)</name><description><i>Timestamp: </i><b>01.07.18 03:34</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616333,42.989233,0</coordinates></Point></Placemark>
+<Placemark><name>61(25)</name><description><i>Timestamp: </i><b>01.07.18 04:34</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.616050,42.989300,0</coordinates></Point></Placemark>
+<Placemark><name>62(25)</name><description><i>Timestamp: </i><b>01.07.18 05:35</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615867,42.989267,0</coordinates></Point></Placemark>
+<Placemark><name>63(25)</name><description><i>Timestamp: </i><b>01.07.18 06:35</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615983,42.989017,0</coordinates></Point></Placemark>
+<Placemark><name>64(25)</name><description><i>Timestamp: </i><b>01.07.18 07:35</b><i>Parameter: </i><b>0.9</b></description><Point><coordinates>-70.615850,42.989183,0</coordinates></Point></Placemark>
+<Placemark><name>65(25)</name><description><i>Timestamp: </i><b>01.07.18 08:36</b><i>Parameter: </i><b>21.</b></description><Point><coordinates>-70.612700,42.987750,0</coordinates></Point></Placemark>
+<Placemark><name>66(25)</name><description><i>Timestamp: </i><b>01.07.18 09:36</b><i>Parameter: </i><b>35.</b></description><Point><coordinates>-70.032517,42.687067,0</coordinates></Point></Placemark>
+<Placemark><name>67(25)</name><description><i>Timestamp: </i><b>01.07.18 10:36</b><i>Parameter: </i><b>2.8</b></description><Point><coordinates>-69.902183,42.636900,0</coordinates></Point></Placemark>
+<Placemark><name>68(25)</name><description><i>Timestamp: </i><b>01.07.18 11:36</b><i>Parameter: </i><b>5.6</b></description><Point><coordinates>-69.894067,42.649150,0</coordinates></Point></Placemark>
+<Placemark><name>69(25)</name><description><i>Timestamp: </i><b>01.07.18 12:36</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-69.988217,42.633167,0</coordinates></Point></Placemark>
+<Placemark><name>70(25)</name><description><i>Timestamp: </i><b>01.07.18 12:53</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-70.117833,42.681217,0</coordinates></Point></Placemark>
+<Placemark><name>71(25)</name><description><i>Timestamp: </i><b>01.07.18 13:08</b><i>Parameter: </i><b>28.</b></description><Point><coordinates>-70.259517,42.716450,0</coordinates></Point></Placemark>
+<Placemark><name>72(25)</name><description><i>Timestamp: </i><b>01.07.18 13:24</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-70.405183,42.750633,0</coordinates></Point></Placemark>
+<Placemark><name>73(25)</name><description><i>Timestamp: </i><b>01.07.18 13:39</b><i>Parameter: </i><b>31.</b></description><Point><coordinates>-70.518667,42.832100,0</coordinates></Point></Placemark>
+<Placemark><name>74(25)</name><description><i>Timestamp: </i><b>01.07.18 13:54</b><i>Parameter: </i><b>30.</b></description><Point><coordinates>-70.584300,42.945833,0</coordinates></Point></Placemark>
+<Placemark><name>75(25)</name><description><i>Timestamp: </i><b>01.07.18 14:09</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615733,42.989150,0</coordinates></Point></Placemark>
+<Placemark><name>76(25)</name><description><i>Timestamp: </i><b>01.07.18 14:25</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615117,42.989717,0</coordinates></Point></Placemark>
+<Placemark><name>77(25)</name><description><i>Timestamp: </i><b>01.07.18 14:40</b><i>Parameter: </i><b>1.1</b></description><Point><coordinates>-70.615367,42.989517,0</coordinates></Point></Placemark>
+<Placemark><name>78(25)</name><description><i>Timestamp: </i><b>01.07.18 14:55</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615600,42.988983,0</coordinates></Point></Placemark>
+<Placemark><name>79(25)</name><description><i>Timestamp: </i><b>01.07.18 15:10</b><i>Parameter: </i><b>1.3</b></description><Point><coordinates>-70.615733,42.989183,0</coordinates></Point></Placemark>
+<Placemark><name>80(25)</name><description><i>Timestamp: </i><b>01.07.18 15:25</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615750,42.989083,0</coordinates></Point></Placemark>
+<Placemark><name>81(25)</name><description><i>Timestamp: </i><b>01.07.18 15:41</b><i>Parameter: </i><b>2.1</b></description><Point><coordinates>-70.616533,42.989467,0</coordinates></Point></Placemark>
+<Placemark><name>82(25)</name><description><i>Timestamp: </i><b>01.07.18 15:56</b><i>Parameter: </i><b>1.3</b></description><Point><coordinates>-70.616083,42.988933,0</coordinates></Point></Placemark>
+<Placemark><name>83(25)</name><description><i>Timestamp: </i><b>01.07.18 16:11</b><i>Parameter: </i><b>0.8</b></description><Point><coordinates>-70.616117,42.989150,0</coordinates></Point></Placemark>
+<Placemark><name>84(25)</name><description><i>Timestamp: </i><b>01.07.18 16:26</b><i>Parameter: </i><b>0.8</b></description><Point><coordinates>-70.616767,42.989467,0</coordinates></Point></Placemark>
+<Placemark><name>85(25)</name><description><i>Timestamp: </i><b>01.07.18 16:41</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.616567,42.989617,0</coordinates></Point></Placemark>
+<Placemark><name>86(25)</name><description><i>Timestamp: </i><b>01.07.18 16:56</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616483,42.989250,0</coordinates></Point></Placemark>
+<Placemark><name>87(25)</name><description><i>Timestamp: </i><b>01.07.18 17:12</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616667,42.989050,0</coordinates></Point></Placemark>
+<Placemark><name>88(25)</name><description><i>Timestamp: </i><b>01.07.18 17:27</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.616467,42.987600,0</coordinates></Point></Placemark>
+<Placemark><name>89(25)</name><description><i>Timestamp: </i><b>01.07.18 17:42</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.617467,42.988250,0</coordinates></Point></Placemark>
+<Placemark><name>90(25)</name><description><i>Timestamp: </i><b>01.07.18 17:57</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616600,42.988717,0</coordinates></Point></Placemark>
+<Placemark><name>91(25)</name><description><i>Timestamp: </i><b>01.07.18 18:13</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616300,42.988800,0</coordinates></Point></Placemark>
+<Placemark><name>92(25)</name><description><i>Timestamp: </i><b>01.07.18 18:28</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616133,42.989267,0</coordinates></Point></Placemark>
+<Placemark><name>93(25)</name><description><i>Timestamp: </i><b>01.07.18 19:28</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615000,42.988533,0</coordinates></Point></Placemark>
+<Placemark><name>94(25)</name><description><i>Timestamp: </i><b>01.07.18 20:28</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.617083,42.989783,0</coordinates></Point></Placemark>
+<Placemark><name>95(25)</name><description><i>Timestamp: </i><b>01.07.18 21:29</b><i>Parameter: </i><b>2.8</b></description><Point><coordinates>-70.616283,42.989683,0</coordinates></Point></Placemark>
+<Placemark><name>96(25)</name><description><i>Timestamp: </i><b>01.07.18 22:29</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.616583,42.988733,0</coordinates></Point></Placemark>
+<Placemark><name>97(25)</name><description><i>Timestamp: </i><b>01.07.18 23:29</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.616717,42.987667,0</coordinates></Point></Placemark>
+<Placemark><name>98(25)</name><description><i>Timestamp: </i><b>02.07.18 00:30</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.614350,42.988183,0</coordinates></Point></Placemark>
+<Placemark><name>99(25)</name><description><i>Timestamp: </i><b>02.07.18 01:30</b><i>Parameter: </i><b>0.8</b></description><Point><coordinates>-70.615883,42.988567,0</coordinates></Point></Placemark>
+<Placemark><name>100(25)</name><description><i>Timestamp: </i><b>02.07.18 02:31</b><i>Parameter: </i><b>1.9</b></description><Point><coordinates>-70.615483,42.990650,0</coordinates></Point></Placemark>
+<Placemark><name>101(25)</name><description><i>Timestamp: </i><b>02.07.18 03:31</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616150,42.988717,0</coordinates></Point></Placemark>
+<Placemark><name>102(25)</name><description><i>Timestamp: </i><b>02.07.18 04:31</b><i>Parameter: </i><b>1.2</b></description><Point><coordinates>-70.615250,42.989500,0</coordinates></Point></Placemark>
+<Placemark><name>103(25)</name><description><i>Timestamp: </i><b>02.07.18 05:32</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615800,42.988083,0</coordinates></Point></Placemark>
+<Placemark><name>104(25)</name><description><i>Timestamp: </i><b>02.07.18 06:32</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615917,42.988783,0</coordinates></Point></Placemark>
+<Placemark><name>105(25)</name><description><i>Timestamp: </i><b>02.07.18 07:32</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.616200,42.989083,0</coordinates></Point></Placemark>
+<Placemark><name>106(25)</name><description><i>Timestamp: </i><b>02.07.18 08:32</b><i>Parameter: </i><b>22.</b></description><Point><coordinates>-70.555200,42.979183,0</coordinates></Point></Placemark>
+<Placemark><name>107(25)</name><description><i>Timestamp: </i><b>02.07.18 09:33</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-70.224633,42.910183,0</coordinates></Point></Placemark>
+<Placemark><name>108(25)</name><description><i>Timestamp: </i><b>02.07.18 10:33</b><i>Parameter: </i><b>32.</b></description><Point><coordinates>-70.573533,42.992733,0</coordinates></Point></Placemark>
+<Placemark><name>109(25)</name><description><i>Timestamp: </i><b>02.07.18 11:33</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616233,42.989100,0</coordinates></Point></Placemark>
+<Placemark><name>110(25)</name><description><i>Timestamp: </i><b>02.07.18 12:34</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616217,42.988850,0</coordinates></Point></Placemark>
+<Placemark><name>111(25)</name><description><i>Timestamp: </i><b>02.07.18 13:34</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616000,42.989233,0</coordinates></Point></Placemark>
+<Placemark><name>112(25)</name><description><i>Timestamp: </i><b>02.07.18 14:35</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615483,42.988717,0</coordinates></Point></Placemark>
+<Placemark><name>113(25)</name><description><i>Timestamp: </i><b>02.07.18 15:35</b><i>Parameter: </i><b>18.</b></description><Point><coordinates>-70.452367,42.779617,0</coordinates></Point></Placemark>
+<Placemark><name>114(25)</name><description><i>Timestamp: </i><b>02.07.18 16:36</b><i>Parameter: </i><b>20.</b></description><Point><coordinates>-70.427817,42.761600,0</coordinates></Point></Placemark>
+<Placemark><name>115(25)</name><description><i>Timestamp: </i><b>02.07.18 17:36</b><i>Parameter: </i><b>19.</b></description><Point><coordinates>-70.118700,42.536367,0</coordinates></Point></Placemark>
+<Placemark><name>116(25)</name><description><i>Timestamp: </i><b>02.07.18 17:51</b><i>Parameter: </i><b>26.</b></description><Point><coordinates>-69.989600,42.545833,0</coordinates></Point></Placemark>
+<Placemark><name>117(25)</name><description><i>Timestamp: </i><b>02.07.18 18:06</b><i>Parameter: </i><b>7.5</b></description><Point><coordinates>-69.935150,42.531300,0</coordinates></Point></Placemark>
+<Placemark><name>118(25)</name><description><i>Timestamp: </i><b>02.07.18 18:21</b><i>Parameter: </i><b>2.1</b></description><Point><coordinates>-69.946433,42.524983,0</coordinates></Point></Placemark>
+<Placemark><name>119(25)</name><description><i>Timestamp: </i><b>02.07.18 18:36</b><i>Parameter: </i><b>3.0</b></description><Point><coordinates>-69.969017,42.530917,0</coordinates></Point></Placemark>
+<Placemark><name>120(25)</name><description><i>Timestamp: </i><b>02.07.18 18:51</b><i>Parameter: </i><b>3.0</b></description><Point><coordinates>-69.981083,42.540233,0</coordinates></Point></Placemark>
+<Placemark><name>121(25)</name><description><i>Timestamp: </i><b>02.07.18 19:34</b><i>Parameter: </i><b>27.</b></description><Point><coordinates>-69.999450,42.569550,0</coordinates></Point></Placemark>
+<Placemark><name>122(25)</name><description><i>Timestamp: </i><b>02.07.18 19:53</b><i>Parameter: </i><b>3.1</b></description><Point><coordinates>-70.000350,42.585800,0</coordinates></Point></Placemark>
+<Placemark><name>123(25)</name><description><i>Timestamp: </i><b>02.07.18 20:31</b><i>Parameter: </i><b>35.</b></description><Point><coordinates>-70.053483,42.640283,0</coordinates></Point></Placemark>
+<Placemark><name>124(25)</name><description><i>Timestamp: </i><b>02.07.18 20:46</b><i>Parameter: </i><b>38.</b></description><Point><coordinates>-70.187183,42.712517,0</coordinates></Point></Placemark>
+<Placemark><name>125(25)</name><description><i>Timestamp: </i><b>02.07.18 21:01</b><i>Parameter: </i><b>37.</b></description><Point><coordinates>-70.356450,42.812800,0</coordinates></Point></Placemark>
+<Placemark><name>126(25)</name><description><i>Timestamp: </i><b>02.07.18 21:18</b><i>Parameter: </i><b>33.</b></description><Point><coordinates>-70.541550,42.916217,0</coordinates></Point></Placemark>
+<Placemark><name>127(25)</name><description><i>Timestamp: </i><b>02.07.18 22:19</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.616033,42.989417,0</coordinates></Point></Placemark>
+<Placemark><name>128(25)</name><description><i>Timestamp: </i><b>02.07.18 23:20</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615983,42.989283,0</coordinates></Point></Placemark>
+<Placemark><name>129(25)</name><description><i>Timestamp: </i><b>03.07.18 00:20</b><i>Parameter: </i><b>1.2</b></description><Point><coordinates>-70.615717,42.988550,0</coordinates></Point></Placemark>
+<Placemark><name>130(25)</name><description><i>Timestamp: </i><b>03.07.18 01:20</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615767,42.989267,0</coordinates></Point></Placemark>
+<Placemark><name>131(25)</name><description><i>Timestamp: </i><b>03.07.18 02:20</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.614933,42.988083,0</coordinates></Point></Placemark>
+<Placemark><name>132(25)</name><description><i>Timestamp: </i><b>03.07.18 03:21</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615733,42.988867,0</coordinates></Point></Placemark>
+<Placemark><name>133(25)</name><description><i>Timestamp: </i><b>03.07.18 04:21</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615633,42.987233,0</coordinates></Point></Placemark>
+<Placemark><name>134(25)</name><description><i>Timestamp: </i><b>03.07.18 05:22</b><i>Parameter: </i><b>1.1</b></description><Point><coordinates>-70.615767,42.988967,0</coordinates></Point></Placemark>
+<Placemark><name>135(25)</name><description><i>Timestamp: </i><b>03.07.18 06:22</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615850,42.989817,0</coordinates></Point></Placemark>
+<Placemark><name>136(25)</name><description><i>Timestamp: </i><b>03.07.18 07:22</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615967,42.988983,0</coordinates></Point></Placemark>
+<Placemark><name>137(25)</name><description><i>Timestamp: </i><b>03.07.18 08:23</b><i>Parameter: </i><b>32.</b></description><Point><coordinates>-70.566583,42.989233,0</coordinates></Point></Placemark>
+<Placemark><name>138(25)</name><description><i>Timestamp: </i><b>03.07.18 09:23</b><i>Parameter: </i><b>21.</b></description><Point><coordinates>-70.024633,42.991183,0</coordinates></Point></Placemark>
+<Placemark><name>139(25)</name><description><i>Timestamp: </i><b>03.07.18 10:24</b><i>Parameter: </i><b>19.</b></description><Point><coordinates>-69.768950,42.740600,0</coordinates></Point></Placemark>
+<Placemark><name>140(25)</name><description><i>Timestamp: </i><b>03.07.18 11:24</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-69.846167,42.469217,0</coordinates></Point></Placemark>
+<Placemark><name>141(25)</name><description><i>Timestamp: </i><b>03.07.18 12:24</b><i>Parameter: </i><b>1.1</b></description><Point><coordinates>-69.868717,42.469033,0</coordinates></Point></Placemark>
+<Placemark><name>142(25)</name><description><i>Timestamp: </i><b>03.07.18 13:25</b><i>Parameter: </i><b>29.</b></description><Point><coordinates>-69.754733,42.490183,0</coordinates></Point></Placemark>
+<Placemark><name>143(25)</name><description><i>Timestamp: </i><b>03.07.18 14:25</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-69.667300,42.569433,0</coordinates></Point></Placemark>
+<Placemark><name>144(25)</name><description><i>Timestamp: </i><b>03.07.18 15:01</b><i>Parameter: </i><b>24.</b></description><Point><coordinates>-69.691600,42.753267,0</coordinates></Point></Placemark>
+<Placemark><name>145(25)</name><description><i>Timestamp: </i><b>03.07.18 15:16</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-69.799850,42.816117,0</coordinates></Point></Placemark>
+<Placemark><name>146(25)</name><description><i>Timestamp: </i><b>03.07.18 15:31</b><i>Parameter: </i><b>18.</b></description><Point><coordinates>-69.882450,42.836483,0</coordinates></Point></Placemark>
+<Placemark><name>147(25)</name><description><i>Timestamp: </i><b>03.07.18 15:46</b><i>Parameter: </i><b>20.</b></description><Point><coordinates>-69.966600,42.787250,0</coordinates></Point></Placemark>
+<Placemark><name>148(25)</name><description><i>Timestamp: </i><b>03.07.18 16:02</b><i>Parameter: </i><b>20.</b></description><Point><coordinates>-70.024017,42.764150,0</coordinates></Point></Placemark>
+<Placemark><name>149(25)</name><description><i>Timestamp: </i><b>03.07.18 16:17</b><i>Parameter: </i><b>24.</b></description><Point><coordinates>-70.011250,42.689167,0</coordinates></Point></Placemark>
+<Placemark><name>150(25)</name><description><i>Timestamp: </i><b>03.07.18 16:32</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.000467,42.666800,0</coordinates></Point></Placemark>
+<Placemark><name>151(25)</name><description><i>Timestamp: </i><b>03.07.18 16:47</b><i>Parameter: </i><b>8.3</b></description><Point><coordinates>-69.949733,42.665950,0</coordinates></Point></Placemark>
+<Placemark><name>152(25)</name><description><i>Timestamp: </i><b>03.07.18 17:02</b><i>Parameter: </i><b>8.4</b></description><Point><coordinates>-69.903400,42.670167,0</coordinates></Point></Placemark>
+<Placemark><name>153(25)</name><description><i>Timestamp: </i><b>03.07.18 17:17</b><i>Parameter: </i><b>7.6</b></description><Point><coordinates>-69.858500,42.673950,0</coordinates></Point></Placemark>
+<Placemark><name>154(25)</name><description><i>Timestamp: </i><b>03.07.18 17:32</b><i>Parameter: </i><b>2.5</b></description><Point><coordinates>-69.835200,42.676067,0</coordinates></Point></Placemark>
+<Placemark><name>155(25)</name><description><i>Timestamp: </i><b>03.07.18 17:47</b><i>Parameter: </i><b>3.2</b></description><Point><coordinates>-69.820783,42.681783,0</coordinates></Point></Placemark>
+<Placemark><name>156(25)</name><description><i>Timestamp: </i><b>03.07.18 18:02</b><i>Parameter: </i><b>2.1</b></description><Point><coordinates>-69.810583,42.690800,0</coordinates></Point></Placemark>
+<Placemark><name>157(25)</name><description><i>Timestamp: </i><b>03.07.18 18:17</b><i>Parameter: </i><b>2.2</b></description><Point><coordinates>-69.801183,42.703767,0</coordinates></Point></Placemark>
+<Placemark><name>158(25)</name><description><i>Timestamp: </i><b>03.07.18 18:32</b><i>Parameter: </i><b>2.3</b></description><Point><coordinates>-69.794217,42.714550,0</coordinates></Point></Placemark>
+<Placemark><name>159(25)</name><description><i>Timestamp: </i><b>03.07.18 18:48</b><i>Parameter: </i><b>28.</b></description><Point><coordinates>-69.891433,42.737833,0</coordinates></Point></Placemark>
+<Placemark><name>160(25)</name><description><i>Timestamp: </i><b>03.07.18 19:03</b><i>Parameter: </i><b>26.</b></description><Point><coordinates>-70.044567,42.749433,0</coordinates></Point></Placemark>
+<Placemark><name>161(25)</name><description><i>Timestamp: </i><b>03.07.18 19:18</b><i>Parameter: </i><b>28.</b></description><Point><coordinates>-70.204300,42.761667,0</coordinates></Point></Placemark>
+<Placemark><name>162(25)</name><description><i>Timestamp: </i><b>03.07.18 19:33</b><i>Parameter: </i><b>31.</b></description><Point><coordinates>-70.371267,42.790033,0</coordinates></Point></Placemark>
+<Placemark><name>163(25)</name><description><i>Timestamp: </i><b>03.07.18 19:48</b><i>Parameter: </i><b>38.</b></description><Point><coordinates>-70.528067,42.857083,0</coordinates></Point></Placemark>
+<Placemark><name>164(25)</name><description><i>Timestamp: </i><b>03.07.18 20:03</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.612783,42.974217,0</coordinates></Point></Placemark>
+<Placemark><name>165(25)</name><description><i>Timestamp: </i><b>03.07.18 20:19</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615900,42.989217,0</coordinates></Point></Placemark>
+<Placemark><name>166(25)</name><description><i>Timestamp: </i><b>03.07.18 20:34</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615883,42.989717,0</coordinates></Point></Placemark>
+<Placemark><name>167(25)</name><description><i>Timestamp: </i><b>03.07.18 20:49</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615850,42.989583,0</coordinates></Point></Placemark>
+<Placemark><name>168(25)</name><description><i>Timestamp: </i><b>03.07.18 21:05</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615667,42.990367,0</coordinates></Point></Placemark>
+<Placemark><name>169(25)</name><description><i>Timestamp: </i><b>03.07.18 21:20</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615483,42.989283,0</coordinates></Point></Placemark>
+<Placemark><name>170(25)</name><description><i>Timestamp: </i><b>03.07.18 21:35</b><i>Parameter: </i><b>0.8</b></description><Point><coordinates>-70.615633,42.988900,0</coordinates></Point></Placemark>
+<Placemark><name>171(25)</name><description><i>Timestamp: </i><b>03.07.18 21:50</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615400,42.988300,0</coordinates></Point></Placemark>
+<Placemark><name>172(25)</name><description><i>Timestamp: </i><b>03.07.18 22:06</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615933,42.988833,0</coordinates></Point></Placemark>
+<Placemark><name>173(25)</name><description><i>Timestamp: </i><b>03.07.18 22:21</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615750,42.988600,0</coordinates></Point></Placemark>
+<Placemark><name>174(25)</name><description><i>Timestamp: </i><b>03.07.18 22:36</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615650,42.989350,0</coordinates></Point></Placemark>
+<Placemark><name>175(25)</name><description><i>Timestamp: </i><b>03.07.18 22:52</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615883,42.989217,0</coordinates></Point></Placemark>
+<Placemark><name>176(25)</name><description><i>Timestamp: </i><b>03.07.18 23:07</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615817,42.989150,0</coordinates></Point></Placemark>
+<Placemark><name>177(25)</name><description><i>Timestamp: </i><b>03.07.18 23:22</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.616000,42.989167,0</coordinates></Point></Placemark>
+<Placemark><name>178(25)</name><description><i>Timestamp: </i><b>04.07.18 00:05</b><i>Parameter: </i><b>0.7</b></description><Point><coordinates>-70.616533,42.988317,0</coordinates></Point></Placemark>
+<Placemark><name>179(25)</name><description><i>Timestamp: </i><b>04.07.18 00:38</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.615567,42.989033,0</coordinates></Point></Placemark>
+<Placemark><name>180(25)</name><description><i>Timestamp: </i><b>04.07.18 01:39</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.614867,42.987917,0</coordinates></Point></Placemark>
+<Placemark><name>181(25)</name><description><i>Timestamp: </i><b>04.07.18 02:39</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.614217,42.990350,0</coordinates></Point></Placemark>
+<Placemark><name>182(25)</name><description><i>Timestamp: </i><b>04.07.18 03:40</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615800,42.989383,0</coordinates></Point></Placemark>
+<Placemark><name>183(25)</name><description><i>Timestamp: </i><b>04.07.18 04:40</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.614633,42.988333,0</coordinates></Point></Placemark>
+<Placemark><name>184(25)</name><description><i>Timestamp: </i><b>04.07.18 05:40</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616550,42.988950,0</coordinates></Point></Placemark>
+<Placemark><name>185(25)</name><description><i>Timestamp: </i><b>04.07.18 06:41</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616183,42.989250,0</coordinates></Point></Placemark>
+<Placemark><name>186(25)</name><description><i>Timestamp: </i><b>04.07.18 07:41</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.615883,42.988900,0</coordinates></Point></Placemark>
+<Placemark><name>187(25)</name><description><i>Timestamp: </i><b>04.07.18 08:41</b><i>Parameter: </i><b>30.</b></description><Point><coordinates>-70.409400,42.883633,0</coordinates></Point></Placemark>
+<Placemark><name>188(25)</name><description><i>Timestamp: </i><b>04.07.18 09:42</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615950,42.989350,0</coordinates></Point></Placemark>
+<Placemark><name>189(25)</name><description><i>Timestamp: </i><b>04.07.18 10:42</b><i>Parameter: </i><b>35.</b></description><Point><coordinates>-70.613167,42.973450,0</coordinates></Point></Placemark>
+<Placemark><name>190(25)</name><description><i>Timestamp: </i><b>04.07.18 11:42</b><i>Parameter: </i><b>22.</b></description><Point><coordinates>-70.247783,42.728600,0</coordinates></Point></Placemark>
+<Placemark><name>191(25)</name><description><i>Timestamp: </i><b>04.07.18 12:43</b><i>Parameter: </i><b>3.9</b></description><Point><coordinates>-69.982017,42.642150,0</coordinates></Point></Placemark>
+<Placemark><name>192(25)</name><description><i>Timestamp: </i><b>04.07.18 13:43</b><i>Parameter: </i><b>2.7</b></description><Point><coordinates>-70.000150,42.688417,0</coordinates></Point></Placemark>
+<Placemark><name>193(25)</name><description><i>Timestamp: </i><b>04.07.18 14:43</b><i>Parameter: </i><b>2.8</b></description><Point><coordinates>-69.961883,42.730083,0</coordinates></Point></Placemark>
+<Placemark><name>194(25)</name><description><i>Timestamp: </i><b>04.07.18 15:43</b><i>Parameter: </i><b>25.</b></description><Point><coordinates>-69.913217,42.743933,0</coordinates></Point></Placemark>
+<Placemark><name>195(25)</name><description><i>Timestamp: </i><b>04.07.18 16:43</b><i>Parameter: </i><b>24.</b></description><Point><coordinates>-70.020883,42.825383,0</coordinates></Point></Placemark>
+<Placemark><name>196(25)</name><description><i>Timestamp: </i><b>04.07.18 16:43</b><i>Parameter: </i><b>24.</b></description><Point><coordinates>-70.020883,42.825383,0</coordinates></Point></Placemark>
+<Placemark><name>197(25)</name><description><i>Timestamp: </i><b>04.07.18 17:15</b><i>Parameter: </i><b>29.</b></description><Point><coordinates>-70.221600,42.917367,0</coordinates></Point></Placemark>
+<Placemark><name>198(25)</name><description><i>Timestamp: </i><b>04.07.18 17:30</b><i>Parameter: </i><b>28.</b></description><Point><coordinates>-70.334700,42.978683,0</coordinates></Point></Placemark>
+<Placemark><name>199(25)</name><description><i>Timestamp: </i><b>04.07.18 17:30</b><i>Parameter: </i><b>28.</b></description><Point><coordinates>-70.334700,42.978683,0</coordinates></Point></Placemark>
+<Placemark><name>200(25)</name><description><i>Timestamp: </i><b>04.07.18 17:45</b><i>Parameter: </i><b>1.4</b></description><Point><coordinates>-70.428200,43.017800,0</coordinates></Point></Placemark>
+<Placemark><name>201(25)</name><description><i>Timestamp: </i><b>04.07.18 18:00</b><i>Parameter: </i><b>4.6</b></description><Point><coordinates>-70.542117,43.003233,0</coordinates></Point></Placemark>
+<Placemark><name>202(25)</name><description><i>Timestamp: </i><b>04.07.18 18:16</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615867,42.989217,0</coordinates></Point></Placemark>
+<Placemark><name>203(25)</name><description><i>Timestamp: </i><b>04.07.18 18:31</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616000,42.989250,0</coordinates></Point></Placemark>
+<Placemark><name>204(25)</name><description><i>Timestamp: </i><b>04.07.18 18:46</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.617650,42.988567,0</coordinates></Point></Placemark>
+<Placemark><name>205(25)</name><description><i>Timestamp: </i><b>04.07.18 19:02</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.616000,42.989383,0</coordinates></Point></Placemark>
+<Placemark><name>206(25)</name><description><i>Timestamp: </i><b>04.07.18 19:17</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616000,42.989267,0</coordinates></Point></Placemark>
+<Placemark><name>207(25)</name><description><i>Timestamp: </i><b>04.07.18 19:32</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615750,42.989383,0</coordinates></Point></Placemark>
+<Placemark><name>208(25)</name><description><i>Timestamp: </i><b>04.07.18 19:47</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616283,42.989267,0</coordinates></Point></Placemark>
+<Placemark><name>209(25)</name><description><i>Timestamp: </i><b>04.07.18 20:02</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615817,42.989283,0</coordinates></Point></Placemark>
+<Placemark><name>210(25)</name><description><i>Timestamp: </i><b>04.07.18 20:18</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615717,42.989400,0</coordinates></Point></Placemark>
+<Placemark><name>211(25)</name><description><i>Timestamp: </i><b>04.07.18 20:33</b><i>Parameter: </i><b>0.7</b></description><Point><coordinates>-70.616250,42.989117,0</coordinates></Point></Placemark>
+<Placemark><name>212(25)</name><description><i>Timestamp: </i><b>04.07.18 20:48</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616083,42.989050,0</coordinates></Point></Placemark>
+<Placemark><name>213(25)</name><description><i>Timestamp: </i><b>04.07.18 21:03</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.616083,42.989950,0</coordinates></Point></Placemark>
+<Placemark><name>214(25)</name><description><i>Timestamp: </i><b>04.07.18 21:18</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615783,42.988700,0</coordinates></Point></Placemark>
+<Placemark><name>215(25)</name><description><i>Timestamp: </i><b>04.07.18 22:19</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615817,42.989167,0</coordinates></Point></Placemark>
+<Placemark><name>216(25)</name><description><i>Timestamp: </i><b>04.07.18 23:19</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616000,42.988900,0</coordinates></Point></Placemark>
+<Placemark><name>217(25)</name><description><i>Timestamp: </i><b>05.07.18 00:19</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615917,42.988500,0</coordinates></Point></Placemark>
+<Placemark><name>218(25)</name><description><i>Timestamp: </i><b>05.07.18 01:20</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615833,42.988517,0</coordinates></Point></Placemark>
+<Placemark><name>219(25)</name><description><i>Timestamp: </i><b>05.07.18 02:20</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616417,42.989333,0</coordinates></Point></Placemark>
+<Placemark><name>220(25)</name><description><i>Timestamp: </i><b>05.07.18 03:20</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.616250,42.988983,0</coordinates></Point></Placemark>
+<Placemark><name>221(25)</name><description><i>Timestamp: </i><b>05.07.18 04:21</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615750,42.988667,0</coordinates></Point></Placemark>
+<Placemark><name>222(25)</name><description><i>Timestamp: </i><b>05.07.18 05:21</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616550,42.989967,0</coordinates></Point></Placemark>
+<Placemark><name>223(25)</name><description><i>Timestamp: </i><b>05.07.18 06:21</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.616450,42.988650,0</coordinates></Point></Placemark>
+<Placemark><name>224(25)</name><description><i>Timestamp: </i><b>05.07.18 07:22</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.616517,42.988850,0</coordinates></Point></Placemark>
+<Placemark><name>225(25)</name><description><i>Timestamp: </i><b>05.07.18 08:22</b><i>Parameter: </i><b>27.</b></description><Point><coordinates>-70.533333,43.005200,0</coordinates></Point></Placemark>
+<Placemark><name>226(25)</name><description><i>Timestamp: </i><b>05.07.18 09:22</b><i>Parameter: </i><b>20.</b></description><Point><coordinates>-70.005183,42.884633,0</coordinates></Point></Placemark>
+<Placemark><name>227(25)</name><description><i>Timestamp: </i><b>05.07.18 10:23</b><i>Parameter: </i><b>27.</b></description><Point><coordinates>-69.729000,42.619317,0</coordinates></Point></Placemark>
+<Placemark><name>228(25)</name><description><i>Timestamp: </i><b>05.07.18 11:23</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-69.859600,42.408233,0</coordinates></Point></Placemark>
+<Placemark><name>229(25)</name><description><i>Timestamp: </i><b>05.07.18 12:24</b><i>Parameter: </i><b>1.7</b></description><Point><coordinates>-69.836217,42.271950,0</coordinates></Point></Placemark>
+<Placemark><name>230(25)</name><description><i>Timestamp: </i><b>05.07.18 13:24</b><i>Parameter: </i><b>5.0</b></description><Point><coordinates>-69.869367,42.303233,0</coordinates></Point></Placemark>
+<Placemark><name>231(25)</name><description><i>Timestamp: </i><b>05.07.18 14:24</b><i>Parameter: </i><b>9.2</b></description><Point><coordinates>-69.900733,42.328083,0</coordinates></Point></Placemark>
+<Placemark><name>232(25)</name><description><i>Timestamp: </i><b>05.07.18 15:24</b><i>Parameter: </i><b>1.1</b></description><Point><coordinates>-70.001417,42.355600,0</coordinates></Point></Placemark>
+<Placemark><name>233(25)</name><description><i>Timestamp: </i><b>05.07.18 16:24</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-69.841717,42.258517,0</coordinates></Point></Placemark>
+<Placemark><name>234(25)</name><description><i>Timestamp: </i><b>05.07.18 17:07</b><i>Parameter: </i><b>21.</b></description><Point><coordinates>-69.921633,42.171150,0</coordinates></Point></Placemark>
+<Placemark><name>235(25)</name><description><i>Timestamp: </i><b>05.07.18 17:22</b><i>Parameter: </i><b>20.</b></description><Point><coordinates>-70.011917,42.151017,0</coordinates></Point></Placemark>
+<Placemark><name>236(25)</name><description><i>Timestamp: </i><b>05.07.18 17:37</b><i>Parameter: </i><b>33.</b></description><Point><coordinates>-70.120167,42.197383,0</coordinates></Point></Placemark>
+<Placemark><name>237(25)</name><description><i>Timestamp: </i><b>05.07.18 17:53</b><i>Parameter: </i><b>3.7</b></description><Point><coordinates>-70.185233,42.243167,0</coordinates></Point></Placemark>
+<Placemark><name>238(25)</name><description><i>Timestamp: </i><b>05.07.18 18:08</b><i>Parameter: </i><b>1.7</b></description><Point><coordinates>-70.203250,42.248733,0</coordinates></Point></Placemark>
+<Placemark><name>239(25)</name><description><i>Timestamp: </i><b>05.07.18 18:23</b><i>Parameter: </i><b>4.1</b></description><Point><coordinates>-70.186133,42.243717,0</coordinates></Point></Placemark>
+<Placemark><name>240(25)</name><description><i>Timestamp: </i><b>05.07.18 18:39</b><i>Parameter: </i><b>4.4</b></description><Point><coordinates>-70.202283,42.247867,0</coordinates></Point></Placemark>
+<Placemark><name>241(25)</name><description><i>Timestamp: </i><b>05.07.18 18:54</b><i>Parameter: </i><b>7.0</b></description><Point><coordinates>-70.193183,42.243767,0</coordinates></Point></Placemark>
+<Placemark><name>242(25)</name><description><i>Timestamp: </i><b>05.07.18 19:09</b><i>Parameter: </i><b>1.9</b></description><Point><coordinates>-70.198667,42.249667,0</coordinates></Point></Placemark>
+<Placemark><name>243(25)</name><description><i>Timestamp: </i><b>05.07.18 19:24</b><i>Parameter: </i><b>0.9</b></description><Point><coordinates>-70.210617,42.247400,0</coordinates></Point></Placemark>
+<Placemark><name>244(25)</name><description><i>Timestamp: </i><b>05.07.18 19:39</b><i>Parameter: </i><b>0.8</b></description><Point><coordinates>-70.195883,42.245967,0</coordinates></Point></Placemark>
+<Placemark><name>245(25)</name><description><i>Timestamp: </i><b>05.07.18 19:54</b><i>Parameter: </i><b>18.</b></description><Point><coordinates>-70.286850,42.308150,0</coordinates></Point></Placemark>
+<Placemark><name>246(25)</name><description><i>Timestamp: </i><b>05.07.18 20:09</b><i>Parameter: </i><b>38.</b></description><Point><coordinates>-70.394783,42.376617,0</coordinates></Point></Placemark>
+<Placemark><name>247(25)</name><description><i>Timestamp: </i><b>05.07.18 20:24</b><i>Parameter: </i><b>40.</b></description><Point><coordinates>-70.469917,42.465833,0</coordinates></Point></Placemark>
+<Placemark><name>248(25)</name><description><i>Timestamp: </i><b>05.07.18 20:39</b><i>Parameter: </i><b>41.</b></description><Point><coordinates>-70.538700,42.559917,0</coordinates></Point></Placemark>
+<Placemark><name>249(25)</name><description><i>Timestamp: </i><b>05.07.18 20:55</b><i>Parameter: </i><b>29.</b></description><Point><coordinates>-70.616900,42.670367,0</coordinates></Point></Placemark>
+<Placemark><name>250(25)</name><description><i>Timestamp: </i><b>05.07.18 21:10</b><i>Parameter: </i><b>9.5</b></description><Point><coordinates>-70.621400,42.665633,0</coordinates></Point></Placemark>
+<Placemark><name>251(25)</name><description><i>Timestamp: </i><b>05.07.18 21:25</b><i>Parameter: </i><b>47.</b></description><Point><coordinates>-70.621717,42.769817,0</coordinates></Point></Placemark>
+<Placemark><name>252(25)</name><description><i>Timestamp: </i><b>05.07.18 21:40</b><i>Parameter: </i><b>47.</b></description><Point><coordinates>-70.614800,42.958283,0</coordinates></Point></Placemark>
+<Placemark><name>253(25)</name><description><i>Timestamp: </i><b>05.07.18 21:55</b><i>Parameter: </i><b>1.3</b></description><Point><coordinates>-70.615567,42.988667,0</coordinates></Point></Placemark>
+<Placemark><name>254(25)</name><description><i>Timestamp: </i><b>05.07.18 22:10</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.615283,42.988550,0</coordinates></Point></Placemark>
+<Placemark><name>255(25)</name><description><i>Timestamp: </i><b>05.07.18 22:26</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.615300,42.988750,0</coordinates></Point></Placemark>
+<Placemark><name>256(25)</name><description><i>Timestamp: </i><b>05.07.18 22:41</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615900,42.988683,0</coordinates></Point></Placemark>
+<Placemark><name>257(25)</name><description><i>Timestamp: </i><b>05.07.18 22:56</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615583,42.988600,0</coordinates></Point></Placemark>
+<Placemark><name>258(25)</name><description><i>Timestamp: </i><b>05.07.18 23:12</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.615967,42.988850,0</coordinates></Point></Placemark>
+<Placemark><name>259(25)</name><description><i>Timestamp: </i><b>05.07.18 23:27</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.616217,42.988733,0</coordinates></Point></Placemark>
+<Placemark><name>260(25)</name><description><i>Timestamp: </i><b>05.07.18 23:42</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616083,42.988833,0</coordinates></Point></Placemark>
+<Placemark><name>261(25)</name><description><i>Timestamp: </i><b>05.07.18 23:57</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.616333,42.988617,0</coordinates></Point></Placemark>
+<Placemark><name>262(25)</name><description><i>Timestamp: </i><b>06.07.18 00:13</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.616000,42.988583,0</coordinates></Point></Placemark>
+<Placemark><name>263(25)</name><description><i>Timestamp: </i><b>06.07.18 00:28</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616000,42.988517,0</coordinates></Point></Placemark>
+<Placemark><name>264(25)</name><description><i>Timestamp: </i><b>06.07.18 00:43</b><i>Parameter: </i><b>1.0</b></description><Point><coordinates>-70.615900,42.988500,0</coordinates></Point></Placemark>
+<Placemark><name>265(25)</name><description><i>Timestamp: </i><b>06.07.18 00:58</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616200,42.988967,0</coordinates></Point></Placemark>
+<Placemark><name>266(25)</name><description><i>Timestamp: </i><b>06.07.18 01:59</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.616750,42.989300,0</coordinates></Point></Placemark>
+<Placemark><name>267(25)</name><description><i>Timestamp: </i><b>06.07.18 02:59</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.616350,42.989483,0</coordinates></Point></Placemark>
+<Placemark><name>268(25)</name><description><i>Timestamp: </i><b>06.07.18 04:00</b><i>Parameter: </i><b>1.0</b></description><Point><coordinates>-70.615650,42.988533,0</coordinates></Point></Placemark>
+<Placemark><name>269(25)</name><description><i>Timestamp: </i><b>06.07.18 05:00</b><i>Parameter: </i><b>0.0</b></description><Point><coordinates>-70.616333,42.989517,0</coordinates></Point></Placemark>
+<Placemark><name>270(25)</name><description><i>Timestamp: </i><b>06.07.18 06:01</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.617267,42.989383,0</coordinates></Point></Placemark>
+<Placemark><name>271(25)</name><description><i>Timestamp: </i><b>06.07.18 07:01</b><i>Parameter: </i><b>0.1</b></description><Point><coordinates>-70.617300,42.988900,0</coordinates></Point></Placemark>
+<Placemark><name>272(25)</name><description><i>Timestamp: </i><b>06.07.18 08:01</b><i>Parameter: </i><b>0.4</b></description><Point><coordinates>-70.616600,42.989050,0</coordinates></Point></Placemark>
+<Placemark><name>273(25)</name><description><i>Timestamp: </i><b>06.07.18 09:02</b><i>Parameter: </i><b>0.3</b></description><Point><coordinates>-70.615533,42.990450,0</coordinates></Point></Placemark>
+<Placemark><name>274(25)</name><description><i>Timestamp: </i><b>06.07.18 10:02</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.610617,42.986233,0</coordinates></Point></Placemark>
+<Placemark><name>275(25)</name><description><i>Timestamp: </i><b>06.07.18 11:02</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615167,42.989750,0</coordinates></Point></Placemark>
+<Placemark><name>276(25)</name><description><i>Timestamp: </i><b>06.07.18 12:03</b><i>Parameter: </i><b>0.6</b></description><Point><coordinates>-70.616100,42.988867,0</coordinates></Point></Placemark>
+<Placemark><name>277(25)</name><description><i>Timestamp: </i><b>06.07.18 13:03</b><i>Parameter: </i><b>25.</b></description><Point><coordinates>-70.616067,42.989200,0</coordinates></Point></Placemark>
+<Placemark><name>278(25)</name><description><i>Timestamp: </i><b>06.07.18 14:04</b><i>Parameter: </i><b>29.</b></description><Point><coordinates>-70.457917,42.948167,0</coordinates></Point></Placemark>
+<Placemark><name>279(25)</name><description><i>Timestamp: </i><b>06.07.18 15:04</b><i>Parameter: </i><b>16.</b></description><Point><coordinates>-70.032767,42.843900,0</coordinates></Point></Placemark>
+<Placemark><name>280(25)</name><description><i>Timestamp: </i><b>06.07.18 16:04</b><i>Parameter: </i><b>25.</b></description><Point><coordinates>-69.708033,42.865250,0</coordinates></Point></Placemark>
+<Placemark><name>281(25)</name><description><i>Timestamp: </i><b>06.07.18 17:04</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-69.633250,42.791450,0</coordinates></Point></Placemark>
+<Placemark><name>282(25)</name><description><i>Timestamp: </i><b>06.07.18 18:05</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-69.606483,42.816783,0</coordinates></Point></Placemark>
+<Placemark><name>283(25)</name><description><i>Timestamp: </i><b>06.07.18 19:05</b><i>Parameter: </i><b>41.</b></description><Point><coordinates>-69.395933,42.845300,0</coordinates></Point></Placemark>
+<Placemark><name>284(25)</name><description><i>Timestamp: </i><b>06.07.18 20:05</b><i>Parameter: </i><b>0.9</b></description><Point><coordinates>-69.297933,42.910117,0</coordinates></Point></Placemark>
+<Placemark><name>285(25)</name><description><i>Timestamp: </i><b>06.07.18 21:05</b><i>Parameter: </i><b>1.0</b></description><Point><coordinates>-69.259617,42.932583,0</coordinates></Point></Placemark>
+<Placemark><name>286(25)</name><description><i>Timestamp: </i><b>06.07.18 22:06</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-69.259733,42.922550,0</coordinates></Point></Placemark>
+<Placemark><name>287(25)</name><description><i>Timestamp: </i><b>06.07.18 23:06</b><i>Parameter: </i><b>18.</b></description><Point><coordinates>-69.273850,42.921700,0</coordinates></Point></Placemark>
+<Placemark><name>288(25)</name><description><i>Timestamp: </i><b>07.07.18 00:06</b><i>Parameter: </i><b>20.</b></description><Point><coordinates>-69.525433,42.966750,0</coordinates></Point></Placemark>
+<Placemark><name>289(25)</name><description><i>Timestamp: </i><b>07.07.18 01:07</b><i>Parameter: </i><b>11.</b></description><Point><coordinates>-69.945483,42.948800,0</coordinates></Point></Placemark>
+<Placemark><name>290(25)</name><description><i>Timestamp: </i><b>07.07.18 02:07</b><i>Parameter: </i><b>1.4</b></description><Point><coordinates>-70.042983,42.911750,0</coordinates></Point></Placemark>
+<Placemark><name>291(25)</name><description><i>Timestamp: </i><b>07.07.18 03:08</b><i>Parameter: </i><b>1.4</b></description><Point><coordinates>-70.050167,42.888733,0</coordinates></Point></Placemark>
+<Placemark><name>292(25)</name><description><i>Timestamp: </i><b>07.07.18 04:08</b><i>Parameter: </i><b>1.6</b></description><Point><coordinates>-70.063450,42.866267,0</coordinates></Point></Placemark>
+<Placemark><name>293(25)</name><description><i>Timestamp: </i><b>07.07.18 05:08</b><i>Parameter: </i><b>2.7</b></description><Point><coordinates>-70.083367,42.842300,0</coordinates></Point></Placemark>
+<Placemark><name>294(25)</name><description><i>Timestamp: </i><b>07.07.18 06:08</b><i>Parameter: </i><b>2.4</b></description><Point><coordinates>-70.106767,42.822967,0</coordinates></Point></Placemark>
+<Placemark><name>295(25)</name><description><i>Timestamp: </i><b>07.07.18 07:08</b><i>Parameter: </i><b>1.2</b></description><Point><coordinates>-70.126800,42.810850,0</coordinates></Point></Placemark>
+<Placemark><name>296(25)</name><description><i>Timestamp: </i><b>07.07.18 08:09</b><i>Parameter: </i><b>30.</b></description><Point><coordinates>-70.130500,42.803367,0</coordinates></Point></Placemark>
+<Placemark><name>297(25)</name><description><i>Timestamp: </i><b>07.07.18 09:09</b><i>Parameter: </i><b>7.7</b></description><Point><coordinates>-69.998167,42.689033,0</coordinates></Point></Placemark>
+<Placemark><name>298(25)</name><description><i>Timestamp: </i><b>07.07.18 10:09</b><i>Parameter: </i><b>3.0</b></description><Point><coordinates>-69.998850,42.636950,0</coordinates></Point></Placemark>
+<Placemark><name>299(25)</name><description><i>Timestamp: </i><b>07.07.18 11:09</b><i>Parameter: </i><b>20.</b></description><Point><coordinates>-70.127767,42.683283,0</coordinates></Point></Placemark>
+<Placemark><name>300(25)</name><description><i>Timestamp: </i><b>07.07.18 12:09</b><i>Parameter: </i><b>21.</b></description><Point><coordinates>-70.467483,42.912383,0</coordinates></Point></Placemark>
+<Placemark><name>301(25)</name><description><i>Timestamp: </i><b>07.07.18 12:24</b><i>Parameter: </i><b>23.</b></description><Point><coordinates>-70.565917,42.963000,0</coordinates></Point></Placemark>
+<Placemark><name>302(25)</name><description><i>Timestamp: </i><b>07.07.18 12:40</b><i>Parameter: </i><b>0.5</b></description><Point><coordinates>-70.615817,42.988900,0</coordinates></Point></Placemark>
+<Placemark><name>303(25)</name><description><i>Timestamp: </i><b>07.07.18 12:55</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615817,42.989100,0</coordinates></Point></Placemark>
+<Placemark><name>304(25)</name><description><i>Timestamp: </i><b>07.07.18 13:10</b><i>Parameter: </i><b>0.2</b></description><Point><coordinates>-70.615800,42.989333,0</coordinates></Point></Placemark>
+</Folder><Placemark><name>Path</name><LineString><coordinates>
+-70.616083,42.989150,0
+-70.615867,42.989267,0
+-70.615433,42.988567,0
+-70.615350,42.988433,0
+-70.615217,42.989133,0
+-70.615933,42.989367,0
+-70.615917,42.989150,0
+-70.615950,42.989317,0
+-70.615833,42.989250,0
+-70.517400,42.969433,0
+-69.988300,42.771733,0
+-70.252183,42.792850,0
+-70.615900,42.989283,0
+-70.616050,42.989283,0
+-70.615817,42.989167,0
+-70.490617,42.941300,0
+-70.170217,42.817200,0
+-70.072667,42.746083,0
+-69.993117,42.684567,0
+-69.994800,42.679983,0
+-69.989383,42.660050,0
+-69.983067,42.647833,0
+-69.977550,42.635567,0
+-69.987200,42.627000,0
+-70.024367,42.638867,0
+-70.144983,42.686317,0
+-70.243183,42.774000,0
+-70.335933,42.861900,0
+-70.451933,42.951900,0
+-70.570050,42.975933,0
+-70.616100,42.989350,0
+-70.615917,42.989283,0
+-70.615967,42.989167,0
+-70.616067,42.988950,0
+-70.615950,42.988917,0
+-70.617950,42.988133,0
+-70.616100,42.988733,0
+-70.616017,42.988900,0
+-70.615933,42.989417,0
+-70.615383,42.989050,0
+-70.615933,42.989267,0
+-70.615550,42.989600,0
+-70.615833,42.989450,0
+-70.616017,42.989433,0
+-70.616050,42.989633,0
+-70.616267,42.989333,0
+-70.616783,42.989583,0
+-70.616450,42.989650,0
+-70.616367,42.989667,0
+-70.616300,42.989700,0
+-70.616883,42.989417,0
+-70.617317,42.989433,0
+-70.615250,42.988867,0
+-70.615967,42.989100,0
+-70.615550,42.988417,0
+-70.615933,42.988533,0
+-70.615717,42.988433,0
+-70.616017,42.988633,0
+-70.615800,42.988417,0
+-70.616017,42.988500,0
+-70.616333,42.989233,0
+-70.616050,42.989300,0
+-70.615867,42.989267,0
+-70.615983,42.989017,0
+-70.615850,42.989183,0
+-70.612700,42.987750,0
+-70.032517,42.687067,0
+-69.902183,42.636900,0
+-69.894067,42.649150,0
+-69.988217,42.633167,0
+-70.117833,42.681217,0
+-70.259517,42.716450,0
+-70.405183,42.750633,0
+-70.518667,42.832100,0
+-70.584300,42.945833,0
+-70.615733,42.989150,0
+-70.615117,42.989717,0
+-70.615367,42.989517,0
+-70.615600,42.988983,0
+-70.615733,42.989183,0
+-70.615750,42.989083,0
+-70.616533,42.989467,0
+-70.616083,42.988933,0
+-70.616117,42.989150,0
+-70.616767,42.989467,0
+-70.616567,42.989617,0
+-70.616483,42.989250,0
+-70.616667,42.989050,0
+-70.616467,42.987600,0
+-70.617467,42.988250,0
+-70.616600,42.988717,0
+-70.616300,42.988800,0
+-70.616133,42.989267,0
+-70.615000,42.988533,0
+-70.617083,42.989783,0
+-70.616283,42.989683,0
+-70.616583,42.988733,0
+-70.616717,42.987667,0
+-70.614350,42.988183,0
+-70.615883,42.988567,0
+-70.615483,42.990650,0
+-70.616150,42.988717,0
+-70.615250,42.989500,0
+-70.615800,42.988083,0
+-70.615917,42.988783,0
+-70.616200,42.989083,0
+-70.555200,42.979183,0
+-70.224633,42.910183,0
+-70.573533,42.992733,0
+-70.616233,42.989100,0
+-70.616217,42.988850,0
+-70.616000,42.989233,0
+-70.615483,42.988717,0
+-70.452367,42.779617,0
+-70.427817,42.761600,0
+-70.118700,42.536367,0
+-69.989600,42.545833,0
+-69.935150,42.531300,0
+-69.946433,42.524983,0
+-69.969017,42.530917,0
+-69.981083,42.540233,0
+-69.999450,42.569550,0
+-70.000350,42.585800,0
+-70.053483,42.640283,0
+-70.187183,42.712517,0
+-70.356450,42.812800,0
+-70.541550,42.916217,0
+-70.616033,42.989417,0
+-70.615983,42.989283,0
+-70.615717,42.988550,0
+-70.615767,42.989267,0
+-70.614933,42.988083,0
+-70.615733,42.988867,0
+-70.615633,42.987233,0
+-70.615767,42.988967,0
+-70.615850,42.989817,0
+-70.615967,42.988983,0
+-70.566583,42.989233,0
+-70.024633,42.991183,0
+-69.768950,42.740600,0
+-69.846167,42.469217,0
+-69.868717,42.469033,0
+-69.754733,42.490183,0
+-69.667300,42.569433,0
+-69.691600,42.753267,0
+-69.799850,42.816117,0
+-69.882450,42.836483,0
+-69.966600,42.787250,0
+-70.024017,42.764150,0
+-70.011250,42.689167,0
+-70.000467,42.666800,0
+-69.949733,42.665950,0
+-69.903400,42.670167,0
+-69.858500,42.673950,0
+-69.835200,42.676067,0
+-69.820783,42.681783,0
+-69.810583,42.690800,0
+-69.801183,42.703767,0
+-69.794217,42.714550,0
+-69.891433,42.737833,0
+-70.044567,42.749433,0
+-70.204300,42.761667,0
+-70.371267,42.790033,0
+-70.528067,42.857083,0
+-70.612783,42.974217,0
+-70.615900,42.989217,0
+-70.615883,42.989717,0
+-70.615850,42.989583,0
+-70.615667,42.990367,0
+-70.615483,42.989283,0
+-70.615633,42.988900,0
+-70.615400,42.988300,0
+-70.615933,42.988833,0
+-70.615750,42.988600,0
+-70.615650,42.989350,0
+-70.615883,42.989217,0
+-70.615817,42.989150,0
+-70.616000,42.989167,0
+-70.616533,42.988317,0
+-70.615567,42.989033,0
+-70.614867,42.987917,0
+-70.614217,42.990350,0
+-70.615800,42.989383,0
+-70.614633,42.988333,0
+-70.616550,42.988950,0
+-70.616183,42.989250,0
+-70.615883,42.988900,0
+-70.409400,42.883633,0
+-70.615950,42.989350,0
+-70.613167,42.973450,0
+-70.247783,42.728600,0
+-69.982017,42.642150,0
+-70.000150,42.688417,0
+-69.961883,42.730083,0
+-69.913217,42.743933,0
+-70.020883,42.825383,0
+-70.020883,42.825383,0
+-70.221600,42.917367,0
+-70.334700,42.978683,0
+-70.334700,42.978683,0
+-70.428200,43.017800,0
+-70.542117,43.003233,0
+-70.615867,42.989217,0
+-70.616000,42.989250,0
+-70.617650,42.988567,0
+-70.616000,42.989383,0
+-70.616000,42.989267,0
+-70.615750,42.989383,0
+-70.616283,42.989267,0
+-70.615817,42.989283,0
+-70.615717,42.989400,0
+-70.616250,42.989117,0
+-70.616083,42.989050,0
+-70.616083,42.989950,0
+-70.615783,42.988700,0
+-70.615817,42.989167,0
+-70.616000,42.988900,0
+-70.615917,42.988500,0
+-70.615833,42.988517,0
+-70.616417,42.989333,0
+-70.616250,42.988983,0
+-70.615750,42.988667,0
+-70.616550,42.989967,0
+-70.616450,42.988650,0
+-70.616517,42.988850,0
+-70.533333,43.005200,0
+-70.005183,42.884633,0
+-69.729000,42.619317,0
+-69.859600,42.408233,0
+-69.836217,42.271950,0
+-69.869367,42.303233,0
+-69.900733,42.328083,0
+-70.001417,42.355600,0
+-69.841717,42.258517,0
+-69.921633,42.171150,0
+-70.011917,42.151017,0
+-70.120167,42.197383,0
+-70.185233,42.243167,0
+-70.203250,42.248733,0
+-70.186133,42.243717,0
+-70.202283,42.247867,0
+-70.193183,42.243767,0
+-70.198667,42.249667,0
+-70.210617,42.247400,0
+-70.195883,42.245967,0
+-70.286850,42.308150,0
+-70.394783,42.376617,0
+-70.469917,42.465833,0
+-70.538700,42.559917,0
+-70.616900,42.670367,0
+-70.621400,42.665633,0
+-70.621717,42.769817,0
+-70.614800,42.958283,0
+-70.615567,42.988667,0
+-70.615283,42.988550,0
+-70.615300,42.988750,0
+-70.615900,42.988683,0
+-70.615583,42.988600,0
+-70.615967,42.988850,0
+-70.616217,42.988733,0
+-70.616083,42.988833,0
+-70.616333,42.988617,0
+-70.616000,42.988583,0
+-70.616000,42.988517,0
+-70.615900,42.988500,0
+-70.616200,42.988967,0
+-70.616750,42.989300,0
+-70.616350,42.989483,0
+-70.615650,42.988533,0
+-70.616333,42.989517,0
+-70.617267,42.989383,0
+-70.617300,42.988900,0
+-70.616600,42.989050,0
+-70.615533,42.990450,0
+-70.610617,42.986233,0
+-70.615167,42.989750,0
+-70.616100,42.988867,0
+-70.616067,42.989200,0
+-70.457917,42.948167,0
+-70.032767,42.843900,0
+-69.708033,42.865250,0
+-69.633250,42.791450,0
+-69.606483,42.816783,0
+-69.395933,42.845300,0
+-69.297933,42.910117,0
+-69.259617,42.932583,0
+-69.259733,42.922550,0
+-69.273850,42.921700,0
+-69.525433,42.966750,0
+-69.945483,42.948800,0
+-70.042983,42.911750,0
+-70.050167,42.888733,0
+-70.063450,42.866267,0
+-70.083367,42.842300,0
+-70.106767,42.822967,0
+-70.126800,42.810850,0
+-70.130500,42.803367,0
+-69.998167,42.689033,0
+-69.998850,42.636950,0
+-70.127767,42.683283,0
+-70.467483,42.912383,0
+-70.565917,42.963000,0
+-70.615817,42.988900,0
+-70.615817,42.989100,0
+-70.615800,42.989333,0
+</coordinates></LineString></Placemark></Document></kml>

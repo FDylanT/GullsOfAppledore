@@ -1,0 +1,76 @@
+---
+title: "gullGPS"
+author: "Dylan Titmuss"
+date: "2024-03-08"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r}
+library(tidyverse)
+```
+
+## Read data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+gull1 <- read.csv("data/GBBG_GPS/08-2018_05-2019/5-26-2019/ADI29_.csv", sep = ";", header = TRUE)
+
+# try reading raw file
+
+gull <- readLines(file("data/GBBG_GPS/08-2018_05-2019/5-26-2019/20190520081954.txt", encoding = "utf-16le"))
+
+date <- c()
+time <- c()
+lat <- c()
+long <- c()
+speed <- c()
+t <- c()
+U <- c()
+T <- c()
+ID <- c()
+
+r <- 0
+
+for(i in 1:length(gull)) {
+  if(gull[i] == gull[i - 1]) {
+    next
+  }
+  if(str_detect(gull[i], "\\d{6}")) {
+    r <- r + 1
+    date[r] <- str_extract(gull[i], "\\d{6}")
+    time[r] <- str_extract(gull[i], "(?<=\\d{6})\\d{4}")
+    lat[r] <- str_extract(gull[i], "\\d{7}N")
+    long[r] <- str_extract(gull[i], "\\d{7}W")
+    speed[r] <- str_extract(gull[i], "\\d*\\.\\d*")
+    
+    if(str_detect(gull[i + 1], "INFO")) {
+      t[r] <- str_extract(gull[i + 1], "(?<=t=)\\d*")
+      U[r] <- str_extract(gull[i + 1], "(?<=U=)\\d*\\.\\d*")
+      T[r] <- str_extract(gull[i + 1], "(?<=T=)\\d*\\.\\d*")
+      ID[r] <- str_extract(gull[i + 1], "ADI\\d*")
+    }
+  }
+}
+
+gull <- gull[!(str_detect(gull, "^-"))]
+gull <- gull[!(str_detect(gull, "^SS"))]   # rewrite of gull[-(grep("^SS", gull))]
+
+## clean duplicate rows
+
+date <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[1], "\\d{6}"))
+time <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[1], "(?<=\\d{6})\\d{4}"))
+lat <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[1], "\\d{7}N"))
+long <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[1], "\\d{7}W"))
+speed <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[1], "\\d*\\.\\d*"))
+
+t <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[2], "(?<=t=)\\d*"))
+U <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[2], "(?<=U=)\\d*\\.\\d*"))
+T <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[2], "(?<=T=)\\d*\\.\\d*"))
+ID <- sapply(split(gull[1:20], ceiling(seq_along(gull[1:20])/2)), function(x) str_extract(x[2], "ADI\\d*"))
+
+logger <- cbind(ID, date, time, lat, long, speed, t, U, T)
+
+```

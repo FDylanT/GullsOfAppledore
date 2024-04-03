@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>ADI29</name><description>Log converted to kml</description><Folder><name>Placemarks</name>
+<Placemark><name>ADI29(0)</name><description><i>Timestamp: </i><b>05/28/2019 09:56:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.677917,42.998833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(1)</name><description><i>Timestamp: </i><b>05/28/2019 10:11:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.804533,43.025717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(2)</name><description><i>Timestamp: </i><b>05/28/2019 10:26:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.845617,43.076150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(3)</name><description><i>Timestamp: </i><b>05/28/2019 10:42:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.847533,43.074017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(4)</name><description><i>Timestamp: </i><b>05/28/2019 10:57:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.869717,43.110800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(5)</name><description><i>Timestamp: </i><b>05/28/2019 11:12:00</b> <i>Speed: </i><b>17.</b> </description><Point><coordinates>-70.940017,43.172750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(6)</name><description><i>Timestamp: </i><b>05/28/2019 11:27:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.934017,43.188517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(7)</name><description><i>Timestamp: </i><b>05/28/2019 11:42:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.934033,43.188550,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(8)</name><description><i>Timestamp: </i><b>05/28/2019 11:57:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.934183,43.188617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(9)</name><description><i>Timestamp: </i><b>05/28/2019 12:12:00</b> <i>Speed: </i><b>16.</b> </description><Point><coordinates>-70.942183,43.189917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(10)</name><description><i>Timestamp: </i><b>05/28/2019 12:27:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.962350,43.243083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(11)</name><description><i>Timestamp: </i><b>05/28/2019 12:42:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.962167,43.243150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(12)</name><description><i>Timestamp: </i><b>05/28/2019 12:57:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.962067,43.243267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(13)</name><description><i>Timestamp: </i><b>05/28/2019 13:12:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.962167,43.243217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(14)</name><description><i>Timestamp: </i><b>05/28/2019 13:27:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.962117,43.243283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(15)</name><description><i>Timestamp: </i><b>05/28/2019 13:42:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.962100,43.243283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(16)</name><description><i>Timestamp: </i><b>05/28/2019 13:57:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.960167,43.245233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(17)</name><description><i>Timestamp: </i><b>05/28/2019 14:12:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.960183,43.245200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(18)</name><description><i>Timestamp: </i><b>05/28/2019 14:27:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.960150,43.244983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(19)</name><description><i>Timestamp: </i><b>05/28/2019 14:42:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.960083,43.244950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(20)</name><description><i>Timestamp: </i><b>05/28/2019 14:58:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.960067,43.244917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(21)</name><description><i>Timestamp: </i><b>05/28/2019 15:13:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.960067,43.244950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(22)</name><description><i>Timestamp: </i><b>05/28/2019 15:28:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.960067,43.244933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(23)</name><description><i>Timestamp: </i><b>05/28/2019 15:43:00</b> <i>Speed: </i><b>24.</b> </description><Point><coordinates>-70.947867,43.210400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(24)</name><description><i>Timestamp: </i><b>05/28/2019 15:58:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.913317,43.140133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(25)</name><description><i>Timestamp: </i><b>05/28/2019 16:13:00</b> <i>Speed: </i><b>18.</b> </description><Point><coordinates>-70.867867,43.113917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(26)</name><description><i>Timestamp: </i><b>05/28/2019 16:28:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.845583,43.075983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(27)</name><description><i>Timestamp: </i><b>05/28/2019 16:43:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.835883,43.052100,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(28)</name><description><i>Timestamp: </i><b>05/28/2019 16:58:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.835167,43.051867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(29)</name><description><i>Timestamp: </i><b>05/28/2019 17:13:00</b> <i>Speed: </i><b>24.</b> </description><Point><coordinates>-70.841200,43.067800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(30)</name><description><i>Timestamp: </i><b>05/28/2019 17:28:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.845550,43.075983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(31)</name><description><i>Timestamp: </i><b>05/28/2019 17:43:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.845617,43.075967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(32)</name><description><i>Timestamp: </i><b>05/28/2019 17:58:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.845267,43.072450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(33)</name><description><i>Timestamp: </i><b>05/28/2019 18:14:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.845300,43.072517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(34)</name><description><i>Timestamp: </i><b>05/28/2019 18:29:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.844900,43.072283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(35)</name><description><i>Timestamp: </i><b>05/28/2019 18:44:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.845100,43.075717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(36)</name><description><i>Timestamp: </i><b>05/28/2019 18:59:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.844917,43.072433,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(37)</name><description><i>Timestamp: </i><b>05/28/2019 19:14:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.843167,43.071600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(38)</name><description><i>Timestamp: </i><b>05/28/2019 19:29:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.843367,43.071583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(39)</name><description><i>Timestamp: </i><b>05/28/2019 19:44:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.843200,43.071483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(40)</name><description><i>Timestamp: </i><b>05/28/2019 20:00:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.843283,43.070950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(41)</name><description><i>Timestamp: </i><b>05/28/2019 20:15:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.843267,43.071350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(42)</name><description><i>Timestamp: </i><b>05/28/2019 20:30:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.843783,43.071583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(43)</name><description><i>Timestamp: </i><b>05/28/2019 20:45:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.837383,43.054217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(44)</name><description><i>Timestamp: </i><b>05/28/2019 21:01:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.836733,43.056850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(45)</name><description><i>Timestamp: </i><b>05/28/2019 21:16:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.837033,43.056933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(46)</name><description><i>Timestamp: </i><b>05/28/2019 21:31:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.836517,43.055350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(47)</name><description><i>Timestamp: </i><b>05/28/2019 21:46:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.771100,43.072833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(48)</name><description><i>Timestamp: </i><b>05/28/2019 22:01:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.740400,43.079667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(49)</name><description><i>Timestamp: </i><b>05/28/2019 22:17:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740300,43.079717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(50)</name><description><i>Timestamp: </i><b>05/28/2019 22:32:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740250,43.079783,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(51)</name><description><i>Timestamp: </i><b>05/28/2019 22:47:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.740400,43.079983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(52)</name><description><i>Timestamp: </i><b>05/28/2019 23:02:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740317,43.079667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(53)</name><description><i>Timestamp: </i><b>05/28/2019 23:17:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740267,43.079717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(54)</name><description><i>Timestamp: </i><b>05/28/2019 23:32:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740300,43.079767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(55)</name><description><i>Timestamp: </i><b>05/28/2019 23:47:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.740233,43.079817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(56)</name><description><i>Timestamp: </i><b>05/29/2019 00:02:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.740150,43.079767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(57)</name><description><i>Timestamp: </i><b>05/29/2019 00:17:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.736333,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(58)</name><description><i>Timestamp: </i><b>05/29/2019 00:32:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.736267,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(59)</name><description><i>Timestamp: </i><b>05/29/2019 00:47:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736217,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(60)</name><description><i>Timestamp: </i><b>05/29/2019 01:02:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736200,43.079000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(61)</name><description><i>Timestamp: </i><b>05/29/2019 01:17:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.736633,43.078950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(62)</name><description><i>Timestamp: </i><b>05/29/2019 01:32:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736433,43.078817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(63)</name><description><i>Timestamp: </i><b>05/29/2019 01:48:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736300,43.078833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(64)</name><description><i>Timestamp: </i><b>05/29/2019 02:03:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736217,43.078933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(65)</name><description><i>Timestamp: </i><b>05/29/2019 02:18:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736067,43.078833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(66)</name><description><i>Timestamp: </i><b>05/29/2019 02:33:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736117,43.078883,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(67)</name><description><i>Timestamp: </i><b>05/29/2019 02:48:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736083,43.078833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(68)</name><description><i>Timestamp: </i><b>05/29/2019 03:03:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736100,43.079033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(69)</name><description><i>Timestamp: </i><b>05/29/2019 03:18:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736150,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(70)</name><description><i>Timestamp: </i><b>05/29/2019 03:33:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736250,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(71)</name><description><i>Timestamp: </i><b>05/29/2019 03:48:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.736100,43.079117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(72)</name><description><i>Timestamp: </i><b>05/29/2019 04:03:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736000,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(73)</name><description><i>Timestamp: </i><b>05/29/2019 04:18:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.736050,43.079233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(74)</name><description><i>Timestamp: </i><b>05/29/2019 04:33:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736200,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(75)</name><description><i>Timestamp: </i><b>05/29/2019 04:48:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.735767,43.079567,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(76)</name><description><i>Timestamp: </i><b>05/29/2019 05:03:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736067,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(77)</name><description><i>Timestamp: </i><b>05/29/2019 05:18:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736467,43.079117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(78)</name><description><i>Timestamp: </i><b>05/29/2019 05:33:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736433,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(79)</name><description><i>Timestamp: </i><b>05/29/2019 05:49:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736433,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(80)</name><description><i>Timestamp: </i><b>05/29/2019 06:04:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736067,43.078767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(81)</name><description><i>Timestamp: </i><b>05/29/2019 06:19:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.735900,43.078850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(82)</name><description><i>Timestamp: </i><b>05/29/2019 06:34:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.735800,43.078833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(83)</name><description><i>Timestamp: </i><b>05/29/2019 06:49:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.735733,43.078950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(84)</name><description><i>Timestamp: </i><b>05/29/2019 07:04:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736267,43.079067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(85)</name><description><i>Timestamp: </i><b>05/29/2019 07:19:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.735767,43.079033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(86)</name><description><i>Timestamp: </i><b>05/29/2019 07:35:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.736050,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(87)</name><description><i>Timestamp: </i><b>05/29/2019 07:50:00</b> <i>Speed: </i><b>3.9</b> </description><Point><coordinates>-70.740167,43.080467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(88)</name><description><i>Timestamp: </i><b>05/29/2019 08:05:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.739683,43.079750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(89)</name><description><i>Timestamp: </i><b>05/29/2019 08:20:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.739833,43.081083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(90)</name><description><i>Timestamp: </i><b>05/29/2019 08:35:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740000,43.080483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(91)</name><description><i>Timestamp: </i><b>05/29/2019 08:50:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.739483,43.080617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(92)</name><description><i>Timestamp: </i><b>05/29/2019 09:05:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.737800,43.081533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(93)</name><description><i>Timestamp: </i><b>05/29/2019 09:20:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.739633,43.080633,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(94)</name><description><i>Timestamp: </i><b>05/29/2019 09:36:00</b> <i>Speed: </i><b>19.</b> </description><Point><coordinates>-70.759583,43.078983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(95)</name><description><i>Timestamp: </i><b>05/29/2019 09:51:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.833817,43.059283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(96)</name><description><i>Timestamp: </i><b>05/29/2019 10:06:00</b> <i>Speed: </i><b>18.</b> </description><Point><coordinates>-70.860067,43.077317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(97)</name><description><i>Timestamp: </i><b>05/29/2019 10:21:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.892667,43.129517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(98)</name><description><i>Timestamp: </i><b>05/29/2019 10:36:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.933817,43.170333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(99)</name><description><i>Timestamp: </i><b>05/29/2019 10:51:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.934017,43.170283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(100)</name><description><i>Timestamp: </i><b>05/29/2019 11:06:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.933883,43.169933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(101)</name><description><i>Timestamp: </i><b>05/29/2019 11:21:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.933417,43.170450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(102)</name><description><i>Timestamp: </i><b>05/29/2019 11:36:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.933467,43.170333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(103)</name><description><i>Timestamp: </i><b>05/29/2019 11:51:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.933767,43.170083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(104)</name><description><i>Timestamp: </i><b>05/29/2019 12:06:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933800,43.169967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(105)</name><description><i>Timestamp: </i><b>05/29/2019 12:22:00</b> <i>Speed: </i><b>16.</b> </description><Point><coordinates>-70.935317,43.171033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(106)</name><description><i>Timestamp: </i><b>05/29/2019 12:37:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.934100,43.170617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(107)</name><description><i>Timestamp: </i><b>05/29/2019 12:52:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.934267,43.169967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(108)</name><description><i>Timestamp: </i><b>05/29/2019 13:07:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.934100,43.188750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(109)</name><description><i>Timestamp: </i><b>05/29/2019 13:22:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.934083,43.188800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(110)</name><description><i>Timestamp: </i><b>05/29/2019 13:37:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.933867,43.188717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(111)</name><description><i>Timestamp: </i><b>05/29/2019 13:52:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.933883,43.188750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(112)</name><description><i>Timestamp: </i><b>05/29/2019 14:07:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933633,43.188617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(113)</name><description><i>Timestamp: </i><b>05/29/2019 14:22:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.933733,43.188700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(114)</name><description><i>Timestamp: </i><b>05/29/2019 14:37:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.933983,43.184467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(115)</name><description><i>Timestamp: </i><b>05/29/2019 14:52:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933533,43.188717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(116)</name><description><i>Timestamp: </i><b>05/29/2019 15:07:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.933800,43.189083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(117)</name><description><i>Timestamp: </i><b>05/29/2019 15:22:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933567,43.188800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(118)</name><description><i>Timestamp: </i><b>05/29/2019 15:37:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.933450,43.188600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(119)</name><description><i>Timestamp: </i><b>05/29/2019 15:53:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.933550,43.188617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(120)</name><description><i>Timestamp: </i><b>05/29/2019 16:08:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933683,43.188467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(121)</name><description><i>Timestamp: </i><b>05/29/2019 16:23:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933583,43.188450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(122)</name><description><i>Timestamp: </i><b>05/29/2019 16:38:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.933700,43.188617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(123)</name><description><i>Timestamp: </i><b>05/29/2019 16:53:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.933450,43.188533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(124)</name><description><i>Timestamp: </i><b>05/29/2019 17:08:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.933767,43.188350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(125)</name><description><i>Timestamp: </i><b>05/29/2019 17:23:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933833,43.188333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(126)</name><description><i>Timestamp: </i><b>05/29/2019 17:38:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.933883,43.188317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(127)</name><description><i>Timestamp: </i><b>05/29/2019 17:53:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.933717,43.188200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(128)</name><description><i>Timestamp: </i><b>05/29/2019 18:08:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.933483,43.188033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(129)</name><description><i>Timestamp: </i><b>05/29/2019 18:23:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.933350,43.187817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(130)</name><description><i>Timestamp: </i><b>05/29/2019 18:38:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.932183,43.186717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(131)</name><description><i>Timestamp: </i><b>05/29/2019 18:54:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.933817,43.188400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(132)</name><description><i>Timestamp: </i><b>05/29/2019 19:09:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.933967,43.188517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(133)</name><description><i>Timestamp: </i><b>05/29/2019 19:24:00</b> <i>Speed: </i><b>1.2</b> </description><Point><coordinates>-70.934200,43.188717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(134)</name><description><i>Timestamp: </i><b>05/29/2019 19:39:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.934133,43.189233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(135)</name><description><i>Timestamp: </i><b>05/29/2019 19:55:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.939450,43.172983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(136)</name><description><i>Timestamp: </i><b>05/29/2019 20:10:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.934583,43.170267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(137)</name><description><i>Timestamp: </i><b>05/29/2019 20:25:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.933967,43.170383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(138)</name><description><i>Timestamp: </i><b>05/29/2019 20:40:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.933883,43.169933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(139)</name><description><i>Timestamp: </i><b>05/29/2019 20:55:00</b> <i>Speed: </i><b>24.</b> </description><Point><coordinates>-70.869967,43.116317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(140)</name><description><i>Timestamp: </i><b>05/29/2019 21:10:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.844017,43.068833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(141)</name><description><i>Timestamp: </i><b>05/29/2019 21:25:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.837867,43.055350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(142)</name><description><i>Timestamp: </i><b>05/29/2019 21:40:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.848250,43.049183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(143)</name><description><i>Timestamp: </i><b>05/29/2019 21:55:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.805067,43.107817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(144)</name><description><i>Timestamp: </i><b>05/29/2019 22:10:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.740367,43.079800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(145)</name><description><i>Timestamp: </i><b>05/29/2019 22:26:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.740350,43.079933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(146)</name><description><i>Timestamp: </i><b>05/29/2019 22:41:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.740050,43.079817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(147)</name><description><i>Timestamp: </i><b>05/29/2019 22:56:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740117,43.079717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(148)</name><description><i>Timestamp: </i><b>05/29/2019 23:11:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.739783,43.079983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(149)</name><description><i>Timestamp: </i><b>05/29/2019 23:26:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.739817,43.079917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(150)</name><description><i>Timestamp: </i><b>05/29/2019 23:41:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.739517,43.079800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(151)</name><description><i>Timestamp: </i><b>05/29/2019 23:56:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736333,43.079300,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(152)</name><description><i>Timestamp: </i><b>05/30/2019 00:12:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736083,43.079283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(153)</name><description><i>Timestamp: </i><b>05/30/2019 00:27:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.735367,43.079517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(154)</name><description><i>Timestamp: </i><b>05/30/2019 00:42:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736650,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(155)</name><description><i>Timestamp: </i><b>05/30/2019 00:57:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.736950,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(156)</name><description><i>Timestamp: </i><b>05/30/2019 01:12:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.736600,43.078950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(157)</name><description><i>Timestamp: </i><b>05/30/2019 01:27:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736700,43.078867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(158)</name><description><i>Timestamp: </i><b>05/30/2019 01:42:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736650,43.078150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(159)</name><description><i>Timestamp: </i><b>05/30/2019 01:57:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736450,43.078450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(160)</name><description><i>Timestamp: </i><b>05/30/2019 02:12:00</b> <i>Speed: </i><b>1.4</b> </description><Point><coordinates>-70.736250,43.078717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(161)</name><description><i>Timestamp: </i><b>05/30/2019 02:27:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736050,43.078800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(162)</name><description><i>Timestamp: </i><b>05/30/2019 02:42:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736200,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(163)</name><description><i>Timestamp: </i><b>05/30/2019 02:57:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736250,43.079217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(164)</name><description><i>Timestamp: </i><b>05/30/2019 03:13:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736400,43.079400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(165)</name><description><i>Timestamp: </i><b>05/30/2019 03:28:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.735700,43.079200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(166)</name><description><i>Timestamp: </i><b>05/30/2019 03:43:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.735467,43.079367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(167)</name><description><i>Timestamp: </i><b>05/30/2019 03:59:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.736150,43.079200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(168)</name><description><i>Timestamp: </i><b>05/30/2019 04:14:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736133,43.079200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(169)</name><description><i>Timestamp: </i><b>05/30/2019 04:29:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736183,43.079117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(170)</name><description><i>Timestamp: </i><b>05/30/2019 04:44:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736083,43.079200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(171)</name><description><i>Timestamp: </i><b>05/30/2019 04:59:00</b> <i>Speed: </i><b>4.0</b> </description><Point><coordinates>-70.736100,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(172)</name><description><i>Timestamp: </i><b>05/30/2019 05:14:00</b> <i>Speed: </i><b>6.0</b> </description><Point><coordinates>-70.735733,43.079333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(173)</name><description><i>Timestamp: </i><b>05/30/2019 05:29:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736050,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(174)</name><description><i>Timestamp: </i><b>05/30/2019 05:44:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736033,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(175)</name><description><i>Timestamp: </i><b>05/30/2019 05:59:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736100,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(176)</name><description><i>Timestamp: </i><b>05/30/2019 06:14:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.735667,43.078800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(177)</name><description><i>Timestamp: </i><b>05/30/2019 06:29:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.735717,43.078883,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(178)</name><description><i>Timestamp: </i><b>05/30/2019 06:44:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736117,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(179)</name><description><i>Timestamp: </i><b>05/30/2019 07:00:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736200,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(180)</name><description><i>Timestamp: </i><b>05/30/2019 07:15:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.735733,43.079067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(181)</name><description><i>Timestamp: </i><b>05/30/2019 07:30:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736100,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(182)</name><description><i>Timestamp: </i><b>05/30/2019 07:45:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736067,43.079167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(183)</name><description><i>Timestamp: </i><b>05/30/2019 08:00:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736167,43.079000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(184)</name><description><i>Timestamp: </i><b>05/30/2019 08:16:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736083,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(185)</name><description><i>Timestamp: </i><b>05/30/2019 08:31:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.740083,43.079883,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(186)</name><description><i>Timestamp: </i><b>05/30/2019 08:46:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.739733,43.079583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(187)</name><description><i>Timestamp: </i><b>05/30/2019 09:01:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740400,43.080067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(188)</name><description><i>Timestamp: </i><b>05/30/2019 09:16:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740367,43.080000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(189)</name><description><i>Timestamp: </i><b>05/30/2019 09:31:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.833750,43.053467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(190)</name><description><i>Timestamp: </i><b>05/30/2019 09:46:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.844600,43.073833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(191)</name><description><i>Timestamp: </i><b>05/30/2019 10:01:00</b> <i>Speed: </i><b>1.5</b> </description><Point><coordinates>-70.844250,43.072817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(192)</name><description><i>Timestamp: </i><b>05/30/2019 10:16:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.844450,43.072167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(193)</name><description><i>Timestamp: </i><b>05/30/2019 10:31:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.860983,43.089050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(194)</name><description><i>Timestamp: </i><b>05/30/2019 10:47:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.929050,43.164133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(195)</name><description><i>Timestamp: </i><b>05/30/2019 11:02:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.933667,43.169867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(196)</name><description><i>Timestamp: </i><b>05/30/2019 11:17:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.933667,43.169950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(197)</name><description><i>Timestamp: </i><b>05/30/2019 11:32:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.933767,43.170033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(198)</name><description><i>Timestamp: </i><b>05/30/2019 11:47:00</b> <i>Speed: </i><b>1.2</b> </description><Point><coordinates>-70.938983,43.172867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(199)</name><description><i>Timestamp: </i><b>05/30/2019 12:02:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.933933,43.188367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(200)</name><description><i>Timestamp: </i><b>05/30/2019 12:17:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.934083,43.188533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(201)</name><description><i>Timestamp: </i><b>05/30/2019 12:32:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.904100,43.179450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(202)</name><description><i>Timestamp: </i><b>05/30/2019 12:48:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.904000,43.179467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(203)</name><description><i>Timestamp: </i><b>05/30/2019 13:03:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.905517,43.178000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(204)</name><description><i>Timestamp: </i><b>05/30/2019 13:18:00</b> <i>Speed: </i><b>11.</b> </description><Point><coordinates>-70.907317,43.178067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(205)</name><description><i>Timestamp: </i><b>05/30/2019 13:33:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.953033,43.228450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(206)</name><description><i>Timestamp: </i><b>05/30/2019 13:49:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.966017,43.262983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(207)</name><description><i>Timestamp: </i><b>05/30/2019 14:04:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965917,43.262767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(208)</name><description><i>Timestamp: </i><b>05/30/2019 14:19:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.966000,43.262833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(209)</name><description><i>Timestamp: </i><b>05/30/2019 14:34:00</b> <i>Speed: </i><b>1.4</b> </description><Point><coordinates>-70.965883,43.262733,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(210)</name><description><i>Timestamp: </i><b>05/30/2019 14:49:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.965850,43.262683,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(211)</name><description><i>Timestamp: </i><b>05/30/2019 15:04:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965667,43.263000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(212)</name><description><i>Timestamp: </i><b>05/30/2019 15:19:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.967433,43.265567,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(213)</name><description><i>Timestamp: </i><b>05/30/2019 15:34:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.966133,43.263400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(214)</name><description><i>Timestamp: </i><b>05/30/2019 15:49:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965783,43.263167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(215)</name><description><i>Timestamp: </i><b>05/30/2019 16:04:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965700,43.263183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(216)</name><description><i>Timestamp: </i><b>05/30/2019 16:19:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965667,43.263133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(217)</name><description><i>Timestamp: </i><b>05/30/2019 16:34:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.965600,43.263133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(218)</name><description><i>Timestamp: </i><b>05/30/2019 16:49:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965650,43.263183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(219)</name><description><i>Timestamp: </i><b>05/30/2019 17:05:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.967250,43.265817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(220)</name><description><i>Timestamp: </i><b>05/30/2019 17:20:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.965550,43.263133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(221)</name><description><i>Timestamp: </i><b>05/30/2019 17:35:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.965783,43.262883,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(222)</name><description><i>Timestamp: </i><b>05/30/2019 17:50:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.967633,43.265600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(223)</name><description><i>Timestamp: </i><b>05/30/2019 18:05:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.965467,43.263267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(224)</name><description><i>Timestamp: </i><b>05/30/2019 18:20:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965467,43.263200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(225)</name><description><i>Timestamp: </i><b>05/30/2019 18:35:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.965467,43.263283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(226)</name><description><i>Timestamp: </i><b>05/30/2019 18:51:00</b> <i>Speed: </i><b>2.0</b> </description><Point><coordinates>-70.965300,43.263683,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(227)</name><description><i>Timestamp: </i><b>05/30/2019 19:06:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.965433,43.263283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(228)</name><description><i>Timestamp: </i><b>05/30/2019 19:21:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.965417,43.263367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(229)</name><description><i>Timestamp: </i><b>05/30/2019 19:36:00</b> <i>Speed: </i><b>16.</b> </description><Point><coordinates>-70.966067,43.264250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(230)</name><description><i>Timestamp: </i><b>05/30/2019 19:51:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.965267,43.263517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(231)</name><description><i>Timestamp: </i><b>05/30/2019 20:06:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.969950,43.246750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(232)</name><description><i>Timestamp: </i><b>05/30/2019 20:21:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965350,43.244483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(233)</name><description><i>Timestamp: </i><b>05/30/2019 20:36:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.964783,43.244533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(234)</name><description><i>Timestamp: </i><b>05/30/2019 20:52:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.967150,43.246883,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(235)</name><description><i>Timestamp: </i><b>05/30/2019 21:07:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.967083,43.246483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(236)</name><description><i>Timestamp: </i><b>05/30/2019 21:22:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.962850,43.243183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(237)</name><description><i>Timestamp: </i><b>05/30/2019 21:37:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.962667,43.243033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(238)</name><description><i>Timestamp: </i><b>05/30/2019 21:52:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.964000,43.243500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(239)</name><description><i>Timestamp: </i><b>05/30/2019 22:07:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.963800,43.243933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(240)</name><description><i>Timestamp: </i><b>05/30/2019 22:22:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.962850,43.243417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(241)</name><description><i>Timestamp: </i><b>05/30/2019 22:37:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.962900,43.243417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(242)</name><description><i>Timestamp: </i><b>05/30/2019 22:52:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.966900,43.246617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(243)</name><description><i>Timestamp: </i><b>05/30/2019 23:07:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.967117,43.246400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(244)</name><description><i>Timestamp: </i><b>05/30/2019 23:23:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.967100,43.246633,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(245)</name><description><i>Timestamp: </i><b>05/30/2019 23:38:00</b> <i>Speed: </i><b>24.</b> </description><Point><coordinates>-70.912350,43.205900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(246)</name><description><i>Timestamp: </i><b>05/30/2019 23:53:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.825017,43.148333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(247)</name><description><i>Timestamp: </i><b>05/31/2019 00:08:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.746617,43.083983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(248)</name><description><i>Timestamp: </i><b>05/31/2019 00:23:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.736167,43.079300,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(249)</name><description><i>Timestamp: </i><b>05/31/2019 00:38:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736167,43.079300,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(250)</name><description><i>Timestamp: </i><b>05/31/2019 00:53:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736367,43.079383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(251)</name><description><i>Timestamp: </i><b>05/31/2019 01:08:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736350,43.079417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(252)</name><description><i>Timestamp: </i><b>05/31/2019 01:24:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.736350,43.079250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(253)</name><description><i>Timestamp: </i><b>05/31/2019 01:39:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736383,43.079233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(254)</name><description><i>Timestamp: </i><b>05/31/2019 01:54:00</b> <i>Speed: </i><b>2.6</b> </description><Point><coordinates>-70.736433,43.079233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(255)</name><description><i>Timestamp: </i><b>05/31/2019 02:09:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736383,43.079283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(256)</name><description><i>Timestamp: </i><b>05/31/2019 02:24:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736383,43.079250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(257)</name><description><i>Timestamp: </i><b>05/31/2019 02:39:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736383,43.079233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(258)</name><description><i>Timestamp: </i><b>05/31/2019 02:54:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736367,43.079267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(259)</name><description><i>Timestamp: </i><b>05/31/2019 03:09:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736333,43.079250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(260)</name><description><i>Timestamp: </i><b>05/31/2019 03:24:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736317,43.079217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(261)</name><description><i>Timestamp: </i><b>05/31/2019 03:39:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736217,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(262)</name><description><i>Timestamp: </i><b>05/31/2019 03:55:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736233,43.078850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(263)</name><description><i>Timestamp: </i><b>05/31/2019 04:10:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736717,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(264)</name><description><i>Timestamp: </i><b>05/31/2019 04:25:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.736317,43.079283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(265)</name><description><i>Timestamp: </i><b>05/31/2019 04:40:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.736133,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(266)</name><description><i>Timestamp: </i><b>05/31/2019 04:55:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736083,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(267)</name><description><i>Timestamp: </i><b>05/31/2019 05:10:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736067,43.079300,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(268)</name><description><i>Timestamp: </i><b>05/31/2019 05:25:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736233,43.079367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(269)</name><description><i>Timestamp: </i><b>05/31/2019 05:40:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736217,43.079383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(270)</name><description><i>Timestamp: </i><b>05/31/2019 05:55:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740233,43.080183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(271)</name><description><i>Timestamp: </i><b>05/31/2019 06:11:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.740317,43.079967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(272)</name><description><i>Timestamp: </i><b>05/31/2019 06:26:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740333,43.079867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(273)</name><description><i>Timestamp: </i><b>05/31/2019 06:41:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740250,43.080033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(274)</name><description><i>Timestamp: </i><b>05/31/2019 06:56:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740250,43.080083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(275)</name><description><i>Timestamp: </i><b>05/31/2019 07:11:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740267,43.080017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(276)</name><description><i>Timestamp: </i><b>05/31/2019 07:26:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.740250,43.080017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(277)</name><description><i>Timestamp: </i><b>05/31/2019 07:41:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740317,43.080083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(278)</name><description><i>Timestamp: </i><b>05/31/2019 07:56:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740267,43.080133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(279)</name><description><i>Timestamp: </i><b>05/31/2019 08:12:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740283,43.080050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(280)</name><description><i>Timestamp: </i><b>05/31/2019 08:27:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.740317,43.080067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(281)</name><description><i>Timestamp: </i><b>05/31/2019 08:42:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.740333,43.080067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(282)</name><description><i>Timestamp: </i><b>05/31/2019 08:57:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740283,43.080050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(283)</name><description><i>Timestamp: </i><b>05/31/2019 09:12:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740567,43.080067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(284)</name><description><i>Timestamp: </i><b>05/31/2019 09:27:00</b> <i>Speed: </i><b>2.6</b> </description><Point><coordinates>-70.740017,43.079983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(285)</name><description><i>Timestamp: </i><b>05/31/2019 09:42:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.753500,43.075150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(286)</name><description><i>Timestamp: </i><b>05/31/2019 09:57:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.771133,43.072800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(287)</name><description><i>Timestamp: </i><b>05/31/2019 10:12:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.771300,43.072733,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(288)</name><description><i>Timestamp: </i><b>05/31/2019 10:27:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.833667,43.053550,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(289)</name><description><i>Timestamp: </i><b>05/31/2019 10:42:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.845650,43.072850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(290)</name><description><i>Timestamp: </i><b>05/31/2019 10:57:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.891967,43.147800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(291)</name><description><i>Timestamp: </i><b>05/31/2019 11:12:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.950117,43.225267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(292)</name><description><i>Timestamp: </i><b>05/31/2019 11:27:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965733,43.263117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(293)</name><description><i>Timestamp: </i><b>05/31/2019 11:42:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.965583,43.263017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(294)</name><description><i>Timestamp: </i><b>05/31/2019 11:57:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.965683,43.262950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(295)</name><description><i>Timestamp: </i><b>05/31/2019 12:12:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965700,43.262967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(296)</name><description><i>Timestamp: </i><b>05/31/2019 12:28:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.965383,43.263067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(297)</name><description><i>Timestamp: </i><b>05/31/2019 12:43:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.965017,43.263067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(298)</name><description><i>Timestamp: </i><b>05/31/2019 12:58:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.964933,43.263183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(299)</name><description><i>Timestamp: </i><b>05/31/2019 13:13:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965000,43.263167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(300)</name><description><i>Timestamp: </i><b>05/31/2019 13:28:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.966817,43.265500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(301)</name><description><i>Timestamp: </i><b>05/31/2019 13:43:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.967117,43.265267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(302)</name><description><i>Timestamp: </i><b>05/31/2019 13:58:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.964967,43.263100,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(303)</name><description><i>Timestamp: </i><b>05/31/2019 14:13:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.964933,43.263133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(304)</name><description><i>Timestamp: </i><b>05/31/2019 14:28:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.964900,43.262950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(305)</name><description><i>Timestamp: </i><b>05/31/2019 14:43:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.965133,43.263117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(306)</name><description><i>Timestamp: </i><b>05/31/2019 14:58:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.967000,43.265667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(307)</name><description><i>Timestamp: </i><b>05/31/2019 15:14:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.966767,43.265767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(308)</name><description><i>Timestamp: </i><b>05/31/2019 15:29:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965067,43.263150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(309)</name><description><i>Timestamp: </i><b>05/31/2019 15:44:00</b> <i>Speed: </i><b>2.3</b> </description><Point><coordinates>-70.965017,43.263033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(310)</name><description><i>Timestamp: </i><b>05/31/2019 15:59:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.964917,43.263467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(311)</name><description><i>Timestamp: </i><b>05/31/2019 16:15:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.965267,43.263217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(312)</name><description><i>Timestamp: </i><b>05/31/2019 16:30:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.965033,43.263433,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(313)</name><description><i>Timestamp: </i><b>05/31/2019 16:45:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.964917,43.263217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(314)</name><description><i>Timestamp: </i><b>05/31/2019 17:00:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965217,43.263383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(315)</name><description><i>Timestamp: </i><b>05/31/2019 17:15:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.965100,43.263200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(316)</name><description><i>Timestamp: </i><b>05/31/2019 17:30:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965200,43.263200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(317)</name><description><i>Timestamp: </i><b>05/31/2019 17:45:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965450,43.263350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(318)</name><description><i>Timestamp: </i><b>05/31/2019 18:00:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.965100,43.263133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(319)</name><description><i>Timestamp: </i><b>05/31/2019 18:15:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.967050,43.265167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(320)</name><description><i>Timestamp: </i><b>05/31/2019 18:30:00</b> <i>Speed: </i><b>3.3</b> </description><Point><coordinates>-70.965050,43.263283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(321)</name><description><i>Timestamp: </i><b>05/31/2019 18:46:00</b> <i>Speed: </i><b>1.2</b> </description><Point><coordinates>-70.965117,43.263267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(322)</name><description><i>Timestamp: </i><b>05/31/2019 19:01:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.965033,43.263233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(323)</name><description><i>Timestamp: </i><b>05/31/2019 19:16:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.964983,43.263417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(324)</name><description><i>Timestamp: </i><b>05/31/2019 19:31:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.964917,43.263600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(325)</name><description><i>Timestamp: </i><b>05/31/2019 19:46:00</b> <i>Speed: </i><b>15.</b> </description><Point><coordinates>-70.964217,43.243700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(326)</name><description><i>Timestamp: </i><b>05/31/2019 20:01:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.964600,43.263483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(327)</name><description><i>Timestamp: </i><b>05/31/2019 20:16:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.964867,43.263500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(328)</name><description><i>Timestamp: </i><b>05/31/2019 20:31:00</b> <i>Speed: </i><b>11.</b> </description><Point><coordinates>-70.960033,43.256183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(329)</name><description><i>Timestamp: </i><b>05/31/2019 20:46:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.968467,43.246500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(330)</name><description><i>Timestamp: </i><b>05/31/2019 21:01:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966700,43.246833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(331)</name><description><i>Timestamp: </i><b>05/31/2019 21:17:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.966433,43.246500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(332)</name><description><i>Timestamp: </i><b>05/31/2019 21:32:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.965733,43.248550,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(333)</name><description><i>Timestamp: </i><b>05/31/2019 21:47:00</b> <i>Speed: </i><b>17.</b> </description><Point><coordinates>-70.966883,43.245983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(334)</name><description><i>Timestamp: </i><b>05/31/2019 22:02:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.966583,43.246450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(335)</name><description><i>Timestamp: </i><b>05/31/2019 22:17:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.965500,43.242833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(336)</name><description><i>Timestamp: </i><b>05/31/2019 22:32:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.933767,43.188217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(337)</name><description><i>Timestamp: </i><b>05/31/2019 22:47:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.855167,43.165667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(338)</name><description><i>Timestamp: </i><b>05/31/2019 23:03:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.777150,43.109383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(339)</name><description><i>Timestamp: </i><b>05/31/2019 23:18:00</b> <i>Speed: </i><b>1.4</b> </description><Point><coordinates>-70.735733,43.078917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(340)</name><description><i>Timestamp: </i><b>05/31/2019 23:33:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.735083,43.078817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(341)</name><description><i>Timestamp: </i><b>05/31/2019 23:48:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.735767,43.078933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(342)</name><description><i>Timestamp: </i><b>06/01/2019 00:03:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.735767,43.079267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(343)</name><description><i>Timestamp: </i><b>06/01/2019 00:19:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.736017,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(344)</name><description><i>Timestamp: </i><b>06/01/2019 00:34:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736000,43.079167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(345)</name><description><i>Timestamp: </i><b>06/01/2019 00:49:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.736383,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(346)</name><description><i>Timestamp: </i><b>06/01/2019 01:04:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.736083,43.079117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(347)</name><description><i>Timestamp: </i><b>06/01/2019 01:19:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.736100,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(348)</name><description><i>Timestamp: </i><b>06/01/2019 01:34:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.736067,43.078967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(349)</name><description><i>Timestamp: </i><b>06/01/2019 01:49:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.736050,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(350)</name><description><i>Timestamp: </i><b>06/01/2019 02:04:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736000,43.079117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(351)</name><description><i>Timestamp: </i><b>06/01/2019 02:19:00</b> <i>Speed: </i><b>1.7</b> </description><Point><coordinates>-70.735867,43.078967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(352)</name><description><i>Timestamp: </i><b>06/01/2019 02:34:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.735500,43.078550,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(353)</name><description><i>Timestamp: </i><b>06/01/2019 02:49:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.735933,43.079033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(354)</name><description><i>Timestamp: </i><b>06/01/2019 03:04:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.735717,43.078917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(355)</name><description><i>Timestamp: </i><b>06/01/2019 03:19:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736117,43.079217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(356)</name><description><i>Timestamp: </i><b>06/01/2019 03:34:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.735917,43.078967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(357)</name><description><i>Timestamp: </i><b>06/01/2019 03:49:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.735833,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(358)</name><description><i>Timestamp: </i><b>06/01/2019 04:05:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.735750,43.079067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(359)</name><description><i>Timestamp: </i><b>06/01/2019 04:20:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.734817,43.079700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(360)</name><description><i>Timestamp: </i><b>06/01/2019 04:35:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.735867,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(361)</name><description><i>Timestamp: </i><b>06/01/2019 04:50:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.735700,43.079217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(362)</name><description><i>Timestamp: </i><b>06/01/2019 05:05:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736033,43.079017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(363)</name><description><i>Timestamp: </i><b>06/01/2019 05:20:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.736050,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(364)</name><description><i>Timestamp: </i><b>06/01/2019 05:35:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736067,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(365)</name><description><i>Timestamp: </i><b>06/01/2019 05:50:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736000,43.079033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(366)</name><description><i>Timestamp: </i><b>06/01/2019 06:05:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.736050,43.078983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(367)</name><description><i>Timestamp: </i><b>06/01/2019 06:20:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.735833,43.078933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(368)</name><description><i>Timestamp: </i><b>06/01/2019 06:35:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.736067,43.078817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(369)</name><description><i>Timestamp: </i><b>06/01/2019 06:50:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736350,43.078817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(370)</name><description><i>Timestamp: </i><b>06/01/2019 07:06:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736300,43.078900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(371)</name><description><i>Timestamp: </i><b>06/01/2019 07:21:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736167,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(372)</name><description><i>Timestamp: </i><b>06/01/2019 07:36:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736233,43.078967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(373)</name><description><i>Timestamp: </i><b>06/01/2019 07:51:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736117,43.079017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(374)</name><description><i>Timestamp: </i><b>06/01/2019 08:06:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736267,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(375)</name><description><i>Timestamp: </i><b>06/01/2019 08:21:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740450,43.079667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(376)</name><description><i>Timestamp: </i><b>06/01/2019 08:36:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740500,43.079867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(377)</name><description><i>Timestamp: </i><b>06/01/2019 08:51:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740483,43.079950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(378)</name><description><i>Timestamp: </i><b>06/01/2019 09:06:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740417,43.079900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(379)</name><description><i>Timestamp: </i><b>06/01/2019 09:21:00</b> <i>Speed: </i><b>1.7</b> </description><Point><coordinates>-70.740117,43.079950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(380)</name><description><i>Timestamp: </i><b>06/01/2019 09:36:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.739950,43.079800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(381)</name><description><i>Timestamp: </i><b>06/01/2019 09:51:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.739950,43.079950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(382)</name><description><i>Timestamp: </i><b>06/01/2019 10:06:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.740033,43.079833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(383)</name><description><i>Timestamp: </i><b>06/01/2019 10:21:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.771317,43.072600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(384)</name><description><i>Timestamp: </i><b>06/01/2019 10:36:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.832633,43.055117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(385)</name><description><i>Timestamp: </i><b>06/01/2019 10:52:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.849000,43.051067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(386)</name><description><i>Timestamp: </i><b>06/01/2019 11:07:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.849083,43.051117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(387)</name><description><i>Timestamp: </i><b>06/01/2019 11:22:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.837500,43.062050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(388)</name><description><i>Timestamp: </i><b>06/01/2019 11:37:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.845133,43.072800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(389)</name><description><i>Timestamp: </i><b>06/01/2019 11:52:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.836250,43.053833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(390)</name><description><i>Timestamp: </i><b>06/01/2019 12:07:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.837033,43.054283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(391)</name><description><i>Timestamp: </i><b>06/01/2019 12:22:00</b> <i>Speed: </i><b>18.</b> </description><Point><coordinates>-70.836217,43.055517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(392)</name><description><i>Timestamp: </i><b>06/01/2019 12:37:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.861833,43.088733,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(393)</name><description><i>Timestamp: </i><b>06/01/2019 12:52:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.897400,43.164800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(394)</name><description><i>Timestamp: </i><b>06/01/2019 13:07:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.957100,43.242167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(395)</name><description><i>Timestamp: </i><b>06/01/2019 13:22:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.967000,43.246317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(396)</name><description><i>Timestamp: </i><b>06/01/2019 13:38:00</b> <i>Speed: </i><b>1.2</b> </description><Point><coordinates>-70.965983,43.245233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(397)</name><description><i>Timestamp: </i><b>06/01/2019 13:53:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966533,43.246033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(398)</name><description><i>Timestamp: </i><b>06/01/2019 14:08:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.966400,43.246150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(399)</name><description><i>Timestamp: </i><b>06/01/2019 14:23:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.967233,43.246550,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(400)</name><description><i>Timestamp: </i><b>06/01/2019 14:38:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.964783,43.247200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(401)</name><description><i>Timestamp: </i><b>06/01/2019 14:53:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.964083,43.246117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(402)</name><description><i>Timestamp: </i><b>06/01/2019 15:09:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.964017,43.246117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(403)</name><description><i>Timestamp: </i><b>06/01/2019 15:24:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.966833,43.246533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(404)</name><description><i>Timestamp: </i><b>06/01/2019 15:39:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.966250,43.245517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(405)</name><description><i>Timestamp: </i><b>06/01/2019 15:54:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.970350,43.263367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(406)</name><description><i>Timestamp: </i><b>06/01/2019 16:09:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.965533,43.263550,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(407)</name><description><i>Timestamp: </i><b>06/01/2019 16:24:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.965617,43.263667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(408)</name><description><i>Timestamp: </i><b>06/01/2019 16:39:00</b> <i>Speed: </i><b>17.</b> </description><Point><coordinates>-70.970433,43.267833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(409)</name><description><i>Timestamp: </i><b>06/01/2019 16:54:00</b> <i>Speed: </i><b>19.</b> </description><Point><coordinates>-70.962800,43.248717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(410)</name><description><i>Timestamp: </i><b>06/01/2019 17:10:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.965900,43.263933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(411)</name><description><i>Timestamp: </i><b>06/01/2019 17:25:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.965667,43.263950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(412)</name><description><i>Timestamp: </i><b>06/01/2019 17:40:00</b> <i>Speed: </i><b>19.</b> </description><Point><coordinates>-70.966567,43.260583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(413)</name><description><i>Timestamp: </i><b>06/01/2019 17:55:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.965500,43.263067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(414)</name><description><i>Timestamp: </i><b>06/01/2019 18:11:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.965717,43.263133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(415)</name><description><i>Timestamp: </i><b>06/01/2019 18:26:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965717,43.263183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(416)</name><description><i>Timestamp: </i><b>06/01/2019 18:41:00</b> <i>Speed: </i><b>1.7</b> </description><Point><coordinates>-70.965783,43.263250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(417)</name><description><i>Timestamp: </i><b>06/01/2019 18:56:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.965683,43.263233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(418)</name><description><i>Timestamp: </i><b>06/01/2019 19:11:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966617,43.264533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(419)</name><description><i>Timestamp: </i><b>06/01/2019 19:26:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966617,43.264467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(420)</name><description><i>Timestamp: </i><b>06/01/2019 19:41:00</b> <i>Speed: </i><b>6.9</b> </description><Point><coordinates>-70.966633,43.264283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(421)</name><description><i>Timestamp: </i><b>06/01/2019 19:56:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.966717,43.264533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(422)</name><description><i>Timestamp: </i><b>06/01/2019 20:11:00</b> <i>Speed: </i><b>1.8</b> </description><Point><coordinates>-70.966450,43.264100,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(423)</name><description><i>Timestamp: </i><b>06/01/2019 20:26:00</b> <i>Speed: </i><b>16.</b> </description><Point><coordinates>-70.967017,43.247117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(424)</name><description><i>Timestamp: </i><b>06/01/2019 20:41:00</b> <i>Speed: </i><b>5.7</b> </description><Point><coordinates>-70.965600,43.263200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(425)</name><description><i>Timestamp: </i><b>06/01/2019 20:56:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965567,43.263200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(426)</name><description><i>Timestamp: </i><b>06/01/2019 21:11:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.967300,43.256400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(427)</name><description><i>Timestamp: </i><b>06/01/2019 21:26:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.968200,43.245633,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(428)</name><description><i>Timestamp: </i><b>06/01/2019 21:41:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.966333,43.245200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(429)</name><description><i>Timestamp: </i><b>06/01/2019 21:56:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.963150,43.242867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(430)</name><description><i>Timestamp: </i><b>06/01/2019 22:12:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.962983,43.242867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(431)</name><description><i>Timestamp: </i><b>06/01/2019 22:27:00</b> <i>Speed: </i><b>27.</b> </description><Point><coordinates>-70.935133,43.202133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(432)</name><description><i>Timestamp: </i><b>06/01/2019 22:42:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.846750,43.162383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(433)</name><description><i>Timestamp: </i><b>06/01/2019 22:57:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.818783,43.086467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(434)</name><description><i>Timestamp: </i><b>06/01/2019 23:12:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.836450,43.054500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(435)</name><description><i>Timestamp: </i><b>06/01/2019 23:27:00</b> <i>Speed: </i><b>19.</b> </description><Point><coordinates>-70.834717,43.056900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(436)</name><description><i>Timestamp: </i><b>06/01/2019 23:42:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.803683,43.083567,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(437)</name><description><i>Timestamp: </i><b>06/01/2019 23:57:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740300,43.080367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(438)</name><description><i>Timestamp: </i><b>06/02/2019 00:12:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.740100,43.080317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(439)</name><description><i>Timestamp: </i><b>06/02/2019 00:27:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736200,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(440)</name><description><i>Timestamp: </i><b>06/02/2019 00:43:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736167,43.079033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(441)</name><description><i>Timestamp: </i><b>06/02/2019 00:58:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.736183,43.078917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(442)</name><description><i>Timestamp: </i><b>06/02/2019 01:13:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.735850,43.078917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(443)</name><description><i>Timestamp: </i><b>06/02/2019 01:29:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736333,43.079233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(444)</name><description><i>Timestamp: </i><b>06/02/2019 01:44:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736050,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(445)</name><description><i>Timestamp: </i><b>06/02/2019 01:59:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736017,43.079200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(446)</name><description><i>Timestamp: </i><b>06/02/2019 02:14:00</b> <i>Speed: </i><b>2.2</b> </description><Point><coordinates>-70.735967,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(447)</name><description><i>Timestamp: </i><b>06/02/2019 02:29:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736067,43.079200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(448)</name><description><i>Timestamp: </i><b>06/02/2019 02:44:00</b> <i>Speed: </i><b>4.1</b> </description><Point><coordinates>-70.736133,43.079250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(449)</name><description><i>Timestamp: </i><b>06/02/2019 02:59:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.735983,43.079167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(450)</name><description><i>Timestamp: </i><b>06/02/2019 03:14:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.735917,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(451)</name><description><i>Timestamp: </i><b>06/02/2019 03:29:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.736000,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(452)</name><description><i>Timestamp: </i><b>06/02/2019 03:44:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.736100,43.079217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(453)</name><description><i>Timestamp: </i><b>06/02/2019 03:59:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736083,43.079017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(454)</name><description><i>Timestamp: </i><b>06/02/2019 04:14:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.736000,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(455)</name><description><i>Timestamp: </i><b>06/02/2019 04:29:00</b> <i>Speed: </i><b>3.0</b> </description><Point><coordinates>-70.736200,43.078917,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(456)</name><description><i>Timestamp: </i><b>06/02/2019 04:44:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.736133,43.078983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(457)</name><description><i>Timestamp: </i><b>06/02/2019 04:59:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736150,43.078983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(458)</name><description><i>Timestamp: </i><b>06/02/2019 05:14:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736417,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(459)</name><description><i>Timestamp: </i><b>06/02/2019 05:29:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.735933,43.078900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(460)</name><description><i>Timestamp: </i><b>06/02/2019 05:45:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.735950,43.078833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(461)</name><description><i>Timestamp: </i><b>06/02/2019 06:00:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736283,43.078450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(462)</name><description><i>Timestamp: </i><b>06/02/2019 06:15:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736367,43.078383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(463)</name><description><i>Timestamp: </i><b>06/02/2019 06:30:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.735800,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(464)</name><description><i>Timestamp: </i><b>06/02/2019 06:45:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.735800,43.079167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(465)</name><description><i>Timestamp: </i><b>06/02/2019 07:00:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.735817,43.079300,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(466)</name><description><i>Timestamp: </i><b>06/02/2019 07:15:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.735600,43.079417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(467)</name><description><i>Timestamp: </i><b>06/02/2019 07:30:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.735733,43.079317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(468)</name><description><i>Timestamp: </i><b>06/02/2019 07:46:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736450,43.078717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(469)</name><description><i>Timestamp: </i><b>06/02/2019 08:01:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736300,43.078767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(470)</name><description><i>Timestamp: </i><b>06/02/2019 08:16:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736250,43.078800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(471)</name><description><i>Timestamp: </i><b>06/02/2019 08:31:00</b> <i>Speed: </i><b>2.0</b> </description><Point><coordinates>-70.736017,43.079350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(472)</name><description><i>Timestamp: </i><b>06/02/2019 08:46:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.738317,43.080867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(473)</name><description><i>Timestamp: </i><b>06/02/2019 09:01:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740317,43.080233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(474)</name><description><i>Timestamp: </i><b>06/02/2019 09:16:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.740483,43.080317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(475)</name><description><i>Timestamp: </i><b>06/02/2019 09:31:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.740433,43.080317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(476)</name><description><i>Timestamp: </i><b>06/02/2019 09:46:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.740367,43.080283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(477)</name><description><i>Timestamp: </i><b>06/02/2019 10:01:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740433,43.080300,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(478)</name><description><i>Timestamp: </i><b>06/02/2019 10:16:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740450,43.080117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(479)</name><description><i>Timestamp: </i><b>06/02/2019 10:31:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740350,43.080233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(480)</name><description><i>Timestamp: </i><b>06/02/2019 10:47:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.740250,43.080217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(481)</name><description><i>Timestamp: </i><b>06/02/2019 11:02:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740283,43.080050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(482)</name><description><i>Timestamp: </i><b>06/02/2019 11:17:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.771533,43.072133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(483)</name><description><i>Timestamp: </i><b>06/02/2019 11:32:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.771267,43.072417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(484)</name><description><i>Timestamp: </i><b>06/02/2019 11:47:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.767567,43.075267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(485)</name><description><i>Timestamp: </i><b>06/02/2019 12:02:00</b> <i>Speed: </i><b>27.</b> </description><Point><coordinates>-70.846933,43.149767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(486)</name><description><i>Timestamp: </i><b>06/02/2019 12:18:00</b> <i>Speed: </i><b>29.</b> </description><Point><coordinates>-70.944250,43.224850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(487)</name><description><i>Timestamp: </i><b>06/02/2019 12:33:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.962550,43.242283,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(488)</name><description><i>Timestamp: </i><b>06/02/2019 12:48:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.963317,43.242483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(489)</name><description><i>Timestamp: </i><b>06/02/2019 13:03:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.962817,43.243533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(490)</name><description><i>Timestamp: </i><b>06/02/2019 13:18:00</b> <i>Speed: </i><b>1.2</b> </description><Point><coordinates>-70.962500,43.243033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(491)</name><description><i>Timestamp: </i><b>06/02/2019 13:34:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966433,43.245767,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(492)</name><description><i>Timestamp: </i><b>06/02/2019 13:49:00</b> <i>Speed: </i><b>2.8</b> </description><Point><coordinates>-70.966750,43.246533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(493)</name><description><i>Timestamp: </i><b>06/02/2019 14:04:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.967200,43.246583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(494)</name><description><i>Timestamp: </i><b>06/02/2019 14:19:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966500,43.265133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(495)</name><description><i>Timestamp: </i><b>06/02/2019 14:34:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.966483,43.265133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(496)</name><description><i>Timestamp: </i><b>06/02/2019 14:49:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.966233,43.264950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(497)</name><description><i>Timestamp: </i><b>06/02/2019 15:04:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.966583,43.265200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(498)</name><description><i>Timestamp: </i><b>06/02/2019 15:19:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.966750,43.265200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(499)</name><description><i>Timestamp: </i><b>06/02/2019 15:34:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.965850,43.265217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(500)</name><description><i>Timestamp: </i><b>06/02/2019 15:49:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.966717,43.265500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(501)</name><description><i>Timestamp: </i><b>06/02/2019 16:04:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.966250,43.265033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(502)</name><description><i>Timestamp: </i><b>06/02/2019 16:19:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.967350,43.265583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(503)</name><description><i>Timestamp: </i><b>06/02/2019 16:34:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.966700,43.265600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(504)</name><description><i>Timestamp: </i><b>06/02/2019 16:50:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.966683,43.265567,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(505)</name><description><i>Timestamp: </i><b>06/02/2019 17:05:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.966683,43.265600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(506)</name><description><i>Timestamp: </i><b>06/02/2019 17:20:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.966683,43.265750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(507)</name><description><i>Timestamp: </i><b>06/02/2019 17:35:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.967250,43.265383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(508)</name><description><i>Timestamp: </i><b>06/02/2019 17:50:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.966017,43.263317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(509)</name><description><i>Timestamp: </i><b>06/02/2019 18:05:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966400,43.263750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(510)</name><description><i>Timestamp: </i><b>06/02/2019 18:20:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.966917,43.264000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(511)</name><description><i>Timestamp: </i><b>06/02/2019 18:35:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.967050,43.263967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(512)</name><description><i>Timestamp: </i><b>06/02/2019 18:50:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.967050,43.263900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(513)</name><description><i>Timestamp: </i><b>06/02/2019 19:05:00</b> <i>Speed: </i><b>2.0</b> </description><Point><coordinates>-70.967050,43.263650,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(514)</name><description><i>Timestamp: </i><b>06/02/2019 19:20:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.967033,43.263817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(515)</name><description><i>Timestamp: </i><b>06/02/2019 19:35:00</b> <i>Speed: </i><b>1.6</b> </description><Point><coordinates>-70.965900,43.265067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(516)</name><description><i>Timestamp: </i><b>06/02/2019 19:51:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.966017,43.264750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(517)</name><description><i>Timestamp: </i><b>06/02/2019 20:06:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.966050,43.264683,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(518)</name><description><i>Timestamp: </i><b>06/02/2019 20:21:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965983,43.264717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(519)</name><description><i>Timestamp: </i><b>06/02/2019 20:36:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966017,43.264667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(520)</name><description><i>Timestamp: </i><b>06/02/2019 20:51:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.966067,43.264667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(521)</name><description><i>Timestamp: </i><b>06/02/2019 21:07:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.967517,43.265633,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(522)</name><description><i>Timestamp: </i><b>06/02/2019 21:22:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.934883,43.189233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(523)</name><description><i>Timestamp: </i><b>06/02/2019 21:37:00</b> <i>Speed: </i><b>20.</b> </description><Point><coordinates>-70.889467,43.127417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(524)</name><description><i>Timestamp: </i><b>06/02/2019 21:53:00</b> <i>Speed: </i><b>16.</b> </description><Point><coordinates>-70.836767,43.054117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(525)</name><description><i>Timestamp: </i><b>06/02/2019 22:08:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.836317,43.054183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(526)</name><description><i>Timestamp: </i><b>06/02/2019 22:23:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.836250,43.054167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(527)</name><description><i>Timestamp: </i><b>06/02/2019 22:38:00</b> <i>Speed: </i><b>2.1</b> </description><Point><coordinates>-70.837133,43.053817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(528)</name><description><i>Timestamp: </i><b>06/02/2019 22:53:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.836767,43.056267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(529)</name><description><i>Timestamp: </i><b>06/02/2019 23:08:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.846450,43.073350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(530)</name><description><i>Timestamp: </i><b>06/02/2019 23:23:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.846433,43.073033,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(531)</name><description><i>Timestamp: </i><b>06/02/2019 23:38:00</b> <i>Speed: </i><b>18.</b> </description><Point><coordinates>-70.855817,43.073050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(532)</name><description><i>Timestamp: </i><b>06/02/2019 23:53:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.838667,43.053883,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(533)</name><description><i>Timestamp: </i><b>06/03/2019 00:08:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.911050,43.067233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(534)</name><description><i>Timestamp: </i><b>06/03/2019 00:23:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.837133,43.054383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(535)</name><description><i>Timestamp: </i><b>06/03/2019 00:38:00</b> <i>Speed: </i><b>1.3</b> </description><Point><coordinates>-70.836917,43.054350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(536)</name><description><i>Timestamp: </i><b>06/03/2019 00:54:00</b> <i>Speed: </i><b>25.</b> </description><Point><coordinates>-70.773833,43.069650,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(537)</name><description><i>Timestamp: </i><b>06/03/2019 01:09:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.740017,43.080350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(538)</name><description><i>Timestamp: </i><b>06/03/2019 01:24:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.739983,43.080433,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(539)</name><description><i>Timestamp: </i><b>06/03/2019 01:39:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.739933,43.080450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(540)</name><description><i>Timestamp: </i><b>06/03/2019 01:54:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.739917,43.080367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(541)</name><description><i>Timestamp: </i><b>06/03/2019 02:09:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.739900,43.080367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(542)</name><description><i>Timestamp: </i><b>06/03/2019 02:24:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.739900,43.080400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(543)</name><description><i>Timestamp: </i><b>06/03/2019 02:39:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.739867,43.080383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(544)</name><description><i>Timestamp: </i><b>06/03/2019 02:55:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.739867,43.080350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(545)</name><description><i>Timestamp: </i><b>06/03/2019 03:10:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.739983,43.080483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(546)</name><description><i>Timestamp: </i><b>06/03/2019 03:25:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.739833,43.080383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(547)</name><description><i>Timestamp: </i><b>06/03/2019 03:40:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.739933,43.080417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(548)</name><description><i>Timestamp: </i><b>06/03/2019 03:55:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740483,43.079950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(549)</name><description><i>Timestamp: </i><b>06/03/2019 04:10:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740133,43.080267,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(550)</name><description><i>Timestamp: </i><b>06/03/2019 04:25:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.739967,43.080733,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(551)</name><description><i>Timestamp: </i><b>06/03/2019 04:40:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.740150,43.080617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(552)</name><description><i>Timestamp: </i><b>06/03/2019 04:55:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.739867,43.080417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(553)</name><description><i>Timestamp: </i><b>06/03/2019 05:11:00</b> <i>Speed: </i><b>1.2</b> </description><Point><coordinates>-70.740283,43.081000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(554)</name><description><i>Timestamp: </i><b>06/03/2019 05:26:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.740217,43.080583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(555)</name><description><i>Timestamp: </i><b>06/03/2019 05:41:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.739817,43.080383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(556)</name><description><i>Timestamp: </i><b>06/03/2019 05:56:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.739850,43.080467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(557)</name><description><i>Timestamp: </i><b>06/03/2019 06:11:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.739917,43.080350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(558)</name><description><i>Timestamp: </i><b>06/03/2019 06:27:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.739967,43.080600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(559)</name><description><i>Timestamp: </i><b>06/03/2019 06:42:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.739950,43.080433,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(560)</name><description><i>Timestamp: </i><b>06/03/2019 06:57:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740133,43.080200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(561)</name><description><i>Timestamp: </i><b>06/03/2019 07:12:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.739983,43.080417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(562)</name><description><i>Timestamp: </i><b>06/03/2019 07:27:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740417,43.080900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(563)</name><description><i>Timestamp: </i><b>06/03/2019 07:42:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740183,43.080683,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(564)</name><description><i>Timestamp: </i><b>06/03/2019 07:57:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740250,43.080350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(565)</name><description><i>Timestamp: </i><b>06/03/2019 08:12:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.740167,43.080217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(566)</name><description><i>Timestamp: </i><b>06/03/2019 08:28:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740233,43.080250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(567)</name><description><i>Timestamp: </i><b>06/03/2019 08:43:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740150,43.080333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(568)</name><description><i>Timestamp: </i><b>06/03/2019 08:58:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.739950,43.080600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(569)</name><description><i>Timestamp: </i><b>06/03/2019 09:13:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.739933,43.080567,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(570)</name><description><i>Timestamp: </i><b>06/03/2019 09:28:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.739633,43.080600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(571)</name><description><i>Timestamp: </i><b>06/03/2019 09:43:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.739800,43.080417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(572)</name><description><i>Timestamp: </i><b>06/03/2019 09:58:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.739783,43.080317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(573)</name><description><i>Timestamp: </i><b>06/03/2019 10:13:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.739833,43.080517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(574)</name><description><i>Timestamp: </i><b>06/03/2019 10:28:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.772100,43.066250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(575)</name><description><i>Timestamp: </i><b>06/03/2019 10:43:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.835583,43.056583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(576)</name><description><i>Timestamp: </i><b>06/03/2019 10:58:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.835550,43.056533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(577)</name><description><i>Timestamp: </i><b>06/03/2019 11:13:00</b> <i>Speed: </i><b>13.</b> </description><Point><coordinates>-70.833283,43.053683,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(578)</name><description><i>Timestamp: </i><b>06/03/2019 11:28:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.846067,43.072650,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(579)</name><description><i>Timestamp: </i><b>06/03/2019 11:43:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.845900,43.072367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(580)</name><description><i>Timestamp: </i><b>06/03/2019 11:59:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.845833,43.072433,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(581)</name><description><i>Timestamp: </i><b>06/03/2019 12:14:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.846467,43.072933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(582)</name><description><i>Timestamp: </i><b>06/03/2019 12:29:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.846683,43.073700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(583)</name><description><i>Timestamp: </i><b>06/03/2019 12:44:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.846600,43.073667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(584)</name><description><i>Timestamp: </i><b>06/03/2019 12:59:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.846933,43.053017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(585)</name><description><i>Timestamp: </i><b>06/03/2019 13:14:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.845383,43.072200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(586)</name><description><i>Timestamp: </i><b>06/03/2019 13:29:00</b> <i>Speed: </i><b>18.</b> </description><Point><coordinates>-70.854533,43.052850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(587)</name><description><i>Timestamp: </i><b>06/03/2019 13:44:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.837233,43.055000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(588)</name><description><i>Timestamp: </i><b>06/03/2019 13:59:00</b> <i>Speed: </i><b>23.</b> </description><Point><coordinates>-70.859583,43.078667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(589)</name><description><i>Timestamp: </i><b>06/03/2019 14:15:00</b> <i>Speed: </i><b>19.</b> </description><Point><coordinates>-70.881067,43.130333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(590)</name><description><i>Timestamp: </i><b>06/03/2019 14:34:00</b> <i>Speed: </i><b>21.</b> </description><Point><coordinates>-70.935217,43.192583,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(591)</name><description><i>Timestamp: </i><b>06/03/2019 14:49:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.961333,43.245300,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(592)</name><description><i>Timestamp: </i><b>06/03/2019 15:04:00</b> <i>Speed: </i><b>16.</b> </description><Point><coordinates>-70.964733,43.241900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(593)</name><description><i>Timestamp: </i><b>06/03/2019 15:25:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.967300,43.265700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(594)</name><description><i>Timestamp: </i><b>06/03/2019 15:40:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.966567,43.264500,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(595)</name><description><i>Timestamp: </i><b>06/03/2019 15:55:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.966117,43.263200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(596)</name><description><i>Timestamp: </i><b>06/03/2019 16:10:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.966167,43.263150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(597)</name><description><i>Timestamp: </i><b>06/03/2019 16:25:00</b> <i>Speed: </i><b>22.</b> </description><Point><coordinates>-70.966800,43.263333,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(598)</name><description><i>Timestamp: </i><b>06/03/2019 16:40:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.965783,43.263100,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(599)</name><description><i>Timestamp: </i><b>06/03/2019 16:55:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965767,43.263150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(600)</name><description><i>Timestamp: </i><b>06/03/2019 17:10:00</b> <i>Speed: </i><b>18.</b> </description><Point><coordinates>-70.965900,43.263183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(601)</name><description><i>Timestamp: </i><b>06/03/2019 17:25:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965817,43.263250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(602)</name><description><i>Timestamp: </i><b>06/03/2019 17:40:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965750,43.263233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(603)</name><description><i>Timestamp: </i><b>06/03/2019 17:55:00</b> <i>Speed: </i><b>1.2</b> </description><Point><coordinates>-70.967050,43.265650,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(604)</name><description><i>Timestamp: </i><b>06/03/2019 18:11:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.967150,43.265733,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(605)</name><description><i>Timestamp: </i><b>06/03/2019 18:26:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.965750,43.263800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(606)</name><description><i>Timestamp: </i><b>06/03/2019 18:41:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965767,43.263200,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(607)</name><description><i>Timestamp: </i><b>06/03/2019 18:56:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.965817,43.263217,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(608)</name><description><i>Timestamp: </i><b>06/03/2019 19:11:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.965667,43.263700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(609)</name><description><i>Timestamp: </i><b>06/03/2019 19:26:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.965600,43.263617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(610)</name><description><i>Timestamp: </i><b>06/03/2019 19:41:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.965867,43.263800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(611)</name><description><i>Timestamp: </i><b>06/03/2019 19:57:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965900,43.263533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(612)</name><description><i>Timestamp: </i><b>06/03/2019 20:12:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965817,43.263367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(613)</name><description><i>Timestamp: </i><b>06/03/2019 20:27:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.964867,43.262983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(614)</name><description><i>Timestamp: </i><b>06/03/2019 20:42:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.965617,43.263233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(615)</name><description><i>Timestamp: </i><b>06/03/2019 20:57:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.963000,43.242850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(616)</name><description><i>Timestamp: </i><b>06/03/2019 21:12:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.967417,43.246167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(617)</name><description><i>Timestamp: </i><b>06/03/2019 21:27:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.967650,43.246133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(618)</name><description><i>Timestamp: </i><b>06/03/2019 21:42:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.962417,43.242517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(619)</name><description><i>Timestamp: </i><b>06/03/2019 21:57:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.962333,43.242617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(620)</name><description><i>Timestamp: </i><b>06/03/2019 22:12:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.962633,43.242967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(621)</name><description><i>Timestamp: </i><b>06/03/2019 22:27:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.966700,43.245533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(622)</name><description><i>Timestamp: </i><b>06/03/2019 22:42:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.967533,43.246233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(623)</name><description><i>Timestamp: </i><b>06/03/2019 22:57:00</b> <i>Speed: </i><b>52.</b> </description><Point><coordinates>-70.916517,43.174433,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(624)</name><description><i>Timestamp: </i><b>06/03/2019 23:13:00</b> <i>Speed: </i><b>31.</b> </description><Point><coordinates>-70.870583,43.090517,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(625)</name><description><i>Timestamp: </i><b>06/03/2019 23:28:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.836550,43.054367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(626)</name><description><i>Timestamp: </i><b>06/03/2019 23:43:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.845617,43.072483,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(627)</name><description><i>Timestamp: </i><b>06/03/2019 23:58:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.845600,43.072467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(628)</name><description><i>Timestamp: </i><b>06/04/2019 00:13:00</b> <i>Speed: </i><b>9.6</b> </description><Point><coordinates>-70.836883,43.054067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(629)</name><description><i>Timestamp: </i><b>06/04/2019 00:28:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.836817,43.053683,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(630)</name><description><i>Timestamp: </i><b>06/04/2019 00:43:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.836850,43.053933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(631)</name><description><i>Timestamp: </i><b>06/04/2019 00:58:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.836933,43.053850,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(632)</name><description><i>Timestamp: </i><b>06/04/2019 01:13:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.836800,43.053600,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(633)</name><description><i>Timestamp: </i><b>06/04/2019 01:28:00</b> <i>Speed: </i><b>34.</b> </description><Point><coordinates>-70.782117,43.070900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(634)</name><description><i>Timestamp: </i><b>06/04/2019 01:43:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736267,43.079117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(635)</name><description><i>Timestamp: </i><b>06/04/2019 01:58:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736083,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(636)</name><description><i>Timestamp: </i><b>06/04/2019 02:14:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736100,43.079100,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(637)</name><description><i>Timestamp: </i><b>06/04/2019 02:29:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736150,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(638)</name><description><i>Timestamp: </i><b>06/04/2019 02:44:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736233,43.079317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(639)</name><description><i>Timestamp: </i><b>06/04/2019 02:59:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.736483,43.079450,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(640)</name><description><i>Timestamp: </i><b>06/04/2019 03:14:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.736367,43.079400,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(641)</name><description><i>Timestamp: </i><b>06/04/2019 03:29:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.736450,43.079467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(642)</name><description><i>Timestamp: </i><b>06/04/2019 03:44:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736283,43.079367,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(643)</name><description><i>Timestamp: </i><b>06/04/2019 03:59:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.737550,43.079083,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(644)</name><description><i>Timestamp: </i><b>06/04/2019 04:15:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736033,43.079167,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(645)</name><description><i>Timestamp: </i><b>06/04/2019 04:30:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736117,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(646)</name><description><i>Timestamp: </i><b>06/04/2019 04:45:00</b> <i>Speed: </i><b>1.4</b> </description><Point><coordinates>-70.736133,43.079133,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(647)</name><description><i>Timestamp: </i><b>06/04/2019 05:00:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.736083,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(648)</name><description><i>Timestamp: </i><b>06/04/2019 05:15:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736167,43.079183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(649)</name><description><i>Timestamp: </i><b>06/04/2019 05:30:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.735900,43.079067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(650)</name><description><i>Timestamp: </i><b>06/04/2019 05:45:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.735867,43.079000,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(651)</name><description><i>Timestamp: </i><b>06/04/2019 06:00:00</b> <i>Speed: </i><b>1.6</b> </description><Point><coordinates>-70.735833,43.079150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(652)</name><description><i>Timestamp: </i><b>06/04/2019 06:15:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.735967,43.079017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(653)</name><description><i>Timestamp: </i><b>06/04/2019 06:30:00</b> <i>Speed: </i><b>1.6</b> </description><Point><coordinates>-70.735933,43.079017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(654)</name><description><i>Timestamp: </i><b>06/04/2019 06:45:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736350,43.078833,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(655)</name><description><i>Timestamp: </i><b>06/04/2019 07:01:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.736100,43.078967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(656)</name><description><i>Timestamp: </i><b>06/04/2019 07:16:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.735967,43.078783,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(657)</name><description><i>Timestamp: </i><b>06/04/2019 07:31:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.736383,43.079067,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(658)</name><description><i>Timestamp: </i><b>06/04/2019 07:46:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.736217,43.078967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(659)</name><description><i>Timestamp: </i><b>06/04/2019 08:01:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.736100,43.078967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(660)</name><description><i>Timestamp: </i><b>06/04/2019 08:16:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.736067,43.079050,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(661)</name><description><i>Timestamp: </i><b>06/04/2019 08:31:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.740250,43.079533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(662)</name><description><i>Timestamp: </i><b>06/04/2019 08:46:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.740417,43.079617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(663)</name><description><i>Timestamp: </i><b>06/04/2019 09:01:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.740150,43.079667,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(664)</name><description><i>Timestamp: </i><b>06/04/2019 09:16:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.740117,43.079750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(665)</name><description><i>Timestamp: </i><b>06/04/2019 09:31:00</b> <i>Speed: </i><b>1.7</b> </description><Point><coordinates>-70.740283,43.079650,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(666)</name><description><i>Timestamp: </i><b>06/04/2019 09:46:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740100,43.079733,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(667)</name><description><i>Timestamp: </i><b>06/04/2019 10:01:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.740267,43.079550,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(668)</name><description><i>Timestamp: </i><b>06/04/2019 10:16:00</b> <i>Speed: </i><b>1.0</b> </description><Point><coordinates>-70.740233,43.079533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(669)</name><description><i>Timestamp: </i><b>06/04/2019 10:31:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.740267,43.079617,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(670)</name><description><i>Timestamp: </i><b>06/04/2019 10:46:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.740133,43.079533,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(671)</name><description><i>Timestamp: </i><b>06/04/2019 11:01:00</b> <i>Speed: </i><b>24.</b> </description><Point><coordinates>-70.786250,43.060700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(672)</name><description><i>Timestamp: </i><b>06/04/2019 11:17:00</b> <i>Speed: </i><b>11.</b> </description><Point><coordinates>-70.846667,43.074800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(673)</name><description><i>Timestamp: </i><b>06/04/2019 11:32:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.847167,43.074783,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(674)</name><description><i>Timestamp: </i><b>06/04/2019 11:47:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.847717,43.073967,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(675)</name><description><i>Timestamp: </i><b>06/04/2019 12:02:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.847600,43.074017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(676)</name><description><i>Timestamp: </i><b>06/04/2019 12:17:00</b> <i>Speed: </i><b>2.5</b> </description><Point><coordinates>-70.847817,43.074150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(677)</name><description><i>Timestamp: </i><b>06/04/2019 12:32:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.848500,43.071233,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(678)</name><description><i>Timestamp: </i><b>06/04/2019 12:47:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.848483,43.071150,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(679)</name><description><i>Timestamp: </i><b>06/04/2019 13:02:00</b> <i>Speed: </i><b>0.7</b> </description><Point><coordinates>-70.836150,43.054017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(680)</name><description><i>Timestamp: </i><b>06/04/2019 13:17:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.849300,43.052467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(681)</name><description><i>Timestamp: </i><b>06/04/2019 13:32:00</b> <i>Speed: </i><b>28.</b> </description><Point><coordinates>-70.846500,43.052317,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(682)</name><description><i>Timestamp: </i><b>06/04/2019 13:47:00</b> <i>Speed: </i><b>16.</b> </description><Point><coordinates>-70.843750,43.074817,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(683)</name><description><i>Timestamp: </i><b>06/04/2019 14:06:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.888850,43.082117,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(684)</name><description><i>Timestamp: </i><b>06/04/2019 14:21:00</b> <i>Speed: </i><b>28.</b> </description><Point><coordinates>-70.866017,43.066467,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(685)</name><description><i>Timestamp: </i><b>06/04/2019 14:36:00</b> <i>Speed: </i><b>30.</b> </description><Point><coordinates>-70.689167,43.012417,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(686)</name><description><i>Timestamp: </i><b>06/04/2019 14:56:00</b> <i>Speed: </i><b>1.4</b> </description><Point><coordinates>-70.615400,42.988800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(687)</name><description><i>Timestamp: </i><b>06/04/2019 15:11:00</b> <i>Speed: </i><b>1.1</b> </description><Point><coordinates>-70.615383,42.988983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(688)</name><description><i>Timestamp: </i><b>06/04/2019 15:26:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.615550,42.988567,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(689)</name><description><i>Timestamp: </i><b>06/04/2019 15:42:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.615367,42.988900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(690)</name><description><i>Timestamp: </i><b>06/04/2019 15:57:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.615450,42.988750,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(691)</name><description><i>Timestamp: </i><b>06/04/2019 16:12:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.615367,42.988383,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(692)</name><description><i>Timestamp: </i><b>06/04/2019 16:27:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.616800,42.986933,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(693)</name><description><i>Timestamp: </i><b>06/04/2019 16:42:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.616633,42.986800,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(694)</name><description><i>Timestamp: </i><b>06/04/2019 16:58:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.616650,42.986900,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(695)</name><description><i>Timestamp: </i><b>06/04/2019 17:13:00</b> <i>Speed: </i><b>0.3</b> </description><Point><coordinates>-70.616550,42.986867,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(696)</name><description><i>Timestamp: </i><b>06/04/2019 17:28:00</b> <i>Speed: </i><b>0.6</b> </description><Point><coordinates>-70.616717,42.986983,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(697)</name><description><i>Timestamp: </i><b>06/04/2019 17:43:00</b> <i>Speed: </i><b>0.9</b> </description><Point><coordinates>-70.616783,42.987017,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(698)</name><description><i>Timestamp: </i><b>06/04/2019 17:58:00</b> <i>Speed: </i><b>3.7</b> </description><Point><coordinates>-70.615283,42.989183,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(699)</name><description><i>Timestamp: </i><b>06/04/2019 18:13:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.615317,42.989250,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(700)</name><description><i>Timestamp: </i><b>06/04/2019 18:29:00</b> <i>Speed: </i><b>0.0</b> </description><Point><coordinates>-70.615300,42.989350,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(701)</name><description><i>Timestamp: </i><b>06/04/2019 18:44:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.611667,42.984717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(702)</name><description><i>Timestamp: </i><b>06/04/2019 19:00:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.611783,42.984700,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(703)</name><description><i>Timestamp: </i><b>06/04/2019 19:15:00</b> <i>Speed: </i><b>0.2</b> </description><Point><coordinates>-70.611817,42.984733,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(704)</name><description><i>Timestamp: </i><b>06/04/2019 19:30:00</b> <i>Speed: </i><b>0.1</b> </description><Point><coordinates>-70.611583,42.985950,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(705)</name><description><i>Timestamp: </i><b>06/04/2019 19:45:00</b> <i>Speed: </i><b>0.4</b> </description><Point><coordinates>-70.611533,42.985783,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(706)</name><description><i>Timestamp: </i><b>06/04/2019 20:00:00</b> <i>Speed: </i><b>0.8</b> </description><Point><coordinates>-70.611467,42.984717,0</coordinates></Point></Placemark>
+<Placemark><name>ADI29(707)</name><description><i>Timestamp: </i><b>06/04/2019 20:15:00</b> <i>Speed: </i><b>0.5</b> </description><Point><coordinates>-70.611683,42.984950,0</coordinates></Point></Placemark>
+</Folder><Placemark><name>Path</name><LineString><coordinates>
+-70.677917,42.998833,0
+-70.804533,43.025717,0
+-70.845617,43.076150,0
+-70.847533,43.074017,0
+-70.869717,43.110800,0
+-70.940017,43.172750,0
+-70.934017,43.188517,0
+-70.934033,43.188550,0
+-70.934183,43.188617,0
+-70.942183,43.189917,0
+-70.962350,43.243083,0
+-70.962167,43.243150,0
+-70.962067,43.243267,0
+-70.962167,43.243217,0
+-70.962117,43.243283,0
+-70.962100,43.243283,0
+-70.960167,43.245233,0
+-70.960183,43.245200,0
+-70.960150,43.244983,0
+-70.960083,43.244950,0
+-70.960067,43.244917,0
+-70.960067,43.244950,0
+-70.960067,43.244933,0
+-70.947867,43.210400,0
+-70.913317,43.140133,0
+-70.867867,43.113917,0
+-70.845583,43.075983,0
+-70.835883,43.052100,0
+-70.835167,43.051867,0
+-70.841200,43.067800,0
+-70.845550,43.075983,0
+-70.845617,43.075967,0
+-70.845267,43.072450,0
+-70.845300,43.072517,0
+-70.844900,43.072283,0
+-70.845100,43.075717,0
+-70.844917,43.072433,0
+-70.843167,43.071600,0
+-70.843367,43.071583,0
+-70.843200,43.071483,0
+-70.843283,43.070950,0
+-70.843267,43.071350,0
+-70.843783,43.071583,0
+-70.837383,43.054217,0
+-70.836733,43.056850,0
+-70.837033,43.056933,0
+-70.836517,43.055350,0
+-70.771100,43.072833,0
+-70.740400,43.079667,0
+-70.740300,43.079717,0
+-70.740250,43.079783,0
+-70.740400,43.079983,0
+-70.740317,43.079667,0
+-70.740267,43.079717,0
+-70.740300,43.079767,0
+-70.740233,43.079817,0
+-70.740150,43.079767,0
+-70.736333,43.079150,0
+-70.736267,43.079083,0
+-70.736217,43.079050,0
+-70.736200,43.079000,0
+-70.736633,43.078950,0
+-70.736433,43.078817,0
+-70.736300,43.078833,0
+-70.736217,43.078933,0
+-70.736067,43.078833,0
+-70.736117,43.078883,0
+-70.736083,43.078833,0
+-70.736100,43.079033,0
+-70.736150,43.079050,0
+-70.736250,43.079133,0
+-70.736100,43.079117,0
+-70.736000,43.079150,0
+-70.736050,43.079233,0
+-70.736200,43.079150,0
+-70.735767,43.079567,0
+-70.736067,43.079050,0
+-70.736467,43.079117,0
+-70.736433,43.079150,0
+-70.736433,43.079150,0
+-70.736067,43.078767,0
+-70.735900,43.078850,0
+-70.735800,43.078833,0
+-70.735733,43.078950,0
+-70.736267,43.079067,0
+-70.735767,43.079033,0
+-70.736050,43.079133,0
+-70.740167,43.080467,0
+-70.739683,43.079750,0
+-70.739833,43.081083,0
+-70.740000,43.080483,0
+-70.739483,43.080617,0
+-70.737800,43.081533,0
+-70.739633,43.080633,0
+-70.759583,43.078983,0
+-70.833817,43.059283,0
+-70.860067,43.077317,0
+-70.892667,43.129517,0
+-70.933817,43.170333,0
+-70.934017,43.170283,0
+-70.933883,43.169933,0
+-70.933417,43.170450,0
+-70.933467,43.170333,0
+-70.933767,43.170083,0
+-70.933800,43.169967,0
+-70.935317,43.171033,0
+-70.934100,43.170617,0
+-70.934267,43.169967,0
+-70.934100,43.188750,0
+-70.934083,43.188800,0
+-70.933867,43.188717,0
+-70.933883,43.188750,0
+-70.933633,43.188617,0
+-70.933733,43.188700,0
+-70.933983,43.184467,0
+-70.933533,43.188717,0
+-70.933800,43.189083,0
+-70.933567,43.188800,0
+-70.933450,43.188600,0
+-70.933550,43.188617,0
+-70.933683,43.188467,0
+-70.933583,43.188450,0
+-70.933700,43.188617,0
+-70.933450,43.188533,0
+-70.933767,43.188350,0
+-70.933833,43.188333,0
+-70.933883,43.188317,0
+-70.933717,43.188200,0
+-70.933483,43.188033,0
+-70.933350,43.187817,0
+-70.932183,43.186717,0
+-70.933817,43.188400,0
+-70.933967,43.188517,0
+-70.934200,43.188717,0
+-70.934133,43.189233,0
+-70.939450,43.172983,0
+-70.934583,43.170267,0
+-70.933967,43.170383,0
+-70.933883,43.169933,0
+-70.869967,43.116317,0
+-70.844017,43.068833,0
+-70.837867,43.055350,0
+-70.848250,43.049183,0
+-70.805067,43.107817,0
+-70.740367,43.079800,0
+-70.740350,43.079933,0
+-70.740050,43.079817,0
+-70.740117,43.079717,0
+-70.739783,43.079983,0
+-70.739817,43.079917,0
+-70.739517,43.079800,0
+-70.736333,43.079300,0
+-70.736083,43.079283,0
+-70.735367,43.079517,0
+-70.736650,43.079133,0
+-70.736950,43.079050,0
+-70.736600,43.078950,0
+-70.736700,43.078867,0
+-70.736650,43.078150,0
+-70.736450,43.078450,0
+-70.736250,43.078717,0
+-70.736050,43.078800,0
+-70.736200,43.079133,0
+-70.736250,43.079217,0
+-70.736400,43.079400,0
+-70.735700,43.079200,0
+-70.735467,43.079367,0
+-70.736150,43.079200,0
+-70.736133,43.079200,0
+-70.736183,43.079117,0
+-70.736083,43.079200,0
+-70.736100,43.079150,0
+-70.735733,43.079333,0
+-70.736050,43.079150,0
+-70.736033,43.079150,0
+-70.736100,43.079150,0
+-70.735667,43.078800,0
+-70.735717,43.078883,0
+-70.736117,43.079133,0
+-70.736200,43.079150,0
+-70.735733,43.079067,0
+-70.736100,43.079183,0
+-70.736067,43.079167,0
+-70.736167,43.079000,0
+-70.736083,43.079183,0
+-70.740083,43.079883,0
+-70.739733,43.079583,0
+-70.740400,43.080067,0
+-70.740367,43.080000,0
+-70.833750,43.053467,0
+-70.844600,43.073833,0
+-70.844250,43.072817,0
+-70.844450,43.072167,0
+-70.860983,43.089050,0
+-70.929050,43.164133,0
+-70.933667,43.169867,0
+-70.933667,43.169950,0
+-70.933767,43.170033,0
+-70.938983,43.172867,0
+-70.933933,43.188367,0
+-70.934083,43.188533,0
+-70.904100,43.179450,0
+-70.904000,43.179467,0
+-70.905517,43.178000,0
+-70.907317,43.178067,0
+-70.953033,43.228450,0
+-70.966017,43.262983,0
+-70.965917,43.262767,0
+-70.966000,43.262833,0
+-70.965883,43.262733,0
+-70.965850,43.262683,0
+-70.965667,43.263000,0
+-70.967433,43.265567,0
+-70.966133,43.263400,0
+-70.965783,43.263167,0
+-70.965700,43.263183,0
+-70.965667,43.263133,0
+-70.965600,43.263133,0
+-70.965650,43.263183,0
+-70.967250,43.265817,0
+-70.965550,43.263133,0
+-70.965783,43.262883,0
+-70.967633,43.265600,0
+-70.965467,43.263267,0
+-70.965467,43.263200,0
+-70.965467,43.263283,0
+-70.965300,43.263683,0
+-70.965433,43.263283,0
+-70.965417,43.263367,0
+-70.966067,43.264250,0
+-70.965267,43.263517,0
+-70.969950,43.246750,0
+-70.965350,43.244483,0
+-70.964783,43.244533,0
+-70.967150,43.246883,0
+-70.967083,43.246483,0
+-70.962850,43.243183,0
+-70.962667,43.243033,0
+-70.964000,43.243500,0
+-70.963800,43.243933,0
+-70.962850,43.243417,0
+-70.962900,43.243417,0
+-70.966900,43.246617,0
+-70.967117,43.246400,0
+-70.967100,43.246633,0
+-70.912350,43.205900,0
+-70.825017,43.148333,0
+-70.746617,43.083983,0
+-70.736167,43.079300,0
+-70.736167,43.079300,0
+-70.736367,43.079383,0
+-70.736350,43.079417,0
+-70.736350,43.079250,0
+-70.736383,43.079233,0
+-70.736433,43.079233,0
+-70.736383,43.079283,0
+-70.736383,43.079250,0
+-70.736383,43.079233,0
+-70.736367,43.079267,0
+-70.736333,43.079250,0
+-70.736317,43.079217,0
+-70.736217,43.079150,0
+-70.736233,43.078850,0
+-70.736717,43.079150,0
+-70.736317,43.079283,0
+-70.736133,43.079083,0
+-70.736083,43.079150,0
+-70.736067,43.079300,0
+-70.736233,43.079367,0
+-70.736217,43.079383,0
+-70.740233,43.080183,0
+-70.740317,43.079967,0
+-70.740333,43.079867,0
+-70.740250,43.080033,0
+-70.740250,43.080083,0
+-70.740267,43.080017,0
+-70.740250,43.080017,0
+-70.740317,43.080083,0
+-70.740267,43.080133,0
+-70.740283,43.080050,0
+-70.740317,43.080067,0
+-70.740333,43.080067,0
+-70.740283,43.080050,0
+-70.740567,43.080067,0
+-70.740017,43.079983,0
+-70.753500,43.075150,0
+-70.771133,43.072800,0
+-70.771300,43.072733,0
+-70.833667,43.053550,0
+-70.845650,43.072850,0
+-70.891967,43.147800,0
+-70.950117,43.225267,0
+-70.965733,43.263117,0
+-70.965583,43.263017,0
+-70.965683,43.262950,0
+-70.965700,43.262967,0
+-70.965383,43.263067,0
+-70.965017,43.263067,0
+-70.964933,43.263183,0
+-70.965000,43.263167,0
+-70.966817,43.265500,0
+-70.967117,43.265267,0
+-70.964967,43.263100,0
+-70.964933,43.263133,0
+-70.964900,43.262950,0
+-70.965133,43.263117,0
+-70.967000,43.265667,0
+-70.966767,43.265767,0
+-70.965067,43.263150,0
+-70.965017,43.263033,0
+-70.964917,43.263467,0
+-70.965267,43.263217,0
+-70.965033,43.263433,0
+-70.964917,43.263217,0
+-70.965217,43.263383,0
+-70.965100,43.263200,0
+-70.965200,43.263200,0
+-70.965450,43.263350,0
+-70.965100,43.263133,0
+-70.967050,43.265167,0
+-70.965050,43.263283,0
+-70.965117,43.263267,0
+-70.965033,43.263233,0
+-70.964983,43.263417,0
+-70.964917,43.263600,0
+-70.964217,43.243700,0
+-70.964600,43.263483,0
+-70.964867,43.263500,0
+-70.960033,43.256183,0
+-70.968467,43.246500,0
+-70.966700,43.246833,0
+-70.966433,43.246500,0
+-70.965733,43.248550,0
+-70.966883,43.245983,0
+-70.966583,43.246450,0
+-70.965500,43.242833,0
+-70.933767,43.188217,0
+-70.855167,43.165667,0
+-70.777150,43.109383,0
+-70.735733,43.078917,0
+-70.735083,43.078817,0
+-70.735767,43.078933,0
+-70.735767,43.079267,0
+-70.736017,43.079083,0
+-70.736000,43.079167,0
+-70.736383,43.079083,0
+-70.736083,43.079117,0
+-70.736100,43.079050,0
+-70.736067,43.078967,0
+-70.736050,43.079050,0
+-70.736000,43.079117,0
+-70.735867,43.078967,0
+-70.735500,43.078550,0
+-70.735933,43.079033,0
+-70.735717,43.078917,0
+-70.736117,43.079217,0
+-70.735917,43.078967,0
+-70.735833,43.079133,0
+-70.735750,43.079067,0
+-70.734817,43.079700,0
+-70.735867,43.079083,0
+-70.735700,43.079217,0
+-70.736033,43.079017,0
+-70.736050,43.079183,0
+-70.736067,43.079150,0
+-70.736000,43.079033,0
+-70.736050,43.078983,0
+-70.735833,43.078933,0
+-70.736067,43.078817,0
+-70.736350,43.078817,0
+-70.736300,43.078900,0
+-70.736167,43.079050,0
+-70.736233,43.078967,0
+-70.736117,43.079017,0
+-70.736267,43.079083,0
+-70.740450,43.079667,0
+-70.740500,43.079867,0
+-70.740483,43.079950,0
+-70.740417,43.079900,0
+-70.740117,43.079950,0
+-70.739950,43.079800,0
+-70.739950,43.079950,0
+-70.740033,43.079833,0
+-70.771317,43.072600,0
+-70.832633,43.055117,0
+-70.849000,43.051067,0
+-70.849083,43.051117,0
+-70.837500,43.062050,0
+-70.845133,43.072800,0
+-70.836250,43.053833,0
+-70.837033,43.054283,0
+-70.836217,43.055517,0
+-70.861833,43.088733,0
+-70.897400,43.164800,0
+-70.957100,43.242167,0
+-70.967000,43.246317,0
+-70.965983,43.245233,0
+-70.966533,43.246033,0
+-70.966400,43.246150,0
+-70.967233,43.246550,0
+-70.964783,43.247200,0
+-70.964083,43.246117,0
+-70.964017,43.246117,0
+-70.966833,43.246533,0
+-70.966250,43.245517,0
+-70.970350,43.263367,0
+-70.965533,43.263550,0
+-70.965617,43.263667,0
+-70.970433,43.267833,0
+-70.962800,43.248717,0
+-70.965900,43.263933,0
+-70.965667,43.263950,0
+-70.966567,43.260583,0
+-70.965500,43.263067,0
+-70.965717,43.263133,0
+-70.965717,43.263183,0
+-70.965783,43.263250,0
+-70.965683,43.263233,0
+-70.966617,43.264533,0
+-70.966617,43.264467,0
+-70.966633,43.264283,0
+-70.966717,43.264533,0
+-70.966450,43.264100,0
+-70.967017,43.247117,0
+-70.965600,43.263200,0
+-70.965567,43.263200,0
+-70.967300,43.256400,0
+-70.968200,43.245633,0
+-70.966333,43.245200,0
+-70.963150,43.242867,0
+-70.962983,43.242867,0
+-70.935133,43.202133,0
+-70.846750,43.162383,0
+-70.818783,43.086467,0
+-70.836450,43.054500,0
+-70.834717,43.056900,0
+-70.803683,43.083567,0
+-70.740300,43.080367,0
+-70.740100,43.080317,0
+-70.736200,43.079183,0
+-70.736167,43.079033,0
+-70.736183,43.078917,0
+-70.735850,43.078917,0
+-70.736333,43.079233,0
+-70.736050,43.079183,0
+-70.736017,43.079200,0
+-70.735967,43.079133,0
+-70.736067,43.079200,0
+-70.736133,43.079250,0
+-70.735983,43.079167,0
+-70.735917,43.079133,0
+-70.736000,43.079133,0
+-70.736100,43.079217,0
+-70.736083,43.079017,0
+-70.736000,43.079183,0
+-70.736200,43.078917,0
+-70.736133,43.078983,0
+-70.736150,43.078983,0
+-70.736417,43.079150,0
+-70.735933,43.078900,0
+-70.735950,43.078833,0
+-70.736283,43.078450,0
+-70.736367,43.078383,0
+-70.735800,43.079083,0
+-70.735800,43.079167,0
+-70.735817,43.079300,0
+-70.735600,43.079417,0
+-70.735733,43.079317,0
+-70.736450,43.078717,0
+-70.736300,43.078767,0
+-70.736250,43.078800,0
+-70.736017,43.079350,0
+-70.738317,43.080867,0
+-70.740317,43.080233,0
+-70.740483,43.080317,0
+-70.740433,43.080317,0
+-70.740367,43.080283,0
+-70.740433,43.080300,0
+-70.740450,43.080117,0
+-70.740350,43.080233,0
+-70.740250,43.080217,0
+-70.740283,43.080050,0
+-70.771533,43.072133,0
+-70.771267,43.072417,0
+-70.767567,43.075267,0
+-70.846933,43.149767,0
+-70.944250,43.224850,0
+-70.962550,43.242283,0
+-70.963317,43.242483,0
+-70.962817,43.243533,0
+-70.962500,43.243033,0
+-70.966433,43.245767,0
+-70.966750,43.246533,0
+-70.967200,43.246583,0
+-70.966500,43.265133,0
+-70.966483,43.265133,0
+-70.966233,43.264950,0
+-70.966583,43.265200,0
+-70.966750,43.265200,0
+-70.965850,43.265217,0
+-70.966717,43.265500,0
+-70.966250,43.265033,0
+-70.967350,43.265583,0
+-70.966700,43.265600,0
+-70.966683,43.265567,0
+-70.966683,43.265600,0
+-70.966683,43.265750,0
+-70.967250,43.265383,0
+-70.966017,43.263317,0
+-70.966400,43.263750,0
+-70.966917,43.264000,0
+-70.967050,43.263967,0
+-70.967050,43.263900,0
+-70.967050,43.263650,0
+-70.967033,43.263817,0
+-70.965900,43.265067,0
+-70.966017,43.264750,0
+-70.966050,43.264683,0
+-70.965983,43.264717,0
+-70.966017,43.264667,0
+-70.966067,43.264667,0
+-70.967517,43.265633,0
+-70.934883,43.189233,0
+-70.889467,43.127417,0
+-70.836767,43.054117,0
+-70.836317,43.054183,0
+-70.836250,43.054167,0
+-70.837133,43.053817,0
+-70.836767,43.056267,0
+-70.846450,43.073350,0
+-70.846433,43.073033,0
+-70.855817,43.073050,0
+-70.838667,43.053883,0
+-70.911050,43.067233,0
+-70.837133,43.054383,0
+-70.836917,43.054350,0
+-70.773833,43.069650,0
+-70.740017,43.080350,0
+-70.739983,43.080433,0
+-70.739933,43.080450,0
+-70.739917,43.080367,0
+-70.739900,43.080367,0
+-70.739900,43.080400,0
+-70.739867,43.080383,0
+-70.739867,43.080350,0
+-70.739983,43.080483,0
+-70.739833,43.080383,0
+-70.739933,43.080417,0
+-70.740483,43.079950,0
+-70.740133,43.080267,0
+-70.739967,43.080733,0
+-70.740150,43.080617,0
+-70.739867,43.080417,0
+-70.740283,43.081000,0
+-70.740217,43.080583,0
+-70.739817,43.080383,0
+-70.739850,43.080467,0
+-70.739917,43.080350,0
+-70.739967,43.080600,0
+-70.739950,43.080433,0
+-70.740133,43.080200,0
+-70.739983,43.080417,0
+-70.740417,43.080900,0
+-70.740183,43.080683,0
+-70.740250,43.080350,0
+-70.740167,43.080217,0
+-70.740233,43.080250,0
+-70.740150,43.080333,0
+-70.739950,43.080600,0
+-70.739933,43.080567,0
+-70.739633,43.080600,0
+-70.739800,43.080417,0
+-70.739783,43.080317,0
+-70.739833,43.080517,0
+-70.772100,43.066250,0
+-70.835583,43.056583,0
+-70.835550,43.056533,0
+-70.833283,43.053683,0
+-70.846067,43.072650,0
+-70.845900,43.072367,0
+-70.845833,43.072433,0
+-70.846467,43.072933,0
+-70.846683,43.073700,0
+-70.846600,43.073667,0
+-70.846933,43.053017,0
+-70.845383,43.072200,0
+-70.854533,43.052850,0
+-70.837233,43.055000,0
+-70.859583,43.078667,0
+-70.881067,43.130333,0
+-70.935217,43.192583,0
+-70.961333,43.245300,0
+-70.964733,43.241900,0
+-70.967300,43.265700,0
+-70.966567,43.264500,0
+-70.966117,43.263200,0
+-70.966167,43.263150,0
+-70.966800,43.263333,0
+-70.965783,43.263100,0
+-70.965767,43.263150,0
+-70.965900,43.263183,0
+-70.965817,43.263250,0
+-70.965750,43.263233,0
+-70.967050,43.265650,0
+-70.967150,43.265733,0
+-70.965750,43.263800,0
+-70.965767,43.263200,0
+-70.965817,43.263217,0
+-70.965667,43.263700,0
+-70.965600,43.263617,0
+-70.965867,43.263800,0
+-70.965900,43.263533,0
+-70.965817,43.263367,0
+-70.964867,43.262983,0
+-70.965617,43.263233,0
+-70.963000,43.242850,0
+-70.967417,43.246167,0
+-70.967650,43.246133,0
+-70.962417,43.242517,0
+-70.962333,43.242617,0
+-70.962633,43.242967,0
+-70.966700,43.245533,0
+-70.967533,43.246233,0
+-70.916517,43.174433,0
+-70.870583,43.090517,0
+-70.836550,43.054367,0
+-70.845617,43.072483,0
+-70.845600,43.072467,0
+-70.836883,43.054067,0
+-70.836817,43.053683,0
+-70.836850,43.053933,0
+-70.836933,43.053850,0
+-70.836800,43.053600,0
+-70.782117,43.070900,0
+-70.736267,43.079117,0
+-70.736083,43.079083,0
+-70.736100,43.079100,0
+-70.736150,43.079150,0
+-70.736233,43.079317,0
+-70.736483,43.079450,0
+-70.736367,43.079400,0
+-70.736450,43.079467,0
+-70.736283,43.079367,0
+-70.737550,43.079083,0
+-70.736033,43.079167,0
+-70.736117,43.079183,0
+-70.736133,43.079133,0
+-70.736083,43.079183,0
+-70.736167,43.079183,0
+-70.735900,43.079067,0
+-70.735867,43.079000,0
+-70.735833,43.079150,0
+-70.735967,43.079017,0
+-70.735933,43.079017,0
+-70.736350,43.078833,0
+-70.736100,43.078967,0
+-70.735967,43.078783,0
+-70.736383,43.079067,0
+-70.736217,43.078967,0
+-70.736100,43.078967,0
+-70.736067,43.079050,0
+-70.740250,43.079533,0
+-70.740417,43.079617,0
+-70.740150,43.079667,0
+-70.740117,43.079750,0
+-70.740283,43.079650,0
+-70.740100,43.079733,0
+-70.740267,43.079550,0
+-70.740233,43.079533,0
+-70.740267,43.079617,0
+-70.740133,43.079533,0
+-70.786250,43.060700,0
+-70.846667,43.074800,0
+-70.847167,43.074783,0
+-70.847717,43.073967,0
+-70.847600,43.074017,0
+-70.847817,43.074150,0
+-70.848500,43.071233,0
+-70.848483,43.071150,0
+-70.836150,43.054017,0
+-70.849300,43.052467,0
+-70.846500,43.052317,0
+-70.843750,43.074817,0
+-70.888850,43.082117,0
+-70.866017,43.066467,0
+-70.689167,43.012417,0
+-70.615400,42.988800,0
+-70.615383,42.988983,0
+-70.615550,42.988567,0
+-70.615367,42.988900,0
+-70.615450,42.988750,0
+-70.615367,42.988383,0
+-70.616800,42.986933,0
+-70.616633,42.986800,0
+-70.616650,42.986900,0
+-70.616550,42.986867,0
+-70.616717,42.986983,0
+-70.616783,42.987017,0
+-70.615283,42.989183,0
+-70.615317,42.989250,0
+-70.615300,42.989350,0
+-70.611667,42.984717,0
+-70.611783,42.984700,0
+-70.611817,42.984733,0
+-70.611583,42.985950,0
+-70.611533,42.985783,0
+-70.611467,42.984717,0
+-70.611683,42.984950,0
+</coordinates></LineString></Placemark></Document></kml>

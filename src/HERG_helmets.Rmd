@@ -21,9 +21,10 @@ library(ggsignif)
 HERGs <- read.csv("data/FO_2022_Data.csv")
 
 HERGs$Gull.ID[HERGs$Gull.ID == "C51 (has fed band only)"] <- "C51"
-HERGs$Trial[HERGs$Trial == "Nothing"] <- "No Headwear"
-HERGs$Trial[HERGs$Trial == "Helmet"] <- "Wearing Helmet"
-HERGs$Trial[HERGs$Trial == "Hat"] <- "Wearing Hat"
+HERGs$Trial[HERGs$Trial == "Nothing"] <- "No headwear"
+HERGs$Trial[HERGs$Trial == "Helmet"] <- "Wearing helmet"
+HERGs$Trial[HERGs$Trial == "Holding Helmet"] <- "Holding helmet"
+HERGs$Trial[HERGs$Trial == "Hat"] <- "Wearing hat"
 ```
 
 ## Plot Fig. 3
@@ -38,7 +39,7 @@ HERGs$Gull.ID <- factor(HERGs$Gull.ID, levels = HERGsum$Gull.ID)
 ggplot(HERGs, aes(x = Gull.ID, y = Score)) +
   stat_boxplot(geom = "errorbar", width = 0.25, linewidth = 0.25, coef = 3) +
   geom_boxplot(fill = "lightgrey", linewidth = 0.25, outlier.shape = NA) +
-  labs(x = "Gull ID", y = "Response Score") +
+  labs(x = "Gull ID", y = "Response score") +
   theme_bw() +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -52,10 +53,10 @@ plot(Score ~ Gull.ID, data = HERGs, xlab = "Gull ID", ylab = "Response Score")
 
 ## Plot Fig. 4
 ```{r}
-HERGs$Trial <- factor(HERGs$Trial, levels = c("Wearing Helmet", "Holding Helmet", "Wearing Hat", "No Headwear"))
+HERGs$Trial <- factor(HERGs$Trial, levels = c("Wearing helmet", "Holding helmet", "Wearing hat", "No headwear"))
 
 for(i in 1:nrow(HERGs)) {
-  if(HERGs$Trial[i] == "Wearing Helmet") {
+  if(HERGs$Trial[i] == "Wearing helmet") {
     HERGs$fill[i] <- 1
   } else {
     HERGs$fill[i] <- 2
@@ -83,7 +84,7 @@ ggplot() +
   scale_fill_manual(values = c("grey", "white")) +
   #scale_fill_manual(values = c("grey35", "darkgrey")) +
   scale_y_continuous(breaks = c(0, 2, 4, 6, 8)) +
-  labs(x = "Treatment", y = "Response Score") +
+  labs(x = "Treatment", y = "Response score") +
   #annotate("text", label = "a", x = 1, y = 8.5) +
   #annotate("text", label = "b", x = 2, y = 8.5) +
   #annotate("text", label = "b", x = 3, y = 8.5) +
@@ -95,7 +96,7 @@ ggplot() +
         axis.text = element_text(size = 8),
         legend.position = "none")
 
-ggsave("Fig4.2.2.png", width = 6.5, height = 4.5, units = "in", dpi = 600)
+ggsave("Fig4.2.png", width = 6.5, height = 4.5, units = "in", dpi = 600)
 ```
 
 ## Parametric boxplot
