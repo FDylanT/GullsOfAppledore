@@ -11,6 +11,7 @@ editor_options:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(naniar)
 library(lme4)
 library(lmerTest)
 library(multcomp)
@@ -23,8 +24,13 @@ setwd("~/Desktop/Repos/GullsOfAppledore")
 
 gbbg_all <- read.csv("data/behaviour_data.csv")
 
+gbbg_all[gbbg_all == ""] <- NA
+
+## doesn't really matter, not comparing across years atm
+# gbbg_all$birdID[gbbg_all$birdID == "0T4 / X19G22"] <- "0T4"
+# gbbg_all$birdID[gbbg_all$birdID == "1Z5 / X19G14"] <- "1Z5"
+
 gbbg <- gbbg_all %>%
-  filter(!is.na(hatch1_date)) %>%
   filter(days_pre_hatch > 0) %>%
   filter(response >= 0) %>%
   # group_by(birdID, year) %>%
@@ -53,6 +59,9 @@ for(i in 1:nrow(gbbg)) {
 }
 
 gbbg$obs_num_cat <- as.factor(gbbg$obs_num_cat)
+
+gbbg_lat <- gbbg %>%
+  filter(!str_detect(notes, "switched") | is.na(notes))
 ```
 
 ## Run models
@@ -67,14 +76,14 @@ m1 <- lmer(response ~ days_pre_hatch + hatch1_cal + (1|bird_year), data = gbbg)
 summary(m1)
 anova(m1)
 
-m1.1 <- lmer(latency ~ days_pre_hatch + hatch1_cal + (1|bird_year), data = gbbg)
+m1.1 <- lmer(latency ~ days_pre_hatch + hatch1_cal + (1|bird_year), data = gbbg_lat)
 summary(m1.1)
 anova(m1.1)
 
 # this does not
 m2 <- lmer(response ~ days_pre_hatch + (1|bird_year) + (1|obs_num), data = gbbg)
 
-m2.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num), data = gbbg)
+m2.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num), data = gbbg_lat)
 
 # this runs
 m3 <- lmer(response ~ days_pre_hatch + (1|bird_year) + (1|obs_num_cat), data = gbbg)
@@ -86,19 +95,19 @@ coef(m3)
 plot(m3)
 plot(summary(m3)$residuals)
   # (but this does not)
-m3.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+m3.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num_cat), data = gbbg_lat)
 
 # this does not
 m4 <- lmer(response ~ days_pre_hatch + hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
 
-m4.1 <- lmer(latency ~ days_pre_hatch + hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+m4.1 <- lmer(latency ~ days_pre_hatch + hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg_lat)
 
 # this runs
 m5 <- lmer(response ~ hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
 summary(m5)
 anova(m5)
 
-m5.1 <- lmer(latency ~ hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
+m5.1 <- lmer(latency ~ hatch1_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg_lat)
 summary(m5.1)
 ```
 
@@ -108,12 +117,15 @@ habit <- gbbg %>%
   group_by(birdID, year) %>%
   filter(n() >= 3)
 
+habit_lat <- habit %>%
+  filter(!str_detect(notes, "switched") | is.na(notes))
+
 # this indicates that days_pre_hatch is *NOT* significant
 h1 <- lmer(response ~ days_pre_hatch + obs_num + (1|bird_year), data = habit)
 summary(h1)
 anova(h1)
 
-h1.1 <- lmer(latency ~ days_pre_hatch + obs_num + (1|bird_year), data = habit)
+h1.1 <- lmer(latency ~ days_pre_hatch + obs_num + (1|bird_year), data = habit_lat)
 summary(h1.1)
 anova(h1.1)
 
@@ -160,7 +172,7 @@ anova(g1)
 
 summary(glht(g1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr"))
 
-g1.1 <- lmer(latency ~ days_pre_hatch + location_cat + (1|bird_year), data = gbbg)
+g1.1 <- lmer(latency ~ days_pre_hatch + location_cat + (1|bird_year), data = gbbg_lat)
 summary(g1.1)
 anova(g1.1)
 
@@ -171,6 +183,25 @@ summary(glht(g1.1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr")
 ```{r}
 ## two-panel (score & latency)
 ## categorical boxplots
+```
+
+## Mate presence
+```{r}
+i1 <- lmer(response ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = gbbg)
+summary(i1)
+anova(i1)
+
+ggplot(gbbg[!is.na(gbbg$mate_present), ], aes(x = response, fill = mate_present)) +
+  geom_histogram(position = "dodge") +
+  theme_bw()
+
+ggplot(gbbg[!is.na(gbbg$mate_present), ], aes(x = mate_present, y = response)) +
+  geom_boxplot() +
+  theme_bw()
+
+i1.1 <- lmer(latency ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = gbbg_lat)
+summary(i1.1)
+anova(i1.1)
 ```
 
 ## Sex comparison
