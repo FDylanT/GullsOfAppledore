@@ -16,7 +16,6 @@ library(lme4)
 library(lmerTest)
 library(multcomp)
 library(trend)
-library(rkt)
 ```
 
 ```{r}
@@ -31,8 +30,8 @@ gbbg_all[gbbg_all == ""] <- NA
 # gbbg_all$birdID[gbbg_all$birdID == "1Z5 / X19G14"] <- "1Z5"
 
 gbbg <- gbbg_all %>%
-  filter(days_pre_hatch > 0) %>%
-  filter(response >= 0) %>%
+  filter(days_pre_hatch > 0) %>%        # excluding observations post-hatching
+  filter(response >= 0) %>%             ### currently ignoring individuals w "-1" or "-2" scores
   # group_by(birdID, year) %>%
   # filter(n() >= 3) %>%
   mutate(birdID = as.factor(birdID),
@@ -62,6 +61,14 @@ gbbg$obs_num_cat <- as.factor(gbbg$obs_num_cat)
 
 gbbg_lat <- gbbg %>%
   filter(!str_detect(notes, "switched") | is.na(notes))
+```
+
+## Summary stats
+```{r}
+mean(gbbg$obs_num) # 2.45
+sd(gbbg$obs_num) # 1.43
+
+max(gbbg$obs_num)  # 8
 ```
 
 ## Run models
@@ -146,22 +153,18 @@ gbbg_sum <- gbbg %>%
   group_by(days_pre_hatch) %>%
   summarize(response = mean(response))
 
+ggplot(gbbg, aes(x = days_pre_hatch, y = response)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_x_reverse() +
+  theme_classic()
+
 ggplot(gbbg_sum, aes(x = days_pre_hatch, y = response)) +
-  geom_line() +
+  geom_smooth(method = "lm", col = "black", linetype = "22") +
   geom_point() +
   scale_x_reverse() +
-  theme_bw() +
-  geom_abline(slope = -summary(m3)$coefficients[2], intercept = summary(m3)$coefficients[1],
-              col = "mediumpurple",
-              linewidth = 1) +
-  annotate("text",
-           x = 3.5,
-           y = 6.2,
-           label = paste("slope =", round(-summary(m3)$coefficients[2], 3)), col = "mediumpurple") +
-  annotate("text",
-           x = 3.5,
-           y = 6.15,
-           label = paste("p =", round(summary(m3)$coefficients[2, 5], 7)), col = "mediumpurple")
+  labs(y = "Mean defense score") +
+  theme_classic()
 ```
 
 ## Geospatial comparison
@@ -187,26 +190,66 @@ summary(glht(g1.1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr")
 
 ## Mate presence
 ```{r}
-i1 <- lmer(response ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = gbbg)
+mates <- gbbg %>%
+  filter(!is.na(mate_present)) %>%
+  group_by(bird_year) %>%
+  filter(n_distinct(mate_present) >= 2) %>%
+  ungroup()
+
+mates_lat <- gbbg_lat %>%
+  filter(!is.na(mate_present)) %>%
+  group_by(bird_year) %>%
+  filter(n_distinct(mate_present) >= 2) %>%
+  ungroup()
+
+i1 <- lmer(response ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = mates)
 summary(i1)
 anova(i1)
 
-ggplot(gbbg[!is.na(gbbg$mate_present), ], aes(x = response, fill = mate_present)) +
+ggplot(gbbg[!is.na(mates$mate_present), ], aes(x = response, fill = mate_present)) +
   geom_histogram(position = "dodge") +
   theme_bw()
 
-ggplot(gbbg[!is.na(gbbg$mate_present), ], aes(x = mate_present, y = response)) +
+ggplot(gbbg[!is.na(mates$mate_present), ], aes(x = mate_present, y = response)) +
   geom_boxplot() +
   theme_bw()
 
-i1.1 <- lmer(latency ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = gbbg_lat)
+i1.1 <- lmer(latency ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = mates_lat)
 summary(i1.1)
 anova(i1.1)
 ```
 
 ## Sex comparison
 ```{r}
+sexes <- read_csv("data/GBBG_sexes.csv") %>%
+  replace(. == "*", NA)
 
+sum(sexes$Genetic_Sex_PHAB == sexes$Database_Sex, na.rm = TRUE)
+
+for(i in 1:nrow(gbbg)) {
+  gbbg$sex[i] <- ifelse(is.na(gbbg$sex[i]),
+                     sexes$Genetic_Sex_PHAB[sexes$PFR == as.character(gbbg$birdID)[i]],
+                     gbbg$sex)
+}
+
+gbbg %>%
+  group_by(birdID) %>%
+  summarise(sex = sex[1]) %>%
+  count(sex)  # 16 F, 49 M
+
+count(gbbg, sex)  # 46 obs F, 200 obs M
+
+s1 <- lmer(response ~ days_pre_hatch + sex + (1|bird_year), data = gbbg)
+summary(s1)
+anova(s1)
+
+summary(glht(s1, linfct = mcp(sex = "Tukey")), test = adjusted("fdr"))
+
+s1.1 <- lmer(latency ~ days_pre_hatch + sex + (1|bird_year), data = gbbg_lat)
+summary(s1.1)
+anova(s1.1)
+
+summary(glht(s1.1, linfct = mcp(sex = "Tukey")), test = adjusted("fdr"))
 ```
 
 
