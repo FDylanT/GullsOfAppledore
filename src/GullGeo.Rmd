@@ -101,44 +101,23 @@ ggplot() +
 ## Calculate nest relocation distances
 ```{r}
 birds21 <- nests21 %>%
-  dplyr::select(NestID, M.1, M.2) %>%
-  pivot_longer(-NestID, values_to = "Band") %>%
-  dplyr::select(-name)
-
-gps21 <- nests21 %>%
-  rename(Lat21 = Lat, Long21 = Long) %>%
-  dplyr::select(Lat21, Long21) %>%
-  slice(rep(1:n(), each = 2))
-
-birds21 <- as.data.frame(cbind(birds21, gps21)) %>%
+  dplyr::select(NestID, M.1, M.2, Location, Lat, Long) %>%
+  pivot_longer(c(M.1, M.2), names_to = NULL, values_to = "Band") %>%
+  relocate(Band, .after = NestID) %>%
   filter(Band != "UB",
          Band != "")
 
 birds22 <- nests22 %>%
-  dplyr::select(NestID, M.1, M.2) %>%
-  pivot_longer(-NestID, values_to = "Band") %>%
-  dplyr::select(-name)
-
-gps22 <- nests22 %>%
-  rename(Lat22 = Lat, Long22 = Long) %>%
-  dplyr::select(Lat22, Long22) %>%
-  slice(rep(1:n(), each = 2))
-
-birds22 <- as.data.frame(cbind(birds22, gps22)) %>%
+  dplyr::select(NestID, M.1, M.2, Location, Lat, Long) %>%
+  pivot_longer(c(M.1, M.2), names_to = NULL, values_to = "Band") %>%
+  relocate(Band, .after = NestID) %>%
   filter(Band != "UB",
          Band != "")
 
 birds23 <- nests23 %>%
-  dplyr::select(NestID, M.1, M.2) %>%
-  pivot_longer(-NestID, values_to = "Band") %>%
-  dplyr::select(-name)
-
-gps23 <- nests23 %>%
-  rename(Lat23 = Lat, Long23 = Long) %>%
-  dplyr::select(Lat23, Long23) %>%
-  slice(rep(1:n(), each = 2))
-
-birds23 <- as.data.frame(cbind(birds23, gps23)) %>%
+  dplyr::select(NestID, M.1, M.2, Location, Lat, Long) %>%
+  pivot_longer(c(M.1, M.2), names_to = NULL, values_to = "Band") %>%
+  relocate(Band, .after = NestID) %>%
   filter(Band != "UB",
          Band != "")
 
@@ -153,17 +132,17 @@ gulls$dist1 <- NA
 gulls$dist2 <- NA
 
 for(i in 1:nrow(gulls)) {
-  if(!identical(birds21$Lat21[birds21$Band == gulls$Band[i]], numeric(0))) {
-    gulls$lat21[i] <- birds21$Lat21[birds21$Band == gulls$Band[i]]
-    gulls$long21[i] <- birds21$Long21[birds21$Band == gulls$Band[i]]
+  if(!identical(birds21$Lat[birds21$Band == gulls$Band[i]], numeric(0))) {
+    gulls$lat21[i] <- birds21$Lat[birds21$Band == gulls$Band[i]]
+    gulls$long21[i] <- birds21$Long[birds21$Band == gulls$Band[i]]
   }
-  if(!identical(birds22$Lat22[birds22$Band == gulls$Band[i]], numeric(0))) {
-    gulls$lat22[i] <- birds22$Lat22[birds22$Band == gulls$Band[i]]
-    gulls$long22[i] <- birds22$Long22[birds22$Band == gulls$Band[i]]
+  if(!identical(birds22$Lat[birds22$Band == gulls$Band[i]], numeric(0))) {
+    gulls$lat22[i] <- birds22$Lat[birds22$Band == gulls$Band[i]]
+    gulls$long22[i] <- birds22$Long[birds22$Band == gulls$Band[i]]
   }
-  if(!identical(birds23$Lat23[birds23$Band == gulls$Band[i]], numeric(0))) {
-    gulls$lat23[i] <- birds23$Lat23[birds23$Band == gulls$Band[i]]
-    gulls$long23[i] <- birds23$Long23[birds23$Band == gulls$Band[i]]
+  if(!identical(birds23$Lat[birds23$Band == gulls$Band[i]], numeric(0))) {
+    gulls$lat23[i] <- birds23$Lat[birds23$Band == gulls$Band[i]]
+    gulls$long23[i] <- birds23$Long[birds23$Band == gulls$Band[i]]
   }
   gulls$dist1[i] <- distm(c(gulls$lat21[i], gulls$long21[i]), c(gulls$lat22[i], gulls$long22[i]),
                    fun = distHaversine)
@@ -489,47 +468,312 @@ ggplot(mates, aes(x = factor(status, levels = c("Resighted, same mate", "Resight
 ```{r}
 allgulls <- read.csv("data/allGBBGs.csv")
 
+birds22$HatchLocation <- NA
+birds22$HatchArea <- NA
+birds22$HatchLat <- NA
+birds22$HatchLong <- NA
+birds22$dist <- NA
+
 for(i in 1:nrow(birds22)) {
-  birds22$HatchArea[i] <- allgulls$BandLoc_General[allgulls$Band == birds22$Band[i]]
-  birds22$HatchLat[i] <- allgulls$BandedLat[allgulls$Band == birds22$Band[i]]
-  birds22$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds22$Band[i]]
-  birds22$dist[i] <- distm(c(birds22$HatchLat[i], birds22$HatchLong[i]),
-                           c(birds22$Lat22[i], birds22$Long22[i]),
-                           fun = distHaversine)
+  if(allgulls$BandedAge[allgulls$Band == birds22$Band[i]] == "chick") {
+    birds22$HatchLocation[i] <- allgulls$BandedLocation[allgulls$Band == birds22$Band[i]]
+    birds22$HatchArea[i] <- allgulls$BandLoc_General[allgulls$Band == birds22$Band[i]]
+    birds22$HatchLat[i] <- allgulls$BandedLat[allgulls$Band == birds22$Band[i]]
+    birds22$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds22$Band[i]]
+    birds22$dist[i] <- distm(c(birds22$HatchLat[i], birds22$HatchLong[i]),
+                             c(birds22$Lat[i], birds22$Long[i]),
+                             fun = distHaversine)
+  }
 }
 
 median(birds22$dist, na.rm = TRUE) # 28.86 m
 
 chicks22_sf <- st_as_sf(birds22,
-                        coords = c("Long22", "Lat22"),
+                        coords = c("Long", "Lat"),
                         crs = 4326) %>%
                filter(HatchArea != "")
 
+birds23$HatchLocation <- NA
+birds23$HatchArea <- NA
+birds23$HatchLat <- NA
+birds23$HatchLong <- NA
+birds23$dist <- NA
+
 for(i in 1:nrow(birds23)) {
-  birds23$HatchArea[i] <- allgulls$BandLoc_General[allgulls$Band == birds23$Band[i]]
-  birds23$HatchLat[i] <- allgulls$BandedLat[allgulls$Band == birds23$Band[i]]
-  birds23$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds23$Band[i]]
-  birds23$dist[i] <- distm(c(birds23$HatchLat[i], birds23$HatchLong[i]),
-                           c(birds23$Lat23[i], birds23$Long23[i]),
-                           fun = distHaversine)
+  if(allgulls$BandedAge[allgulls$Band == birds23$Band[i]] == "chick") {
+    birds23$HatchLocation[i] <- allgulls$BandedLocation[allgulls$Band == birds23$Band[i]]
+    birds23$HatchArea[i] <- allgulls$BandLoc_General[allgulls$Band == birds23$Band[i]]
+    birds23$HatchLat[i] <- allgulls$BandedLat[allgulls$Band == birds23$Band[i]]
+    birds23$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds23$Band[i]]
+    birds23$dist[i] <- distm(c(birds23$HatchLat[i], birds23$HatchLong[i]),
+                             c(birds23$Lat[i], birds23$Long[i]),
+                             fun = distHaversine)
+  }
 }
 
 median(birds23$dist, na.rm = TRUE) # 21.61 m
 
 chicks23_sf <- st_as_sf(birds23,
-                        coords = c("Long23", "Lat23"),
+                        coords = c("Long", "Lat"),
                         crs = 4326) %>%
                filter(HatchArea != "")
 ```
 
+## Interjection: identify & output "philo" & "non-philo" birds
+```{r}
+philo_friends <- rbind(birds22 %>% rename(Lat = Lat, Lon = Long),
+                       birds23 %>% rename(Lat = Lat, Lon = Long)) %>%
+  filter(!is.na(dist))
+
+ggplot(philo_friends, aes(x = dist)) +
+  geom_histogram() +
+  theme_linedraw()
+
+quantile(philo_friends$dist, c(0, 0.333, 0.667, 1))
+quantile(philo_friends$dist, c(0, 0.35, 0.85, 1)) # based on "70% philopatric"
+
+philo_friends$philo_cat <- NA
+
+philo_friends <- philo_friends %>%
+  mutate(philo_cat = case_when(dist <= 20.522144 ~ "philo",
+                               dist >= 163.649386 ~ "non-philo")) %>%
+  arrange(desc(NestID)) %>%
+  distinct(Band, philo_cat, .keep_all = TRUE) %>%
+  filter(Band != "3FZ" & Band != "9FJ") %>%
+  arrange(desc(philo_cat), Band)
+
+write_csv(philo_friends, "philo1.csv")
+
+most_philo <- birds23 %>%
+  filter(Location == HatchLocation |
+         str_detect(Location, HatchLocation) |
+         str_detect(HatchLocation, Location)) %>%
+  rbind(birds22 %>%
+          filter(Location == HatchLocation |
+          str_detect(Location, HatchLocation) |
+          str_detect(HatchLocation, Location))) %>%
+  distinct(Band, .keep_all = TRUE) %>%
+  arrange(Lat) %>%
+  filter(Band != "7U9")
+
+write_csv(most_philo, "philo2.csv")
+```
+
+## Sub-colony testing
+```{r}
+testchicks <- allgulls %>%
+  filter(BandedAge == "chick",
+         !is.na(BandedLat),
+         !str_detect(NestID22, "Lunging"))
+
+testchicks$highlight <- ifelse(testchicks$BandedLocation == "Sunset", TRUE, FALSE)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = testchicks, aes(x = BandedLong, y = BandedLat, col = BandedLocation, fill = highlight),
+             shape = 23, size = 3, inherit.aes = FALSE) +
+  scale_fill_manual(values = c("white", "white"), guide = "none") +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/philo/bandedGPS.png", width = 9, height = 8, units = "in", dpi = 600)
+
+birds22.23 <- birds23 %>%
+  rbind(birds22) %>%
+  distinct(Band, .keep_all = TRUE) %>%
+  filter(Band != "3FZ" & Band != "7U9")
+
+ggplot(birds22.23[!is.na(birds22.23$HatchLocation), ], aes(x = Location, fill = HatchLocation)) +
+  geom_bar() +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+ggsave("figures/philo/philo_hist_base.png", width = 9, height = 6.5, units = "in", dpi = 600)
+
+count(birds22.23[!is.na(birds22.23$HatchLocation), ], Location, HatchLocation) %>%
+  filter(n > 1) %>%
+  arrange(desc(n))
+
+test22.23 <- birds22.23 %>%
+  filter(!is.na(HatchLocation)) %>%
+  mutate(NestArea = Location,
+         HatchArea = HatchLocation) %>%
+  mutate(NestArea = case_when(Location == "Grass Lab" ~ "FMS 5-Grass", ###
+                              Location == "FMS 5" ~ "FMS 5-Grass", ###
+                              str_detect(Location, "Laighton") ~ "Laighton-PK",
+                              str_detect(Location, "Sandpiper") ~ "Sandpiper-Larus",
+                              Location == "Larus" ~ "Sandpiper-Larus",
+                              Location == "FMS 15" ~ "Norwegian-FMS 15", ###
+                              Location == "Norwegian" ~ "Norwegian-FMS 15", ###
+                              # ^round 1
+                              Location == "Bartels--bench" ~ "Gerry's",
+                              str_detect(Location, "Gerry's") ~ "Gerry's-stone bridge",
+                              Location == "Broad--Norwegian" ~ "Norwegian",
+                              str_detect(Location, "Celia's") ~ "Celia's",
+                              Location == "FMS 27" ~ "FMS 27-28",
+                              Location == "FMS 28" ~ "FMS 27-28",
+                              str_detect(Location, "stone bridge") ~ "Gerry's-stone bridge",
+                              Location == "HTP" ~ "HTP-Tidepool",
+                              str_detect(Location, "Tidepool") ~ "HTP-Tidepool",
+                              Location == "Paint Shed" ~ "HTP-Tidepool",
+                              Location == "Siren's" ~ "FMS 14-Siren's",
+                              str_detect(Location, "swale") ~ "HTP-Tidepool",
+                              # ^round 2
+                              # Location == "Broad N" ~ "Broad-FMS 15",
+                              # Location == "HTP" ~ "HTP-Celia's",
+                              # str_detect(Location, "swale") ~ "HTP-Celia's",
+                              # Location == "FMS 27" ~ "FMS 27-dock",
+                              # Location == "FMS 28" ~ "FMS 27-dock",
+                              # Location == "FMS 23" ~ "Gerry's-incinerator",
+                              # Location == "FMS 4" ~ "HTP-Celia's",
+                              # Location == "dock" ~ "FMS 27-dock",
+                              # Location == "HTP--dock" ~ "SWcampus",
+                              # Location == "radio tower" ~ "SWcampus",
+                              # # Location == "Dive Locker" ~ "HTP-Celia's",
+                              # # Location == "Broad S" ~ "Broad-FMS 15",
+                              # # Location == "DDF" ~ "DDF-North Head",
+                              # # Location == "North Head" ~ "DDF-North Head",
+                              # # Location == "Ross's Pole Barn" ~ "north-thicket",
+                              .default = Location),
+         HatchArea = case_when(HatchLocation == "FMS 13" ~ "Siren's",
+                               HatchLocation == "FMS 5" ~ "FMS 5-Grass", ###
+                               str_detect(HatchLocation, "Laighton") ~ "SWcampus",
+                               str_detect(HatchLocation, "Sandpiper") ~ "Sandpiper-Larus",
+                               HatchLocation == "Larus" ~ "Sandpiper-Larus",
+                               HatchLocation == "FMS 15" ~ "Norwegian-FMS 15", ###
+                               HatchLocation == "Norwegian" ~ "Norwegian-FMS 15", ###
+                               #HatchLocation == "trail--Smith's" ~ "FMS 28", ###
+                               # ^round 1
+                               HatchLocation == "FMS 27" ~ "FMS 27-28",
+                               HatchLocation == "FMS 28" ~ "FMS 27-28",
+                               HatchLocation == "trail--Smith's" ~ "FMS 27-28",
+                               HatchLocation == "Dive Locker" ~ "Dive Locker-FMS 4",
+                               HatchLocation == "FMS 4" ~ "Dive Locker-FMS 4",
+                               HatchLocation == "HTP" ~ "HTP-Tidepool",
+                               str_detect(HatchLocation, "Paint Shed") ~ "HTP-Tidepool",
+                               str_detect(HatchLocation, "waste") ~ "HTP-Tidepool",
+                               HatchLocation == "dock--HTP" ~ "SWcampus",
+                               HatchLocation == "FMS 14" ~ "FMS 14-Siren's",
+                               HatchLocation == "Siren's" ~ "FMS 14-Siren's",
+                               HatchLocation == "Gerry's" ~ "Gerry's-stone bridge",
+                               # HatchLocation == "Broad" ~ "Broad-FMS 15",
+                               # HatchLocation == "HTP" ~ "HTP-Celia's",
+                               # str_detect(HatchLocation, "Paint") ~ "HTP-Celia's",
+                               # HatchLocation == "Gerry's" ~ "Gerry's-incinerator",
+                               # HatchLocation == "incinerator" ~ "Gerry's-incinerator",
+                               # HatchLocation == "Dive Locker" ~ "HTP-Celia's",
+                               # HatchLocation == "FMS 4" ~ "HTP-Celia's",
+                               # HatchLocation == "HTP--Grass" ~ "HTP-Celia's",
+                               # HatchLocation == "K House" ~ "SWcampus",
+                               # HatchLocation == "wastewater trt" ~ "HTP-Celia's",
+                               # HatchLocation == "dock" ~ "FMS 27-dock",
+                               # HatchLocation == "dock--HTP" ~ "SWcampus",
+                               # # HatchLocation == "DDF" ~ "DDF-North Head",
+                               # # HatchLocation == "North Head" ~ "DDF-North Head",
+                               # # HatchLocation == "Grass--DDF" ~ "north-thicket",
+                               # # HatchLocation == "graveyard" ~ "north-thicket",
+                               # # HatchLocation == "Ross's Pole Barn" ~ "north-thicket",
+                               # # HatchLocation == "turbine" ~ "north-thicket",
+                               .default = HatchLocation))
+
+# ones <- test22.23[!is.na(test22.23$HatchArea), ] %>%
+#   group_by(NestArea) %>%
+#   summarise(n = n_distinct(HatchArea)) %>%
+#   filter(n == 1)
+# 
+# ones <- test22.23[!is.na(test22.23$HatchArea), ] %>%
+#   group_by(HatchArea) %>%
+#   summarise(n = n_distinct(NestArea)) %>%
+#   filter(n == 1)
+
+#test22.23$highlight <- ifelse(test22.23$HatchLocation == "Broad-Gerry's", TRUE, FALSE)
+
+ggplot(test22.23, aes(x = NestArea, fill = HatchArea)) +  # , col = highlight
+  geom_bar() +
+  #scale_color_manual(values = c(NA, "black"), guide = "none") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+ggsave("figures/philo/philo_hist_round2.png", width = 9, height = 6.5, units = "in", dpi = 600)
+
+test22.23 %>%
+  filter(NestArea == HatchArea |
+         str_detect(NestArea, HatchArea) |
+         str_detect(HatchArea, NestArea)) %>%
+  distinct(Band, .keep_all = TRUE) %>%
+  arrange(Lat) %>%
+  write_csv("philo3.csv")
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = test22.23[!is.na(test22.23$HatchArea), ],
+             aes(x = Long, y = Lat, col = HatchArea),
+             shape = 23, size = 3, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/philo/subcolonies_round1.1.png", width = 12, height = 9, units = "in", dpi = 600)
+
+test22.23$highlight <- ifelse(test22.23$Location == "Laighton--PK", TRUE, FALSE)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = test22.23, aes(x = Long, y = Lat, col = HatchArea, fill = highlight),
+             shape = 23, size = 3, inherit.aes = FALSE) +
+  scale_fill_manual(values = c("white", "black"), guide = "none") +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+birds23$highlight <- ifelse(birds23$Location == "FMS 22", TRUE, FALSE)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = birds23, aes(x = Long, y = Lat, col = Location, fill = highlight),
+             shape = 23, size = 3, inherit.aes = FALSE) +
+  scale_fill_manual(values = c("white", "black"), guide = "none") +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/philo/2023location_check.png", width = 12, height = 9, units = "in", dpi = 600)
+```
+
 ## Plot philopatry
 ```{r}
+justToHelpMeFindThisSpot <- c("#F3C300", "#F38400", "#0067A5", "#875692", "#BE0032", "#848482", "#008856", "#222222", "#A86E10", "#47C3D4", "#E68FAC", "#8DB600")
+
 palette <- c(kelly(22)[c(3, 5, 12, 4, 7, 9:10, 2)], "#A86E10", "#47C3D4", kelly(22)[c(11, 19)])
 
 ggplot() +
   geom_sf(data = basemap, col = "grey65", fill = NA) +
   geom_sf(data = st_jitter(chicks22_sf, factor = 0.005), aes(col = HatchArea), size = 3, inherit.aes = FALSE) +
   geom_sf(data = chicks22_sf[chicks22_sf$Band == "2U0" | chicks22_sf$Band == "4FE", ], aes(col = HatchArea), size = 3, inherit.aes = FALSE) +
+  geom_point(data = nests22, aes(x = Long[91], y = Lat[91]), shape = 23, size = 4, col = "red") +
   coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
            ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
   scale_colour_manual(values = palette) +
