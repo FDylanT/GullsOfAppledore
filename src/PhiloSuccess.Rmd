@@ -1,0 +1,142 @@
+---
+title: "PhiloSuccess"
+author: "Dylan Titmuss"
+date: "2024-06-06"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r setup, include=FALSE}
+library(tidyverse)
+library(geosphere)
+library(sf)
+library(pals)
+```
+
+## Load data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+philo_options <- read_csv("data/2024_philoOptions.csv")
+
+# filter calculate natal dispersal distances
+
+hatch_coord <- philo_options %>%
+  filter(!is.na(BandedLat)) %>%
+  rowwise() %>%
+  mutate(NDD = distGeo(c(BandedLat, BandedLong), c(Lat24, Lon24))) %>%
+  ungroup()
+
+hatch_vague <- philo_options %>%
+  filter(is.na(BandedLat))
+```
+
+## Map ideal focal nests
+```{r}
+basemap <- st_read("shapefiles/Basemap") %>%
+  st_transform(crs = 4326)
+
+lat1 <- min(c(hatch_coord$Lat24, hatch_coord$BandedLat))
+lat2 <- max(c(hatch_coord$Lat24, hatch_coord$BandedLat))
+lon1 <- min(c(hatch_coord$Lon24, hatch_coord$BandedLong))
+lon2 <- max(c(hatch_coord$Lon24, hatch_coord$BandedLong))
+
+ggplot() + 
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = hatch_vague, aes(x = Lon24, y = Lat24),
+             shape = 23, size = 4, fill = "limegreen") +
+  geom_point(data = hatch_coord, aes(x = Lon24, y = Lat24),
+             shape = 23, size = 4, fill = "cornflowerblue") +
+  coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.001),
+           ylim = c(lat1 - 0.0012, lat2 + 0.0005)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank())
+
+# "mediumpurple1"
+
+ggplot() + 
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = hatch_coord, aes(x = Lon24, y = Lat24, fill = log(NDD)),
+             shape = 23, size = 4) +
+  scale_fill_gradientn(colours = rev(parula(100))) +
+  coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.001),
+           ylim = c(lat1 - 0.0012, lat2 + 0.0005)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank())
+
+ggplot() + 
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = hatch_coord, aes(x = Lon24, y = Lat24, fill = Age),
+             shape = 23, size = 4) +
+  scale_fill_gradientn(colours = rev(plasma(100))) +
+  coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.001),
+           ylim = c(lat1 - 0.0012, lat2 + 0.0005)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank())
+```
+
+## Select 20 nests
+```{r}
+min_NDD <- sort(hatch_coord$NDD)[1:5]
+max_NDD <- sort(hatch_coord$NDD, decreasing = TRUE)[1:5]
+
+focal_philo <- hatch_coord %>%
+  filter(NDD %in% min_NDD | NDD %in% max_NDD)
+
+age_n <- count(hatch_coord, Age)
+
+ggplot(hatch_coord, aes(x = factor(Age, levels = 5:13), y = NDD)) +
+  geom_boxplot() +
+  scale_x_discrete(breaks = 5:13, drop = FALSE, name = "Age (y)") +
+  labs(y = "NDD (m)") +
+  geom_text(data = age_n, aes(label = paste("n =", n), y = round(max(hatch_coord$NDD)) + 15)) +
+  theme_linedraw()
+
+infreq_ages <- age_n %>% filter(n <= 3) %>% pull(Age)
+
+focal_philo <- rbind(focal_philo,
+                     hatch_coord %>% filter(Age %in% infreq_ages)) %>%
+  distinct()
+
+count(focal_philo, Age)
+# 4 more slots: 2 7yo & 2 8yo? or 1 7yo & 3 8yo?
+
+options <- hatch_coord %>%
+  filter(!(hatch_coord$Band %in% focal_philo$Band))
+
+# can't decide b/w the three 7yos -- keeping all 3 for now
+focal_philo <- rbind(focal_philo, options[c(1:4, 6), ])
+
+write_csv(focal_philo, "data/2024_focal_philo.csv")
+
+count(focal_philo, NestID24) %>% filter(n > 1)
+count(hatch_coord, NestID24) %>% filter(n > 1)
+count(philo_options, NestID24) %>% filter(n > 1) # only two banded-chick:banded-chick pairs breeding this year :')
+
+ggplot(hatch_coord, aes(x = Sex, y = NDD)) +
+  geom_boxplot() +
+  theme_linedraw()
+```
+
+## Assign approx GPS coords to vague hatch sites
+```{r}
+sites <- unique(hatch_vague$BandedLocation)
+
+# ideal: find nests w/ coords from same year; average
+# secondary: find nests from closest year w/ coords & average
+# alternative: average all nests w/ coords ever recorded at x location
+
+```
+
+## Bonus thing to look at: average age of first-time breeders
