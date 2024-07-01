@@ -1,0 +1,60 @@
+---
+title: "database_qry_wrangling"
+author: "Dylan Titmuss"
+date: "2024-06-02"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+## Read data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore/data")
+
+allBands <- read_xlsx("All_Captures_and_Recaptures_Fed_and_Field.xlsx")
+
+allBands <- allBands %>%
+  # remove duplicate rows
+  distinct() %>%
+  # remove dup records of 1K8's bands on 2010-05-24
+  filter(BirdID != 1664 | Mark_Status != "Read") %>%
+  # prevent sci notation conversions
+  mutate(bandnumb = ifelse(str_detect(bandnumb, "\\dE\\d"),
+                           paste(str_extract(bandnumb, "^\\d"), "E", str_extract(bandnumb, "\\d$")),
+                           bandnumb)) %>%
+  # create "names" column for use in pivot_wider
+  mutate(band_type = ifelse(nchar(bandnumb) < 10, "field", "Fed"))
+
+# pivot all birds w/ only one record per date
+allBirds <- allBands %>%
+  filter(Mark_Status != "Lost" & Mark_Status != "Removed") %>%
+  select(-Mark_Status) %>%
+  pivot_wider(names_from = band_type, values_from = bandnumb) %>%
+  relocate(c(field, Fed), .after = BirdID) %>%
+  select(-BirdID) %>%
+  arrange(spcd, year, month, day, field)
+
+write_csv(allBirds, "Captures_Recaptures_Mark_Statuses.csv")
+
+# identify birds w/ multiple of the same band type
+dups <- allBands %>%
+  group_by(Contact_Type, spcd, BirdID, age, year, month, day, Location_Description, band_type) %>%
+  filter(n() > 1) %>%
+  ungroup()
+
+# create translation table
+translations <- dups %>%
+  pivot_wider(names_from = Mark_Status, values_from = bandnumb) %>%
+  mutate(Old = ifelse(!is.na(Removed), Removed, Lost),
+         New = Deployed) %>%
+  select(-c(Removed, Deployed, Lost)) %>%
+  arrange(spcd, year, month, day)
+
+write_csv(translations, "band_translations.csv")
+```
