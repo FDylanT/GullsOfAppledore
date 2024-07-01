@@ -145,9 +145,9 @@ for(i in 1:nrow(gulls)) {
     gulls$long23[i] <- birds23$Long[birds23$Band == gulls$Band[i]]
   }
   gulls$dist1[i] <- distm(c(gulls$lat21[i], gulls$long21[i]), c(gulls$lat22[i], gulls$long22[i]),
-                   fun = distHaversine)
+                   fun = distGeo)
   gulls$dist2[i] <- distm(c(gulls$lat22[i], gulls$long22[i]), c(gulls$lat23[i], gulls$long23[i]),
-                   fun = distHaversine)
+                   fun = distGeo)
 }
 ```
 
@@ -482,7 +482,7 @@ for(i in 1:nrow(birds22)) {
     birds22$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds22$Band[i]]
     birds22$dist[i] <- distm(c(birds22$HatchLat[i], birds22$HatchLong[i]),
                              c(birds22$Lat[i], birds22$Long[i]),
-                             fun = distHaversine)
+                             fun = distGeo)
   }
 }
 
@@ -507,7 +507,7 @@ for(i in 1:nrow(birds23)) {
     birds23$HatchLong[i] <- allgulls$BandedLong[allgulls$Band == birds23$Band[i]]
     birds23$dist[i] <- distm(c(birds23$HatchLat[i], birds23$HatchLong[i]),
                              c(birds23$Lat[i], birds23$Long[i]),
-                             fun = distHaversine)
+                             fun = distGeo)
   }
 }
 
@@ -761,6 +761,126 @@ ggplot() +
         panel.grid.minor = element_blank())
 
 ggsave("figures/philo/2023location_check.png", width = 12, height = 9, units = "in", dpi = 600)
+```
+
+## Make quick maps of 2024 data
+```{r}
+nests24 <- read.csv("~/Downloads/2024_GBBGnests.csv") %>%
+  filter(!is.na(Lat))
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = birds24, aes(x = Long, y = Lat, col = Location),
+             shape = 23, size = 3, inherit.aes = FALSE) +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+## Make maps for Kristen & UMass folks
+```{r}
+isotopes24 <- read.csv("~/Downloads/2024_GBBGnests_Kristen.csv") %>%
+  mutate(NestNum = str_extract(NestID, "(?<=G)\\d+"))
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_label(data = isotopes24, aes(x = Long, y = Lat, label = NestNum, col = factor(Mates))) +
+  labs(col = "Adults\nSampled") +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/2024/focal_isotopes.png", width = 8.75, height = 9, units = "in", dpi = 600)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_label(data = isotopes24, aes(x = Long, y = Lat, label = NestNum, col = factor(Mates))) +
+  labs(col = "Adults\nSampled") +
+  coord_sf(xlim = c(-70.6105, -70.6125),
+           ylim = c(42.988, 42.9895)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/2024/focal_isotopes_zoom1.png", width = 9, height = 8, units = "in", dpi = 600)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_label(data = isotopes24, aes(x = Long, y = Lat, label = NestNum, col = factor(Mates))) +
+  labs(col = "Adults\nSampled") +
+  coord_sf(xlim = c(-70.6167, -70.6135),
+           ylim = c(42.9867, 42.9895)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/2024/focal_isotopes_zoom2.png", width = 8.5, height = 9, units = "in", dpi = 600)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_label(data = isotopes24, aes(x = Long, y = Lat, label = NestNum, col = factor(Mates))) +
+  labs(col = "Adults\nSampled") +
+  coord_sf(xlim = c(-70.6173, -70.6144),
+           ylim = c(42.9904, 42.9918)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/2024/focal_isotopes_zoom3.png", width = 12, height = 9, units = "in", dpi = 600)
+
+fecal24 <- read.csv("~/Downloads/2024_GBBGnests_focalfecal.csv") %>%
+  mutate(NestNum = str_extract(NestID, "(?<=G)\\d+"))
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_label(data = fecal24, aes(x = Long, y = Lat, label = NestNum), size = 2,
+             label.padding = unit(0.15, "lines")) +
+  labs(col = "Focal Chick Nests") +
+  coord_sf(xlim = c(min(nests22$Long, na.rm = T) - 0.001, max(nests22$Long, na.rm = T) + 0.001),
+           ylim = c(min(nests22$Lat, na.rm = T) - 0.0012, max(nests22$Lat, na.rm = T) + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/2024/focal_fecal.png", width = 7.5, height = 9, units = "in", dpi = 600)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_label(data = fecal24, aes(x = Long, y = Lat, label = NestNum), size = 2.25,
+             label.padding = unit(0.15, "lines")) +
+  labs(col = "Focal Chick Nests") +
+  coord_sf(xlim = c(-70.617, -70.610),
+           ylim = c(42.9865, 42.9897)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+ggsave("figures/2024/focal_fecal_zoom.png", width = 7.5, height = 4.75, units = "in", dpi = 600)
 ```
 
 ## Plot philopatry
