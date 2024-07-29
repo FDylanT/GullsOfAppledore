@@ -1,4 +1,4 @@
-NestNum,Location,NestID,M#1,M#2,Lat,Long,Notes
+NestNum,Location,NestID,M#1,M#2,Lat,Lon,Notes
 1,Kiggins leach,22G51,6N2,3AE,42.98793,-70.61367,
 2,Dorm 1,22G87,0EE,7KE,42.98750,-70.61368,
 3,Bartels--bench,22G05,3Z5,5FV,42.98861,-70.61175,
@@ -98,7 +98,7 @@ NestNum,Location,NestID,M#1,M#2,Lat,Long,Notes
 97,Larus,22G26,3EE,UB,42.99094,-70.61681,*location changed from SP
 98,Larus,22G27,0KK / 9M4,,42.99095,-70.61671,*location changed from SP
 99,Larus,22G33,1T9,6KE,42.99100,-70.61675,*location changed from SP
-100,Sandpiper,22G37,5F6,7EE,42.99072,-70.61680,
+100,Sandpiper,22G37,5F6,0KT / 7EE,42.99072,-70.61680,
 101,Larus,22G40,3R2,,42.99110,-70.61650,*location changed from SP
 102,Larus,22G45,7JP,,42.99104,-70.61669,*location changed from SP
 103,Sandpiper,22G77,5KE,UB,42.99049,-70.61676,
@@ -151,11 +151,11 @@ NestNum,Location,NestID,M#1,M#2,Lat,Long,Notes
 150,Norwegian,22G148,6K9,UB,42.99040,-70.61316,
 151,Norwegian,22G159,2HF,UB,42.99020,-70.61298,
 152,Norwegian,22G160,9T5,UB,42.99029,-70.61316,
-153,Btrail--Norwegian,22G81,1HA,UB,42.98960,-70.61326,
+153,Broad--Norwegian,22G81,1HA,UB,42.98960,-70.61326,
 154,Broad N,22G79,6R3,4AC,42.98938,-70.61364,
 155,Broad N,22G80,5R6,UB,42.98938,-70.61357,
 156,Broad S,22G78,0U0,UB,42.98899,-70.61273,
-157,Btrail--incinerator,22G102,2P3,1JN,42.98887,-70.61234,
+157,Broad--incinerator,22G102,2P3,1JN,42.98887,-70.61234,
 ,E side; near pier,LungingG01,4N2,UB,42.97736,-70.62613,
 ,Halftide,22G03,7K0,,NA,NA,*nest flag location not 7K0's
 ,N side; on rocks,LungingG03,3Y7,UB,42.97786,-70.62695,

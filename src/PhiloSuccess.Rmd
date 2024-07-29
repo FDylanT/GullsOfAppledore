@@ -10,60 +10,408 @@ editor_options:
 ## Load packages
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(readxl)
 library(geosphere)
 library(sf)
 library(pals)
+library(scales)
+library(multcomp)
 ```
 
 ## Load data
 ```{r}
 setwd("~/Desktop/Repos/GullsOfAppledore")
 
-philo_options <- read_csv("data/2024_philoOptions.csv")
-
-# filter calculate natal dispersal distances
-
-hatch_coord <- philo_options %>%
-  filter(!is.na(BandedLat)) %>%
-  rowwise() %>%
-  mutate(NDD = distGeo(c(BandedLat, BandedLong), c(Lat24, Lon24))) %>%
-  ungroup()
-
-hatch_vague <- philo_options %>%
-  filter(is.na(BandedLat))
+philo_2024 <- read.csv("data/allGBBGs.csv") %>%
+  filter(NestID24 != "",
+         BandedAge == "chick") %>%
+  mutate(BandedYear = as.numeric(BandedYear)) %>%
+  left_join(read.csv("data/2024_GBBGnests.csv"),
+            join_by(NestID24 == NestID)) %>%
+  mutate(Age = 2024 - BandedYear)
 ```
 
-## Map ideal focal nests
+## Calculate natal dispersal distances
+```{r}
+hatch_coord24 <- philo_2024 %>%
+  filter(!is.na(BandedLat)) %>%
+  rowwise() %>%
+  mutate(NDD = distGeo(c(BandedLat, BandedLon), c(Lat, Lon))) %>%
+  ungroup()
+
+hatch_vague24 <- philo_2024 %>%
+  filter(is.na(BandedLat))
+
+# load past years' data
+philo_2023 <- read.csv("data/allGBBGs.csv") %>%
+  filter(NestID23 != "",
+         BandedAge == "chick") %>%
+  mutate(BandedYear = as.numeric(BandedYear)) %>%
+  left_join(read.csv("data/2023_GBBGnests.csv"),
+            join_by(NestID23 == NestID)) %>%
+  mutate(Age = 2023 - BandedYear)
+
+hatch_coord23 <- philo_2023 %>%
+  filter(!is.na(BandedLat)) %>%
+  rowwise() %>%
+  mutate(NDD = distGeo(c(BandedLat, BandedLon), c(Lat, Lon))) %>%
+  ungroup()
+
+hatch_vague23 <- philo_2023 %>%
+  filter(is.na(BandedLat))
+
+philo_2022 <- read.csv("data/allGBBGs.csv") %>%
+  filter(str_detect(NestID22, "22G"),  ## this excludes the three Lunging nests
+         BandedAge == "chick") %>%
+  mutate(BandedYear = as.numeric(BandedYear)) %>%
+  left_join(read.csv("data/2022_GBBGnests.csv"),
+            join_by(NestID22 == NestID)) %>%
+  mutate(Age = 2022 - BandedYear)
+
+hatch_coord22 <- philo_2022 %>%
+  filter(!is.na(BandedLat)) %>%
+  rowwise() %>%
+  mutate(NDD = distGeo(c(BandedLat, BandedLon), c(Lat, Lon))) %>%
+  ungroup()
+
+hatch_vague22 <- philo_2022 %>%
+  filter(is.na(BandedLat))
+
+all_hatch_coord <- rbind(cbind(hatch_coord22, year = 2022),
+                         cbind(hatch_coord23, year = 2023),
+                         cbind(hatch_coord24, year = 2024)) %>%
+  filter(!is.na(NDD))
+
+all_hatch_vague <- rbind(cbind(hatch_vague22, year = 2022),
+                         cbind(hatch_vague23, year = 2023),
+                         cbind(hatch_vague24, year = 2024))
+```
+
+## Check accuracy of banding coords w/r/t location names
+```{r}
+# ggplot() +
+#   geom_sf(data = basemap, col = "grey40", fill = NA) +
+#   geom_point(data = all_hatch_coord, aes(x = BandedLon, y = BandedLat,
+#                                          col = BandedLocation)) +
+#   scale_color_discrete(guide = "none") +
+#   facet_wrap( ~ BandedLocation) +
+#   coord_sf(xlim = c(-70.619, -70.6095),
+#            ylim = c(42.9847, 42.993)) +
+#   theme_linedraw() +
+#   theme(axis.title = element_blank(),
+#         axis.text = element_blank(),
+#         axis.ticks = element_blank(),
+#         panel.grid = element_blank(),
+#         legend.title = element_text(face = "bold"),
+#         panel.border = element_blank())
+```
+
+## Map 2024 focal nests
 ```{r}
 basemap <- st_read("shapefiles/Basemap") %>%
   st_transform(crs = 4326)
 
-lat1 <- min(c(hatch_coord$Lat24, hatch_coord$BandedLat))
-lat2 <- max(c(hatch_coord$Lat24, hatch_coord$BandedLat))
-lon1 <- min(c(hatch_coord$Lon24, hatch_coord$BandedLong))
-lon2 <- max(c(hatch_coord$Lon24, hatch_coord$BandedLong))
+lat1 <- min(c(all_hatch_coord$Lat, all_hatch_coord$BandedLat))
+lat2 <- max(c(all_hatch_coord$Lat, all_hatch_coord$BandedLat))
+lon1 <- min(c(all_hatch_coord$Lon, all_hatch_coord$BandedLon))
+lon2 <- max(c(all_hatch_coord$Lon, all_hatch_coord$BandedLon))
 
 ggplot() + 
-  geom_sf(data = basemap, col = "grey65", fill = NA) +
-  geom_point(data = hatch_vague, aes(x = Lon24, y = Lat24),
-             shape = 23, size = 4, fill = "limegreen") +
-  geom_point(data = hatch_coord, aes(x = Lon24, y = Lat24),
-             shape = 23, size = 4, fill = "cornflowerblue") +
-  coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.001),
-           ylim = c(lat1 - 0.0012, lat2 + 0.0005)) +
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = hatch_vague24, aes(x = Lon, y = Lat, fill = "no GPS data"),
+             shape = 23, size = 6) +
+  geom_point(data = hatch_coord24, aes(x = Lon, y = Lat, fill = "GPS data"),
+             shape = 23, size = 6) +
+  scale_fill_manual(values = c("mediumpurple1", "goldenrod1"),
+                    name = "Hatch Nest") +
+  coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.0015),
+           ylim = c(lat1 - 0.0008, lat2 + 0.0005)) +
+  annotate("label", x = -70.6183, y = 42.9925, label = "2024", fontface = "bold",
+           size = 8, label.padding = unit(0.5, "lines")) +
   theme_linedraw() +
   theme(axis.title = element_blank(),
         axis.text = element_blank(),
         axis.ticks = element_blank(),
-        panel.grid = element_blank())
+        panel.grid = element_blank(),
+        legend.title = element_text(size = 18, face = "bold"),
+        legend.text = element_text(size = 16),
+        legend.key.height = unit(0.4, "in"),
+        panel.border = element_blank())
 
-# "mediumpurple1"
+ggsave("figures/2024_analysis/bandedChicks.png",
+       width = 9, height = 8, units = "in", dpi = 600)
+```
+
+## Assign approx GPS coords to vague hatch sites
+```{r}
+locations <- read_xlsx("data/reference_sheets_and_qrys/nest_summary.xlsx") %>%
+  filter(!is.na(latitude) & !is.na(longitude),
+         species == "GBBG") %>%
+  arrange(detailed_location) %>%
+  filter(is.na(field_readable_female) |
+         (field_readable_female != "8A6" | year != 2010) & # "Bartels" -- both coords wrong?
+         (field_readable_female != "0R2" | year != 2011) & # "Graveyard" -- ditto?
+         (field_readable_female != "0R5" | year != 2017) & # "Incinerator" -- ditto?
+         nest_id != "16G48" & nest_id != "16G49") # "Bartels to bench" but wrong & no birdID
+
+# fish out HERG coords for graveyard
+graveyard <- read_xlsx("data/reference_sheets_and_qrys/nest_summary.xlsx") %>%
+  filter(!is.na(latitude) & !is.na(longitude),
+         detailed_location == "Graveyard",
+         is.na(field_readable_female) | field_readable_female != "0R2")
+
+locations <- rbind(locations, graveyard)
+
+sites <- sort(unique(all_hatch_vague$BandedLocation))
+all_sites <- sort(unique(locations$detailed_location))
+
+all_hatch_vague <- all_hatch_vague %>%
+  mutate(detailed_location = case_when(BandedLocation == "Broad" ~ "Broad Cove",
+                                       BandedLocation == "DDF" ~ "Devil's Dance Floor",
+                                       BandedLocation == "Dive Locker" ~ "Dive Locker",
+                                       BandedLocation == "dock" ~ "SML Dock",
+                                       BandedLocation == "dock--HTP" ~
+                                         "Road: SML Dock to High Tide Pier",
+                                       BandedLocation == "FMS 5" ~ "FMS Transect 5",
+                                       BandedLocation == "FMS 14" ~ "FMS Transect 14",
+                                       BandedLocation == "FMS 27" ~ "FMS Transect 27",
+                                       BandedLocation == "FMS 28" ~ "FMS Transect 28",
+                                       BandedLocation == "Gerry's" ~ "Gerry's Ridge",
+                                       BandedLocation == "Grass Lab" ~ "Grass Lab",
+                                       BandedLocation == "Grass--DDF" ~
+                                         "Trail: Grass Lab to Devil's Dance Floor",
+                                       BandedLocation == "graveyard" ~ "Graveyard",
+                                       BandedLocation == "HTP" ~ "High Tide Pier",
+                                       BandedLocation == "HTP--Grass" ~
+                                         "Road: High Tide Pier to Grass Lab",
+                                       BandedLocation == "HTP--Paint Shed" ~ "Dive Locker",
+                                       BandedLocation == "incinerator" ~ "Incinerator Ridge",
+                                       BandedLocation == "K House" ~ "Kingsbury House",
+                                       BandedLocation == "Kiggins" ~ "Kiggins Commons",
+                                       BandedLocation == "Larus" ~ "Larus Ledge",
+                                       BandedLocation == "North Head" ~ "North Head",
+                                       BandedLocation == "Norwegian" ~ "Norwegian Cove",
+                                       BandedLocation == "Sandpiper" ~ "Sandpiper Beach",
+                                       BandedLocation == "Siren's" ~ "Siren's Cove and Ridge",
+                                       BandedLocation == "Sunset" ~ "Sunset Pavilion",
+                                       BandedLocation == "trail--Sandpiper" ~
+                                         "Road: Sandpiper Beach Road",
+                                       BandedLocation == "trail--Smith's" ~
+                                         "Trail: K-House to Smith's Cove",
+                                       BandedLocation == "turbine" ~ "Old Reservoir",
+                                       BandedLocation == "wastewater trt" ~
+                                         "Wastewater Treatment"))
+
+locs_cut <- locations %>%
+  filter(detailed_location %in% unique(all_hatch_vague$detailed_location))
+
+# ggplot() +
+#   geom_sf(data = basemap, col = "grey40", fill = NA) +
+#   geom_point(data = locs_cut, aes(x = longitude, y = latitude, col = detailed_location)) +
+#   scale_color_discrete(guide = "none") +
+#   facet_wrap( ~ detailed_location, ncol = 7) +
+#   coord_sf(xlim = c(-70.619, -70.6095),
+#            ylim = c(42.9847, 42.993)) +
+#   theme_linedraw() +
+#   theme(axis.title = element_blank(),
+#         axis.text = element_blank(),
+#         axis.ticks = element_blank(),
+#         panel.grid = element_blank(),
+#         legend.title = element_text(face = "bold"),
+#         panel.border = element_blank())
+# 
+# ggsave("figures/general_maps/hatch_site_datset.png",
+#        width = 12, height = 9, units = "in", dpi = 600)
+
+locs_avg <- locs_cut %>%
+  group_by(detailed_location) %>%
+  summarise(lat_mean = mean(latitude),
+            lat_sd = sd(latitude),
+            lon_mean = mean(longitude),
+            lon_sd = sd(longitude))
+
+# length in km of 1° of latitude = always 111.32 km
+# length in km of 1° of longitude = 40075 km * cos( latitude ) / 360
+
+locs_avg <- locs_avg %>%
+  rowwise() %>%
+  mutate(lat_sd_m = lat_sd * 111.32 * 1000, # deg * km/deg * m/km
+         lon_sd_m = lon_sd * 40075 * cos(lat_mean) / 360 * 1000) # deg * km/deg * m/km
+
+# plot averaged location coords
+# ggplot() + 
+#   geom_sf(data = basemap, col = "grey40", fill = NA) +
+#   geom_point(data = locs_avg, aes(x = lon_mean, y = lat_mean, fill = detailed_location),
+#              shape = 23, size = 4) +
+#   coord_sf(xlim = c(-70.619, -70.6095),
+#            ylim = c(42.9847, 42.993)) +
+#   theme_linedraw() +
+#   theme(axis.title = element_blank(),
+#         axis.text = element_blank(),
+#         axis.ticks = element_blank(),
+#         panel.grid = element_blank(),
+#         legend.title = element_text(face = "bold"),
+#         panel.border = element_blank())
+
+# ideal: find nests w/ coords from same year; average
+# secondary: find nests from closest year(s?) w/ coords & average
+# alternative: average all nests w/ coords ever recorded at x location
+
+# hatch_vague24 <- hatch_vague24 %>%
+#   rowwise() %>%
+#   mutate(BandedLat1 = mean(locations$latitude[locations$detailed_location ==
+#                                                detailed_location],
+#                           na.rm = TRUE),
+#          BandedLat2 = mean(locations$latitude[locations$detailed_location ==
+#                                                detailed_location &
+#                                               locations$year == BandedYear],
+#                           na.rm = TRUE),
+#          BandedLon1 = mean(locations$longitude[locations$detailed_location ==
+#                                                 detailed_location],
+#                           na.rm = TRUE),
+#          BandedLon2 = mean(locations$longitude[locations$detailed_location ==
+#                                                 detailed_location &
+#                                                locations$year == BandedYear],
+#                           na.rm = TRUE),
+#          diffLat = abs(BandedLat1 - BandedLat2),
+#          diffLon = abs(BandedLon1 - BandedLon2))
+
+# very close; might as well use all years
+
+all_hatch_vague <- all_hatch_vague %>%
+  rowwise() %>%
+  mutate(BandedLat_est = locs_avg$lat_mean[locs_avg$detailed_location == detailed_location],
+         BandedLon_est = locs_avg$lon_mean[locs_avg$detailed_location == detailed_location],
+         NDD = distGeo(c(BandedLat_est, BandedLon_est), c(Lat, Lon)),
+         unc = max(locs_avg$lat_sd_m[locs_avg$detailed_location == detailed_location],
+                   locs_avg$lon_sd_m[locs_avg$detailed_location == detailed_location])) %>%
+  ungroup()
+
+all_hatch_filt <- all_hatch_coord %>%
+  bind_rows(all_hatch_vague %>% filter(unc < 30 | detailed_location == "Old Reservoir")) %>%
+  filter(!is.na(NDD))
+```
+
+## Look at baseline variation in NDD
+```{r}
+ggplot(all_hatch_filt, aes(x = NDD)) +
+  geom_histogram(position = position_dodge(preserve = "single")) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+ggplot(all_hatch_filt, aes(x = factor(year), y = NDD)) +
+  geom_boxplot() +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+# analyse stats
+shapiro.test(all_hatch_filt$NDD) # p = p-value < 2.2e-16
+
+# difference between years? nope
+m1 <- lm(NDD ~ factor(year), data = all_hatch_filt)
+summary(m1) # p = 0.9906
+
+all_hatch_filt <- all_hatch_filt %>%
+  mutate(dist_grp = case_when(NDD <= 20 ~ "[0, 20]",
+                              NDD > 20 & NDD <= 40 ~ "(20, 40]",
+                              NDD > 40 & NDD <= 60 ~ "(40, 60]",
+                              NDD > 60 & NDD <= 80 ~ "(60, 80]",
+                              NDD > 80 & NDD <= 100 ~ "(80, 100]",
+                              NDD > 100 & NDD <= 120 ~ "120",
+                              NDD > 120 & NDD <= 140 ~ "140",
+                              NDD > 140 & NDD <= 160 ~ "160",
+                              NDD > 160 & NDD <= 180 ~ "180",
+                              NDD > 180 & NDD <= 200 ~ "200",
+                              NDD > 200 & NDD <= 220 ~ "220",
+                              NDD > 220 & NDD <= 240 ~ "240",
+                              NDD > 240 & NDD <= 260 ~ "260",
+                              NDD > 260 & NDD <= 280 ~ "280",
+                              NDD > 280 & NDD <= 300 ~ "300",
+                              NDD > 300 ~ "> 300"))
+
+all_hatch_filt$dist_grp <- factor(all_hatch_filt$dist_grp,
+                                   levels = c("[0, 20]",
+                                              "(20, 40]",
+                                              "(40, 60]",
+                                              "(60, 80]",
+                                              "(80, 100]",
+                                              "120",
+                                              "140",
+                                              "160",
+                                              "180",
+                                              "200",
+                                              "220",
+                                              "240",
+                                              "260",
+                                              "280",
+                                              "300",
+                                              "> 300"))
+
+ggplot(all_hatch_filt, aes(x = dist_grp, fill = factor(year))) +
+  geom_bar(position = position_dodge(preserve = "single")) +
+  # scale_y_continuous(breaks = seq(0, 12, 2)) +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  labs(x = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+NDD_props <- all_hatch_filt %>%
+  group_by(year, dist_grp) %>%
+  summarise(n = n()) %>%
+  mutate(p = n / sum(n))
+
+NDDstats <- all_hatch_filt %>%
+  group_by(year) %>%
+  summarise(mNDD = mean(NDD, na.rm = TRUE),
+            mdnNDD = median(NDD, na.rm = TRUE))
+
+ggplot(NDD_props, aes(x = dist_grp, y = p, fill = factor(year))) +
+  geom_col(position = position_dodge(preserve = "single")) +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  labs(x = "Natal Dispersal Distance (m)", y = "Proportion of breeding adults with known NDD",
+       fill = "Breeding\nYear") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD.png",
+       width = 8.2, height = 4.5, units = "in", dpi = 600)
+```
+
+## Look at spatial variation in NDD (& age for fun)
+```{r}
+basemap <- st_read("shapefiles/Basemap") %>%
+  st_transform(crs = 4326)
+
+lat1 <- min(c(hatch_coord24$Lat, hatch_coord24$BandedLat))
+lat2 <- max(c(hatch_coord24$Lat, hatch_coord24$BandedLat))
+lon1 <- min(c(hatch_coord24$Lon, hatch_coord24$BandedLon))
+lon2 <- max(c(hatch_coord24$Lon, hatch_coord24$BandedLon))
 
 ggplot() + 
-  geom_sf(data = basemap, col = "grey65", fill = NA) +
-  geom_point(data = hatch_coord, aes(x = Lon24, y = Lat24, fill = log(NDD)),
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = hatch_coord24, aes(x = Lon, y = Lat, fill = NDD),
              shape = 23, size = 4) +
-  scale_fill_gradientn(colours = rev(parula(100))) +
+  scale_fill_gradientn(colours = rev(parula(100)),
+                       name = "Natal Dispersal Distance (m)") +
+  coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.001),
+           ylim = c(lat1 - 0.0012, lat2 + 0.0005)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank())
+
+# same as above but logged
+ggplot() + 
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = hatch_coord24, aes(x = Lon, y = Lat, fill = log10(NDD)),
+             shape = 23, size = 4) +
+  scale_fill_gradientn(colours = rev(parula(100)),
+                       name = "Natal Dispersal Distance (m)",
+                       breaks = c(1, 2),
+                       labels = c(10^1, 10^2)) +
   coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.001),
            ylim = c(lat1 - 0.0012, lat2 + 0.0005)) +
   theme_linedraw() +
@@ -73,8 +421,8 @@ ggplot() +
         panel.grid = element_blank())
 
 ggplot() + 
-  geom_sf(data = basemap, col = "grey65", fill = NA) +
-  geom_point(data = hatch_coord, aes(x = Lon24, y = Lat24, fill = Age),
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = hatch_coord24, aes(x = Lon, y = Lat, fill = Age),
              shape = 23, size = 4) +
   scale_fill_gradientn(colours = rev(plasma(100))) +
   coord_sf(xlim = c(lon1 - 0.001, lon2 + 0.001),
@@ -86,34 +434,778 @@ ggplot() +
         panel.grid = element_blank())
 ```
 
-## Select 20 nests
+## Variation in age & sex
 ```{r}
-min_NDD <- sort(hatch_coord$NDD)[1:5]
-max_NDD <- sort(hatch_coord$NDD, decreasing = TRUE)[1:5]
+all_hatch_sexed <- all_hatch_filt %>%
+  filter(Sex != "")
 
-focal_philo <- hatch_coord %>%
+m2 <- lm(NDD ~ factor(Age) + Sex + factor(year) + factor(BandedYear), data = all_hatch_sexed)
+anova(m2)  # sex p = 6.686e-07 ***
+summary(m2)
+
+# by age
+age_n <- count(all_hatch_filt, Age)
+a1 <- min(age_n$Age)
+a2 <- max(age_n$Age)
+
+ggplot(all_hatch_filt, aes(x = factor(Age, levels = a1:a2), y = NDD)) +
+  geom_boxplot() +
+  scale_x_discrete(breaks = a1:a2, drop = FALSE, name = "Age (years)") +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = age_n, aes(label = paste("n =", n),
+                              y = round(max(all_hatch_filt$NDD, na.rm = TRUE)) + 30),
+            size = 3.25) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_by_age.png",
+       width = 8.2, height = 4.5, units = "in", dpi = 600)
+
+# by sex
+sex_n <- count(all_hatch_sexed, Sex)
+
+ggplot(all_hatch_sexed, aes(x = Sex, y = NDD, fill = Sex)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("palevioletred1", "deepskyblue"),
+                    guide = "none") +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = sex_n, aes(label = paste("n =", n),
+                              y = round(max(all_hatch_sexed$NDD, na.rm = TRUE)) + 15)) +
+  annotate("rect", xmin = 1.15, xmax = 1.85, ymin = 220, ymax = 240,
+           col = "black", fill = NA) +
+  annotate("text", x = 1.5, y = 230, label = "p < 0.001 ***") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_by_sex.png",
+       width = 4.1, height = 4.5, units = "in", dpi = 600)
+
+# by age x sex
+s1 <- min(all_hatch_sexed$Age)
+s2 <- max(all_hatch_sexed$Age)
+
+age_sex_n <- age_n %>%
+  filter(Age >= s1,
+         Age <= s2)
+
+ggplot() +
+  geom_boxplot(data = all_hatch_sexed,
+               aes(x = factor(Age, levels = s1:s2), y = NDD, fill = Sex),
+               position = position_dodge(preserve = "single")) +
+  scale_x_discrete(breaks = s1:s2, drop = FALSE, name = "Age (years)") +
+  scale_fill_manual(values = c("palevioletred1", "deepskyblue"),
+                    guide = "none") +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = age_sex_n, aes(label = paste("n =", n),
+                              x = factor(Age, levels = s1:s2),
+                              y = round(max(all_hatch_sexed$NDD, na.rm = TRUE)) + 15),
+            size = 3.25) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_by_age_x_sex.png",
+       width = 8.2, height = 4.5, units = "in", dpi = 600)
+
+# by age x year
+ggplot() +
+  geom_boxplot(data = complete(all_hatch_filt, Age, year),
+               aes(x = factor(Age, levels = a1:a2),
+                   y = NDD,
+                   fill = factor(year)),
+               position = position_dodge(preserve = "single")) +
+  scale_x_discrete(breaks = a1:a2, drop = FALSE, name = "Age (years)") +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = age_n, aes(label = paste("n =", n),
+                              x = factor(Age),
+                              y = round(max(all_hatch_filt$NDD, na.rm = TRUE)) + 30),
+            size = 3.25) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_by_age_x_year.png",
+       width = 8.2, height = 4.5, units = "in", dpi = 600)
+
+# by cohort x year
+cohort_n <- all_hatch_filt %>%
+  dplyr::select(Band, BandedYear) %>%
+  distinct() %>%   ## only count each individual once (no matter how many yrs it bred)
+  count(BandedYear)
+b1 <- min(cohort_n$BandedYear)
+b2 <- max(cohort_n$BandedYear)
+
+ggplot() +
+  geom_boxplot(data = complete(all_hatch_filt, BandedYear, year),
+               aes(x = factor(BandedYear, levels = b1:b2),
+                   y = NDD,
+                   fill = factor(year)),
+               position = position_dodge(preserve = "single")) +
+  scale_x_discrete(breaks = b1:b2, drop = FALSE, name = "Hatch-year cohort") +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = cohort_n, aes(label = paste("n =", n),
+                              x = factor(BandedYear),
+                              y = round(max(all_hatch_filt$NDD, na.rm = TRUE)) + 30),
+            size = 3.25) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+# by cohort x year filtering for individuals that bred across all 3 years
+cohort_hatch_coord <- all_hatch_filt %>%
+  group_by(Band) %>%
+  filter(n() == 3) %>%
+  ungroup()
+
+cohort_n2 <- cohort_hatch_coord %>%
+  dplyr::select(Band, BandedYear) %>%
+  distinct() %>%   ## only count each individual once
+  count(BandedYear)
+b1.1 <- min(cohort_n2$BandedYear)
+b2.1 <- max(cohort_n2$BandedYear)
+
+# ggplot_build(obj)$layout$panel_scales_y[[1]]$range$range
+
+ggplot() +
+  geom_boxplot(data = complete(cohort_hatch_coord, BandedYear, year),
+               aes(x = factor(BandedYear, levels = b1.1:b2.1),
+                   y = NDD,
+                   fill = factor(year)),
+               position = position_dodge(preserve = "single")) +
+  scale_x_discrete(breaks = b1.1:b2.1, drop = FALSE, name = "Hatch-year Cohort") +
+  #scale_y_continuous(limits = c(2.35126, 560)) +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = cohort_n2, aes(label = paste("n =", n),
+                              x = factor(BandedYear),
+                              y = 560),
+            size = 3.25) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_by_cohort_x_year.png",
+       width = 8.2, height = 4.5, units = "in", dpi = 600)
+
+# by cohort x year filtering for individuals that bred in 2023 & 2024
+cohort_hatch_coord <- all_hatch_filt %>%
+  filter(year > 2022) %>%
+  group_by(Band) %>%
+  filter(n() == 2) %>%
+  ungroup()
+
+cohort_n3 <- cohort_hatch_coord %>%
+  select(Band, BandedYear) %>%
+  distinct() %>%   ## only count each individual once
+  count(BandedYear)
+
+## add nonsense data to manipulate boxplot spacing
+cohort_hatch_coord <- rbind(cohort_hatch_coord, NA)
+cohort_hatch_coord$year[length(cohort_hatch_coord$year)] <- 2022
+cohort_hatch_coord$BandedYear[length(cohort_hatch_coord$BandedYear)] <- 2018
+cohort_hatch_coord <- cohort_hatch_coord %>%
+  complete(BandedYear, year)
+cohort_hatch_coord$NDD[cohort_hatch_coord$year == 2022] <- 100
+
+# show_col(hue_pal()(3))
+
+ggplot() +
+  geom_boxplot(data = complete(cohort_hatch_coord, BandedYear, year),
+               aes(x = factor(BandedYear, levels = b1:2018),
+                   y = NDD,
+                   fill = factor(year),
+                   col = factor(year)),
+               position = position_dodge(preserve = "single")) +
+  scale_x_discrete(breaks = b1:2018, drop = FALSE, name = "Hatch-year Cohort") +
+  scale_y_continuous(limits = c(2.35126, 555)) +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  scale_color_manual(values = c("white", "black", "black"),
+                     guide = "none") +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = cohort_n3, aes(label = paste("n =", n),
+                              x = factor(BandedYear),
+                              y = 555),
+            size = 3.25) +
+  #guides(fill = guide_legend(override.aes = list(fill = c("#FF738B", "#77D25F", "#619CFF")))) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_by_cohort_x_year2.png",
+       width = 8.2, height = 4.5, units = "in", dpi = 600)
+
+# by cohort x year filtering for individuals that bred in 2022 & 2023
+cohort_hatch_coord <- all_hatch_filt %>%
+  filter(year < 2024) %>%
+  group_by(Band) %>%
+  filter(n() == 2) %>%
+  ungroup()
+
+cohort_n4 <- cohort_hatch_coord %>%
+  select(Band, BandedYear) %>%
+  distinct() %>%   ## only count each individual once
+  count(BandedYear)
+
+# show_col(hue_pal()(3))
+
+ggplot() +
+  geom_boxplot(data = complete(cohort_hatch_coord, BandedYear, year),
+               aes(x = factor(BandedYear, levels = b1:b2),
+                   y = NDD,
+                   fill = factor(year)),
+               position = position_dodge(preserve = "single")) +
+  scale_x_discrete(breaks = b1:b2, drop = FALSE, name = "Hatch-year Cohort") +
+  scale_fill_manual(values = c("#FF738B", "#77D25F")) +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = cohort_n4, aes(label = paste("n =", n),
+                              x = factor(BandedYear),
+                              y = round(max(cohort_hatch_coord$NDD, na.rm = TRUE)) + 30),
+            size = 3.25) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+# by sex x year
+ggplot() +
+  geom_boxplot(data = complete(all_hatch_sexed, Sex, year),
+               aes(x = Sex,
+                   y = NDD,
+                   fill = factor(year)),
+               position = position_dodge(preserve = "single")) +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = sex_n, aes(label = paste("n =", n),
+                              x = Sex,
+                              y = round(max(all_hatch_sexed$NDD, na.rm = TRUE)) + 30)) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_by_sex_x_year.png",
+       width = 6.2, height = 4.5, units = "in", dpi = 600)
+
+# by sex x year w/ filtering for individuals that bred across all 3 years
+sex_hatch_coord <- all_hatch_sexed %>%
+  group_by(Band) %>%
+  filter(n() == 3) %>%
+  ungroup()
+
+sex_n2 <- sex_hatch_coord %>%
+  select(Band, Sex) %>%
+  distinct() %>%   ## only count each individual once
+  count(Sex)
+
+ggplot() +
+  geom_boxplot(data = complete(sex_hatch_coord, Sex, year),
+               aes(x = Sex,
+                   y = NDD,
+                   fill = factor(year)),
+               position = position_dodge(preserve = "single")) +
+  scale_fill_manual(values = c("#FF738B", "#77D25F", "#619CFF")) +
+  labs(y = "Natal Dispersal Distance (m)", fill = "Breeding\nYear") +
+  geom_text(data = sex_n2, aes(label = paste("n =", n),
+                              x = Sex,
+                              y = round(max(sex_hatch_coord$NDD, na.rm = TRUE)) + 30),
+            size = 3.25) +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+```
+
+## Tentative fledge success analysis
+```{r}
+chicks <- read.csv("data/2024_chick_focal_nests.csv")
+
+chicks$NDD <- NA
+
+for(i in 1:nrow(chicks)) {
+  if(sum(str_detect(all_hatch_filt$Band, chicks$M1[i])) > 0) {
+    chicks$NDD[i] <- all_hatch_filt$NDD[all_hatch_filt$year == 2024 &
+                                         all_hatch_filt$Band == chicks$M1[i]]
+  }
+  if(chicks$M1[i] == "0P3") {
+    chicks$NDD[i] <- mean(c(all_hatch_filt$NDD[all_hatch_filt$year == 2024 &
+                                               all_hatch_filt$Band == chicks$M1[i]],
+                           all_hatch_filt$NDD[all_hatch_filt$year == 2024 &
+                                                all_hatch_filt$Band == "5FE"]))
+  }
+  if(chicks$M1[i] == "4X5") {
+    chicks$NDD[i] <- mean(c(all_hatch_filt$NDD[all_hatch_filt$year == 2024 &
+                                                all_hatch_filt$Band == chicks$M1[i]],
+                            all_hatch_filt$NDD[all_hatch_filt$year == 2024 &
+                                                all_hatch_filt$Band == "4X6"]))
+  }
+}
+
+m3 <- lm(NDD ~ factor(early.mid.Jul), data = chicks)
+anova(m3)
+
+ggplot(chicks, aes(x = factor(early.mid.Jul), y = NDD)) +
+  geom_boxplot() +
+  labs(y = "Natal Dispersal Distance (m)\n[average of pair where possible]", x = "Number of chicks fledged") +
+  coord_flip() +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+
+ggsave("figures/2024_analysis/NDD_vs_chicks.png",
+       width = 6.5, height = 4.5, units = "in", dpi = 600)
+```
+
+## Subcolony magic
+```{r}
+all_hatch <- all_hatch_coord %>%
+  bind_rows(all_hatch_vague) %>%
+  mutate(NestArea = Location,
+         HatchArea = BandedLocation) %>%
+  mutate(NestArea = case_when(str_detect(NestArea, "HTP") ~ "HTP/Tidepool",
+                              str_detect(NestArea, "Gerry's") ~ "Gerry's",
+                              str_detect(NestArea, "Norwegian") ~ "Norwegian",
+                              str_detect(NestArea, "Celia's") ~ "Celia's",
+                              .default = NestArea))
+
+all_hatch %>%
+  distinct(Band, NestArea, HatchArea, .keep_all = TRUE) %>%
+  ggplot(aes(x = NestArea, fill = HatchArea)) +
+  geom_bar() +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+ggsave("figures/defining_subcolonies/philo_hist_base.png", width = 9, height = 6.5, units = "in", dpi = 600)
+
+count(all_hatch, HatchArea) %>%
+  filter(n > 1) %>%
+  arrange(desc(n))
+
+cluster_hatch <- all_hatch %>%
+  distinct(Band, NestArea, HatchArea, .keep_all = TRUE) %>%
+  filter(NestArea != "FMS 23" & NestArea != "FMS 24" & NestArea != "Halftide") %>%
+  # filter(is.na(unc) | unc < 40) %>% 
+  mutate(BandedLat = ifelse(is.na(BandedLat), BandedLat_est, BandedLat),
+         BandedLon = ifelse(is.na(BandedLon), BandedLon_est, BandedLon)) %>%
+  # filter out outlier points; based on K means plots
+  filter(Location != "Bartels--bench" | BandedLocation != "Larus") %>%
+  dplyr::select(NestArea, Lat, Lon, HatchArea, BandedLat, BandedLon) %>%
+  na.omit()
+
+# cut dataframe down to only numeric cols
+cluster_data <- cluster_hatch %>%
+  dplyr::select(Lat, Lon, BandedLat, BandedLon) %>%
+  scale() %>%
+  as.data.frame() %>%
+  mutate(Lat = Lat * 1,  # (not) weighting current location heavier than banded location
+         Lon = Lon * 1) %>%
+  rename(scaled_lat = Lat,
+         scaled_lon = Lon,
+         scaled_hatch_lat = BandedLat,
+         scaled_hatch_lon = BandedLon)
+
+fviz_nbclust(cluster_data, kmeans, method = "wss")
+
+# set.seed(123)
+km.res10 <- kmeans(cluster_data, 10, iter.max = 50, nstart = 25)
+cluster_output <- cbind(cluster_hatch, cluster_data, K10 = km.res10$cluster) %>%
+  as.data.frame()
+
+km.res07 <- kmeans(cluster_data, 7, iter.max = 50, nstart = 25)
+cluster_output <- cbind(cluster_output, K7 = km.res07$cluster) %>%
+  as.data.frame()
+
+km.res08 <- kmeans(cluster_data, 8, iter.max = 50, nstart = 25)
+cluster_output <- cbind(cluster_output, K08 = km.res08$cluster) %>%
+  as.data.frame()
+
+km.res09 <- kmeans(cluster_data, 9, iter.max = 50, nstart = 25)
+cluster_output <- cbind(cluster_output, K09 = km.res09$cluster) %>%
+  as.data.frame()
+
+km.res11 <- kmeans(cluster_data, 11, iter.max = 50, nstart = 25)
+cluster_output <- cbind(cluster_output, K11 = km.res11$cluster) %>%
+  as.data.frame()
+
+km.res12 <- kmeans(cluster_data, 12, iter.max = 50, nstart = 25)
+cluster_output <- cbind(cluster_output, K12 = km.res12$cluster) %>%
+  as.data.frame()
+
+cluster_output <- cluster_output %>%
+  pivot_longer(cols = starts_with("K"),
+               names_to = "K",
+               values_to = "cluster")
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey65", fill = NA) +
+  geom_point(data = cluster_output, aes(x = Lon, y = Lat, col = factor(cluster))) +
+  facet_wrap( ~ K
+              #, labeller = label_value(c("K = 7", "K = 8", "K = 9",
+              #                              "K = 10", "K = 11", "K = 12"))
+              ) +
+  coord_sf(xlim = c(-70.61824 - 0.001, -70.61075 + 0.001),
+           ylim = c(42.98550 - 0.0012, 42.99233 + 0.0005)) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none")
+
+ggsave("figures/defining_subcolonies/clusters_weighted1.75_Bartels-Larus_cut_final.png",
+       width = 9, height = 7, units = "in", dpi = 600)
+
+# final subcolonies:
+# FMS 27–SML dock
+# Sunset & SW campus
+# HTP–FMS 5/Celia's
+# Sandpiper–Larus
+# North Head–DDF
+# Broad–Siren's
+# Gerry's–incinerator
+
+# plus
+# N-Central campus
+# S-Central campus
+
+all_hatch <- all_hatch %>%
+  mutate(HatchArea = case_when(BandedLocation == "Bartels" ~ "S-Central campus",
+                               BandedLocation == "Broad" ~ "Broad–Siren's",
+                               BandedLocation == "DDF" ~ "North Head–DDF",
+                               BandedLocation == "Dive Locker" ~ "HTP–FMS 5/Celia's",
+                               BandedLocation == "dock" ~ "FMS 27–SML dock",
+                               # for now dock--HTP is in HTP cluster
+                               BandedLocation == "Dorm 3" ~ "S-Central campus",
+                               str_detect(BandedLocation, "Laighton") ~
+                                 "Sunset & SW campus",
+                               BandedLocation == "FMS 14" ~ "Broad–Siren's",
+                               BandedLocation == "FMS 15" ~ "Broad–Siren's",
+                               BandedLocation == "FMS 27" ~ "FMS 27–SML dock",
+                               BandedLocation == "FMS 28" ~ "FMS 27–SML dock",
+                               BandedLocation == "FMS 4" ~ "HTP–FMS 5/Celia's",
+                               BandedLocation == "FMS 5" ~ "HTP–FMS 5/Celia's",
+                               BandedLocation == "Gerry's" ~ "Gerry's–incinerator",
+                               BandedLocation == "Grass Lab" ~ "HTP–FMS 5/Celia's",
+                               BandedLocation == "Grass--DDF" ~ "N-Central campus",
+                               BandedLocation == "graveyard" ~ "N-Central campus",
+                               str_detect(BandedLocation, "HTP") ~ "HTP–FMS 5/Celia's",
+                               BandedLocation == "incinerator" ~ "Gerry's–incinerator",
+                               BandedLocation == "K House" ~ "FMS 27–SML dock",
+                               BandedLocation == "Kiggins" ~ "S-Central campus",
+                               BandedLocation == "Larus" ~ "Sandpiper–Larus",
+                               BandedLocation == "North Head" ~ "North Head–DDF",
+                               BandedLocation == "Norwegian" ~ "Broad–Siren's",
+                               BandedLocation == "Ross's Pole Barn" ~ "N-Central campus",
+                               str_detect(BandedLocation, "Sandpiper") ~ "Sandpiper–Larus",
+                               BandedLocation == "Siren's" ~ "Broad–Siren's",
+                               BandedLocation == "stone bench" ~ "Gerry's–incinerator",
+                               BandedLocation == "Sunset" ~ "Sunset & SW campus",
+                               str_detect(BandedLocation, "Smith's") ~ "FMS 27–SML dock",
+                               BandedLocation == "turbine" ~ "N-Central campus",
+                               BandedLocation == "wastewater trt" ~ "HTP–FMS 5/Celia's",
+                               .default = NA),
+         # no need to change nest
+         NestArea = case_when(str_detect(Location, "Gerry's") ~ "Gerry's–incinerator",
+                              str_detect(Location, "incinerator") ~ "Gerry's–incinerator",
+                              str_detect(Location, "Norwegian") ~ "Broad–Siren's",
+                              str_detect(Location, "Celia's") ~ "HTP–FMS 5/Celia's",
+                              Location == "DDF" ~ "North Head–DDF",
+                              Location == "Dive Locker" ~ "HTP–FMS 5/Celia's",
+                              Location == "dock" ~ "FMS 27–SML dock",
+                              Location == "FMS 4" ~ "HTP–FMS 5/Celia's",
+                              Location == "FMS 5" ~ "HTP–FMS 5/Celia's",
+                              Location == "FMS 14" ~ "Broad–Siren's",
+                              Location == "FMS 15" ~ "Broad–Siren's",
+                              Location == "FMS 27" ~ "FMS 27–SML dock",
+                              Location == "FMS 28" ~ "FMS 27–SML dock",
+                              Location == "Grass Lab" ~ "HTP–FMS 5/Celia's",
+                              str_detect(Location, "HTP") ~ "HTP–FMS 5/Celia's",
+                              str_detect(Location, "Laighton") ~ "Sunset & SW campus",
+                              Location == "Larus" ~ "Sandpiper–Larus",
+                              Location == "North Head" ~ "North Head–DDF",
+                              Location == "Paint Shed" ~ "HTP–FMS 5/Celia's",
+                              Location == "radio tower" ~ "Sunset & SW campus",
+                              str_detect(Location, "Sandpiper") ~ "Sandpiper–Larus",
+                              Location == "Siren's" ~ "Broad–Siren's",
+                              Location == "stone bridge" ~ "Gerry's–incinerator",
+                              Location == "Sunset" ~ "Sunset & SW campus",
+                              str_detect(Location, "swale") ~ "HTP–FMS 5/Celia's",
+                              Location == "Bartels" ~ "S-Central campus",
+                              str_detect(Location, "Broad") ~ "Broad–Siren's",
+                              str_detect(Location, "Dorm 2") ~ "S-Central campus",
+                              str_detect(Location, "AIMS") ~ "N-Central campus",
+                              str_detect(Location, "Kiggins") ~ "S-Central campus",
+                              Location == "Ross's Pole Barn" ~ "N-Central campus",
+                              .default = NA))
+
+ggplot(all_hatch, aes(x = NestArea, fill = HatchArea)) +
+  geom_bar() +
+  theme_linedraw() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+## Plot philopatry
+```{r}
+# colors largely from kelly()
+palette <- c("#F3C300", "#BE0032", "#8DB600", "#875692", "#008856", "#E68FAC", "#F38400", "#47C3D4", "#0067A5")
+
+all_hatch$HatchArea <- factor(all_hatch$HatchArea,
+                              levels = c("FMS 27–SML dock",
+                                         "Sunset & SW campus",
+                                         "HTP–FMS 5/Celia's",
+                                         "Sandpiper–Larus",
+                                         "North Head–DDF",
+                                         "Broad–Siren's",
+                                         "N-Central campus",
+                                         "Gerry's–incinerator",
+                                         "S-Central campus"))
+
+hatch22 <- all_hatch %>%
+  filter(year == 2022)
+hatch23 <- all_hatch %>%
+  filter(year == 2023)
+hatch24 <- all_hatch %>%
+  filter(year == 2024)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = hatch22, aes(x = jitter(Lon, 0.005), y = jitter(Lat, 0.005),
+                                 col = HatchArea), size = 3, inherit.aes = FALSE) +
+  scale_colour_manual(values = palette) +
+  coord_sf(xlim = c(lon1 - 0.0005, lon2 + 0.0012),
+           ylim = c(lat1 - 0.0008, lat2 + 0.0003)) +
+  annotate("label", x = -70.6183, y = 42.9925, label = "2022", fontface = "bold",
+           size = 8, label.padding = unit(0.5, "lines")) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        legend.position = "none")
+
+ggsave("figures/philo22_blank.png", width = 6.25, height = 7.75, units = "in", dpi = 600)
+
+hatch22 %>%
+  count(NestArea == HatchArea) %>%
+  summarise(philo = n[!is.na(`NestArea == HatchArea` == TRUE) & `NestArea == HatchArea` == TRUE],
+            n = sum(n)) # 72/103 = 69.9%
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = hatch23, aes(x = jitter(Lon, 0.005), y = jitter(Lat, 0.005),
+                                 col = HatchArea), size = 3, inherit.aes = FALSE) +
+  scale_colour_manual(values = palette) +
+  coord_sf(xlim = c(lon1 - 0.0005, lon2 + 0.0012),
+           ylim = c(lat1 - 0.0008, lat2 + 0.0003)) +
+  annotate("label", x = -70.6183, y = 42.9925, label = "2023", fontface = "bold",
+           size = 8, label.padding = unit(0.5, "lines")) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        legend.position = "none")
+
+ggsave("figures/philo23_blank.png", width = 6.25, height = 7.75, units = "in", dpi = 600)
+
+hatch23 %>%
+  count(NestArea == HatchArea) %>%
+  summarise(philo = n[!is.na(`NestArea == HatchArea` == TRUE) & `NestArea == HatchArea` == TRUE],
+            n = sum(n)) # 53/75 = 70.7%
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = hatch24, aes(x = jitter(Lon, 0.005), y = jitter(Lat, 0.005),
+                                 col = HatchArea), size = 3, inherit.aes = FALSE) +
+  scale_colour_manual(values = palette) +
+  coord_sf(xlim = c(lon1 - 0.0005, lon2 + 0.0012),
+           ylim = c(lat1 - 0.0008, lat2 + 0.0003)) +
+  annotate("label", x = -70.6183, y = 42.9925, label = "2024", fontface = "bold",
+           size = 8, label.padding = unit(0.5, "lines")) +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        legend.position = "none")
+
+ggsave("figures/philo24_blank.png", width = 6.25, height = 7.75, units = "in", dpi = 600)
+
+hatch24 %>%
+  count(NestArea == HatchArea) %>%
+  summarise(philo = n[!is.na(`NestArea == HatchArea` == TRUE) & `NestArea == HatchArea` == TRUE],
+            n = sum(n)) # 43/61 = 70.5%
+```
+
+
+
+
+
+
+
+## Clean nest summary GPS data
+```{r}
+locations <- read_xlsx("data/reference_sheets_and_qrys/nest_summary.xlsx") %>%
+  filter(!is.na(latitude) & !is.na(longitude),
+         species == "GBBG") %>%
+  arrange(detailed_location)
+
+all_sites <- sort(unique(locations$detailed_location)) %>%
+  na.omit()
+
+# clean nest summary GPS data
+# locations_fix <- locations %>%
+#   filter(latitude < 42.985 |
+#          latitude > 42.993 |
+#          longitude < -70.619 |
+#          longitude > -70.6095)
+# 
+# ggplot() +
+#   geom_sf(data = basemap, col = "grey40", fill = NA) +
+#   geom_point(data = locations_fix, aes(x = longitude, y = latitude, col = detailed_location)) +
+#   coord_sf(xlim = c(-70.619, -70.6095),
+#            ylim = c(42.9847, 42.993)) +
+#   theme_linedraw() +
+#   theme(axis.title = element_blank(),
+#         panel.grid = element_blank(),
+#         legend.title = element_text(face = "bold"),
+#         panel.border = element_blank())
+
+# ggplot() +
+#   geom_sf(data = basemap, col = "grey40", fill = NA) +
+#   geom_point(data = locations, aes(x = longitude, y = latitude,
+#                                    col = detailed_location)) +
+#   scale_color_discrete(guide = "none") +
+#   coord_sf(xlim = c(-70.619, -70.6095),
+#            ylim = c(42.9847, 42.993)) +
+#   theme_linedraw() +
+#   theme(axis.title = element_blank(),
+#         # axis.text = element_blank(),
+#         # axis.ticks = element_blank(),
+#         panel.grid = element_blank(),
+#         legend.title = element_text(face = "bold"),
+#         panel.border = element_blank())
+# 
+# more_to_fix <- locations %>%
+#   filter(species == "GBBG") %>%
+#   filter(latitude > 42.98975 & latitude < 42.991 & longitude > -70.6125)
+
+# other data cleaning that can happen
+          #field_readable_female != "1N4" & # "Dive Locker" -- ?
+          #field_readable_female != "3R1" & # "Road: SP Beach" --> Larus?
+          #field_readable_female != "6M1" # "SML Dock" --> FMS 28?
+
+locations1 <- locations %>%
+  filter(detailed_location %in% all_sites[1:18])
+locations2 <- locations %>%
+  filter(detailed_location %in% all_sites[19:36])
+locations3 <- locations %>%
+  filter(detailed_location %in% all_sites[37:53])
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = locations[locations$detailed_location == "Broad Cove" &
+                              (locations$year == 2018), ], aes(x = longitude, y = latitude, col = detailed_location)) +
+  scale_color_discrete(guide = "none") +
+  #facet_wrap( ~ detailed_location, ncol = 6) +
+  coord_sf(xlim = c(-70.619, -70.6095),
+           ylim = c(42.9847, 42.993)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank(),
+        legend.title = element_text(face = "bold"),
+        panel.border = element_blank())
+
+ggsave("figures/general_maps/all_GBBG_nests_ever_1.png",
+       width = 12, height = 9, units = "in", dpi = 600)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = locations2, aes(x = longitude, y = latitude, col = detailed_location)) +
+  scale_color_discrete(guide = "none") +
+  facet_wrap( ~ detailed_location, ncol = 6) +
+  coord_sf(xlim = c(-70.619, -70.6095),
+           ylim = c(42.9847, 42.993)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank(),
+        legend.title = element_text(face = "bold"),
+        panel.border = element_blank())
+
+ggsave("figures/general_maps/all_GBBG_nests_ever_2.png",
+       width = 12, height = 9, units = "in", dpi = 600)
+
+ggplot() +
+  geom_sf(data = basemap, col = "grey40", fill = NA) +
+  geom_point(data = locations3, aes(x = longitude, y = latitude, col = detailed_location)) +
+  scale_color_discrete(guide = "none") +
+  facet_wrap( ~ detailed_location, ncol = 6) +
+  coord_sf(xlim = c(-70.619, -70.6095),
+           ylim = c(42.9847, 42.993)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank(),
+        legend.title = element_text(face = "bold"),
+        panel.border = element_blank())
+
+ggsave("figures/general_maps/all_GBBG_nests_ever_3.png",
+       width = 14, height = 9, units = "in", dpi = 600)
+```
+
+## Select 20 focal nests (didn't really use this, mostly to confirm representative sample)
+```{r}
+min_NDD <- sort(hatch_coord24$NDD)[1:5]
+max_NDD <- sort(hatch_coord24$NDD, decreasing = TRUE)[1:5]
+
+focal_philo <- hatch_coord24 %>%
   filter(NDD %in% min_NDD | NDD %in% max_NDD)
 
-age_n <- count(hatch_coord, Age)
+age_n <- count(hatch_coord24, Age)
 
-ggplot(hatch_coord, aes(x = factor(Age, levels = 5:13), y = NDD)) +
+ggplot(hatch_coord24, aes(x = factor(Age, levels = 5:13), y = NDD)) +
   geom_boxplot() +
   scale_x_discrete(breaks = 5:13, drop = FALSE, name = "Age (y)") +
-  labs(y = "NDD (m)") +
-  geom_text(data = age_n, aes(label = paste("n =", n), y = round(max(hatch_coord$NDD)) + 15)) +
+  labs(y = "Natal Dispersal Distance (m)") +
+  geom_text(data = age_n, aes(label = paste("n =", n), y = round(max(hatch_coord24$NDD)) + 15)) +
   theme_linedraw()
 
 infreq_ages <- age_n %>% filter(n <= 3) %>% pull(Age)
 
 focal_philo <- rbind(focal_philo,
-                     hatch_coord %>% filter(Age %in% infreq_ages)) %>%
+                     hatch_coord24 %>% filter(Age %in% infreq_ages)) %>%
   distinct()
 
 count(focal_philo, Age)
 # 4 more slots: 2 7yo & 2 8yo? or 1 7yo & 3 8yo?
 
-options <- hatch_coord %>%
-  filter(!(hatch_coord$Band %in% focal_philo$Band))
+options <- hatch_coord24 %>%
+  filter(!(hatch_coord24$Band %in% focal_philo$Band))
 
 # can't decide b/w the three 7yos -- keeping all 3 for now
 focal_philo <- rbind(focal_philo, options[c(1:4, 6), ])
@@ -121,22 +1213,10 @@ focal_philo <- rbind(focal_philo, options[c(1:4, 6), ])
 write_csv(focal_philo, "data/2024_focal_philo.csv")
 
 count(focal_philo, NestID24) %>% filter(n > 1)
-count(hatch_coord, NestID24) %>% filter(n > 1)
+count(hatch_coord24, NestID24) %>% filter(n > 1)
 count(philo_options, NestID24) %>% filter(n > 1) # only two banded-chick:banded-chick pairs breeding this year :')
 
-ggplot(hatch_coord, aes(x = Sex, y = NDD)) +
+ggplot(hatch_coord24, aes(x = Sex, y = NDD)) +
   geom_boxplot() +
   theme_linedraw()
 ```
-
-## Assign approx GPS coords to vague hatch sites
-```{r}
-sites <- unique(hatch_vague$BandedLocation)
-
-# ideal: find nests w/ coords from same year; average
-# secondary: find nests from closest year w/ coords & average
-# alternative: average all nests w/ coords ever recorded at x location
-
-```
-
-## Bonus thing to look at: average age of first-time breeders

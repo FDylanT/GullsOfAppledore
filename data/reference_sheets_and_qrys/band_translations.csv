@@ -1,0 +1,46 @@
+Contact_Type,spcd,BirdID,age,year,month,day,Location_Description,band_type,Old,New
+Recapture,GBBG,1082,adult,2005,5,11,FMS Transect 4,Fed,1227-69910,1777-08132
+Recapture,GBBG,1097,adult,2005,5,12,Broad Cove,Fed,1227-69917,1777-08147
+Recapture,GBBG,1099,adult,2005,5,13,Bartels,Fed,1717-23366,1777-08149
+Recapture,GBBG,1109,adult,2005,5,14,Road: Paint Shed to Broad Cove,Fed,1227-69933,1777-08159
+Recapture,GBBG,1125,adult,2005,5,18,Laighton,Fed,1717-23375,1777-08175
+Recapture,GBBG,1407,adult,2007,5,28,Dive Locker,Fed,1227-69944,1777-14160
+Recapture,GBBG,1664,Adult,2010,5,24,Sunset Pavilion,Fed,2387-22823,1937-67518
+Recapture,GBBG,1555,Adult,2012,5,24,High Tide Pier,field,0N8,3M7
+Recapture,GBBG,1756127708,Chick,2013,7,15,Dorm 2,Fed,1987-23549,2017-15890
+Recapture,GBBG,1795,Adult,2015,5,28,Road: SML Dock to High Tide Pier,field,5K6,5Z1
+Recapture,GBBG,1685,Adult,2016,5,19,Sandpiper Beach,Fed,1937-67539,2017-17312
+Recapture,GBBG,1276,Adult,2017,5,18,FMS Transect 28,field,2 E 9,5EL
+Recapture,GBBG,1277,Adult,2017,5,18,Dive Locker,field,3 E 1,0EU
+Recapture,GBBG,1582,NA,2018,5,24,Bartels,field,4P9,3FV
+Recapture,GBBG,1714,Adult,2018,5,24,Kiggins Commons,Fed,1937-67569,2017-25484
+Recapture,GBBG,68827878,Adult,2019,5,21,Dive Locker,field,5J1,0HX
+Recapture,GBBG,1767,Adult,2019,5,23,Wastewater Treatment,field,8F7,2HZ
+Recapture,GBBG,1767,Adult,2019,5,23,Wastewater Treatment,Fed,1997-02037,2017-23898
+Recapture,GBBG,1665,Adult,2019,5,24,PK - Radar Tower,Fed,1937-67519,2017-23906
+Recapture,GBBG,897839473,Adult,2021,5,22,Trail: Bartels to Bench,field,4Z8,9JM
+Recapture,GBBG,2133830550,Adult,2022,5,17,Gerry's Ridge,field,3EF,2JV
+Recapture,GBBG,2133830494,Adult,2022,5,19,Broad Cove,Fed,2017-25550,2017-82048
+Recapture,GBBG,2133831487,Adult,2022,6,2,Dive Locker,field,7JM,0KE
+Recapture,GBBG,1235,Adult,2023,5,19,High Tide Pier,field,8C7,3KH
+Recapture,GBBG,2425,Adult,2023,5,19,High Tide Pier,field,0X5,2KH
+Recapture,GBBG,2133831123,Adult,2023,5,19,Sunset Pavilion,field,3FR,7KH
+Recapture,GBBG,2133831497,Adult,2023,5,19,High Tide Pier,field,8JN,4KH
+Recapture,GBBG,2133830497,Adult,2023,5,20,High Tide Pier,field,6AC,0KH
+Recapture,GBBG,1961553423,Adult,2023,5,21,Sunset Pavilion,field,2AK,5KJ
+Recapture,GBBG,2112,Adult,2023,5,22,"Siren's Cove, Ridge, and Trail",field,6M4,2KK
+Recapture,GBBG,2133830613,Adult,2023,5,22,High Tide Pier,field,3EH,5KK
+Recapture,GBBG,2030,Adult,2023,5,23,Larus Ledge,field,9M4,0KK
+Recapture,GBBG,2133830530,Adult,2024,5,23,Sunset Pavilion,Fed,2017-17305,2017-82116
+Recapture,GBBG,2133830540,Adult,2024,5,24,Sandpiper Beach,field,7EE,0KT
+Recapture,HERG,235,adult,2005,5,17,Kiggins Commons,Fed,1737-65301,1767-00107
+Recapture,HERG,251,adult,2005,5,18,High Tide Pier,Fed,1086-74702,1767-00123
+Recapture,HERG,544,adult,2007,5,29,Kingsbury House,Fed,1737-65326,1767-01121
+Recapture,HERG,1,Adult,2012,5,22,Wastewater Treatment,Fed,1086-74701,1767-20244
+Recapture,HERG,372,Adult,2012,5,23,FMS Transect 5,field,C45,M54
+Recapture,HERG,372,Adult,2012,5,23,FMS Transect 5,Fed,1767-00245,1767-20254
+Recapture,HERG,218,Adult,2012,5,24,Bartels,Fed,1737-65324,1767-20263
+Recapture,HERG,286,Adult,2012,5,27,Road: SML Dock to High Tide Pier,field,A58,M79
+Recapture,HERG,286,Adult,2012,5,27,Road: SML Dock to High Tide Pier,Fed,1767-00158,1767-20279
+Recapture,HERG,312,Adult,2016,5,19,Trail: Crystal Lake Trail,field,A84,13J
+Recapture,HERG,177,Adult,2017,5,16,Trail: Grass Lab to Devil's Dance Floor,field,T47,23K

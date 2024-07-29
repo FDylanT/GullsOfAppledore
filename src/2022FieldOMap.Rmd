@@ -1,0 +1,64 @@
+---
+title: "FieldOMap2022"
+author: "Dylan Titmuss"
+date: "6/3/2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+library(tidyverse)
+library(ggmap)
+library(sp)
+library(sf)
+```
+
+## Register Google API key
+```{r setup, include=FALSE}
+register_google(key = "AIzaSyBvvS_nvTml09h56OWd0Oniktayi0L8WDU")
+```
+
+## Create base map
+```{r}
+# fetch map data from Stamen
+Appledore_basemap <- get_map(location = c(lon = -70.6145, lat = 42.98836), zoom = 17, maptype = 'satellite', source = 'google')
+
+# show map
+ggmap(Appledore_basemap)
+
+#layer_scales(map)$y$range$range
+#layer_scales(map)$x$range$range
+```
+
+## Load data
+```{r}
+# load CSV file
+hergs <- read.csv("FO_2022_ResearchProjectData.csv") %>%
+  mutate(NestNum = parse_number(NestID))
+
+# create spatial file using GPS coordinates
+hergs_SPDF <- SpatialPointsDataFrame(coords = hergs[ , c("Long","Lat")],
+                                     data = hergs[ ,c("Long", "Lat", "NestID", "NestNum")],
+                                     proj4string = CRS("+init=epsg:4326"))
+
+# create shapefile that can be plotted
+hergs_sf <- st_as_sf(hergs_SPDF)
+```
+
+## Add nest data to map
+```{r}
+# start with base map
+ggmap(Appledore_basemap) +
+  # add nest locations on top
+  geom_sf(data = hergs_sf, inherit.aes = FALSE) +
+  # add nest labels
+  geom_sf_label(data = hergs_sf, aes(label = NestNum), inherit.aes = FALSE) +
+  # zoom into Appledore Island
+  coord_sf(xlim = c(min(hergs$Long)-0.0005, max(hergs$Long)+0.0005), ylim = c(min(hergs$Lat)-0.0005, max(hergs$Lat)+0.0005)) +
+  # remove "lat" and "lon" labels
+  theme(axis.title = element_blank())
+```
