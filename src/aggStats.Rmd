@@ -14,13 +14,14 @@ library(tidyverse)
 library(lme4)
 library(lmerTest)
 library(multcomp)
-library(trend)
+library(egg)
+#library(trend)
 ```
 
 ```{r}
 setwd("~/Desktop/Repos/GullsOfAppledore")
 
-gbbg_all <- read.csv("data/aggData/behaviour_data.csv")
+gbbg_all <- read_csv("data/Kristen/aggData/behaviour_data.csv")
 # count(gbbg_all, birdID, year)
 # 147 individuals in *total* total
 
@@ -112,14 +113,15 @@ max(gbbg$days_pre_hatch, na.rm = TRUE) # 23
 mean(gbbg$days_pre_hatch, na.rm = TRUE) # 8.510256
 sd(gbbg$days_pre_hatch, na.rm = TRUE) # 5.512188
 
-gbbg %>%
+mates <- gbbg %>%
   group_by(birdID, year) %>%
   filter(n() >= 3) %>%
   ungroup() %>%
   group_by(nestID) %>%
-  summarise(n = n_distinct(birdID)) %>%
+  summarise(n = n_distinct(birdID),
+            birds = unique(birdID)) %>%
   filter(n > 1)
-# 18 instances of 3+ obs from each mate @ one nest
+# 20 instances of 3+ obs from each mate @ one nest
 
 gbbg %>%
   group_by(year) %>%
@@ -144,7 +146,9 @@ count(habit)
 habit_lat <- habit %>%
   filter(!str_detect(notes, "switched") | is.na(notes))
 
-# this indicates that days_pre_hatch is *NOT* significant
+count(habit_lat)
+
+# using this model
 h1 <- lmer(response ~ days_pre_hatch + obs_num + (1|bird_year), data = habit)
 summary(h1)
 anova(h1)
@@ -153,15 +157,9 @@ h1.1 <- lmer(latency ~ days_pre_hatch + obs_num + (1|bird_year), data = habit_la
 summary(h1.1)
 anova(h1.1)
 
-# this indicates that days_pre_hatch is *NOT* significant
 h2 <- lmer(response ~ days_pre_hatch + obs_date_cal + obs_num + (1|bird_year), data = habit)
 summary(h2)
 anova(h2)
-
-# this indicates that days_pre_hatch *IS* significant
-h3 <- lmer(response ~ days_pre_hatch + obs_num_cat + (1|bird_year), data = habit)
-summary(h3)
-anova(h3)
 ```
 
 ## Run models
@@ -186,14 +184,9 @@ m2 <- lmer(response ~ days_pre_hatch + (1|bird_year) + (1|obs_num), data = gbbg)
 m2.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num), data = gbbg_lat)
 
 # this runs
-m3 <- lmer(response ~ days_pre_hatch + (1|bird_year) + (1|obs_num_cat), data = gbbg)
-summary(m3)
-anova(m3)
-coef(m3)
-plot(summary(m3)$residuals)
-
-  # (but this does not)
-m3.1 <- lmer(latency ~ days_pre_hatch + (1|bird_year) + (1|obs_num_cat), data = gbbg_lat)
+m3 <- lmer(response ~ obs_date_cal + (1|bird_year) + (1|obs_num), data = gbbg)
+# but this does not
+m3.1 <- lmer(latency ~ obs_date_cal + (1|bird_year) + (1|obs_num), data = gbbg_lat)
 
 # this does not
 m4 <- lmer(response ~ days_pre_hatch + obs_date_cal + (1|bird_year) + (1|obs_num_cat), data = gbbg)
@@ -214,8 +207,12 @@ m5.1 <- lmer(latency ~ obs_date_cal + (1|bird_year) + (1|obs_num_cat), data = gb
 #   theme_linedraw() +
 #   theme(panel.grid = element_blank())
 
+## combine final figures into two two-panel plots (defense, cal day & days pre hatch;
+                                                  #latency, cal day & days pre hatch)
+
 ggplot(gbbg[!is.na(gbbg$days_pre_hatch), ], aes(x = factor(days_pre_hatch, levels = 23:1), y = response)) +
   geom_boxplot() +
+  #geom_jitter(alpha = 0.5, shape = 18) +
   labs(x = "Days prior to hatching", y = "Defense score") +
   theme_linedraw() +
   theme(panel.grid = element_blank())
@@ -226,7 +223,9 @@ gbbg_days_sum <- gbbg %>%
   summarise(defense = mean(response),
             sd = sd(response))
 
-ggplot(gbbg_days_sum, aes(x = days_pre_hatch, y = defense)) +
+gbbg_days_sum$sd[is.na(gbbg_days_sum$sd)] <- 0
+
+fig2a <- ggplot(gbbg_days_sum, aes(x = days_pre_hatch, y = defense)) +
   geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
   geom_point(shape = 5) +
   geom_errorbar(aes(ymin = defense - sd, ymax = defense + sd)) +
@@ -246,6 +245,31 @@ ggplot() +
   theme_linedraw() +
   theme(panel.grid = element_blank())
 
+### same for latency
+
+gbbg_days_sum_lat <- gbbg_lat %>%
+  filter(!is.na(days_pre_hatch)) %>%
+  group_by(days_pre_hatch) %>%
+  summarise(lat_time = mean(latency),
+            sd = sd(latency))
+
+gbbg_days_sum_lat$sd[is.na(gbbg_days_sum_lat$sd)] <- 0
+
+fig2b <- ggplot(gbbg_days_sum_lat, aes(x = days_pre_hatch, y = lat_time)) +
+  geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
+  geom_point(shape = 5) +
+  geom_errorbar(aes(ymin = lat_time - sd, ymax = lat_time + sd)) +
+  scale_x_reverse() +
+  labs(x = "Days prior to hatching", y = "Mean latency time (s)") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+fig2 <- ggarrange(fig2a, fig2b, nrow = 1)
+
+ggsave("figures/defense/fig2.png", fig2, width = 8, height = 3, units = "in", dpi = 600)
+
+### same for Julian date
+
 ggplot(gbbg, aes(x = factor(obs_date_cal, levels = 140:175), y = response)) +
   geom_boxplot() +
   scale_x_discrete(breaks = factor(seq(140, 175, by = 5)), drop = FALSE) +
@@ -258,7 +282,9 @@ gbbg_cal_sum <- gbbg %>%
   summarize(defense = mean(response),
             sd = sd(response))
 
-ggplot(gbbg_cal_sum, aes(x = obs_date_cal, y = defense)) +
+gbbg_cal_sum$sd[is.na(gbbg_cal_sum$sd)] <- 0
+
+fig3a <- ggplot(gbbg_cal_sum, aes(x = obs_date_cal, y = defense)) +
   geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
   geom_point(shape = 5) +
   geom_errorbar(aes(ymin = defense - sd, ymax = defense + sd)) +
@@ -276,21 +302,57 @@ ggplot() +
   labs(x = "Calendar day", y = "Defense score") +
   theme_linedraw() +
   theme(panel.grid = element_blank())
+
+### same for latency
+
+gbbg_cal_sum_lat <- gbbg %>%
+  group_by(obs_date_cal) %>%
+  summarize(lat_time = mean(latency),
+            sd = sd(latency))
+
+gbbg_cal_sum_lat$sd[is.na(gbbg_cal_sum_lat$sd)] <- 0
+
+fig3b <- ggplot(gbbg_cal_sum_lat, aes(x = obs_date_cal, y = lat_time)) +
+  geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
+  geom_point(shape = 5) +
+  geom_errorbar(aes(ymin = lat_time - sd, ymax = lat_time + sd)) +
+  labs(x = "Calendar day", y = "Mean latency time (s)") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+fig3 <- ggarrange(fig3a, fig3b, nrow = 1)
+
+ggsave("figures/defense/fig3.png", fig3, width = 8, height = 3, units = "in", dpi = 600)
 ```
 
 ## Geospatial comparison
 ```{r}
-g1 <- lmer(response ~ days_pre_hatch + location_cat + (1|bird_year), data = gbbg)
+g1 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + (1|bird_year), data = gbbg)
 summary(g1)
 anova(g1)
 
 summary(glht(g1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr"))
 
-g1.1 <- lmer(latency ~ days_pre_hatch + location_cat + (1|bird_year), data = gbbg_lat)
+g1.1 <- lmer(latency ~ days_pre_hatch + obs_date_cal + location_cat + (1|bird_year),
+             data = gbbg_lat)
 summary(g1.1)
 anova(g1.1)
 
 summary(glht(g1.1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr"))
+
+##########
+
+g1a <- lmer(response ~ obs_date_cal + location_cat + (1|bird_year), data = gbbg)
+summary(g1a)
+anova(g1a)
+
+summary(glht(g1a, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr"))
+
+g1.1a <- lmer(latency ~ obs_date_cal + location_cat + (1|bird_year), data = gbbg)
+summary(g1.1a)
+anova(g1.1a)
+
+summary(glht(g1.1a, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr"))
 ```
 
 ## Plot geospatial
@@ -298,12 +360,27 @@ summary(glht(g1.1, linfct = mcp(location_cat = "Tukey")), test = adjusted("fdr")
 ## two-panel (score & latency)
 ## categorical boxplots
 
-ggplot(gbbg, aes(x = factor(location_cat, levels = c("campus", "loose subcolony", "dense subcolony")),
+fig4a <- ggplot(gbbg, aes(x = factor(location_cat,
+                            levels = c("campus", "loose subcolony", "dense subcolony")),
                  y = response)) +
   geom_boxplot() +
   labs(x = "Nesting neighborhood", y = "Defense score") +
   theme_linedraw() +
   theme(panel.grid = element_blank())
+
+### add brackets for significance levels ###
+
+fig4b <- ggplot(gbbg_lat, aes(x = factor(location_cat,
+                            levels = c("campus", "loose subcolony", "dense subcolony")),
+                 y = latency)) +
+  geom_boxplot() +
+  labs(x = "Nesting neighborhood", y = "Latency time (s)") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+fig4 <- ggarrange(fig4a, fig4b, nrow = 1)
+
+ggsave("figures/defense/fig4.png", fig4, width = 8, height = 3, units = "in", dpi = 600)
 ```
 
 ## Mate presence
@@ -320,7 +397,8 @@ mates_lat <- gbbg_lat %>%
   group_by(bird_year) %>%
   filter(n_distinct(mate_present) >= 2)
 
-i1 <- lmer(response ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = mates)
+i1 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + mate_present + (1|bird_year),
+           data = mates)
 summary(i1)
 anova(i1)
 
@@ -363,13 +441,13 @@ gbbg %>%
 
 count(gbbg, sex)  # 94 obs F, 173 obs M
 
-s1 <- lmer(response ~ days_pre_hatch + sex + (1|bird_year), data = gbbg)
+s1 <- lmer(response ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year), data = gbbg)
 summary(s1)
 anova(s1)
 
 summary(glht(s1, linfct = mcp(sex = "Tukey")), test = adjusted("fdr"))
 
-s1.1 <- lmer(latency ~ days_pre_hatch + sex + (1|bird_year), data = gbbg_lat)
+s1.1 <- lmer(latency ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year), data = gbbg_lat)
 summary(s1.1)
 anova(s1.1)
 
