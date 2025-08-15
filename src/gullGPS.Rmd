@@ -10,39 +10,901 @@ editor_options:
 ## Load packages
 ```{r}
 library(tidyverse)
+library(janitor)
+# library(naniar)
+library(sf)
+library(usmap)
+library(ks)
+library(weird)
+library(egg)
+library(geosphere)
+library(suncalc)
+library(multcompView)
+library(ggsignif)
+library(data.table)
+library(DescTools) # `Mode()` function
 ```
 
-## Read data
+## Load & process raw data
 ```{r}
 setwd("~/Desktop/Repos/GullsOfAppledore")
 
-gull1 <- read.csv("data/GBBG_GPS/08-2018_05-2019/5-26-2019/ADI29_.csv", sep = ";", header = TRUE)
+# read pre-2019 files
+files18 <- list.files("data/GBBG_GPS", pattern = "raw_csv", recursive = TRUE)
 
-# try reading raw file
+GPS_list18 <- lapply(files18, function(x) {
+  read_delim(paste0("data/GBBG_GPS/", x),
+             col_names = FALSE,
+             col_types = "cccccccccccc")
+})
 
-gull <- readLines(file("data/GBBG_GPS/08-2018_05-2019/5-26-2019/20190520081954.txt", encoding = "utf-16le"))
+GPS_list18[[2]] <- GPS_list18[[2]] %>%
+  select(-c(X7, X9, X11))
 
-gull <- gull[!(str_detect(gull, "^-"))]
-gull <- gull[!(str_detect(gull, "^SS"))]   # rewrite of gull[-(grep("^SS", gull))]
+colnames(GPS_list18[[2]]) <- colnames(GPS_list18[[1]])
 
-## clean duplicate rows
+GPS_all18 <- bind_rows(GPS_list18)
 
-date <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[1], "\\d{6}"))
-time <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[1], "(?<=\\d{6})\\d{4}"))
-lat <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[1], "\\d{7}N"))
-lon <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[1], "\\d{7}W"))
-speed <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[1], "\\d*\\.\\d*"))
+GPS_all18 %>%
+  group_by(X1) %>%
+  summarise(last_mon = max(X3))
+GPS_all18 %>%
+  filter(X1 > 20 & X1 < 30 & X3 == 7) %>%
+  group_by(X1) %>%
+  summarise(last_day = max(as.numeric(X2)))
 
-t <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[2], "(?<=t=)\\d*"))
-U <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[2], "(?<=U=)\\d*\\.\\d*"))
-T <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[2], "(?<=T=)\\d*\\.\\d*"))
-ID <- sapply(split(gull, ceiling(seq_along(gull)/2)), function(x) str_extract(x[2], "ADI\\d*"))
+# read raw files
+files <- list.files("data/GBBG_GPS/downloaded_05-2019_07-2019", pattern = "*csv$", recursive = TRUE)
 
-logger <- as.data.frame(cbind(ID, date, time, lat, long, speed, t, U, T)) %>%
-  mutate(lat = paste0(str_extract(lat, "[0-9]{2}"), ".", str_extract(lat, "(?<=[0-9]{2})\\d*")),
-         lon = paste0(ifelse(str_detect(lon, "W"), "-", ""),
+GPS_list <- lapply(files, function(x) {
+  read_delim(paste0("data/GBBG_GPS/downloaded_05-2019_07-2019/", x),
+             col_types = "c")
+})
+
+GPS_all <- bind_rows(GPS_list) %>%
+  distinct() %>%
+  clean_names() %>%
+  filter(!is.na(logger_id)) %>%
+  arrange(logger_id, year, month, day, hour, minute, second) %>%
+  rename(lat = latitude,
+         lon = longitude)
+
+unique(GPS_all$logger_id)
+
+write_csv(GPS_all, "data/GBBG_GPS/allGPS.csv")
+```
+
+## Load data
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+all_gulls <- read_csv("data/GBBG_GPS/allGPS.csv")
+
+winter <- all_gulls %>%
+  filter(month >= 10 | month <= 3) %>%
+  filter(!is.na(lat))
+```
+
+## Let's see what some maps look like
+```{r}
+min(all_gulls$lat, na.rm = TRUE) # 42.18885
+max(all_gulls$lat, na.rm = TRUE) # 43.65667
+min(all_gulls$lon, na.rm = TRUE) # -76.05282
+max(all_gulls$lon, na.rm = TRUE) # -69.24325
+
+# turn off spherical geometry to avoid "duplicate" errors
+sf_use_s2(FALSE)
+
+# get coastal outline
+coast <- read_sf("/Library/Frameworks/R.framework/Resources/gshhg-shp-2.3.7/GSHHS_shp/f/GSHHS_f_L1.shp") %>%
+  st_make_valid() %>%
+  st_crop(xmin = -72, xmax = -69, ymin = 41, ymax = 44)
+
+states <- read_sf("/Library/Frameworks/R.framework/Resources/gshhg-shp-2.3.7/WDBII_shp/f/WDBII_border_f_L2.shp") %>%
+  st_make_valid() %>%
+  st_crop(xmin = -72, xmax = -69, ymin = 41, ymax = 44)
+
+rivers <- read_sf("/Library/Frameworks/R.framework/Resources/gshhg-shp-2.3.7/WDBII_shp/f/WDBII_river_f_L05.shp")
+canal <- read_sf("/Library/Frameworks/R.framework/Resources/gshhg-shp-2.3.7/WDBII_shp/f/WDBII_river_f_L10.shp")
+
+ggplot() +
+  geom_sf(data = coast) +
+  geom_sf(data = states, linewidth = 0.1) +
+  geom_sf(data = rivers, linewidth = 0.1, linetype = "22") +
+  geom_sf(data = canal, linewidth = 0.1, linetype = "22") +
+  geom_point(data = all_gulls, aes(lon, lat)) +
+  coord_sf(xlim = c(-72, -69),
+           ylim = c(41, 44))
+
+ggplot() +
+  geom_sf(data = coast) +
+  geom_sf(data = states, linewidth = 0.1) +
+  geom_sf(data = rivers, linewidth = 0.1, linetype = "22") +
+  geom_sf(data = canal, linewidth = 0.1, linetype = "22") +
+  coord_sf(xlim = c(-71, -70),
+           ylim = c(42.5, 43.5))
+
+min(winter$lat, na.rm = TRUE) # 42.18885
+max(winter$lat, na.rm = TRUE) # 43.65667
+min(winter$lon, na.rm = TRUE) # -71.0452
+max(winter$lon, na.rm = TRUE) # -69.3372
+
+ggplot() +
+  geom_sf(data = coast) +
+  geom_sf(data = states, linewidth = 0.1) +
+  geom_point(data = winter, aes(lon, lat, col = logger_id)) +
+  coord_sf(xlim = c(-71.0452 - 0.25, -69.3372 + 0.25),
+           ylim = c(42.18885 - 0.25, 43.65667 + 0.25))
+```
+
+## Kernel density
+```{r}
+autoplot(kde(winter[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%"),
+                    limits = c("(60.496, 233.6]", "(0.481, 60.5]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+ggsave("figures/2025_old_GPS/all_winter.png", width = 4, height = 5, units = "in", dpi = 600)
+
+autoplot(kde(winter[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%"),
+                    limits = c("(60.496, 233.6]", "(0.481, 60.5]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-70.63 - 0.25, -70.63 + 0.25),
+           ylim = c(43.05 - 0.2, 43.05 + 0.2)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.92))
+
+ggsave("figures/2025_old_GPS/all_winter_cropped.png", width = 4, height = 5, units = "in", dpi = 600)
+
+winter26 <- winter %>%
+  filter(logger_id == "ADI26")
+winter29 <- winter %>%
+  filter(logger_id == "ADI29")
+
+# Kernel density estimation (UD)
+kd26 <- kde(winter26[, c("lon", "lat")])
+kd29 <- kde(winter29[, c("lon", "lat")])
+
+plot(kd26, display = "slice", col = viridis::viridis(20))
+plot(kd26, display = "image", col = viridis::viridis(20))
+
+plot(kd29, display = "slice", col = viridis::viridis(20))
+plot(kd29, display = "image", col = viridis::viridis(20))
+
+autoplot(kde(winter26[, c("lon", "lat")]), prob = c(0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+ggsave("figures/2025_old_GPS/all_winter_ADI26.png", width = 4, height = 4.5, units = "in", dpi = 600)
+
+autoplot(kde(winter29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%"),
+                    limits = c("(58.746, 214.5]", "(0.494, 58.7]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+ggsave("figures/2025_old_GPS/all_winter_ADI29.png", width = 4, height = 4.5, units = "in", dpi = 600)
+
+autoplot(kde(winter29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%"),
+                    limits = c("(58.746, 214.5]", "(0.494, 58.7]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-70.63 - 0.25, -70.63 + 0.25),
+           ylim = c(43.05 - 0.2, 43.05 + 0.2)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.9))
+
+ggsave("figures/2025_old_GPS/all_winter_cropped_ADI29.png", width = 4, height = 4, units = "in", dpi = 600)
+```
+
+## Analyze utilization distribution by month
+```{r}
+count(winter, logger_id, month)
+
+jan26 <- winter26 %>% filter(month == 1)
+feb26 <- winter26 %>% filter(month == 2)
+mar26 <- winter26 %>% filter(month == 3)
+
+oct29 <- winter29 %>% filter(month == 10)
+nov29 <- winter29 %>% filter(month == 11)
+dec29 <- winter29 %>% filter(month == 12)
+jan29 <- winter29 %>% filter(month == 1)
+feb29 <- winter29 %>% filter(month == 2)
+mar29 <- winter29 %>% filter(month == 3)
+
+plot26.1 <- autoplot(kde(jan26[, c("lon", "lat")]), prob = c(0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+plot26.2 <- autoplot(kde(feb26[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055", "yellow"),
+                    labels = c("50%", "95%"),
+                    limits = c("(234.1, 234.2]", "(232.0, 234.1]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+plot26.3 <- autoplot(kde(mar26[, c("lon", "lat")]), prob = c(0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.1))
+
+plot26 <- ggarrange(
+  plot26.1 +
+    labs(title = "January") +
+    theme(legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot26.2 +
+    labs(title = "February") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot26.3 +
+    labs(title = "March") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  nrow = 1)
+
+ggsave("figures/2025_old_GPS/winter_by_month_ADI26.png", plot26, width = 10, height = 4.5, units = "in", dpi = 600)
+
+##########
+
+plot29.10 <- autoplot(kde(oct29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055", "yellow"),
+                    labels = c("50%", "95%"),
+                    limits = c("(216.16, 593]", "(9.15, 216]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+plot29.11 <- autoplot(kde(nov29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055", "yellow"),
+                    labels = c("50%", "95%"),
+                    limits = c("(766, 1501]", "(28, 766]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+plot29.12 <- autoplot(kde(dec29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055", "yellow"),
+                    labels = c("50%", "95%"),
+                    limits = c("(105.88, 330]", "(4.96, 106]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.1))
+
+plot29.1 <- autoplot(kde(jan29[, c("lon", "lat")]), prob = c(0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+plot29.2 <- autoplot(kde(feb29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055", "yellow"),
+                    labels = c("50%", "95%"),
+                    limits = c("(454.83, 510]", "(1.59, 455]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.85))
+
+plot29.3 <- autoplot(kde(mar29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055", "yellow"),
+                    labels = c("50%", "95%"),
+                    limits = c("(141.85, 196]", "(2.16, 142]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "inside",
+        legend.position.inside = c(0.85, 0.1))
+
+plot29 <- ggarrange(
+  plot29.10 +
+    labs(title = "October") +
+    theme(axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.11 +
+    labs(title = "November") +
+    theme(axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.12 +
+    labs(title = "December") +
+    theme(axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.1 +
+    labs(title = "January") +
+    theme(legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.2 +
+    labs(title = "February") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.3 +
+    labs(title = "March") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  nrow = 2)
+
+ggsave("figures/2025_old_GPS/winter_by_month_ADI29.png", plot29, width = 10, height = 8, units = "in", dpi = 600)
+
+plot29.pt1 <- ggarrange(
+  plot29.10 +
+    labs(title = "October") +
+    theme(legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.11 +
+    labs(title = "November") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.12 +
+    labs(title = "December") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  nrow = 1)
+
+ggsave("figures/2025_old_GPS/winter_by_month_ADI29.1.png", plot29.pt1, width = 10, height = 4.5, units = "in", dpi = 600)
+
+plot29.pt2 <- ggarrange(
+  plot29.1 +
+    labs(title = "January") +
+    theme(legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.2 +
+    labs(title = "February") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  plot29.3 +
+    labs(title = "March") +
+    theme(axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          plot.title = element_text(size = 12, face = "bold", hjust = 0.5)),
+  nrow = 1)
+
+ggsave("figures/2025_old_GPS/winter_by_month_ADI29.2.png", plot29.pt2, width = 10, height = 4.5, units = "in", dpi = 600)
+```
+
+## Analyze distance/speed of ADI29
+```{r}
+winter29 <- winter29 %>%
+  mutate(date = paste(year,
+                      str_pad(month, 2, "left", "0"),
+                      str_pad(day, 2, "left", "0"),
+                      sep = "-"),
+         time = paste(str_pad(hour, 2, "left", "0"),
+                      str_pad(minute, 2, "left", "0"),
+                      str_pad(second, 2, "left", "0"),
+                      sep = ":"),
+         datetime = as.POSIXct(paste(date, time), tz = "UTC")) %>%
+  arrange(datetime) %>%
+  mutate(dist_m = distGeo(cbind(lon, lat),
+                          cbind(lag(lon), lag(lat))),
+         t_diff = as.numeric(difftime(datetime, lag(datetime), units = "secs")),
+         speed_mps = dist_m / t_diff)
+
+quantile(winter29$t_diff, c(0.95, 0.99, 0.995, 0.999, 1), na.rm = TRUE)
+
+## filtering out speed values with more than 3 hrs between tpts
+winter29 <- winter29 %>%
+  mutate(speed_mps = case_when(t_diff > 3600 * 3 ~ NA,
+                               .default = speed_mps))
+
+daily_summary29 <- winter29 %>%
+  group_by(month, date) %>%
+  summarise(daily_dist_km = sum(dist_m, na.rm = TRUE) / 1000,
+            mean_speed_mps = mean(speed_mps, na.rm = TRUE)) %>%
+  mutate(month = factor(month,
+                        levels = c("10", "11", "12", "1", "2", "3"),
+                        labels = c("October", "November", "December", "January", "February",
+                                   "March")))
+
+ggplot(daily_summary29, aes(daily_dist_km)) +
+  geom_histogram(bins = 40) +
+  theme_linedraw()
+
+dist_aov = aov(daily_dist_km ~ month, data = daily_summary29)
+summary(dist_aov) # p = 1.85e-08
+dist_tukey <- TukeyHSD(dist_aov)
+
+# get significance letters
+cld <- multcompLetters(dist_tukey$month[,"p adj"])
+
+# alternative function; used to "reorder the levels of the data so that the letters appear in a descending order of the mean" (I think this is trying to take the mean of "month", hence the errors?)
+cld2 <- multcompLetters2(daily_dist_km ~ month,
+                         dist_tukey$month[,"p adj"],
+                         data = daily_summary29)
+
+# format data for graphing (& calc y-values)
+dt <- group_by(daily_summary29, month) %>%
+  summarise(y = max(daily_dist_km)) %>%
+  rowwise() %>%
+  mutate(cld = cld$Letters[[paste(month)]])
+
+ggplot(daily_summary29, aes(x = month, y = daily_dist_km)) +
+  geom_boxplot() +
+  geom_text(data = dt, aes(label = cld, y = y, col = cld),
+            vjust = -1, fontface = "bold",
+            show.legend = FALSE) +
+  scale_color_manual(values = c("#7CAE00", "#C77CFF")) +
+  scale_y_continuous(limits = c(0, 275)) +
+  labs(x = "Month", y = "Daily Distance Travelled (km)") +
+  theme_bw()
+
+ggsave("figures/2025_old_GPS/daily_dist_hist_monthly.png", width = 6, height = 4, units = "in", dpi = 600)
+```
+
+## Look at day travelled furthest distance
+```{r}
+daily_summary29$date[which.max(daily_summary29$daily_dist_km)] # "2019-01-22"
+
+jan_distance <- winter29 %>%
+  filter(date == "2019-01-22" | date == "2019-01-23")
+
+min(jan_distance$lat, na.rm = TRUE) # 42.48495
+max(jan_distance$lat, na.rm = TRUE) # 43.65667
+min(jan_distance$lon, na.rm = TRUE) # -70.73872
+max(jan_distance$lon, na.rm = TRUE) # -69.3372
+
+jan22$datetime[47] # "2019-01-22 11:48:00 UTC"
+jan22$datetime[154] # "2019-01-23 14:44:00 UTC"
+
+jan22 %>%
+  filter(datetime >= "2019-01-22 11:48:00 UTC" & datetime <= "2019-01-23 14:44:00 UTC") %>%
+  select(dist_m) %>%
+  sum() / 1000
+
+ggplot() +
+  geom_sf(data = coast) +
+  geom_sf(data = states, linewidth = 0.1) +
+  geom_point(data = jan22[47:154, ], aes(lon, lat, col = datetime)) +
+  # geom_point(data = jan22[47, ], aes(lon, lat), col = "red") +
+  # geom_point(data = jan22[154, ], aes(lon, lat), col = "red") +
+  # annotate("text", label = "2019-01-22 06:48:00 EST to\n2019-01-23 09:44:00 EST",
+  #          x = -69.97, y = 42.25, hjust = "left", fontface = "bold", size = 3.9) +
+  # annotate("text", label = "446.6 km", x = -70.5, y = 42.25, fontface = "bold", size = 3.9) +
+  scale_color_viridis_c() +
+  coord_sf(xlim = c(-70.73872 - 0.25, -69.3372 + 0.25),
+           ylim = c(42.48495 - 0.25, 43.65667 + 0.25)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.position = "none")
+
+ggsave("figures/2025_old_GPS/Jan22-23.png", width = 4, height = 4.4, units = "in", dpi = 600)
+```
+
+## Look at diel variation
+```{r}
+winter29$date <- as.Date(winter29$date)
+
+# extract day/night label
+light_data29 <- getSunlightTimes(data = winter29[, c("date", "lat", "lon")],
+                                 keep = c("sunrise", "sunset"))
+
+winter29$daylight <- mapply(function(datetime, rise, set) { datetime > rise & datetime < set },
+                            winter29$datetime,
+                            light_data29$sunrise,
+                            light_data29$sunset)
+
+winter29$time_period <- ifelse(winter29$daylight, "day", "night")
+
+diel_summary29 <- winter29 %>%
+  group_by(month, date, time_period) %>%
+  summarise(total_dist_km = sum(dist_m, na.rm = TRUE) / 1000,
+            mean_speed = mean(speed_mps, na.rm = TRUE))
+
+## conduct t-tests
+with(diel_summary29, shapiro.test(total_dist_km[time_period == "day"]))
+# p-value = 1.47e-07, not normally distributed
+
+wilcox.test(total_dist_km ~ time_period, data = diel_summary29)
+# p-value < 2.2e-16; highly significant
+
+ggplot(diel_summary29, aes(x = time_period, y = total_dist_km)) +
+  geom_boxplot() +
+  geom_signif(comparisons = list(c("day", "night")),
+              test = "wilcox.test",
+              map_signif_level = TRUE) +
+  labs(x = "Time Period", y = "Daily Distance Travelled (km)") +
+  theme_bw()
+
+# ggsave()
+
+ggplot(diel_summary29,
+       aes(x = time_period,
+           y = total_dist_km,
+           fill = time_period)) +
+  geom_boxplot() +
+  geom_signif(comparisons = list(c("day", "night")),
+              test = "wilcox.test",
+              map_signif_level = TRUE) +
+  scale_fill_manual(values = c("gold", "deepskyblue3")) +
+  scale_y_continuous(limits = c(0, 250)) +
+  labs(x = "Time Period", y = "Daily Distance Travelled (km)") +
+  facet_wrap( ~ factor(month,
+                       levels = c("10", "11", "12", "1", "2", "3"),
+                       labels = c("October", "November", "December", "January", "February",
+                                  "March"))) +
+  theme_bw() +
+  theme(legend.position = "none")
+
+ggsave("figures/2025_old_GPS/diel_dist_monthly.png", width = 7, height = 5, units = "in", dpi = 600)
+```
+
+## Try residence time analysis
+```{r}
+winter29_sf <- st_as_sf(winter29, coords = c("lon", "lat"), crs = 4326) %>%
+  st_transform(crs = 32619) %>% # use UTM projection for accurate distances
+  arrange(datetime)
+
+# create a bounding box with some buffer
+bbox <- st_bbox(winter29_sf)
+grid_res <- 100  # 0.1 km grid
+grid <- st_make_grid(st_as_sfc(bbox), cellsize = grid_res, square = TRUE)
+grid_sf <- st_sf(grid_id = 1:length(grid), geometry = grid)
+
+# assign points to grid cells
+gps_with_grid <- st_join(winter29_sf, grid_sf, join = st_covered_by)
+
+# convert to data.table for speed
+winter29_grid <- as.data.table(gps_with_grid) %>%
+  arrange(datetime)
+
+# For each cell, find how long bird stayed before moving to another
+winter29_grid <- winter29_grid %>%
+  mutate(next_grid = shift(grid_id, type = "lead"),
+         next_time = shift(datetime, type = "lead"),
+         stays_in_cell = grid_id == next_grid,
+         t_diff_next = as.numeric(difftime(next_time, datetime, units = "secs"))) %>%
+  mutate(stays_in_cell = case_when(t_diff_next > 3600 * 3 ~ NA,
+                                   .default = stays_in_cell),
+         t_diff_next = case_when(t_diff_next > 3600 * 3 ~ NA,
+                                 .default = t_diff_next)) %>%
+  mutate(# assign unique visit ID
+         new_visit = grid_id != lag(grid_id, default = TRUE),
+         visit_id = cumsum(new_visit))
+
+mode_value <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+# filter to time within same cell
+res_time <- winter29_grid %>%
+  filter(stays_in_cell == TRUE) %>%
+  group_by(visit_id, grid_id) %>%
+  summarise(month = mode_value(month), # this uses the predominant month of each cell occupancy
+            time_period = mode_value(time_period),
+            res_time = sum(t_diff_next, na.rm = TRUE)) %>%
+  mutate(res_time_hr = res_time / 3600) %>%
+  mutate(month = factor(month,
+                        levels = c(10:12, 1:3),
+                        labels = c("October", "November", "December", "January", "February",
+                                   "March")))
+
+ggplot(res_time, aes(res_time_hr)) +
+  geom_histogram() +
+  theme_linedraw()
+
+res_aov = aov(res_time_hr ~ month, data = res_time)
+summary(res_aov) # p = 0.0185 (1km grid)   # p = 0.00259 (500m grid)   # p = 5.14e-10 (100m grid)
+res_tukey <- TukeyHSD(res_aov)
+
+# get significance letters
+cld2 <- multcompLetters2(res_time_hr ~ month,
+                         res_tukey$month[,"p adj"],
+                         data = res_time)
+
+# format data for graphing (& calc y-values)
+dt <- group_by(res_time, month) %>%
+  summarise(y = max(res_time_hr)) %>%
+  rowwise() %>%
+  mutate(cld = cld2$Letters[[paste(month)]])
+
+ggplot(res_time, aes(x = month, y = res_time_hr)) +
+  geom_boxplot() +
+  # geom_jitter(alpha = 0.5) +  # add `outlier.shape = NA` above to not double-plot outliers
+  geom_text(data = dt, aes(label = cld, y = y),
+            vjust = -1, fontface = "bold", col = "royalblue",
+            show.legend = FALSE) +
+  scale_y_continuous(limits = c(0, 10.5)) +
+  labs(x = "Month", y = "Per-Cell Residence Time (hr)") +
+  theme_bw()
+
+ggsave("figures/2025_old_GPS/res_time_monthly.png", width = 6, height = 4, units = "in", dpi = 600)
+
+## conduct t-tests
+with(res_time, shapiro.test(res_time_hr[time_period == "day"]))
+# p-value < 2.2e-16, not normally distributed
+
+wilcox.test(res_time_hr ~ time_period, data = res_time)
+# p-value = 1.078e-11; highly significant
+
+ggplot(res_time, aes(x = time_period, y = res_time_hr)) +
+  geom_boxplot() +
+  geom_signif(comparisons = list(c("day", "night")),
+              test = "wilcox.test",
+              map_signif_level = TRUE) +
+  labs(x = "Time Period", y = "Same-Cell Residence Time (hr)") +
+  theme_bw()
+
+ggplot(res_time, aes(x = time_period, y = res_time_hr, fill = time_period)) +
+  geom_boxplot() +
+  geom_signif(comparisons = list(c("day", "night")),
+              test = "wilcox.test",
+              map_signif_level = TRUE) +
+  scale_fill_manual(values = c("gold", "deepskyblue3")) +
+  scale_y_continuous(limits = c(0, 11.5)) +
+  labs(x = "Time Period", y = "Per-Cell Residence Time (hr)") +
+  facet_wrap( ~ month) +
+  theme_bw() +
+  theme(legend.position = "none")
+
+ggsave("figures/2025_old_GPS/diel_res_monthly.png", width = 7, height = 5, units = "in", dpi = 600)
+
+## make maps to explain residence time concept
+grid_sf_4326 <- grid_sf %>%
+  st_transform(crs = 4326)
+
+autoplot(kde(winter29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055"),
+                    labels = c("50%", "95%"),
+                    limits = c("(58.746, 214.5]", "(0.494, 58.7]")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  geom_sf(data = grid_sf, fill = NA) +
+  coord_sf(xlim = c(-71.2, -69),
+           ylim = c(42, 43.9)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "none")
+
+ggsave("figures/2025_old_GPS/grid_ADI29.png", width = 4, height = 4.5, units = "in", dpi = 600)
+
+grid_crop <- autoplot(kde(winter29[, c("lon", "lat")]), prob = c(0.01, 0.5, 0.95), fill = TRUE) +
+  scale_fill_manual(values = c("navy", "#73D055")) +
+  geom_sf(data = coast, alpha = 0.5) +
+  geom_sf(data = states, linewidth = 0.1) +
+  geom_sf(data = grid_sf, fill = NA) +
+  coord_sf(xlim = c(-70.63 - 0.25, -70.63 + 0.25),
+           ylim = c(43.05 - 0.2, 43.05 + 0.2)) +
+  theme_linedraw() +
+  theme(axis.title = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "none")
+
+ggsave("figures/2025_old_GPS/grid_cropped_ADI29.png", grid_crop, width = 4, height = 5, units = "in", dpi = 600)
+```
+
+## Analyze time spent "off-shore" vs "coastal" vs "inland" (whole season & monthly)
+```{r}
+
+
+### bathymetry of off-shore range
+
+
+
+### map of GPS points by speed
+
+### time-series modeling of movement metrics (e.g., daily range) with:
+  ### Weather conditions (wind, temperature, storms)
+  ### Chlorophyll-a concentration (proxy for productivity if at sea)
+  ### Day length / photoperiod
+
+### future data: clustering analysis to see if multiple birds shared ranges (sub-colony commonalities???)
+### future data: compare winter movement patterns with summer breeding behavior to examine trade-offs or seasonal adaptations
+```
+
+
+
+
+
+
+## Read data from raw CSVs -- these lats/lons are off
+```{r}
+setwd("~/Desktop/Repos/GullsOfAppledore")
+
+# read raw files
+files <- list.files("data/GBBG_GPS/downloaded_05-2019_07-2019", ".txt")
+
+GPS_all <- vector()
+
+for(f in files) {
+  path <- paste0("data/GBBG_GPS/downloaded_05-2019_07-2019/", f)
+  gulls <- readLines(file(path, encoding = "utf-16le"))
+  gulls <- gulls[!(str_detect(gulls, "^-"))]
+  gulls <- gulls[!(str_detect(gulls, "^\\+"))]
+  gulls <- gulls[!(str_detect(gulls, "^SS"))]
+  gulls <- gulls[!(str_detect(gulls, "^TLGP"))]
+  gulls <- gulls[!(str_detect(gulls, "^P"))]
+  gulls <- gulls[!(str_detect(gulls, "GPS STOPED"))]
+  GPS_all <- c(GPS_all, gulls)
+}
+
+ADI_all <- vector()
+
+for(name in na.omit(unique(str_extract(GPS_all, "ADI[0-9]{2}")))) {
+  ADI <- GPS_all[str_detect(GPS_all, paste0(str_extract(name, "[0-9]{2}"), "$"))]
+  # clean duplicate rows
+  ADI <- ADI[c(TRUE, ADI[-1] != ADI[-length(ADI)])]
+  # add blank elements to even out pairs of lines
+  if(str_detect(ADI[1], "INFO")) {
+    # adding the W lets the line insertion code below work
+    ADI <- c(paste0("W", str_extract(name, "[0-9]{2}$")), ADI)
+  }
+  if(str_detect(ADI[length(ADI)], "W")) {
+    ADI <- c(ADI, name)
+  }
+ADI_all <- c(ADI_all, ADI)
+}
+
+ADI.1 <- as.data.frame(ADI_all)
+
+# insert blank line for pairs of lines with one missing
+for(i in 2:(length(ADI_all) + 10)) { # 10 is more than enough
+  if(is.na(ADI_all[i])) {
+    next
+  }
+  if(str_detect(ADI_all[i], "W")) {
+    if(str_detect(ADI_all[i + 1], "ADI")) {
+      next
+    }
+    ADI_all <- append(ADI_all, NA, after = i)
+  }
+  if(str_detect(ADI_all[i], "ADI")) {
+    if(is.na(ADI_all[i - 1])) {
+      next
+    }
+    if(str_detect(ADI_all[i - 1], "W")) {
+      next
+    }
+    ADI_all <- append(ADI_all, NA, after = (i - 1))
+  }
+  print(i) # 2 instances of missing lines
+}
+
+# split by variable
+date <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[1], "\\d{6}"))
+time <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[1], "(?<=\\d{6})\\d{4}"))
+lat <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[1], "\\d{7}N"))
+lon <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[1], "\\d{7}W"))
+speed <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[1], "\\d*\\.\\d*(?=\\d{2})"))
+
+t <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[2], "(?<=t=)\\d*"))
+U <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[2], "(?<=U=)\\d*\\.\\d*"))
+T <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[2], "(?<=T=)\\d*\\.\\d*"))
+ID <- sapply(split(ADI_all, ceiling(seq_along(ADI_all)/2)), function(x) str_extract(x[2], "ADI\\d*"))
+
+all_gulls <- as.data.frame(cbind(ID, date, time, lat, lon, speed, t, U, T)) %>%
+  mutate(lat = paste0(str_extract(lat, "[0-9]{2}"),
+                      ".",
+                      str_extract(lat, "(?<=[0-9]{2})\\d*")),
+         lon = paste0("-", # assumes all points are W (used above for extraction)
                       str_extract(lon, "[0-9]{2}"),
                       ".",
-                      str_extract(lon, "(?<=[0-9]{2})\\d*")))
+                      str_extract(lon, "(?<=[0-9]{2})\\d*"))) %>%
+  replace_with_na(replace = list(lat = "NA.NA", lon = "-NA.NA")) %>%
+  separate_wider_position(date, c(day = 2, month = 2, year = 2)) %>%
+  distinct()
 
+# convert all numerical cols to numeric
+is_all_numeric <- function(x) {
+  !any(is.na(suppressWarnings(as.numeric(na.omit(x))))) & is.character(x)
+}
+
+all_gulls <- all_gulls %>% 
+  mutate_if(is_all_numeric, as.numeric)
 ```

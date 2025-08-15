@@ -1,0 +1,89 @@
+---
+title: "Data for Kristen's students"
+author: "Dylan Titmuss"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+## Load datasheet to fill
+```{r}
+blank <- read_csv("~/Downloads/PHAB LAB Blood samples(Genetic Sex for Size Morphology).csv")
+
+morph <- read_xlsx("~/Desktop/Repos/GullsOfAppledore/data/reference_sheets_and_qrys/All_Captures_and_Recaptures_grouped_with_Morph.xlsx")
+```
+
+## Match data
+```{r}
+# initialize column
+blank$Tarsus.Length <- NA
+blank$Age.Captured <- NA
+
+for(i in 1:nrow(blank)) {
+  gull <- blank$Government.ID[i]
+  if(is.na(gull)) {
+    next
+  }
+  subset <- morph %>%
+    filter(USGS == gull)
+  if(nrow(subset) == 0) {
+    print(paste("Not found:", gull))
+    next
+  }
+  subset2 <- subset %>%
+    filter(!is.na(head) | !(is.na(tarsus)))
+  if(nrow(subset2) > 0) {
+    blank$Age.Captured[i] <- paste(subset2$age, collapse = ", ")
+    blank$Head.Size[i] <- paste(round(subset2$head, 1), collapse = ", ")
+    blank$Tarsus.Length[i] <- paste(round(subset2$tarsus, 1), collapse = ", ")
+  }
+  if(nrow(subset2) == 0) {
+    blank$Age.Captured[i] <- paste(subset$age, collapse = ", ")
+    blank$Head.Size[i] <- paste(subset$head, collapse = ", ")
+    blank$Tarsus.Length[i] <- paste(subset$head, collapse = ", ")
+  }
+}
+
+write_csv(blank, "~/Downloads/PHAB-Lab-Genetic-Sex-for-Size-Morphology.csv")
+```
+
+## Round 2
+```{r}
+part_blank <- read_csv("~/Downloads/PHAB-Lab-Genetic-Sex-for-Size-Morphology_with DYLAN.csv")
+
+for(i in 1:nrow(part_blank)) {
+  gull <- part_blank$Government.ID[i]
+  subset <- morph %>%
+    filter(USGS == gull)
+  if(nrow(subset) == 0) {
+    print(paste("Not found:", gull))
+    next
+  }
+  if(is.na(part_blank$Field.Readable.ID[i])) {
+    part_blank$Field.Readable.ID[i] <- paste(unique(subset$`Field Readable`), collapse = ", ")
+  }
+  subset2 <- subset %>%
+    filter(!is.na(head) | !is.na(tarsus))
+  if(nrow(subset2) > 0) {
+    part_blank$Age.Captured[i] <- paste(subset2$age, collapse = ", ")
+    part_blank$Head.Size[i] <- paste(round(subset2$head, 1), collapse = ", ")
+    part_blank$Tarsus.Length[i] <- paste(round(subset2$tarsus, 1), collapse = ", ")
+  }
+  if(nrow(subset2) == 0) {
+    part_blank$Age.Captured[i] <- paste(subset$age, collapse = ", ")
+    part_blank$Head.Size[i] <- paste(subset$head, collapse = ", ")
+    part_blank$Tarsus.Length[i] <- paste(subset$head, collapse = ", ")
+  }
+}
+
+part_blank$Notes[is.na(part_blank$Notes)] <- ""
+
+write_csv(part_blank, "~/Downloads/PHAB-Lab-Genetic-Sex-for-Size-Morphology_2025-03-04.csv")
+```

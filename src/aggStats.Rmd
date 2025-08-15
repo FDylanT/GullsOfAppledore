@@ -12,7 +12,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(lme4)
-library(lmerTest)
+#library(lmerTest)
 library(multcomp)
 library(egg)
 library(AICcmodavg)
@@ -274,7 +274,7 @@ ggsave("figures/defense/fig2.png", fig2, width = 8, height = 3, units = "in", dp
 ggplot(gbbg, aes(x = factor(obs_date_cal, levels = 140:175), y = response)) +
   geom_boxplot() +
   scale_x_discrete(breaks = factor(seq(140, 175, by = 5)), drop = FALSE) +
-  labs(x = "Calendar day", y = "Defense score") +
+  labs(x = "Day of year", y = "Defense score") +
   theme_linedraw() +
   theme(panel.grid = element_blank())
 
@@ -289,7 +289,7 @@ fig3a <- ggplot(gbbg_cal_sum, aes(x = obs_date_cal, y = defense)) +
   geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
   geom_point(shape = 5) +
   geom_errorbar(aes(ymin = defense - sd, ymax = defense + sd)) +
-  labs(x = "Calendar day", y = "Mean defense score") +
+  labs(x = "Day of year", y = "Mean defense score") +
   theme_linedraw() +
   theme(panel.grid = element_blank())
 
@@ -300,7 +300,7 @@ ggplot() +
   geom_point(data = gbbg_cal_sum, aes(x = (obs_date_cal-139), y = defense),
              shape = 23) +
   scale_x_discrete(breaks = factor(seq(140, 175, by = 5)), drop = FALSE) +
-  labs(x = "Calendar day", y = "Defense score") +
+  labs(x = "Day of year", y = "Defense score") +
   theme_linedraw() +
   theme(panel.grid = element_blank())
 
@@ -317,13 +317,91 @@ fig3b <- ggplot(gbbg_cal_sum_lat, aes(x = obs_date_cal, y = lat_time)) +
   geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
   geom_point(shape = 5) +
   geom_errorbar(aes(ymin = lat_time - sd, ymax = lat_time + sd)) +
-  labs(x = "Calendar day", y = "Mean latency time (s)") +
+  labs(x = "Day of year", y = "Mean latency time (s)") +
   theme_linedraw() +
   theme(panel.grid = element_blank())
 
 fig3 <- ggarrange(fig3a, fig3b, nrow = 1)
 
 ggsave("figures/defense/fig3.png", fig3, width = 8, height = 3, units = "in", dpi = 600)
+
+# faceted version to look at temporal x location interactions
+
+gbbg_days_sum_loc <- gbbg %>%
+  filter(!is.na(days_pre_hatch)) %>%
+  group_by(days_pre_hatch, location_cat) %>%
+  summarise(defense = mean(response),
+            sd = sd(response))
+
+gbbg_days_sum_loc$sd[is.na(gbbg_days_sum_loc$sd)] <- 0
+
+fig2a_loc <- ggplot(gbbg_days_sum_loc, aes(x = days_pre_hatch, y = defense)) +
+  geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
+  geom_point(shape = 5) +
+  geom_errorbar(aes(ymin = defense - sd, ymax = defense + sd)) +
+  scale_x_reverse() +
+  facet_wrap( ~ factor(location_cat,
+                       levels = c("campus", "loose subcolony", "dense subcolony"))) +
+  labs(x = "Days prior to hatching", y = "Mean defense score") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+gbbg_days_sum_lat_loc <- gbbg_lat %>%
+  filter(!is.na(days_pre_hatch)) %>%
+  group_by(days_pre_hatch, location_cat) %>%
+  summarise(lat_time = mean(latency),
+            sd = sd(latency))
+
+gbbg_days_sum_lat_loc$sd[is.na(gbbg_days_sum_lat_loc$sd)] <- 0
+
+fig2b_loc <- ggplot(gbbg_days_sum_lat_loc, aes(x = days_pre_hatch, y = lat_time)) +
+  geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
+  geom_point(shape = 5) +
+  geom_errorbar(aes(ymin = lat_time - sd, ymax = lat_time + sd)) +
+  scale_x_reverse() +
+  facet_wrap( ~ factor(location_cat,
+                       levels = c("campus", "loose subcolony", "dense subcolony"))) +
+  labs(x = "Days prior to hatching", y = "Mean latency time (s)") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+gbbg_cal_sum_loc <- gbbg %>%
+  group_by(obs_date_cal, location_cat) %>%
+  summarize(defense = mean(response),
+            sd = sd(response))
+
+gbbg_cal_sum_loc$sd[is.na(gbbg_cal_sum_loc$sd)] <- 0
+
+fig3a_loc <- ggplot(gbbg_cal_sum_loc, aes(x = obs_date_cal, y = defense)) +
+  geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
+  geom_point(shape = 5) +
+  geom_errorbar(aes(ymin = defense - sd, ymax = defense + sd)) +
+  facet_wrap( ~ factor(location_cat,
+                       levels = c("campus", "loose subcolony", "dense subcolony"))) +
+  labs(x = "Day of year", y = "Mean defense score") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+gbbg_cal_sum_lat_loc <- gbbg %>%
+  group_by(obs_date_cal, location_cat) %>%
+  summarize(lat_time = mean(latency),
+            sd = sd(latency))
+
+gbbg_cal_sum_lat_loc$sd[is.na(gbbg_cal_sum_lat_loc$sd)] <- 0
+
+fig3b_loc <- ggplot(gbbg_cal_sum_lat_loc, aes(x = obs_date_cal, y = lat_time)) +
+  geom_smooth(method = "lm", col = "black", linetype = "22", linewidth = 0.75) +
+  geom_point(shape = 5) +
+  geom_errorbar(aes(ymin = lat_time - sd, ymax = lat_time + sd)) +
+  facet_wrap( ~ factor(location_cat,
+                       levels = c("campus", "loose subcolony", "dense subcolony"))) +
+  labs(x = "Day of year", y = "Mean latency time (s)") +
+  theme_linedraw() +
+  theme(panel.grid = element_blank())
+
+fig2.fig3_loc <- ggarrange(fig3a_loc, fig3b_loc, fig2a_loc, fig2b_loc, nrow = 2)
+
+ggsave("figures/defense/fig2_location.png", fig2.fig3_loc, width = 14, height = 8, units = "in", dpi = 600)
 ```
 
 ## Geospatial comparison
@@ -408,33 +486,38 @@ i1 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + mate_presen
 summary(i1)
 anova(i1)
 
-ggplot(gbbg[!is.na(mates$mate_present), ], aes(x = response, fill = mate_present)) +
+ggplot(gbbg[!is.na(gbbg$mate_present), ], aes(x = response, fill = mate_present)) +
   geom_histogram(position = "dodge") +
   theme_bw()
 
-ggplot(gbbg[!is.na(mates$mate_present), ], aes(x = mate_present, y = response)) +
+ggplot(gbbg[!is.na(gbbg$mate_present), ], aes(x = mate_present, y = response)) +
   geom_boxplot() +
   theme_bw()
 
+# this doesn't run
 i1.1 <- lmer(latency ~ mate_present + (1|bird_year) + (1|days_pre_hatch), data = mates_lat)
 summary(i1.1)
 anova(i1.1)
 ```
 
+Dec 12 2024
+- `stepAIC()` isn't running
+- nor is `step()`
+
 ## Model selection
 ```{r}
 model1 <- lmer(response ~ obs_date_cal + location_cat + (1|bird_year),
                data = gbbg)
-selected1 <- stepAIC(model1)
-summary(selected1)
-selected1$random
-selected1$fixed
+#selected1 <- stepAIC(model1)
+#summary(selected1)
+#selected1$random
+#selected1$fixed
 
 count(gbbg, days_pre_hatch) %>% filter(is.na(days_pre_hatch)) # 33 obs w/o days_pre_hatch
 
 model2 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + (1|bird_year),
                data = gbbg %>% filter(!is.na(days_pre_hatch)))
-selected2 <- step(model2, direction = "both")
+#selected2 <- step(model2, direction = "both")
 selected2$random
 selected2$fixed
 
@@ -484,7 +567,7 @@ modelA <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat +
                   (1|bird_year),
                data = gbbg %>% filter(!is.na(days_pre_hatch)))
 
-AIC(model11, modelA) # agree; excellent
+AIC(model11, modelA) # they agree; excellent
 
 modelB <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat +
                   days_pre_hatch:obs_date_cal + days_pre_hatch:location_cat +
@@ -552,9 +635,9 @@ write_csv(defense_AIC, "data/defense_AIC.csv")
 ```{r}
 model2.1 <- lmer(latency ~ days_pre_hatch + obs_date_cal + location_cat + (1|bird_year),
              data = gbbg_lat %>% filter(!is.na(days_pre_hatch)))
-selected2.1 <- step(model2.1)
-selected2.1$random
-selected2.1$fixed
+#selected2.1 <- step(model2.1)
+#selected2.1$random
+#selected2.1$fixed
 
 model3.1 <- lmer(latency ~ obs_date_cal + location_cat + (1|bird_year),
                data = gbbg_lat %>% filter(!is.na(days_pre_hatch)))
@@ -587,7 +670,6 @@ write_csv(latency_AIC, "data/latency_AIC.csv")
 ```
 
 #### PICK UP NEXT TIME:
-- add latency model selection details to table
 - what to do about subsets?
 
 ## Sex comparison
@@ -650,9 +732,9 @@ s.selected1$fixed
 
 s.model2 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + sex + (1|bird_year),
              data = sex_select)
-s.selected2 <- step(s.model2)
-s.selected2$random
-s.selected2$fixed
+#s.selected2 <- step(s.model2)
+#s.selected2$random
+#s.selected2$fixed
 
 s.model3 <- lmer(response ~ obs_date_cal + location_cat + sex + (1|bird_year),
                data = sex_select)
@@ -660,7 +742,7 @@ s.model4 <- lmer(response ~ location_cat + sex + (1|bird_year),
                data = sex_select)
 s.model5 <- lmer(response ~ obs_date_cal + sex + (1|bird_year),
                data = sex_select)
-s.model6 <- lm(response ~ obs_date_cal + location_cat,
+s.model6 <- lm(response ~ obs_date_cal + location_cat + sex,   ### Dec 12 2024 -- added `+ sex`...correct? 
                data = sex_select)
 s.model7 <- lmer(response ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year),
                data = sex_select)
@@ -676,10 +758,35 @@ s.model12 <- lmer(response ~ days_pre_hatch * location_cat + sex + (1|bird_year)
 s.model13 <- lmer(response ~ obs_date_cal * location_cat + sex + (1|bird_year),
                data = sex_select)
 
+s.model2n <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + (1|bird_year),
+               data = sex_select)
+s.model3n <- lmer(response ~ obs_date_cal + location_cat + (1|bird_year),
+               data = sex_select)
+s.model4n <- lmer(response ~ location_cat + (1|bird_year),
+               data = sex_select)
+s.model5n <- lmer(response ~ obs_date_cal + (1|bird_year),
+               data = sex_select)
+s.model6n <- lm(response ~ obs_date_cal + location_cat,
+               data = sex_select)
+s.model7n <- lmer(response ~ days_pre_hatch + obs_date_cal + (1|bird_year),
+               data = sex_select)
+s.model8n <- lmer(response ~ days_pre_hatch + location_cat + (1|bird_year),
+               data = sex_select)
+s.model9n <- lmer(response ~ days_pre_hatch + (1|bird_year),
+               data = sex_select)
+s.model12n <- lmer(response ~ days_pre_hatch * location_cat + (1|bird_year),
+               data = sex_select)
+s.model13n <- lmer(response ~ obs_date_cal * location_cat + (1|bird_year),
+               data = sex_select)
+
 s.response_AIC <- aictab(cand.set = list(s.model2, s.model3, s.model4, s.model5, s.model7,
-                                         s.model8, s.model9, s.model0, s.model12, s.model13),
+                                         s.model8, s.model9, s.model0, s.model12, s.model13,
+                                         s.model2n, s.model3n, s.model4n, s.model5, s.model7,
+                                         s.model8n, s.model9n, s.model12n, s.model13n),
        modnames = c("s.model2", "s.model3", "s.model4", "s.model5", "s.model7", "s.model8",
-                    "s.model9", "s.model0", "s.model12", "s.model13"))
+                    "s.model9", "s.model0", "s.model12", "s.model13",
+                    "s.model2n", "s.model3n", "s.model4n", "s.model5n", "s.model7n", "s.model8n",
+                    "s.model9n", "s.model12n", "s.model13n"))
 
 s.model2.1 <- lmer(latency ~ days_pre_hatch + obs_date_cal + location_cat + sex + (1|bird_year),
              data = sex_select_lat)
