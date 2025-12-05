@@ -7,16 +7,17 @@ editor_options:
   chunk_output_type: console
 ---
 
----
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+## Load packages
+```{r}
 library(tidyverse)
 library(lme4)
 #library(lmerTest)
-library(multcomp)
+# library(multcomp)
 library(egg)
 library(AICcmodavg)
 #library(trend)
+library(MuMIn) # for R^2 values
+library(performance) # for R^2 values
 ```
 
 ```{r}
@@ -500,6 +501,49 @@ summary(i1.1)
 anova(i1.1)
 ```
 
+## Sex comparison
+```{r}
+sexes <- read_csv("data/reference_sheets_and_qrys/GBBG_sexes.csv") %>%
+  replace(. == "*", NA)
+
+sum(sexes$Genetic_Sex_PHAB == sexes$Database_Sex, na.rm = TRUE) # 17 matches of genetic w/ beh/morph
+
+for(i in 1:nrow(gbbg)) {
+  gbbg$sex[i] <- ifelse(!is.na(sexes$Genetic_Sex_PHAB[sexes$PFR == as.character(gbbg$birdID)[i]]),
+                        sexes$Genetic_Sex_PHAB[sexes$PFR == as.character(gbbg$birdID)[i]],
+                        sexes$Database_Sex[sexes$PFR == as.character(gbbg$birdID)[i]])
+}
+
+for(i in 1:nrow(gbbg_lat)) {
+  gbbg_lat$sex[i] <- ifelse(!is.na(sexes$Genetic_Sex_PHAB[sexes$PFR ==
+                                                            as.character(gbbg$birdID)[i]]),
+                        sexes$Genetic_Sex_PHAB[sexes$PFR == as.character(gbbg$birdID)[i]],
+                        sexes$Database_Sex[sexes$PFR == as.character(gbbg$birdID)[i]])
+}
+
+gbbg %>%
+  group_by(birdID) %>%
+  summarise(sex = sex[1]) %>%
+  count(sex)  # 32 F, 49 M
+
+count(gbbg, sex)  # 123 obs F, 201 obs M
+
+s1 <- lmer(response ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year), data = gbbg)
+summary(s1)
+anova(s1)
+
+summary(glht(s1, linfct = mcp(sex = "Tukey")), test = adjusted("fdr"))
+
+s1.1 <- lmer(latency ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year), data = gbbg_lat)
+summary(s1.1)
+anova(s1.1)
+
+summary(glht(s1.1, linfct = mcp(sex = "Tukey")), test = adjusted("fdr"))
+```
+
+
+### ACTUAL MODEL SELECTION PROCESS ###
+
 Dec 12 2024
 - `stepAIC()` isn't running
 - nor is `step()`
@@ -518,8 +562,8 @@ count(gbbg, days_pre_hatch) %>% filter(is.na(days_pre_hatch)) # 33 obs w/o days_
 model2 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + (1|bird_year),
                data = gbbg %>% filter(!is.na(days_pre_hatch)))
 #selected2 <- step(model2, direction = "both")
-selected2$random
-selected2$fixed
+# selected2$random
+# selected2$fixed
 
 model3 <- lmer(response ~ obs_date_cal + location_cat + (1|bird_year),
                data = gbbg %>% filter(!is.na(days_pre_hatch)))
@@ -628,7 +672,7 @@ defense_AIC <- aictab(cand.set = list(model2, model3, model4, model5, model7, mo
        modnames = c("model2", "model3", "model4", "model5", "model7", "model8", "model9",
                     "model0", "model12", "model13"))
 
-write_csv(defense_AIC, "data/defense_AIC.csv")
+write_csv(defense_AIC, "data/aggData/defense_AIC.csv")
 ```
 
 ## Repeat for latency
@@ -666,53 +710,10 @@ latency_AIC <- aictab(cand.set = list(model2.1, model3.1, model4.1, model5.1, mo
        modnames = c("model2.1", "model3.1", "model4.1", "model5.1", "model7.1", "model8.1",
                     "model9.1", "model0.1", "model12.1", "model13.1"))
 
-write_csv(latency_AIC, "data/latency_AIC.csv")
+write_csv(latency_AIC, "data/aggData/latency_AIC.csv")
 ```
 
-#### PICK UP NEXT TIME:
-- what to do about subsets?
-
-## Sex comparison
-```{r}
-sexes <- read_csv("data/reference_sheets_and_qrys/GBBG_sexes.csv") %>%
-  replace(. == "*", NA)
-
-sum(sexes$Genetic_Sex_PHAB == sexes$Database_Sex, na.rm = TRUE) # 17 matches of genetic w/ beh/morph
-
-for(i in 1:nrow(gbbg)) {
-  gbbg$sex[i] <- ifelse(!is.na(sexes$Genetic_Sex_PHAB[sexes$PFR == as.character(gbbg$birdID)[i]]),
-                        sexes$Genetic_Sex_PHAB[sexes$PFR == as.character(gbbg$birdID)[i]],
-                        sexes$Database_Sex[sexes$PFR == as.character(gbbg$birdID)[i]])
-}
-
-for(i in 1:nrow(gbbg_lat)) {
-  gbbg_lat$sex[i] <- ifelse(!is.na(sexes$Genetic_Sex_PHAB[sexes$PFR ==
-                                                            as.character(gbbg$birdID)[i]]),
-                        sexes$Genetic_Sex_PHAB[sexes$PFR == as.character(gbbg$birdID)[i]],
-                        sexes$Database_Sex[sexes$PFR == as.character(gbbg$birdID)[i]])
-}
-
-gbbg %>%
-  group_by(birdID) %>%
-  summarise(sex = sex[1]) %>%
-  count(sex)  # 32 F, 49 M
-
-count(gbbg, sex)  # 123 obs F, 201 obs M
-
-s1 <- lmer(response ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year), data = gbbg)
-summary(s1)
-anova(s1)
-
-summary(glht(s1, linfct = mcp(sex = "Tukey")), test = adjusted("fdr"))
-
-s1.1 <- lmer(latency ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year), data = gbbg_lat)
-summary(s1.1)
-anova(s1.1)
-
-summary(glht(s1.1, linfct = mcp(sex = "Tukey")), test = adjusted("fdr"))
-```
-
-## Try running model selection on subsets
+## Run model selection on sex subsets
 ```{r}
 # year, nestID, birdID, sex, sex_method, location, location_cat, egg_num, obs_num, obs_date, obs_date_cal, hatch1_date, hatch1_cal, days_pre_hatch, response, latency, mate_present, notes, bird_year, obs_num_cat
 
@@ -726,9 +727,9 @@ sex_select_lat <- gbbg_lat %>%
 
 s.model1 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + sex + (1|bird_year),
              data = gbbg %>% filter(!is.na(days_pre_hatch), !is.na(sex)))
-s.selected1 <- step(s.model1)
-s.selected1$random
-s.selected1$fixed
+# s.selected1 <- step(s.model1)
+# s.selected1$random
+# s.selected1$fixed
 
 s.model2 <- lmer(response ~ days_pre_hatch + obs_date_cal + location_cat + sex + (1|bird_year),
              data = sex_select)
@@ -742,7 +743,7 @@ s.model4 <- lmer(response ~ location_cat + sex + (1|bird_year),
                data = sex_select)
 s.model5 <- lmer(response ~ obs_date_cal + sex + (1|bird_year),
                data = sex_select)
-s.model6 <- lm(response ~ obs_date_cal + location_cat + sex,   ### Dec 12 2024 -- added `+ sex`...correct? 
+s.model6 <- lm(response ~ obs_date_cal + location_cat + sex,   ### Dec 12 2024 -- added `+ sex`...correct? ### Nov 10 2025 -- Dylan decides yes ## wait actually we can't include this anyway bc it's an lm; aictab won't accept it (see model6 above)
                data = sex_select)
 s.model7 <- lmer(response ~ days_pre_hatch + obs_date_cal + sex + (1|bird_year),
                data = sex_select)
@@ -779,20 +780,24 @@ s.model12n <- lmer(response ~ days_pre_hatch * location_cat + (1|bird_year),
 s.model13n <- lmer(response ~ obs_date_cal * location_cat + (1|bird_year),
                data = sex_select)
 
-s.response_AIC <- aictab(cand.set = list(s.model2, s.model3, s.model4, s.model5, s.model7,
-                                         s.model8, s.model9, s.model0, s.model12, s.model13,
-                                         s.model2n, s.model3n, s.model4n, s.model5, s.model7,
-                                         s.model8n, s.model9n, s.model12n, s.model13n),
-       modnames = c("s.model2", "s.model3", "s.model4", "s.model5", "s.model7", "s.model8",
-                    "s.model9", "s.model0", "s.model12", "s.model13",
-                    "s.model2n", "s.model3n", "s.model4n", "s.model5n", "s.model7n", "s.model8n",
-                    "s.model9n", "s.model12n", "s.model13n"))
+s.response_AIC <- aictab(cand.set = list(s.model2, s.model3, s.model4, s.model5,
+                                         s.model7, s.model8, s.model9, s.model0,
+                                         s.model12, s.model13,
+                                         s.model2n, s.model3n, s.model4n, s.model5n,
+                                         s.model7n, s.model8n, s.model9n,
+                                         s.model12n, s.model13n),
+       modnames = c("s.model2", "s.model3", "s.model4", "s.model5", "s.model7",
+                    "s.model8", "s.model9", "s.model0", "s.model12", "s.model13",
+                    "s.model2n", "s.model3n", "s.model4n", "s.model5n", "s.model7n",
+                    "s.model8n", "s.model9n", "s.model12n", "s.model13n"))
+
+write_csv(s.response_AIC, "data/aggData/defense_AIC_sexed_only.csv")
 
 s.model2.1 <- lmer(latency ~ days_pre_hatch + obs_date_cal + location_cat + sex + (1|bird_year),
              data = sex_select_lat)
-s.selected2.1 <- step(s.model2.1)
-s.selected2.1$random
-s.selected2.1$fixed
+# s.selected2.1 <- step(s.model2.1)
+# s.selected2.1$random
+# s.selected2.1$fixed
 
 s.model3.1 <- lmer(latency ~ obs_date_cal + location_cat + sex + (1|bird_year),
                data = sex_select_lat)
@@ -816,11 +821,57 @@ s.model12.1 <- lmer(latency ~ days_pre_hatch * location_cat + sex + (1|bird_year
 s.model13.1 <- lmer(latency ~ obs_date_cal * location_cat + sex + (1|bird_year),
                data = sex_select_lat)
 
+s.model2.1n <- lmer(latency ~ days_pre_hatch + obs_date_cal + location_cat + (1|bird_year),
+             data = sex_select_lat)
+s.model3.1n <- lmer(latency ~ obs_date_cal + location_cat + (1|bird_year),
+               data = sex_select_lat)
+s.model4.1n <- lmer(latency ~ location_cat + (1|bird_year),
+               data = sex_select_lat)
+s.model5.1n <- lmer(latency ~ obs_date_cal + (1|bird_year),
+               data = sex_select_lat)
+s.model6.1n <- lm(latency ~ obs_date_cal + location_cat,
+               data = sex_select_lat)
+s.model7.1n <- lmer(latency ~ days_pre_hatch + obs_date_cal + (1|bird_year),
+               data = sex_select_lat)
+s.model8.1n <- lmer(latency ~ days_pre_hatch + location_cat + (1|bird_year),
+               data = sex_select_lat)
+s.model9.1n <- lmer(latency ~ days_pre_hatch + (1|bird_year),
+               data = sex_select_lat)
+s.model12.1n <- lmer(latency ~ days_pre_hatch * location_cat + (1|bird_year),
+               data = sex_select_lat)
+s.model13.1n <- lmer(latency ~ obs_date_cal * location_cat + (1|bird_year),
+               data = sex_select_lat)
+
 s.latency_AIC <- aictab(cand.set = list(s.model2.1, s.model3.1, s.model4.1, s.model5.1,
                                         s.model7.1, s.model8.1, s.model9.1, s.model0.1,
-                                        s.model12.1, s.model13.1),
+                                        s.model12.1, s.model13.1,
+                                        s.model2.1n, s.model3.1n, s.model4.1n, s.model5.1n,
+                                        s.model7.1n, s.model8.1n, s.model9.1n,
+                                        s.model12.1n, s.model13.1n),
        modnames = c("s.model2.1", "s.model3.1", "s.model4.1", "s.model5.1", "s.model7.1",
-                    "s.model8.1", "s.model9.1", "s.model0.1", "s.model12.1", "s.model13.1"))
+                    "s.model8.1", "s.model9.1", "s.model0.1", "s.model12.1", "s.model13.1",
+                    "s.model2.1n", "s.model3.1n", "s.model4.1n", "s.model5.1n", "s.model7.1n",
+                    "s.model8.1n", "s.model9.1n", "s.model12.1n", "s.model13.1n"))
+
+write_csv(s.latency_AIC, "data/aggData/latency_AIC_sexed_only.csv")
+
+
+## poking into variables
+summary(s.model12.1) # sexM lower latency time
+summary(s.model8.1)
+
+summary(s.model3) # sexM (slightly) lower response score
+summary(s.model8)
+```
+
+## Calculate R^2 values
+```{r}
+r.squaredGLMM(model8)
+r.squaredGLMM(model8, model0)
+r2_nakagawa(model8)
+r2_nakagawa(model8, null_model = model0)
+
+
 ```
 
 

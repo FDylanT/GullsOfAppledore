@@ -1,0 +1,99 @@
+---
+title: "Chicks' Survival Analysis"
+author: "Dylan Titmuss"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r}
+library(tidyverse)
+library(survival)
+library(ggsurvfit)
+```
+
+## Load data
+```{r}
+setwd("~/Downloads")
+
+real_data <- read_csv("Stella_data.csv") %>%
+  mutate(across(everything(), ~ as.character(.))) %>% # convert all to char to allow NA replace
+  mutate(across(everything(), ~ na_if(., "\xa0"))) %>%
+  pivot_longer(cols = c(starts_with("date"),
+                        starts_with("status"),
+                        starts_with("mass"),
+                        starts_with("headbill"),
+                        starts_with("expculmen")),
+               names_to = c(".value", "sampling_event"),
+               names_sep = "_") %>%
+  filter(!is.na(date)) %>%
+  mutate(hatchdate = as.Date(hatchdate, format = "%m/%d/%Y"),
+         date = as.Date(date, format = "%m/%d/%Y"),
+         age = difftime(date, hatchdate, units = "days") %>% as.numeric()) %>%
+  mutate(across(status:expculmen, ~ as.numeric(.)))
+
+longdata <- longdata %>%
+  mutate(actualdate = case_when(is.na(actualdate) & sampling_event == "day1" ~ actualhatchdate,
+                                is.na(actualdate) & sampling_event == "day4" ~ actualhatchdate + 3,
+                                is.na(actualdate) & sampling_event == "day8" ~ actualhatchdate + 7,
+                                is.na(actualdate) & sampling_event == "day12" ~ actualhatchdate + 11))
+```
+
+## Prepare data for survival analysis
+```{r}
+# We need:
+# 1) "time to event" --> # of days until chick dead
+# 2) "status" --> 1 ("event" = death), 0 (no event = alive)
+
+# first, flip status assignments, that's easy
+survival <- real_data %>%
+  mutate(status_surv = case_when(status == 1 ~ 0,
+                                 status == 0 ~ 1))
+
+# ooh, note: this analysis is designed to handle cases where subjects went MIA/weren't followed to the end of the study --> maybe recode chicks/incorporate this
+
+###### Big question: Do we want to assume that chicks that went MIA died? Case-/age-dependent...?
+
+# we should have one row per individual.
+# "time to event" is either:
+# (a) the age at which a chick was first recorded as dead (status 1), or
+# (b) the final observation of a living chick, with status 0
+
+event <- survival %>%
+  group_by(Chick_ID) %>%
+  filter(max(status_surv) == 1) %>%
+  filter(status_surv == 1) %>%
+  slice_min(age)
+
+no_event <- survival %>%
+  group_by(Chick_ID) %>%
+  filter(max(status_surv) == 0) %>%
+  slice_max(age)
+
+final_data <- rbind(event, no_event)
+
+# check that we have one row per chick
+n_distinct(final_data$Chick_ID) == nrow(final_data) # great!
+```
+
+## Start survival analysis
+```{r}
+# https://www.emilyzabor.com/survival-analysis-in-r.html#kaplan-meier-plots
+
+# model
+Surv(lung$time, lung$status)[1:10]
+
+# gull version
+Surv(final_data$age, final_data$status_surv)[1:10]
+
+s1 <- survfit(Surv(age, status_surv) ~ 1, data = final_data)
+str(s1)
+
+# for plotting, use survfit2()
+survfit2(Surv(age, status_surv) ~ 1, data = final_data) %>% 
+  ggsurvfit() +
+  labs(x = "Days", y = "Overall survival probability") +
+  scale_y_continuous(limits = c(0, 1))
+```
